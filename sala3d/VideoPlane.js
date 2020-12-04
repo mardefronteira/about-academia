@@ -12,7 +12,7 @@ class VideoPlane {
     push();
       rotateX(radians(90));
       translate(0, escalaY / fracaoY, -escalaY);
-      // rotateX(radians(180));
+      rotateX(radians(180));
       tint(80);
       plane(this.largura, this.altura);
     pop();

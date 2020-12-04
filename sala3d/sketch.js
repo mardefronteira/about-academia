@@ -120,8 +120,8 @@ function mostrarSalas() {
   // pointLight(255, 255, 255, mouseX- width / 2, mouseY- height / 2, -50);
 
   push();
-    // rotateY(angulo);
-    translate(-telaX+margem, -50, -telaX/3);
+    rotateY(angulo);
+    translate(-telaX/2+margem*2, -50, -telaX/3);
     // plane(width/2,escalaY*2);
     videoPlanes[0].mostrar();
 
@@ -133,7 +133,7 @@ function mostrarSalas() {
   pop();
 
   push();
-    // rotateY(-angulo);
+    rotateY(-angulo);
     translate(margem*2, -50, -telaX/3);
     videoPlanes[3].mostrar();
 
