@@ -27,8 +27,13 @@ let botaoPermitirAudio;
 let mensagemCarregando;
 
 let thisCanvas;
+let bebasNeue;
 
 function preload() {
+  // carregar fonte
+  bebasNeue = loadFont('../fontes/BebasNeueBold.otf');
+
+  // carregar e criar vídeos
   let videoPath = "./sala3d/videos"
   for (let video in videos) {
     videos[video] = createVideo(`${videoPath}/${videos[video]}`, () => {videoCarregou()});
@@ -37,10 +42,12 @@ function preload() {
     videos[video].hide();
   }
 
+  // criar div para o botão de entrada e o parágrafo
   let divBotao = document.createElement('div');
   divBotao.id = "overlay";
   document.body.appendChild(divBotao);
 
+  // criar botão para iniciar os áudios
   botaoPermitirAudio = document.createElement('button');
   botaoPermitirAudio.id = "botaoPermitirAudio";
   botaoPermitirAudio.innerHTML = "clique aqui para entrar";
@@ -48,16 +55,18 @@ function preload() {
   botaoPermitirAudio.classList.add('hidden');
   divBotao.appendChild(botaoPermitirAudio);
 
+  // criar mensagem de "carregando..."
   mensagemCarregando = document.createElement('p');
   mensagemCarregando.innerHTML = "carregando...";
   divBotao.appendChild(mensagemCarregando);
 }
 
+/*
+a função videoCarregou() é chamada a cada vez que um vídeo é carregado. quanto todos estiverem carregados, sinalizados pelo contador, os planos 3D são criados, e o volume ajustado para a posição inicial da tela.
+*/
 function videoCarregou() {
   contadorVideos++;
-  // console.log(contadorVideos);
   if ( contadorVideos === numVideos ){
-    // console.log('tá entrando aqui sim')
     for (let video in videos) {
       videoPlanes.push(new VideoPlane(videos[video]));
     }
@@ -85,6 +94,7 @@ function setup() {
   noStroke();
   background(0);
 
+  // ajuste de volume a cada vez que há rolagem de página
   window.addEventListener("scroll", (event) => {
       let scroll = this.scrollX;
 
@@ -92,6 +102,10 @@ function setup() {
         videoPlanes[i].ajustarVolume(scroll,i);
       };
   });
+
+  // configuração de fonte
+  textFont(bebasNeue);
+  textSize(height/10);
 }
 
 function draw() {
@@ -122,10 +136,22 @@ function mostrarSalas() {
   // ambientLight(100,100,100);
   // pointLight(255, 255, 255, mouseX- width / 2, mouseY- height / 2, -50);
 
+
+  // títulos
+  fill(255,255,255);
+  noStroke();
+  push();
+    text('sobre', 10, 50);
+    text('academia i', 10, 50);
+  pop();
+  push();
+    text('p5*js', 10, 50);
+  pop();
+
+  // vídeos do lado esquerdo (AA I)
   push();
     rotateY(angulo);
     translate(-telaX/2+margem, -50, -telaX/3);
-    // plane(width/2,escalaY*2);
     videoPlanes[0].mostrar();
 
     translate(escalaX, 0);
@@ -135,6 +161,7 @@ function mostrarSalas() {
     videoPlanes[2].mostrar();
   pop();
 
+  // vídeos do lado direito (AA II)
   push();
     rotateY(-angulo);
     translate(margem*2, -50, -telaX/3);

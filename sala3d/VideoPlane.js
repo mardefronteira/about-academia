@@ -10,9 +10,9 @@ class VideoPlane {
     texture(this.textura);
     plane(this.largura, this.altura);
     push();
-      rotateX(radians(90));
-      translate(0, escalaY / fracaoY, -escalaY);
+      // rotateX(radians(90));
       rotateX(radians(180));
+      translate(0, -escalaY, 0);
       tint(80);
       plane(this.largura, this.altura);
     pop();
@@ -28,7 +28,7 @@ class VideoPlane {
       distanciaX = window.innerWidth - scroll;
     }
     let thisVolume = map(distanciaX, 0, window.innerWidth, 1, 0);
-    console.log(`[${i}] distância máxima: ${window.innerWidth}, distâcia X: ${distanciaX}, volume: ${thisVolume}`);
+    // console.log(`[${i}] distância máxima: ${window.innerWidth}, distâcia X: ${distanciaX}, volume: ${thisVolume}`);
     this.textura.elt.volume = thisVolume;
   }
 }
