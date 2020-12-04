@@ -3,7 +3,7 @@ class VideoPlane {
     this.largura = escalaX;
     this.altura = escalaY;
     this.textura = videoToTexturize;
-    // this.refPoint
+    this.pontoRef = window.innerWidth/2;
   }
 
   mostrar() {
@@ -19,10 +19,16 @@ class VideoPlane {
   }
 
   ajustarVolume(scroll,i) {
-    let pontoRef = window.innerWidth/6*i;
-    let distanciaX = abs(dist(pontoRef,0,scroll,0));
-    let thisVolume = map(distanciaX, 0, window.innerWidth/2, 0, 1);
-    console.log(pontoRef, scroll, distanciaX, thisVolume);
-    this.textura.volume = thisVolume;
+    let distanciaX;
+    if (i<3) {
+      this.pontoRef = 0;
+      distanciaX = scroll;
+    } else {
+      this.pontoRef = width;
+      distanciaX = window.innerWidth - scroll;
+    }
+    let thisVolume = map(distanciaX, 0, window.innerWidth, 1, 0);
+    console.log(`[${i}] distância máxima: ${window.innerWidth}, distâcia X: ${distanciaX}, volume: ${thisVolume}`);
+    this.textura.elt.volume = thisVolume;
   }
 }

@@ -61,6 +61,9 @@ function videoCarregou() {
     for (let video in videos) {
       videoPlanes.push(new VideoPlane(videos[video]));
     }
+    for (let i in videoPlanes) {
+      videoPlanes[i].ajustarVolume(0,i);
+    };
 
     videosCarregados = true;
     mensagemCarregando.remove();
@@ -86,7 +89,7 @@ function setup() {
       let scroll = this.scrollX;
 
       for (let i in videoPlanes) {
-        videoPlanes[i].ajustarVolume(scroll, i);
+        videoPlanes[i].ajustarVolume(scroll,i);
       };
   });
 }
@@ -121,7 +124,7 @@ function mostrarSalas() {
 
   push();
     rotateY(angulo);
-    translate(-telaX/2+margem*2, -50, -telaX/3);
+    translate(-telaX/2+margem, -50, -telaX/3);
     // plane(width/2,escalaY*2);
     videoPlanes[0].mostrar();
 
