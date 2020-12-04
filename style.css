@@ -1,10 +1,44 @@
 body {
   margin: 0;
   padding: 0;
-  /* background: #000; */
+  background: #000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  /* overflow-y: hidden; */
 }
-canvas {
+
+#thisCanvas {
   display: block;
   margin: 0;
   padding: 0;
+  bottom: 0;
+}
+
+div#overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+p, button {
+  color: white;
+  font-size: 30px;
+  background: transparent;
+  font-family: sans-serif;
+}
+
+button:hover {
+  opacity: .5;
+}
+
+.hidden {
+  display:none;
 }
