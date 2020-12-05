@@ -28,6 +28,10 @@ let mensagemCarregando;
 
 let thisCanvas;
 let bebasNeue;
+let tamanhoFonte;
+let titulosX, titulosY;
+
+let scrollPosition = 0;
 
 function preload() {
   // carregar fonte
@@ -101,11 +105,19 @@ function setup() {
       for (let i in videoPlanes) {
         videoPlanes[i].ajustarVolume(scroll,i);
       };
+
+      // scrollPosition = abs(window.innerWidth/2 - scroll);
+      scrollPosition = scroll;
+      scroll > window.innerWidth/2 ? scrollPosition = window.innerWidth - scroll : scrollPosition = scroll;
+      // console.log(scrollPosition);
   });
 
   // configuração de fonte
+  tamanhoFonte = height/15;
   textFont(bebasNeue);
-  textSize(height/10);
+  textSize(tamanhoFonte);
+  titulosX = tamanhoFonte*2;
+  titulosY = -height/2 + tamanhoFonte*3;
 }
 
 function draw() {
@@ -132,26 +144,29 @@ function mostrarSalas() {
   escalaY = escalaX * 0.7;
 
   background(0);
-  ambientLight(255, 255, 255);
+  ambientLight(255);
   // ambientLight(100,100,100);
   // pointLight(255, 255, 255, mouseX- width / 2, mouseY- height / 2, -50);
 
-
   // títulos
-  fill(255,255,255);
+  fill(150);
   noStroke();
   push();
-    text('sobre', 10, 50);
-    text('academia i', 10, 50);
+    textAlign(RIGHT);
+    text('sobre', -titulosX, titulosY);
+    text('academia i', -titulosX, titulosY+tamanhoFonte);
   pop();
   push();
-    text('p5*js', 10, 50);
+    textAlign(LEFT);
+    text('sobre', titulosX, titulosY);
+    text('academia ii', titulosX, titulosY+tamanhoFonte);
   pop();
 
   // vídeos do lado esquerdo (AA I)
   push();
     rotateY(angulo);
-    translate(-telaX/2+margem, -50, -telaX/3);
+    translate(-telaX/2+margem+scrollPosition/2, 0, -telaX/3-scrollPosition/2); // com scroll
+    // translate(-telaX/2+margem, 0, -telaX/3); // sem scroll
     videoPlanes[0].mostrar();
 
     translate(escalaX, 0);
@@ -164,7 +179,8 @@ function mostrarSalas() {
   // vídeos do lado direito (AA II)
   push();
     rotateY(-angulo);
-    translate(margem*2, -50, -telaX/3);
+    translate(margem*2-scrollPosition/2, 0, -telaX/3-scrollPosition/2); // com scroll
+    // translate(margem*2, 0, -telaX/3); // sem scroll
     videoPlanes[3].mostrar();
 
     translate(escalaX, 0);
