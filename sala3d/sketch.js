@@ -119,12 +119,6 @@ function videoCarregou() {
       videoPlanes.push(new VideoPlane(videos[video]));
     }
     for (let i in videoPlanes) {
-      if (comHora) {
-        const d = new Date();
-        let hora = `${d.getHours()}${d.getMinutes() < 10 ? '0'+d.getMinutes() : d.getMinutes()}`;
-        console.log(hora);
-        videoPlanes[i].configurarInicio(hora);
-      }
       videoPlanes[i].ajustarVolume(0,i);
     };
 
@@ -194,6 +188,16 @@ function permitirAudio() {
   Array.from(document.getElementsByTagName('video')).map( video => video.play());
   permitiuAudio = true;
   botaoPermitirAudio.remove();
+
+  for (let i in videoPlanes) {
+    if (comHora) {
+      const d = new Date();
+      let hora = d.getHours() + d.getMinutes() / 60;
+      videoPlanes[i].configurarInicio(hora);
+    } else {
+      // videoPlanes[i].configurarInicio(0);
+    }
+  }
 
   // temporário para testes
   mensagemConfig.remove();

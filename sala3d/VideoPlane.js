@@ -20,7 +20,8 @@ class VideoPlane {
 
   configurarInicio(hora){
     const duracao = this.video.duration;
-    this.video.currentTime = map(hora, 0, 2459, 0, duracao);
+    console.log(hora, duracao, map(hora, 0, 23.98, 0, duracao))
+    this.video.currentTime = map(hora, 0, 23.98, 0, duracao);
   }
 
   ajustarVolume(scroll,i) {
