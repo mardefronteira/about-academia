@@ -1,21 +1,26 @@
 class VideoPlane {
   constructor (videoToTexturize) {
-    this.largura = escalaX;
-    this.altura = escalaY;
     this.textura = videoToTexturize;
+    this.video = videoToTexturize.elt;
     this.pontoRef = window.innerWidth/2;
   }
 
   mostrar() {
     texture(this.textura);
-    plane(this.largura, this.altura);
+    // stroke(255);
+    plane(escala, escala);
     push();
       // rotateX(radians(90));
       rotateX(radians(180));
-      translate(0, -escalaY, 0);
+      translate(0, -escala-escala/10, 0);
       tint(80);
-      plane(this.largura, this.altura);
+      plane(escala, escala);
     pop();
+  }
+
+  configurarInicio(hora){
+    const duracao = this.video.duration;
+    this.video.currentTime = map(hora, 0, 2459, 0, duracao);
   }
 
   ajustarVolume(scroll,i) {
@@ -27,8 +32,8 @@ class VideoPlane {
       this.pontoRef = width;
       distanciaX = window.innerWidth - scroll;
     }
-    let thisVolume = map(distanciaX, 0, window.innerWidth, 1, 0);
+    let thisVolume = constrain(map(distanciaX, 0, window.innerWidth, 1, 0), 0,1);
     // console.log(`[${i}] distância máxima: ${window.innerWidth}, distâcia X: ${distanciaX}, volume: ${thisVolume}`);
-    this.textura.elt.volume = thisVolume;
+    this.video.volume = thisVolume;
   }
 }

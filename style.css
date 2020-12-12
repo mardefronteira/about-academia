@@ -23,6 +23,7 @@ div#overlay {
   left: 0;
   height: 90vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow-y: hidden;
@@ -33,10 +34,15 @@ p, button {
   font-size: 30px;
   background: transparent;
   font-family: sans-serif;
+  margin: 20px 10px;
 }
 
 button:hover {
   opacity: .5;
+}
+
+.config {
+  border:none;
 }
 
 .hidden {

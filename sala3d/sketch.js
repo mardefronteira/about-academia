@@ -4,9 +4,13 @@ let fracaoY = 4;
 let fracaoX = 6;
 let telaX;
 let telaY;
-let escalaX;
-let escalaY;
+// let escalaX;
+// let escalaY;
+let escala;
 let margem;
+
+let comScroll = true;
+let comHora = true;
 
 let videos = {
   entrevistas1: "entrevista_1.mp4",
@@ -25,6 +29,9 @@ let videosCarregados = false;
 let permitiuAudio = false;
 let botaoPermitirAudio;
 let mensagemCarregando;
+
+let mensagemConfig;
+let botaoHora, botaoZoom;
 
 let thisCanvas;
 let bebasNeue;
@@ -51,10 +58,35 @@ function preload() {
   divBotao.id = "overlay";
   document.body.appendChild(divBotao);
 
+  // criar botão para testar tempo
+  mensagemConfig = document.createElement('p');
+  mensagemConfig.id = "mensagemConfig";
+  mensagemConfig.innerHTML = "Configurações:";
+  mensagemConfig.classList.add('hidden');
+  divBotao.appendChild(mensagemConfig);
+
+  // criar botão para testar tempo
+  botaoHora = document.createElement('button');
+  botaoHora.id = "botaoHora";
+  botaoHora.innerHTML = "começar vídeos a partir da hora local";
+  botaoHora.addEventListener('click', lidarHora);
+  botaoHora.classList.add('hidden');
+  botaoHora.classList.add('config');
+  divBotao.appendChild(botaoHora);
+
+  // criar botão para testar zoom
+  botaoZoom = document.createElement('button');
+  botaoZoom.id = "botaoZoom";
+  botaoZoom.innerHTML = "zoom out ao rolar a página";
+  botaoZoom.addEventListener('click', lidarZoom);
+  botaoZoom.classList.add('hidden');
+  botaoZoom.classList.add('config');
+  divBotao.appendChild(botaoZoom);
+
   // criar botão para iniciar os áudios
   botaoPermitirAudio = document.createElement('button');
   botaoPermitirAudio.id = "botaoPermitirAudio";
-  botaoPermitirAudio.innerHTML = "clique aqui para entrar";
+  botaoPermitirAudio.innerHTML = "entrar na sala";
   botaoPermitirAudio.addEventListener('click', permitirAudio);
   botaoPermitirAudio.classList.add('hidden');
   divBotao.appendChild(botaoPermitirAudio);
@@ -63,6 +95,18 @@ function preload() {
   mensagemCarregando = document.createElement('p');
   mensagemCarregando.innerHTML = "carregando...";
   divBotao.appendChild(mensagemCarregando);
+}
+
+function lidarZoom () {
+  comScroll = !comScroll;
+  let mensagem = comScroll ? 'zoom out ao rolar a página' : '<s>zoom out ao rolar a página</s>';
+  botaoZoom.innerHTML = mensagem;
+}
+
+function lidarHora () {
+  comHora = !comHora;
+  let mensagem = comHora ? 'começar vídeos a partir da hora local' : '<s>começar vídeos a partir da hora local</s>';
+  botaoHora.innerHTML = mensagem;
 }
 
 /*
@@ -75,6 +119,12 @@ function videoCarregou() {
       videoPlanes.push(new VideoPlane(videos[video]));
     }
     for (let i in videoPlanes) {
+      if (comHora) {
+        const d = new Date();
+        let hora = `${d.getHours()}${d.getMinutes() < 10 ? '0'+d.getMinutes() : d.getMinutes()}`;
+        console.log(hora);
+        videoPlanes[i].configurarInicio(hora);
+      }
       videoPlanes[i].ajustarVolume(0,i);
     };
 
@@ -87,8 +137,9 @@ function setup() {
   angulo = radians(45);
   telaX = window.innerWidth;
   telaY = window.innerHeight;
-  escalaX = telaX / fracaoX;
-  escalaY = telaY / fracaoY;
+  escala = telaX / fracaoX;
+  // escalaX = telaX / fracaoX;
+  // escalaY = escalaX * 0.7;
   margem = telaX/20;
 
   document.body.style = "overflow-y:hidden;"
@@ -112,6 +163,11 @@ function setup() {
       // console.log(scrollPosition);
   });
 
+  // scroll horizontal
+  document.addEventListener('wheel', (e) => {
+    document.body.scrollLeft += e.deltaY;
+  });
+
   // configuração de fonte
   tamanhoFonte = height/15;
   textFont(bebasNeue);
@@ -124,6 +180,10 @@ function draw() {
   // console.log(mouseX, mouseY)
   if (videosCarregados) {
     botaoPermitirAudio.classList.remove('hidden');
+    // temporário para testes
+    mensagemConfig.classList.remove('hidden');
+    botaoHora.classList.remove('hidden');
+    botaoZoom.classList.remove('hidden');
   }
   if (permitiuAudio) {
       mostrarSalas();
@@ -134,14 +194,22 @@ function permitirAudio() {
   Array.from(document.getElementsByTagName('video')).map( video => video.play());
   permitiuAudio = true;
   botaoPermitirAudio.remove();
+
+  // temporário para testes
+  mensagemConfig.remove();
+  botaoHora.remove();
+  botaoZoom.remove();
 }
 
-function mostrarSalas() {
+function windowResized(){
   resizeCanvas(window.innerWidth * 2, window.innerHeight - window.innerHeight*0.05);
   telaX = window.innerWidth;
   telaY = window.innerHeight;
-  escalaX = telaX / fracaoX;
-  escalaY = escalaX * 0.7;
+  escala = telaX / fracaoX;
+  // escalaY = escalaX;
+}
+
+function mostrarSalas() {
 
   background(0);
   ambientLight(255);
@@ -165,28 +233,35 @@ function mostrarSalas() {
   // vídeos do lado esquerdo (AA I)
   push();
     rotateY(angulo);
-    translate(-telaX/2+margem+scrollPosition/2, 0, -telaX/3-scrollPosition/2); // com scroll
-    // translate(-telaX/2+margem, 0, -telaX/3); // sem scroll
+    if (comScroll) {
+      translate(-telaX/2+margem+scrollPosition/2, 0, -telaX/3-scrollPosition/2); // com scroll
+    } else {
+      translate(-telaX/2+margem, 0, -telaX/3); // sem scroll
+    }
+
     videoPlanes[0].mostrar();
 
-    translate(escalaX, 0);
+    translate(escala, 0);
     videoPlanes[1].mostrar();
 
-    translate(escalaX, 0);
+    translate(escala, 0);
     videoPlanes[2].mostrar();
   pop();
 
   // vídeos do lado direito (AA II)
   push();
     rotateY(-angulo);
-    translate(margem*2-scrollPosition/2, 0, -telaX/3-scrollPosition/2); // com scroll
-    // translate(margem*2, 0, -telaX/3); // sem scroll
+    if (comScroll) {
+      translate(margem*2-scrollPosition/2, 0, -telaX/3-scrollPosition/2); // com scroll
+    } else {
+      translate(margem*2, 0, -telaX/3); // sem scroll
+    }
     videoPlanes[3].mostrar();
 
-    translate(escalaX, 0);
+    translate(escala, 0);
     videoPlanes[4].mostrar();
 
-    translate(escalaX, 0);
+    translate(escala, 0);
     videoPlanes[5].mostrar();
   pop();
 
