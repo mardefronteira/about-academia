@@ -4,8 +4,6 @@ let fracaoY = 4;
 let fracaoX = 6;
 let telaX;
 let telaY;
-// let escalaX;
-// let escalaY;
 let escala;
 let margem;
 
@@ -33,7 +31,6 @@ let mensagemCarregando;
 let mensagemConfig;
 let botaoHora, botaoZoom;
 
-let thisCanvas;
 let bebasNeue;
 let tamanhoFonte;
 let titulosX, titulosY;
@@ -132,16 +129,16 @@ function setup() {
   telaX = window.innerWidth;
   telaY = window.innerHeight;
   escala = telaX / fracaoX;
-  // escalaX = telaX / fracaoX;
-  // escalaY = escalaX * 0.7;
   margem = telaX/20;
 
   document.body.style = "overflow-y:hidden;"
 
   createCanvas(window.innerWidth * 2, window.innerHeight, WEBGL);
-
   noStroke();
   background(0);
+
+
+  window.addEventListener('wheel', scrollHorizontal);
 
   // ajuste de volume a cada vez que há rolagem de página
   window.addEventListener("scroll", (event) => {
@@ -151,10 +148,8 @@ function setup() {
         videoPlanes[i].ajustarVolume(scroll,i);
       };
 
-      // scrollPosition = abs(window.innerWidth/2 - scroll);
       scrollPosition = scroll;
       scroll > window.innerWidth/2 ? scrollPosition = window.innerWidth - scroll : scrollPosition = scroll;
-      // console.log(scrollPosition);
   });
 
   // scroll horizontal
@@ -171,9 +166,9 @@ function setup() {
 }
 
 function draw() {
-  // console.log(mouseX, mouseY)
   if (videosCarregados) {
     botaoPermitirAudio.classList.remove('hidden');
+
     // temporário para testes
     mensagemConfig.classList.remove('hidden');
     botaoHora.classList.remove('hidden');
@@ -185,7 +180,10 @@ function draw() {
 }
 
 function permitirAudio() {
-  Array.from(document.getElementsByTagName('video')).map( video => video.play());
+  Array.from(document.getElementsByTagName('video')).map( video => {
+    video.play();
+    video.loop = true;
+  });
   permitiuAudio = true;
   botaoPermitirAudio.remove();
 
@@ -194,8 +192,6 @@ function permitirAudio() {
       const d = new Date();
       let hora = d.getHours() + d.getMinutes() / 60;
       videoPlanes[i].configurarInicio(hora);
-    } else {
-      // videoPlanes[i].configurarInicio(0);
     }
   }
 
@@ -210,7 +206,6 @@ function windowResized(){
   telaX = window.innerWidth;
   telaY = window.innerHeight;
   escala = telaX / fracaoX;
-  // escalaY = escalaX;
 }
 
 function mostrarSalas() {
@@ -269,4 +264,12 @@ function mostrarSalas() {
     videoPlanes[5].mostrar();
   pop();
 
+}
+
+function scrollHorizontal (e) {
+  let rolagem = e.deltaY * 3;
+  const body = document.body; // pro Safari
+  body.scrollLeft += rolagem;
+  const html = document.documentElement;
+  html.scrollLeft += rolagem;
 }

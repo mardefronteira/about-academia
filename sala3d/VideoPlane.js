@@ -10,7 +10,6 @@ class VideoPlane {
     // stroke(255);
     plane(escala, escala);
     push();
-      // rotateX(radians(90));
       rotateX(radians(180));
       translate(0, -escala-escala/10, 0);
       tint(80);
@@ -20,7 +19,7 @@ class VideoPlane {
 
   configurarInicio(hora){
     const duracao = this.video.duration;
-    console.log(hora, duracao, map(hora, 0, 23.98, 0, duracao))
+    // console.log(hora, duracao, map(hora, 0, 23.98, 0, duracao))
     this.video.currentTime = map(hora, 0, 23.98, 0, duracao);
   }
 
@@ -34,7 +33,6 @@ class VideoPlane {
       distanciaX = window.innerWidth - scroll;
     }
     let thisVolume = constrain(map(distanciaX, 0, window.innerWidth, 1, 0), 0,1);
-    // console.log(`[${i}] distância máxima: ${window.innerWidth}, distâcia X: ${distanciaX}, volume: ${thisVolume}`);
-    this.video.volume = thisVolume;
+        this.video.volume = thisVolume;
   }
 }
