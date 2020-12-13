@@ -45,7 +45,7 @@ function preload() {
   let videoPath = "./sala3d/videos"
   for (let video in videos) {
     videos[video] = createVideo(`${videoPath}/${videos[video]}`, () => {videoCarregou()});
-    // videos[video].autoLoad = true;
+    videos[video].preload = "auto";
     videos[video].muted = true;
     videos[video].hide();
   }
@@ -267,7 +267,7 @@ function mostrarSalas() {
 }
 
 function scrollHorizontal (e) {
-  let rolagem = e.deltaY * 3;
+  let rolagem = e.deltaY;
   const body = document.body; // pro Safari
   body.scrollLeft += rolagem;
   const html = document.documentElement;
