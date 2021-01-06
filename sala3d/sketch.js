@@ -39,10 +39,10 @@ let scrollPosition = 0;
 
 function preload() {
   // carregar fonte
-  bebasNeue = loadFont('../fontes/BebasNeueBold.otf');
+  bebasNeue = loadFont('/fontes/BebasNeueBold.otf');
 
   // carregar e criar vídeos
-  let videoPath = "./sala3d/videos"
+  let videoPath = "/sala3d/videos"
   for (let video in videos) {
     videos[video] = createVideo(`${videoPath}/${videos[video]}`, () => {videoCarregou()});
     videos[video].preload = "auto";

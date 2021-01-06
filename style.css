@@ -48,3 +48,7 @@ button:hover {
 .hidden {
   display:none;
 }
+
+.intro-text {
+  font-size: 10vh;
+}
