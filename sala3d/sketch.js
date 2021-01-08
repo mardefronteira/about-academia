@@ -14,9 +14,9 @@ let videos = {
   entrevistas1: "entrevista_1.mp4",
   texto1: "texto_1.mp4",
   arquitetura1: "arquitetura_1.mp4",
-  entrevistas2 : "entrevista_2.mp4",
-  texto2: "texto_2.mp4",
   arquitetura2: "arquitetura_2.mp4",
+  texto2: "texto_2.mp4",
+  entrevistas2 : "entrevista_2.mp4",
 }
 
 let videoPlanes = [];
