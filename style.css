@@ -10,6 +10,8 @@
 }
 
 body {
+  cursor: url(/img/cursor/normalBranco.png), auto;
+  position: absolute;
   margin: 0;
   padding: 0;
   background: var(--preto);
@@ -17,7 +19,8 @@ body {
   right: 0;
   left: 0;
   bottom: 0;
-  /* overflow-y: hidden; */
+  height: 100vh;
+  overflow: hidden;
   font-family: 'Helvetica_AA', Helvetica, sans-serif;
 }
 
@@ -41,35 +44,32 @@ div#overlay {
   overflow-y: hidden;
 }
 
+div#overlay > p, button {
+  color: var(--branco);
+  background: transparent;
+  margin: 20px 10px;
+  font-size: 4vh;
+  font-family: 'Helvetica_AA';
+}
+
 p, button {
   color: var(--branco);
-  /* font-size: 30px; */
   background: transparent;
-  /* font-family: sans-serif; */
   margin: 20px 10px;
 }
 
-.clicavel:hover{
+.clicavel:hover > p, section {
   color:var(--vermelho);
-}
-
-.blink {
-  animation: blink-animation 1s steps(5, start) infinite;
-  -webkit-animation: blink-animation 1s steps(5, start) infinite;
-}
-@keyframes blink-animation {
-  to {
-    visibility: hidden;
-  }
-}
-@-webkit-keyframes blink-animation {
-  to {
-    visibility: hidden;
-  }
+  cursor: url(/img/cursor/setaBranca.png) 127 15, auto;
 }
 
 .vermelho {
   color: var(--vermelho);
+}
+
+div#intro {
+  background: transparent;
+  cursor: url(/img/cursor/setaBranca.png) 127 15, auto;
 }
 
 button:hover {
@@ -85,9 +85,29 @@ button:hover {
 }
 
 .intro-texto {
-  font-size: 7vh;
+  font-size: 3.2vw;
 }
 
 .intro-titulo {
-  font-size: 20vh;
+  font-size: 25vh;
+}
+
+img#slides {
+  position: absolute;
+}
+
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
 }
