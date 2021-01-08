@@ -6,13 +6,14 @@ class VideoPlane {
   }
 
   mostrar() {
+    // tint(255,0,0)
+    // stroke(255, 10);
     texture(this.textura);
-    // stroke(255);
     plane(escala, escala);
     push();
       rotateX(radians(180));
       translate(0, -escala, 0);
-      tint(80);
+      tint(30);
       plane(escala, escala);
     pop();
   }

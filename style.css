@@ -1,12 +1,24 @@
+@font-face {
+    font-family: Helvetica_AA;
+    src: url("/fontes/Helvetica.otf") format("opentype");
+}
+
+:root{
+  --vermelho: #e81b1b;
+  --branco: #fefefe;
+  --preto: #000;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background: #000;
+  background: var(--preto);
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
   /* overflow-y: hidden; */
+  font-family: 'Helvetica_AA', Helvetica, sans-serif;
 }
 
 #thisCanvas {
@@ -30,11 +42,34 @@ div#overlay {
 }
 
 p, button {
-  color: white;
-  font-size: 30px;
+  color: var(--branco);
+  /* font-size: 30px; */
   background: transparent;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   margin: 20px 10px;
+}
+
+.clicavel:hover{
+  color:var(--vermelho);
+}
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+.vermelho {
+  color: var(--vermelho);
 }
 
 button:hover {
@@ -49,6 +84,10 @@ button:hover {
   display:none;
 }
 
-.intro-text {
-  font-size: 10vh;
+.intro-texto {
+  font-size: 7vh;
+}
+
+.intro-titulo {
+  font-size: 20vh;
 }
