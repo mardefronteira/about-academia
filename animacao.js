@@ -22,7 +22,6 @@ function iniciar () {
   } else {
     alvo = document.querySelector(`#titulo`);
     if (alvo.innerHTML.length > titulo.length) {
-      document.querySelector(`#titulo`).innerHTML.replace('_','');// alvo.innerHTML = alvo.innerHTML.replace("_","");
       alvo = document.querySelector(`#subtitulo`);
     }
   }
@@ -31,7 +30,7 @@ function iniciar () {
 
   if (ultimaLetra !== texto.length) {
     alvo.innerHTML = texto.slice(0,ultimaLetra+1) + "_";
-    timers.push(setTimeout(() => {iniciar()}, 10));
+    timers.push(setTimeout(() => {iniciar()}, 15));
   } else {
       alvo = document.querySelector('#titulos')
       alvo.innerHTML = alvo.innerHTML.replaceAll("_","");
@@ -71,8 +70,8 @@ function intro1() {
 function intro2() {
   document.querySelector('#intro').innerHTML = "";
   for (let timer of timers) clearTimeout(timer);
-  animar('pt_2', "Sobre Academia é um projeto que propõe uma reflexão, através da arte, sobre o sistema acadêmico e universitário, mais especificamente sobre a dualidade público/privado, com como as complexas relações que existem entre a produção do conhecimento e os interesses econômicos que influenciam a educação em suas diferentes formas de pedagogia.                 ", () => { window.location.href = '/sala3d'});
-  animar('es_2', "About Academia es un proyecto que propone una reflexión, a través del arte, sobre el sistema académico y universitario, más concretamente sobre la dualidad pública/privada, así como sobre las complejas relaciones que existen entre la producción de conocimento y los interesses económicos que influyen en la educación en sus diferentes formas de pedagogía.", () => { window.location.href = '/sala3d'});
+  animar('pt_2', "Sobre Academia é um projeto que propõe uma reflexão, através da arte, sobre o sistema acadêmico e universitário, mais especificamente sobre a dualidade público/privado, com como as complexas relações que existem entre a produção do conhecimento e os interesses econômicos que influenciam a educação em suas diferentes formas de pedagogia.                 ", () => { window.location.href = './sala3d'});
+  animar('es_2', "About Academia es un proyecto que propone una reflexión, a través del arte, sobre el sistema académico y universitario, más concretamente sobre la dualidad pública/privada, así como sobre las complejas relaciones que existen entre la producción de conocimento y los interesses económicos que influyen en la educación en sus diferentes formas de pedagogía.", () => { window.location.href = './sala3d'});
 }
 
 let timers=[];
@@ -100,7 +99,7 @@ function animar(idAlvo, texto, callback = false, classes = ['intro-texto']) {
       alvo.innerHTML = "_";
       animar(idAlvo, texto, classes);
     }
-    , 10000));
+    , 25000));
   }
 }
 
