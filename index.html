@@ -2,20 +2,38 @@
 <html lang="en">
   <head>
     <title>About Academia</title>
+    <meta charset="utf-8" />
+
+    <!--importar fontes-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8" />
+
+    <!--importar folhas de estilo-->
+    <link rel="stylesheet" type="text/css" href="estilo/base.css">
+    <link rel="stylesheet" type="text/css" href="estilo/intro.css">
+    <link rel="stylesheet" type="text/css" href="estilo/sketch.css">
+    <link rel="stylesheet" type="text/css" href="estilo/menu.css">
+
+    <!--importar p5.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
   </head>
-  <body>
-    <script src="password_f1l3.js"></script>
-    <script src="animacao.js"></script>
-    <body onload="iniciar()">
-      <div id="intro" class="clicavel"></div>
+
+  <body onload="iniciar()">
+    <script src="script/password_f1l3.js"></script>
+    <script src="script/animacao.js"></script>
+    <script src="script/menu.js"></script>
+
+      <div id="intro" class=""></div>
       <div class="cursor">
-      <!-- <img id="seta" src="/img/cursor/setaBranca.png" alt=""> -->
-      <img id="slides" class="hidden" src="img/cursor/slides.gif" alt="frames dos vídeos das obras">
+      <img id="slides" class="hidden" src="img/cursor/slides.gif" alt="frames dos vídeos que compõe a obra">
       </div>
-    </body>
+
+      <div id="menu" class="hidden">
+      </div>
+
+      <script src="sala3d/VideoPlane.js"></script>
+      <script src="sala3d/sketch.js"></script>
+
   </body>
 </html>

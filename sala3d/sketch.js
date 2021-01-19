@@ -42,7 +42,7 @@ function preload() {
   bebasNeue = loadFont('../fontes/BebasNeueBold.otf');
 
   // carregar e criar vídeos
-  let videoPath = "videos"
+  let videoPath = "sala3d/videos"
   for (let video in videos) {
     videos[video] = createVideo(`${videoPath}/${videos[video]}`, () => {videoCarregou()});
     videos[video].preload = "auto";

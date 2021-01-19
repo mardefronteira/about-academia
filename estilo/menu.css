@@ -1,0 +1,36 @@
+div#menu {
+  background: red;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right:0;
+  bottom:0;
+  z-index: 50;
+}
+
+img#gif-fundo-menu {
+  position: fixed;
+  width: 100%;
+  height: auto;
+}
+
+p#titulo-menu {
+  font-size:
+}
+
+nav#nav-menu {
+ display: flex;
+ -ms-flex: 1;
+  flex: 1;
+  flex-direction: column;
+  color:var(--branco);
+  position: relative;
+}
+
+li#item-menu {
+  opacity: .5;
+}
+
+li#item-menu:hover {
+  opacity: 1;
+}

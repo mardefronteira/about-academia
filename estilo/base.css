@@ -1,0 +1,51 @@
+@font-face {
+    font-family: Helvetica_AA;
+    src: url("../fontes/Helvetica.otf") format("opentype");
+}
+
+:root{
+  --vermelho: #e81b1b;
+  --branco: #fefefe;
+  --preto: #000;
+}
+
+body {
+  cursor: url(../img/cursor/normalBranco.png), auto;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  background: var(--preto);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Helvetica_AA', Helvetica, sans-serif;
+}
+
+ p, button {
+  color: var(--branco);
+  background: transparent;
+  margin: 10px 10px;
+}
+
+button:hover {
+  opacity: .5;
+}
+
+.config {
+  border:none;
+}
+
+.espanhol{
+  font-style: italic;
+}
+
+.hidden {
+  display:none;
+}
+
+.vermelho {
+  color: var(--vermelho);
+}

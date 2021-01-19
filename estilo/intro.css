@@ -1,0 +1,48 @@
+.clicavel:hover {
+  cursor: url(../img/cursor/setaBranca.png) 127 15, auto;
+  opacity: .5;
+}
+
+.intro-texto {
+  font-size: 3.2vw;
+}
+
+.intro-titulo {
+  font-size: 23vh;
+}
+
+.subtitulo {
+  width: 38vw;
+  font-size: 6vw;
+  line-height: 6vw;
+}
+
+section#subtitulos {
+  width: 39vw;
+}
+
+div#intro {
+  background: var(--preto);
+  color: var(--branco);
+  cursor: url(../img/cursor/setaBranca.png) 127 15, auto;
+  position:relative;
+  height: 100%;
+  padding: 0 2vw;
+  z-index: 20;
+}
+
+div#voltar {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top:0;
+  left:0;
+  height: 100%;
+  width: 50vw;
+  z-index: 30;
+}
+
+img#slides {
+  position: absolute;
+  z-index: 25;
+}
