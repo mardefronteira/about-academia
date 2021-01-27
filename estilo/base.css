@@ -38,8 +38,9 @@ div.pagina {
   right: 0;
   height: 100%;
   color: var(--branco);
-  background: blue;
+  background: var(--preto);
   z-index: 11;
+  font-size: 100px;
 }
 
 main {

@@ -1,16 +1,22 @@
-const linksMenu = ['sala3d', 'publicacoes', 'mesas', 'info'];
+const linksMenu = ['exibicao', 'publicacoes', 'mesas', 'info'];
 const textosMenuPt = ['Exibição Digital', 'Publicações', 'Mesas Redondas', 'Info'];
 const textosMenuEs = ['Interpretación Online', 'Publicaciones', 'Conferencias', ''];
-const imagensHover = ['img/800x600/T3-V1.gif','img/1920x1200/T1-V1.gif', 'img/1280x1024/T2-V2.gif', 'img/800x600/T3-V3.gif']
+const imagensHover = ['img/800x600/T3-V1.gif','img/1920x1200/T1-V1.gif', 'img/1280x1024/T2-V2.gif', 'img/800x600/T3-V6.gif']
 const imagensHover2 = ['img/1280x1024/T2-V1.gif', 'img/800x600/T3-V2.gif', 'img/1920x1200/T1-V2.gif']
 
 function menu() {
   const menu = document.querySelector('#menu');
   if (menu.classList.contains('hidden')) {
 
+    // caso tenha iniciado, pausar exibição
+    permitiuAudio ? pausarExibicao() : '';
+
+    // esconder gif de fundo da introdução ao menu
+    document.querySelector('#intro-menu').classList.add('hidden');
+
     // resetar menu
     menu.innerHTML = `
-    <img id="gif-fundo-menu" src="img/cursor/slides.gif" alt="">
+    <img id="gif-fundo-menu" class="gif-fundo" src="img/cursor/slides.gif" alt="">
     <div id="conteiner-menu">
       <nav id="nav-menu">
         <ul>
@@ -18,7 +24,7 @@ function menu() {
           </li>
           <li id="subtitulo-menu" class="">
           </li>
-          <li id="sala3d-menu" class="item-menu">
+          <li id="exibicao-menu" class="item-menu">
           </li>
           <li id="publicacoes-menu" class="item-menu">
           </li>
@@ -53,7 +59,7 @@ function mostrar(pagina) {
   esconderTudo();
   switch (pagina) {
     case 'intro':
-      intro();
+      intro0();
       break;
     case 'mesas':
       document.querySelector(`#mesas`).classList.remove('hidden');
@@ -64,6 +70,9 @@ function mostrar(pagina) {
     case 'publicacoes':
       document.querySelector(`#publicacoes`).classList.remove('hidden');
       break;
+    case 'exibicao':
+      document.querySelector(`#intro-exibicao`).classList.remove('hidden');
+      break;
     default:
       '';
   }
@@ -72,6 +81,8 @@ function mostrar(pagina) {
 function esconderTudo() {
   document.querySelector('#menu').classList.add('hidden');
   document.querySelector(`#intro`).classList.add('hidden');
+  document.querySelector(`#intro-menu`).classList.add('hidden');
+  document.querySelector(`#intro-exibicao`).classList.add('hidden');
   document.querySelector(`#mesas`).classList.add('hidden');
   document.querySelector(`#info`).classList.add('hidden');
   document.querySelector(`#publicacoes`).classList.add('hidden');

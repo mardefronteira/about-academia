@@ -1,12 +1,13 @@
 .clicavel:hover {
-  cursor: url(../img/cursor/setaBranca.png) 127 15, auto;
+  cursor: url(../img/cursor/setaBrancaDireita.png) 127 15, auto;
   opacity: .5;
 }
 
 .intro-texto {
   font-size: 2vw;
   position: relative;
-  width: 70%
+  width: 70%;
+  z-index: 20;
 }
 
 .intro-texto:hover {
@@ -33,7 +34,7 @@ section#subtitulos {
 div#intro {
   background: var(--preto);
   color: var(--branco);
-  cursor: url(../img/cursor/setaBranca.png) 127 15, auto;
+  cursor: url(../img/cursor/setaBrancaDireita.png) 127 15, auto;
   position:relative;
   height: 100%;
   padding: 0 2vw;
@@ -46,7 +47,7 @@ div#intro {
   /* align-content: space-around; */
   align-items: center;
 }
-
+/*
 div#voltar {
   margin: 0;
   padding: 0;
@@ -56,9 +57,43 @@ div#voltar {
   height: 100%;
   width: 50vw;
   z-index: 30;
-}
+} */
 
 img#slides {
   position: absolute;
   z-index: 25;
+}
+
+div#voltar {
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  height: 100%;
+  width: 50%;
+  background: transparent;
+  z-index: 21;
+}
+
+div#avancar {
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top:0;
+  bottom:0;
+  right:0;
+  height: 100%;
+  width: 50%;
+  background: transparent;
+  z-index: 21;
+}
+
+.seta-esquerda-vrm:hover {
+  cursor: url(../img/cursor/setaVermelhaEsquerda.png) 0 15, auto;
+}
+
+.seta-direita-vrm:hover {
+  cursor: url(../img/cursor/setaVermelhaDireita.png) 127 15, auto;
 }

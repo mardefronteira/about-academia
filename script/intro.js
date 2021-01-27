@@ -23,7 +23,8 @@ function iniciar () {
   })
 }
 
-function intro() {
+function intro0() {
+  for (let timer of timers) clearTimeout(timer);
   document.querySelector('#slides').classList.remove('hidden');
   let alvo = document.querySelector('#intro');
   alvo.innerHTML = '';
@@ -46,12 +47,17 @@ function animarTitulo() {
     paragrafoBase.id = "titulos";
     paragrafoBase.classList.add('intro-titulo');
     paragrafoBase.innerHTML = spanTitulo;
-    paragrafoBase.addEventListener('click', intro1);
     document.querySelector('#intro').appendChild(paragrafoBase);
 
-    // verificar em qual ponto do texto a animação está, e indicar o alvo correto a partir disso.
+    // adicionar evento de clique nos textos
+    document.querySelector('#titulo').addEventListener('click', intro1);
+    document.querySelector('#subtituloPt').addEventListener('click', intro1);
+    document.querySelector('#subtituloEs').addEventListener('click', intro1);
+
+    // indicar o titulo como primeiro alvo
     alvo = document.querySelector(`#titulo`);
   } else {
+    // verificar em qual ponto do texto a animação está, e indicar o alvo correto a partir disso.
     alvo = document.querySelector(`#titulo`);
     if (alvo.innerHTML === titulo) {
       alvo = document.querySelector(`#subtituloPt`);
@@ -75,70 +81,56 @@ function animarTitulo() {
     timers.push(setTimeout(() => {animarTitulo()}, 15));
 
   } else {
+    // caso o texto esteja completo, adicionar undeline piscante
     piscar('subtituloEs');
   }
 }
 
 function intro1() {
-  if (document.querySelector('#slides').classList.contains('hidden')){
-    document.querySelector('#slides').classList.remove('hidden');
-  } else {
-    document.querySelector('#slides').classList.add('hidden');
-  }
+  // esconder slides do mouse
+  document.querySelector('#slides').classList.add('hidden');
+  // zerar conteiner da intro
   document.querySelector('#intro').innerHTML = "";
+  // remover todos os timers
   for (let timer of timers) clearTimeout(timer);
+
+  // criar setas para navegar entre as páginas da intro
+  criarOverlaySetas(intro0, intro2);
+
+  // animar parágrafos
   animar('pt', "O projeto, iniciado no Carpenter Center for the Visual Arts da Universidade de Harvard em 2011, esteve em importantes instituições culturais nas cidades de Boston, Vancouver, Amsterdam, Sevilha, entre outras. Devido ao COVID-19, sua existência no hemisfério sul ocorre por esta ala virtual, uma interpretação online dos materiais que a constitui.", intro2);
   animar('es', "El Proyecto, que comenzó en el Carpenter Center for the Visual Arts de la Universidad de Harvard en 2011, ha estado en importantes intituiciones culturales de las ciudades de Boston, Vancouver, Amsterdam, Sevilla, entre otras. Debido a COVID-19, su existencia en el hemisferio sur se produce a través de esta ala virtual, una interpretación en línea del material que la constituye.", intro2, ['intro-texto', 'espanhol']);
 }
 
 function intro2() {
+  // zerar intro
   document.querySelector('#intro').innerHTML = "";
   for (let timer of timers) clearTimeout(timer);
-  animar('pt_2', "Sobre Academia é um projeto que propõe uma reflexão, através da arte, sobre o sistema acadêmico e universitário, mais especificamente sobre a dualidade público/privado, com como as complexas relações que existem entre a produção do conhecimento e os interesses econômicos que influenciam a educação em suas diferentes formas de pedagogia.", () => { document.querySelector('#intro').classList.add('hidden'); });
-  animar('es_2', "About Academia es un proyecto que propone una reflexión, a través del arte, sobre el sistema académico y universitario, más concretamente sobre la dualidad pública/privada, así como sobre las complejas relaciones que existen entre la producción de conocimento y los interesses económicos que influyen en la educación en sus diferentes formas de pedagogía.", () => { document.querySelector('#intro').classList.add('hidden'); }, ['intro-texto', 'espanhol']);
+
+  criarOverlaySetas(intro1, introMenu)
+
+  // animar parágrafos
+  animar('pt_2', "Sobre Academia é um projeto que propõe uma reflexão, através da arte, sobre o sistema acadêmico e universitário, mais especificamente sobre a dualidade público/privado, com como as complexas relações que existem entre a produção do conhecimento e os interesses econômicos que influenciam a educação em suas diferentes formas de pedagogia.", introMenu);
+  animar('es_2', "About Academia es un proyecto que propone una reflexión, a través del arte, sobre el sistema académico y universitario, más concretamente sobre la dualidad pública/privada, así como sobre las complejas relaciones que existen entre la producción de conocimento y los interesses económicos que influyen en la educación en sus diferentes formas de pedagogía.", introMenu, ['intro-texto', 'espanhol']);
+}
+
+function criarOverlaySetas(callbackEsqueda, callbackDireita) {
+  let setaEsquerda = document.createElement('DIV');
+  setaEsquerda.id = "voltar";
+  setaEsquerda.classList.add('seta-esquerda-vrm');
+  setaEsquerda.addEventListener('click', callbackEsqueda);
+
+  let setaDireita = document.createElement('DIV');
+  setaDireita.id = "avancar";
+  setaDireita.classList.add('seta-direita-vrm');
+  setaDireita.addEventListener('click', callbackDireita);
+
+  document.querySelector('#intro').appendChild(setaEsquerda);
+  document.querySelector('#intro').appendChild(setaDireita);
 }
 
 
-
-//
-// let contadorTrad = 0;
-// function animarTrad (textoPt, textoEs, classes = ['intro-texto']) {
-  //   let alvos = [
-    //     {id: 'pt', texto: textoPt, tamanho: textoPt.length},
-    //     {id: 'es', texto: textoEs, tamanho: textoEs.length}
-    //   ];
-    //
-    //   for (let i in alvos) {
-      //     // console.log(alvos[i])
-      //     if (!document.querySelector(`#${alvos[i].id}`)) {
-        //       alvos[i].elemento = document.createElement('P');
-        //       alvos[i].elemento.id = alvos[i].id;
-        //       for (let classe of classes) {
-          //         alvos[i].elemento.classList.add(classe);
-          //       }
-          //       document.querySelector('#intro').appendChild(alvos[i].elemento);
-          //     } else {
-            //       alvos[i].elemento = document.querySelector(`#${alvos[i].id}`);
-            //     }
-            //
-            //     let ultimaLetra = alvos[i].elemento.innerHTML.length - 1;
-            //     if (ultimaLetra !== alvos[i].tamanho) {
-              //       alvos[i].elemento.innerHTML = alvos[i].texto.slice(0,ultimaLetra+1) + "_";
-              //       setTimeout(() => {animarTrad(textoPt, textoEs)}, 10);
-              //     } else {
-                //       alvos[i].elemento.innerHTML = alvos[i].elemento.innerHTML.replace("_","");
-                //       contadorTrad++;
-                //     }
-                //   }
-                //
-                //   if (contadorTrad === 2) {
-                  //     setTimeout( () => {
-                    //       for (let i in alvos) {
-                      //         alvos[i].innerHTML = "_";
-                      //       }
-                      //       animarTrad(textoPt, textoEs);
-                      //     }
-                      //     , 10000);
-                      //     contadorTrad = 0;
-                      //   }
-                      // }
+function introMenu() {
+  document.querySelector('#intro').classList.add('hidden');
+  document.querySelector('#intro-menu').classList.remove('hidden');
+}

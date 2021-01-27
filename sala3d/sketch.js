@@ -179,6 +179,13 @@ function draw() {
   }
 }
 
+function pausarExibicao() {
+  Array.from(document.getElementsByTagName('video')).map( video => {
+    video.pause();
+  });
+  permitiuAudio = false;
+}
+
 function permitirAudio() {
   Array.from(document.getElementsByTagName('video')).map( video => {
     video.play();
