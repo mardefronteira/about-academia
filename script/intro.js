@@ -5,7 +5,7 @@ let mouse = {
 
 function iniciar () {
   document.querySelector('#slides').classList.remove('hidden');
-  setTimeout(animarTitulo, 100);
+  setTimeout(animarTitulo, 3000);
 
   window.addEventListener('mousemove', (e) => {
     e = e || window.event;
