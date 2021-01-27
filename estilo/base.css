@@ -30,6 +30,30 @@ body {
   margin: 10px 10px;
 }
 
+div.pagina {
+  position: fixed;
+  top:0;
+  bottom:0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  color: var(--branco);
+  background: blue;
+  z-index: 11;
+}
+
+main {
+  position: fixed;
+  top:0;
+  bottom:0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  color: var(--branco);
+  background: blue;
+  z-index: 0;
+}
+
 button:hover {
   opacity: .5;
 }
@@ -45,6 +69,7 @@ button:hover {
 .hidden {
   display:none;
   visibility: hidden;
+  pointer-events: none;
 }
 
 .vermelho {

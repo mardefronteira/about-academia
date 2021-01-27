@@ -50,14 +50,31 @@ function menu() {
 }
 
 function mostrar(pagina) {
-  menu();
+  esconderTudo();
   switch (pagina) {
     case 'intro':
       intro();
       break;
+    case 'mesas':
+      document.querySelector(`#mesas`).classList.remove('hidden');
+      break;
+    case 'info':
+      document.querySelector(`#info`).classList.remove('hidden');
+      break;
+    case 'publicacoes':
+      document.querySelector(`#publicacoes`).classList.remove('hidden');
+      break;
     default:
       '';
   }
+}
+
+function esconderTudo() {
+  document.querySelector('#menu').classList.add('hidden');
+  document.querySelector(`#intro`).classList.add('hidden');
+  document.querySelector(`#mesas`).classList.add('hidden');
+  document.querySelector(`#info`).classList.add('hidden');
+  document.querySelector(`#publicacoes`).classList.add('hidden');
 }
 
 /* ANIMAR TEXTOS DO MENU */
