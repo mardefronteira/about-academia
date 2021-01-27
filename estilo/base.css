@@ -44,8 +44,24 @@ button:hover {
 
 .hidden {
   display:none;
+  visibility: hidden;
 }
 
 .vermelho {
   color: var(--vermelho);
+}
+
+
+span#menu-button {
+  font-size: 6em;
+  color: var(--vermelho);
+  cursor: pointer;
+  position: fixed;
+  top: 0;;
+  left: 4vw;
+  z-index: 19;
+}
+
+span#menu-button:hover {
+  opacity: .5;
 }

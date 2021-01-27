@@ -4,11 +4,20 @@
 }
 
 .intro-texto {
-  font-size: 3.2vw;
+  font-size: 2vw;
+  position: relative;
+  width: 70%
+}
+
+.intro-texto:hover {
+  opacity: .5;
 }
 
 .intro-titulo {
   font-size: 23vh;
+  position: fixed;
+  top: 0;
+  left: 2vw;
 }
 
 .subtitulo {
@@ -29,6 +38,13 @@ div#intro {
   height: 100%;
   padding: 0 2vw;
   z-index: 20;
+  display: flex;
+  -ms-flex: 1;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-content: space-around; */
+  align-items: center;
 }
 
 div#voltar {
