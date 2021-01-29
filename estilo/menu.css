@@ -1,3 +1,17 @@
+span#menu-button {
+  font-size: 6em;
+  color: var(--vermelho);
+  cursor: pointer;
+  position: fixed;
+  top: 0;;
+  left: 4vw;
+  z-index: 19;
+}
+
+span#menu-button:hover {
+  opacity: .5;
+}
+
 div#menu {
   background: var(--preto);
   position: fixed;
@@ -5,12 +19,12 @@ div#menu {
   left: 0;
   right:0;
   bottom:0;
-  z-index: 18;
+  z-index: 19;
 }
 
 div#intro-menu {
   background: var(--preto);
-  z-index: 19;
+  z-index: 18;
 }
 
 img.gif-fundo {

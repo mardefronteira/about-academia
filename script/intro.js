@@ -5,7 +5,7 @@ let mouse = {
 
 function iniciar () {
   document.querySelector('#slides').classList.remove('hidden');
-  setTimeout(animarTitulo, 3000);
+  setTimeout(animarTitulo, 5000);
 
   window.addEventListener('mousemove', (e) => {
     e = e || window.event;
@@ -20,6 +20,10 @@ function iniciar () {
     let slides = document.querySelector('#slides')
     slides.style.top = `${mouse.y+30}px`;
     slides.style.left = `${mouse.x-slides.width}px`;
+
+    let etiqueta = document.querySelector('#etiqueta-seta')
+    etiqueta.style.top = `${mouse.y-150}px`;
+    etiqueta.style.left = `${mouse.x-140}px`;
   })
 }
 
@@ -117,12 +121,12 @@ function intro2() {
 function criarOverlaySetas(callbackEsqueda, callbackDireita) {
   let setaEsquerda = document.createElement('DIV');
   setaEsquerda.id = "voltar";
-  setaEsquerda.classList.add('seta-esquerda-vrm');
+  setaEsquerda.classList.add('div-esquerda','seta-esquerda-vrm');
   setaEsquerda.addEventListener('click', callbackEsqueda);
 
   let setaDireita = document.createElement('DIV');
   setaDireita.id = "avancar";
-  setaDireita.classList.add('seta-direita-vrm');
+  setaDireita.classList.add('div-direita','seta-direita-vrm');
   setaDireita.addEventListener('click', callbackDireita);
 
   document.querySelector('#intro').appendChild(setaEsquerda);

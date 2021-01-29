@@ -47,17 +47,6 @@ div#intro {
   /* align-content: space-around; */
   align-items: center;
 }
-/*
-div#voltar {
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  top:0;
-  left:0;
-  height: 100%;
-  width: 50vw;
-  z-index: 30;
-} */
 
 img#slides {
   position: absolute;
@@ -65,35 +54,11 @@ img#slides {
 }
 
 div#voltar {
-  padding: 0;
-  margin: 0;
-  position: fixed;
-  top:0;
-  bottom:0;
-  left:0;
-  height: 100%;
-  width: 50%;
   background: transparent;
   z-index: 21;
 }
 
 div#avancar {
-  padding: 0;
-  margin: 0;
-  position: fixed;
-  top:0;
-  bottom:0;
-  right:0;
-  height: 100%;
-  width: 50%;
   background: transparent;
   z-index: 21;
-}
-
-.seta-esquerda-vrm:hover {
-  cursor: url(../img/cursor/setaVermelhaEsquerda.png) 0 15, auto;
-}
-
-.seta-direita-vrm:hover {
-  cursor: url(../img/cursor/setaVermelhaDireita.png) 127 15, auto;
 }

@@ -7,12 +7,11 @@ const imagensHover2 = ['img/1280x1024/T2-V1.gif', 'img/800x600/T3-V2.gif', 'img/
 function menu() {
   const menu = document.querySelector('#menu');
   if (menu.classList.contains('hidden')) {
-
     // caso tenha iniciado, pausar exibição
     permitiuAudio ? pausarExibicao() : '';
 
-    // esconder gif de fundo da introdução ao menu
-    document.querySelector('#intro-menu').classList.add('hidden');
+    // esconder etiqueta da seta
+    document.querySelector('#etiqueta-seta').classList.add('hidden');
 
     // resetar menu
     menu.innerHTML = `
@@ -52,6 +51,8 @@ function menu() {
 
   } else {
     menu.classList.add('hidden');
+
+    document.querySelector('#intro-exibicao').classList.contains('hidden') ? '' : document.querySelector('#etiqueta-seta').classList.remove('hidden');
   }
 }
 
@@ -71,7 +72,7 @@ function mostrar(pagina) {
       document.querySelector(`#publicacoes`).classList.remove('hidden');
       break;
     case 'exibicao':
-      document.querySelector(`#intro-exibicao`).classList.remove('hidden');
+      introExibicao();
       break;
     default:
       '';
@@ -80,7 +81,9 @@ function mostrar(pagina) {
 
 function esconderTudo() {
   document.querySelector('#menu').classList.add('hidden');
+  document.querySelector('#intro-menu').classList.add('hidden');
   document.querySelector(`#intro`).classList.add('hidden');
+  document.querySelector(`#etiqueta-seta`).classList.add('hidden');
   document.querySelector(`#intro-menu`).classList.add('hidden');
   document.querySelector(`#intro-exibicao`).classList.add('hidden');
   document.querySelector(`#mesas`).classList.add('hidden');
