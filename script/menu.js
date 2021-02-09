@@ -1,8 +1,7 @@
 const linksMenu = ['exibicao', 'publicacoes', 'mesas', 'info'];
 const textosMenuPt = ['Exibição Digital', 'Publicações', 'Mesas Redondas', 'Info'];
 const textosMenuEs = ['Interpretación Online', 'Publicaciones', 'Conferencias', ''];
-const imagensHover = ['img/800x600/T3-V1.gif','img/1920x1200/T1-V1.gif', 'img/1280x1024/T2-V2.gif', 'img/800x600/T3-V6.gif']
-const imagensHover2 = ['img/1280x1024/T2-V1.gif', 'img/800x600/T3-V2.gif', 'img/1920x1200/T1-V2.gif']
+const imagensHover = ['videos/AAII_entrevista_00.mp4','videos/AAII_entrevista_02.mp4', 'videos/AAII_entrevista_01.mp4', 'videos/AAI_entrevista_00.mp4']
 
 function menu() {
   const menu = document.querySelector('#menu');
@@ -15,7 +14,7 @@ function menu() {
 
     // resetar menu
     menu.innerHTML = `
-    <img id="gif-fundo-menu" class="gif-fundo" src="img/cursor/slides.gif" alt="">
+    <video id="gif-fundo-menu" class="video-fundo" src="videos/AAI_entrevista_01.mp4" autoplay loop muted></video>
     <div id="conteiner-menu">
       <nav id="nav-menu">
         <ul>
@@ -39,14 +38,12 @@ function menu() {
     menu.classList.remove('hidden');
 
     // escrever títulos do menu
-    animarMenu(`titulo-menu`, `titulo-menu-txt`, 'About Academia', ()=>{mostrar('intro')}, [], 'img/800x600/T3-V5.gif');
-    animarMenu(`subtitulo-menu`, `subtitulo-menu-pt`, 'um projeto por Muntadas', ()=>{mostrar('intro')}, ['texto-menu', 'subtitulo-menu'], 'img/1280x1024/T2-V5.gif');
-    animarMenu(`subtitulo-menu`, `subtitulo-menu-es`, 'un proyecto por Muntadas', ()=>{mostrar('intro')}, ['texto-menu','menu-espanhol', 'subtitulo-menu'], 'img/1920x1200/T1-V5.gif');
+    animarMenu(`titulo-menu`, `titulo-menu-txt`, 'About Academia', ()=>{mostrar('intro')}, [], 'videos/AAI_entrevista_01.mp4');
+    animarMenu(`subtitulo-menu`, `subtitulo-menu-p`, 'um projeto por Muntadas', 'un proyecto por Muntadas', ()=>{mostrar('intro')}, ['texto-menu', 'subtitulo-menu'], 'videos/AAI_entrevista_01.mp4');
 
     // escrever links do menu
     for (let i in linksMenu) {
-      animarMenu(`${linksMenu[i]}-menu`, `${linksMenu[i]}-pt`, textosMenuPt[i], ()=>{mostrar(linksMenu[i])}, ['texto-menu'], imagensHover[i]);
-      animarMenu(`${linksMenu[i]}-menu`, `${linksMenu[i]}-es`, textosMenuEs[i], ()=>{mostrar(linksMenu[i])}, ['texto-menu','menu-espanhol'], imagensHover2[i]);
+      animarMenu(`${linksMenu[i]}-menu`, `${linksMenu[i]}-pt`, textosMenuPt[i],  textosMenuEs[i], ()=>{mostrar(linksMenu[i])}, ['texto-menu'], imagensHover[i]);
     }
 
   } else {
@@ -60,7 +57,8 @@ function mostrar(pagina) {
   esconderTudo();
   switch (pagina) {
     case 'intro':
-      intro0();
+      cenaIntro = 0;
+      intro();
       break;
     case 'mesas':
       document.querySelector(`#mesas`).classList.remove('hidden');
@@ -79,20 +77,10 @@ function mostrar(pagina) {
   }
 }
 
-function esconderTudo() {
-  document.querySelector('#menu').classList.add('hidden');
-  document.querySelector('#intro-menu').classList.add('hidden');
-  document.querySelector(`#intro`).classList.add('hidden');
-  document.querySelector(`#etiqueta-seta`).classList.add('hidden');
-  document.querySelector(`#intro-menu`).classList.add('hidden');
-  document.querySelector(`#intro-exibicao`).classList.add('hidden');
-  document.querySelector(`#mesas`).classList.add('hidden');
-  document.querySelector(`#info`).classList.add('hidden');
-  document.querySelector(`#publicacoes`).classList.add('hidden');
-}
-
 /* ANIMAR TEXTOS DO MENU */
-function animarMenu(idMae, idAlvo, texto, callback = false, classes = [], hoverImg = false) {
+function animarMenu(idMae, idAlvo, textoBr, textoEs, callback = false, classes = [], hoverImg = false) {
+  const texto = ptBr ? textoBr : textoEs;
+
   let alvo;
   if (!document.querySelector(`#${idAlvo}`)) {
     alvo = document.createElement('P');

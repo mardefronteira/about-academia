@@ -1,5 +1,4 @@
 .clicavel:hover {
-  cursor: url(../img/cursor/setaBrancaDireita.png) 127 15, auto;
   opacity: .5;
 }
 
@@ -15,26 +14,50 @@
 }
 
 .intro-titulo {
-  font-size: 23vh;
-  position: fixed;
-  top: 0;
-  left: 2vw;
+  position: relative;
+  align-self: center;
+  display: flex;
+  -ms-flex: 1;
+  flex: 1;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 90vw;
+  padding: 5vh 6vw;
+}
+
+#idiomas {
+  font-size: 4vw;
+  line-height: 0;
+  width: 10vw;
+  position: absolute;
+  bottom: 15vh;
+  left: 3vw;
+  text-align: right;
+}
+
+#titulo {
+  font-size: 12vw;
+  line-height: .7;
+  text-align: right;
+  margin: 0;
+}
+
+.undeline-idioma {
+  opacity: 1;
+  color: var(--vermelho);
 }
 
 .subtitulo {
-  width: 38vw;
-  font-size: 6vw;
-  line-height: 6vw;
-}
-
-section#subtitulos {
-  width: 39vw;
+  font-size: 8.5vw;
+  line-height: .9;
+  text-align: right;
+  margin: 0 0;
+  margin-left: 30vw;;
 }
 
 div#intro {
   background: var(--preto);
   color: var(--branco);
-  cursor: url(../img/cursor/setaBrancaDireita.png) 127 15, auto;
   position:relative;
   height: 100%;
   padding: 0 2vw;
@@ -44,21 +67,11 @@ div#intro {
   flex: 1;
   flex-direction: column;
   justify-content: space-around;
-  /* align-content: space-around; */
+  align-content: space-around;
   align-items: center;
 }
 
 img#slides {
   position: absolute;
   z-index: 25;
-}
-
-div#voltar {
-  background: transparent;
-  z-index: 21;
-}
-
-div#avancar {
-  background: transparent;
-  z-index: 21;
 }

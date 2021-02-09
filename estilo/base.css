@@ -10,7 +10,7 @@
 }
 
 body {
-  cursor: url(../img/cursor/normalVermelho.png), auto;
+  cursor: none;
   position: absolute;
   margin: 0;
   padding: 0;
@@ -27,7 +27,7 @@ body {
  p, button {
   color: var(--branco);
   background: transparent;
-  margin: 10px 10px;
+  /* margin: 0 0; */
 }
 
 div.pagina {
@@ -86,6 +86,7 @@ button:hover {
   left:0;
   height: 100%;
   width: 50%;
+  pointer-events:
 }
 
 .div-direita {
@@ -99,18 +100,36 @@ button:hover {
   width: 50%;
 }
 
-.seta-esquerda-vrm:hover {
-  cursor: url(../img/cursor/setaVermelhaEsquerda.png) 0 15, auto;
-}
-
-.seta-direita-vrm:hover {
-  cursor: url(../img/cursor/setaVermelhaDireita.png) 127 15, auto;
-}
-
 p#etiqueta-seta {
   position: absolute;
   z-index: 25;
   font-size: 3vw;
   line-height: 1;
   pointer-events: none;
+}
+
+img#cursor {
+  position: absolute;
+  z-index: 25;
+  font-size: 3vw;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.coluna {
+  display: flex;
+  -ms-flex: 1;
+  flex: 1;
+  flex-direction: column;
+}
+
+.linha {
+  display: flex;
+  -ms-flex: 1;
+  flex: 1;
+  flex-direction: row;
+}
+
+.cinquenta {
+  opacity: .5;
 }
