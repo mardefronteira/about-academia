@@ -1,20 +1,24 @@
 const linksMenu = ['exibicao', 'publicacoes', 'mesas', 'info'];
 const textosMenuPt = ['Exibição Digital', 'Publicações', 'Mesas Redondas', 'Info'];
-const textosMenuEs = ['Interpretación Online', 'Publicaciones', 'Conferencias', ''];
-const imagensHover = ['videos/AAII_entrevista_00.mp4','videos/AAII_entrevista_02.mp4', 'videos/AAII_entrevista_01.mp4', 'videos/AAI_entrevista_00.mp4']
+const textosMenuEs = ['Interpretación Online', 'Publicaciones', 'Conferencias', 'Info'];
+const imagensHover = ['videos/.mp4','videos/.mp4', 'videos/', 'videos/']
 
 function menu() {
   const menu = document.querySelector('#menu');
   if (menu.classList.contains('hidden')) {
     // caso tenha iniciado, pausar exibição
-    permitiuAudio ? pausarExibicao() : '';
+    // permitiuAudio ? pausarExibicao() : '';
 
     // esconder etiqueta da seta
     document.querySelector('#etiqueta-seta').classList.add('hidden');
 
     // resetar menu
     menu.innerHTML = `
-    <video id="gif-fundo-menu" class="video-fundo" src="videos/AAI_entrevista_01.mp4" autoplay loop muted></video>
+    <video id="exibicao-fundo" class="fundo-menu video-fundo hidden" src="videos/AAII_entrevista_00.mp4" autoplay loop muted></video>
+    <video id="publicacoes-fundo" class="fundo-menu video-fundo hidden" src="videos/AAII_entrevista_02.mp4" autoplay loop muted></video>
+    <video id="mesas-fundo" class="fundo-menu video-fundo hidden" src="videos/AAII_entrevista_01.mp4" autoplay loop muted></video>
+    <video id="info-fundo" class="fundo-menu video-fundo hidden" src="videos/AAI_entrevista_00.mp4" autoplay loop muted></video>
+    <video id="titulo-fundo" class="fundo-menu video-fundo hidden" src="videos/AAI_entrevista_01.mp4" autoplay loop muted></video>
     <div id="conteiner-menu">
       <nav id="nav-menu">
         <ul>
@@ -38,16 +42,17 @@ function menu() {
     menu.classList.remove('hidden');
 
     // escrever títulos do menu
-    animarMenu(`titulo-menu`, `titulo-menu-txt`, 'About Academia', ()=>{mostrar('intro')}, [], 'videos/AAI_entrevista_01.mp4');
-    animarMenu(`subtitulo-menu`, `subtitulo-menu-p`, 'um projeto por Muntadas', 'un proyecto por Muntadas', ()=>{mostrar('intro')}, ['texto-menu', 'subtitulo-menu'], 'videos/AAI_entrevista_01.mp4');
+    animarMenu(`titulo-menu`, `titulo-menu-txt`, 'About Academia', 'About Academia', ()=>{mostrar('intro')}, []);
+    animarMenu(`subtitulo-menu`, `subtitulo-menu-p`, 'um projeto por Muntadas', 'un proyecto por Muntadas', ()=>{mostrar('intro')}, ['texto-menu', 'subtitulo-menu']);
 
     // escrever links do menu
     for (let i in linksMenu) {
-      animarMenu(`${linksMenu[i]}-menu`, `${linksMenu[i]}-pt`, textosMenuPt[i],  textosMenuEs[i], ()=>{mostrar(linksMenu[i])}, ['texto-menu'], imagensHover[i]);
+      animarMenu(`${linksMenu[i]}-menu`, `${linksMenu[i]}-pt`, textosMenuPt[i],  textosMenuEs[i], ()=>{mostrar(linksMenu[i])}, ['texto-menu']);
     }
 
   } else {
     menu.classList.add('hidden');
+    menu.innerHTML = '';
 
     document.querySelector('#intro-exibicao').classList.contains('hidden') ? '' : document.querySelector('#etiqueta-seta').classList.remove('hidden');
   }
@@ -78,7 +83,7 @@ function mostrar(pagina) {
 }
 
 /* ANIMAR TEXTOS DO MENU */
-function animarMenu(idMae, idAlvo, textoBr, textoEs, callback = false, classes = [], hoverImg = false) {
+function animarMenu(idMae, idAlvo, textoBr, textoEs = textoBr, callback = false, classes = []) {
   const texto = ptBr ? textoBr : textoEs;
 
   let alvo;
@@ -88,11 +93,26 @@ function animarMenu(idMae, idAlvo, textoBr, textoEs, callback = false, classes =
     for (let classe of classes) {
       alvo.classList.add(classe);
     }
-    callback ? alvo.addEventListener('click', callback) : '';
-    hoverImg ? alvo.addEventListener("mouseover", () => {
-      document.querySelector('#gif-fundo-menu').src = hoverImg;
 
-    }) : '';
+    // adicionar ação ao clicar
+    callback ? alvo.addEventListener('click', callback) : '';
+
+    // mostrar vídeo correspondente ao fazer hover
+    alvo.addEventListener("mouseenter", () => {
+
+      // esconder todos os vídeos de fundo
+      let videosFundo = Array.from(document.querySelectorAll('.fundo-menu'));
+      for (let video of videosFundo) {
+        console.log(video);
+        video.classList.add('hidden');
+      }
+
+      let thisId = idMae.split('-')[0];
+      console.log(`#${thisId}-fundo`)
+      if (thisId === 'subtitulo') thisId = 'titulo';
+      document.querySelector(`#${thisId}-fundo`).classList.remove('hidden');
+
+    });
     document.querySelector(`#${idMae}`).appendChild(alvo);
   } else {
     alvo = document.querySelector(`#${idAlvo}`);
@@ -100,6 +120,7 @@ function animarMenu(idMae, idAlvo, textoBr, textoEs, callback = false, classes =
 
   let ultimaLetra = alvo.innerHTML.length - 1;
   if (ultimaLetra !== texto.length) {
+    console.log(texto);
     alvo.innerHTML = texto.slice(0,ultimaLetra+1) + "_";
     timers.push(setTimeout(() => {animarMenu(idMae, idAlvo, texto)}, 1));
   } else {
