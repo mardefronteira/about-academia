@@ -9,8 +9,9 @@ function menu() {
     // caso tenha iniciado, pausar exibição
     // permitiuAudio ? pausarExibicao() : '';
 
-    // esconder etiqueta da seta
-    document.querySelector('#etiqueta-seta').classList.add('hidden');
+    // configurar cursor
+    seta.configurar('normal-vrm');
+    seta.esconderEtiqueta();
 
     // resetar menu
     menu.innerHTML = `
@@ -18,7 +19,7 @@ function menu() {
     <video id="publicacoes-fundo" class="fundo-menu video-fundo hidden" src="videos/AAII_entrevista_02.mp4" autoplay loop muted></video>
     <video id="mesas-fundo" class="fundo-menu video-fundo hidden" src="videos/AAII_entrevista_01.mp4" autoplay loop muted></video>
     <video id="info-fundo" class="fundo-menu video-fundo hidden" src="videos/AAI_entrevista_00.mp4" autoplay loop muted></video>
-    <video id="titulo-fundo" class="fundo-menu video-fundo hidden" src="videos/AAI_entrevista_01.mp4" autoplay loop muted></video>
+    <video id="titulo-fundo" class="fundo-menu video-fundo" src="videos/AAI_entrevista_01.mp4" autoplay loop muted></video>
     <div id="conteiner-menu">
       <nav id="nav-menu">
         <ul>
@@ -54,7 +55,7 @@ function menu() {
     menu.classList.add('hidden');
     menu.innerHTML = '';
 
-    document.querySelector('#intro-exibicao').classList.contains('hidden') ? '' : document.querySelector('#etiqueta-seta').classList.remove('hidden');
+    configurarCursor();
   }
 }
 
@@ -125,5 +126,22 @@ function animarMenu(idMae, idAlvo, textoBr, textoEs = textoBr, callback = false,
     timers.push(setTimeout(() => {animarMenu(idMae, idAlvo, texto)}, 1));
   } else {
     alvo.innerHTML = alvo.innerHTML.replace("_","");
+  }
+}
+
+let cenaAtual = 'intro';
+function configurarCursor() {
+  switch (cenaAtual) {
+    case 'intro':
+      seta.configurar('seta-branca-direita');
+      seta.esconderEtiqueta();
+      break;
+    case 'introExibicao':
+      seta.configurar('seta-vrm-direita');
+      seta.configurarEtiqueta('introdução', 'introducción', 'vrm');
+      break;
+    default:
+      seta.configurar('normal-vrm');
+      seta.esconderEtiqueta();
   }
 }

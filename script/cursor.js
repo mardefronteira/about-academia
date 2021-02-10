@@ -6,7 +6,7 @@ class Cursor {
     this.x = 0;
     this.y = 0;
     this.etiquetaX = 0;
-    this.etiqueraY = 0;
+    this.etiquetaY = 0;
   }
 
   configurar(tipo) {
@@ -71,7 +71,7 @@ class Cursor {
       }
 
       if (!this.etiqueta.classList.contains('hidden')) {
-        this.etiqueta.style.top = `${mouse.y-150}px`;
+        this.etiqueta.style.top = `${mouse.y-120}px`;
         this.etiqueta.style.left = `${mouse.x-140}px`;
       }
 
@@ -80,5 +80,17 @@ class Cursor {
         this.cursor.style.top = `${mouse.y + this.y}px`;
       }
     })
+  }
+
+  configurarEtiqueta(etiquetaBr, etiquetaEs, cor = '') {
+    const etiqueta = document.querySelector('#etiqueta-seta');
+    etiqueta.innerHTML = ptBr ? etiquetaBr : etiquetaEs;
+    if (cor === 'vrm') etiqueta.classList.add('vermelho');
+    etiqueta.classList.remove('hidden');
+  }
+
+  esconderEtiqueta() {
+    const etiqueta = document.querySelector('#etiqueta-seta');
+    etiqueta.classList.add('hidden');
   }
 }

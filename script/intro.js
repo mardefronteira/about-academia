@@ -23,6 +23,11 @@ function mostrarIntro() {
 }
 
 function intro() {
+  cenaAtual = 'intro';
+
+  // criar setas para navegar entre as páginas da intro
+  configurarSetas();
+
   // apagar timers
   for (let timer of timers) clearTimeout(timer);
 
@@ -33,9 +38,6 @@ function intro() {
   // esconder slides do mouse
   document.querySelector('#slides').classList.add('hidden');
 
-  // criar setas para navegar entre as páginas da intro
-  configurarSetas();
-
   // animar textos de acordo com a cena atual
   switch (cenaIntro) {
     case 0:
@@ -45,8 +47,8 @@ function intro() {
       break;
 
     case 1:
-    // animar parágrafo
-    animar('introP', idioma('Durante o último período de ensino de Antoni Muntadas no programa em Arte, Cultura e Tecnologia no Instituto de Tecnologia de Massachusetts (ACT MIT), a Universidade de Harvard lhe pediu para apresentar um novo projeto no Carpenter Center for the Visual Arts. Foi a ocasião para Muntadas avaliar os diferentes estados da educação e sua institucionalização. O projeto, iniciado em 2011, desde então esteve em importantes instituições culturais em cidades como Boston, Vancouver, Amsterdam, Sevilha, entre outras. Pela primeira vez ocorre sua exibição na América Latina, com todos os seus materiais traduzidos para o português, numa versão bilíngue, através de uma parceria entre o Fórum Permanente e o Instituto de Estudos Avançados da USP, com o apoio do Governo do Estado de São Paulo através do PROAC.','Durante el último periodo de docencia de Antoni en el programa de Arte, Cultura y Tecnología (ACT) del Instituto Tecnológico de Massachusetts, la Universidad de Harvard le pidió que presentara un nuevo proyecto en el Carpenter Center for the Visual Arts. Fue la ocasión para que Muntadas evaluara los diferentes estados de la educación y su institucionalización. El proyecto, que comenzó en 2011, ha estado desde entonces en importantes instituciones culturales de ciudades como Boston, Vancouver, Ámsterdam o Sevilla, entre otras. Por primera vez se expone en América Latina, con todos sus materiales traducidos al portugués, en versión bilingüe, a través de una asociación entre el Fórum Permanente y el Instituto de Estudos Avançados da USP.'), mudarDeCena);
+      // animar parágrafo
+      animar('introP', idioma('Durante o último período de ensino de Antoni Muntadas no programa em Arte, Cultura e Tecnologia no Instituto de Tecnologia de Massachusetts (ACT MIT), a Universidade de Harvard lhe pediu para apresentar um novo projeto no Carpenter Center for the Visual Arts. Foi a ocasião para Muntadas avaliar os diferentes estados da educação e sua institucionalização. O projeto, iniciado em 2011, desde então esteve em importantes instituições culturais em cidades como Boston, Vancouver, Amsterdam, Sevilha, entre outras. Pela primeira vez ocorre sua exibição na América Latina, com todos os seus materiais traduzidos para o português, numa versão bilíngue, através de uma parceria entre o Fórum Permanente e o Instituto de Estudos Avançados da USP, com o apoio do Governo do Estado de São Paulo através do PROAC.','Durante el último periodo de docencia de Antoni en el programa de Arte, Cultura y Tecnología (ACT) del Instituto Tecnológico de Massachusetts, la Universidad de Harvard le pidió que presentara un nuevo proyecto en el Carpenter Center for the Visual Arts. Fue la ocasión para que Muntadas evaluara los diferentes estados de la educación y su institucionalización. El proyecto, que comenzó en 2011, ha estado desde entonces en importantes instituciones culturales de ciudades como Boston, Vancouver, Ámsterdam o Sevilla, entre otras. Por primera vez se expone en América Latina, con todos sus materiales traducidos al portugués, en versión bilingüe, a través de una asociación entre el Fórum Permanente y el Instituto de Estudos Avançados da USP.'), mudarDeCena);
       break;
 
     case 2:
@@ -93,9 +95,10 @@ function mudarDeCena() {
 }
 
 function introMenu() {
+  cenaAtual = 'introMenu';
   document.querySelector('#intro').classList.add('hidden');
   document.querySelector('#intro-menu').classList.remove('hidden');
-  seta.configurar('normal-vrm')
+  seta.configurar('normal-vrm');
 }
 
 /* PÁGINA INICIAL */
@@ -109,10 +112,10 @@ function animarTitulo() {
   let spanTitulo = `
   <p id='titulo' class='vermelho'>_</p>
   <p id='subtituloBr' class='subtitulo'></p>
-  <p id='subtituloEs' class='subtitulo espanhol'></p>
+  <p id='subtituloEs' class='subtitulo'></p>
   <div id="idiomas">
     <p id='iBr'><span id='idiomaBr'></span></p>
-    <p id='iEs'><span id='idiomaEs' class='espanhol'></span></p>
+    <p id='iEs'><span id='idiomaEs' class=''></span></p>
   </div>
   `;
 

@@ -3,11 +3,11 @@
 }
 
 .intro-texto {
-  font-size: 2vw;
+  font-size: 2.1vw;
   position: relative;
   width: 70%;
   z-index: 20;
-  top: 20vh;
+  top: 18vh;
 }
 
 .intro-texto:hover {
