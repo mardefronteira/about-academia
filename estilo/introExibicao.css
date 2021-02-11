@@ -38,9 +38,9 @@ p#aa2-intro-titulo {
   overflow: hidden;
 }
 
-.intro-exibicao-texto {
-  position: relative;
-  width: 100%;
-  padding: 3vh 2vw;
+.exibicao-texto {
+  /* position: relative; */
+  max-width: 100%;
+  padding: 3vh 3vw;
   font-size: 2vw;
 }

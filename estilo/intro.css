@@ -3,7 +3,8 @@
 }
 
 .intro-texto {
-  font-size: 2.1vw;
+  font-size: 2.2vw;
+  line-height: 1.1;
   position: relative;
   width: 70%;
   z-index: 20;

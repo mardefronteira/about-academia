@@ -10,7 +10,7 @@ function introExibicao() {
   const aa1 = {
     imagem: document.querySelector('#aa1-intro-imagem'),
     divTexto: document.querySelector('#aa1-intro-texto'),
-    texto: document.querySelector('#aa2-texto'),
+    texto: document.querySelector('#aa1-texto'),
   }
   const aa2 = {
     imagem: document.querySelector('#aa2-intro-imagem'),
