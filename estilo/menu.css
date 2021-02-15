@@ -1,4 +1,4 @@
-svg#menu-button {
+svg#botao-menu {
   font-size: 6em;
   fill: var(--vermelho);
   position: fixed;
@@ -9,8 +9,13 @@ svg#menu-button {
   z-index: 19;
 }
 
-svg#menu-button:hover {
+svg#botao-menu:hover {
   opacity: .5;
+}
+
+video.video-escondido {
+  pointer-events: none;
+  visibility: hidden;
 }
 
 div#menu {
@@ -63,15 +68,19 @@ ul {
   opacity: 1;
 }
 
+#exibicao-menu:hover {
+  color:var(--vermelho);
+}
+
 .texto-menu {
-  font-size: 4.5vw;
+  font-size: 4.7vw;
 }
 
 .subtitulo-menu {
   margin-top: -1.5vh;
-  font-size: 4.5vw;
+  font-size: 4.7vw;
   padding: 0;
-  padding-bottom: 8vh;
+  padding-bottom: 7vh;
 }
 
 #subtitulo-menu:hover {
@@ -79,6 +88,21 @@ ul {
 }
 
 #titulo-menu-txt{
-  font-size: 5vw;;
+  font-size: 6vw;;
   color: var(--vermelho);
+}
+
+#idiomas-menu {
+  font-size: 3.5vw;
+  line-height: 1;
+  width: 10vw;
+  position: absolute;
+  bottom: 10vh;
+  text-align: right;
+  display: flex;
+  -ms-flex: 1;
+  flex: 1;
+  flex-direction: column;
+  color:var(--branco);
+  right: 10vw;
 }

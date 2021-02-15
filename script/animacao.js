@@ -5,6 +5,7 @@ let timers=[];
 /* FUNÇÃO DE ANIMAÇÃO DOS TEXTOS (DIGITAÇÃO) */
 function animar(idAlvo, texto, callback = false, classes = ['intro-texto']) {
   let alvo;
+  // console.log(callback)
   if (!document.querySelector(`#${idAlvo}`)) {
     alvo = document.createElement('P');
     alvo.id = idAlvo;
@@ -23,7 +24,9 @@ function animar(idAlvo, texto, callback = false, classes = ['intro-texto']) {
     timers.push(setTimeout(() => {animar(idAlvo, texto, classes)}, 1));
   } else {
     alvo.innerHTML = alvo.innerHTML.replace("_","");
-    piscar(alvo.id);
+    if (classes.includes('intro-texto')) {
+      piscar(alvo.id);
+    }
   }
 }
 

@@ -14,21 +14,29 @@ class Cursor {
       case 'seta-vrm-esquerda':
         this.x = 0;
         this.y = -15;
-        this.cursor.src = "img/cursor/setaVermelhaEsquerda.png"
+        this.cursor.src = "img/cursor/setaVermelhaEsquerda.png";
+        this.etiquetaX = 0;
+        this.etiquetaY = -120;
         break;
       case 'seta-branca-esquerda':
         this.x = 0;
         this.y = -15;
+        this.etiquetaX = 0;
+        this.etiquetaY = -120;
         this.cursor.src = "img/cursor/setaBrancaEsquerda.png"
         break;
       case 'seta-vrm-direita':
         this.x = -128;
         this.y = -15;
+        this.etiquetaX = -128;
+        this.etiquetaY = -120;
         this.cursor.src = "img/cursor/setaVermelhaDireita.png"
         break;
       case 'seta-branca-direita':
         this.x = -128;
         this.y = -15;
+        this.etiquetaX = -128;
+        this.etiquetaY = -120;
         this.cursor.src = "img/cursor/setaBrancaDireita.png"
         break;
       case 'normal-vrm':
@@ -65,20 +73,20 @@ class Cursor {
         mouse.y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
       }
 
-      if (!this.slides.classList.contains('hidden')) {
+      // if (!this.slides.classList.contains('hidden')) {
         this.slides.style.top = `${mouse.y+30}px`;
         this.slides.style.left = `${mouse.x-this.slides.width}px`;
-      }
+      // }
 
-      if (!this.etiqueta.classList.contains('hidden')) {
-        this.etiqueta.style.top = `${mouse.y-120}px`;
-        this.etiqueta.style.left = `${mouse.x-140}px`;
-      }
+      // if (!this.etiqueta.classList.contains('hidden')) {
+        this.etiqueta.style.top = `${mouse.y+this.etiquetaY}px`;
+        this.etiqueta.style.left = `${mouse.x+this.etiquetaX}px`;
+      // }
 
-      if (!this.cursor.classList.contains('hidden')) {
+      // if (!this.cursor.classList.contains('hidden')) {
         this.cursor.style.left = `${mouse.x + this.x}px`;
         this.cursor.style.top = `${mouse.y + this.y}px`;
-      }
+      // }
     })
   }
 

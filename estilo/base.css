@@ -25,7 +25,7 @@ body {
 }
 
  p, button {
-  color: var(--branco);
+  /* color: var(--branco); */
   background: transparent;
   /* margin: 0 0; */
 }
