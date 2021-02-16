@@ -1,3 +1,4 @@
 function exibicao() {
-  console.log('weee! :)')
+  esconderTudo();
+  permitirAudio();
 }

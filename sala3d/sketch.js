@@ -30,6 +30,7 @@ let mensagemCarregando;
 
 let mensagemConfig;
 let botaoHora, botaoZoom;
+let overlayConfig;
 
 let bebasNeue;
 let tamanhoFonte;
@@ -51,60 +52,60 @@ function preload() {
   }
 
   // criar div para o botão de entrada e o parágrafo
-  let divBotao = document.createElement('div');
-  divBotao.id = "overlay";
-  document.body.appendChild(divBotao);
+  // let overlayConfig = document.createElement('div');
+  // overlayConfig.id = "overlay";
+  // document.body.appendChild(overlayConfig);
+  //
+  // // criar botão para testar tempo
+  // mensagemConfig = document.createElement('p');
+  // mensagemConfig.id = "mensagemConfig";
+  // mensagemConfig.innerHTML = "Configurações:";
+  // mensagemConfig.classList.add('hidden');
+  // overlayConfig.appendChild(mensagemConfig);
+  //
+  // // criar botão para testar tempo
+  // botaoHora = document.createElement('button');
+  // botaoHora.id = "botaoHora";
+  // botaoHora.innerHTML = "começar vídeos a partir da hora local";
+  // botaoHora.addEventListener('click', lidarHora);
+  // botaoHora.classList.add('hidden');
+  // botaoHora.classList.add('config');
+  // overlayConfig.appendChild(botaoHora);
+  //
+  // // criar botão para testar zoom
+  // botaoZoom = document.createElement('button');
+  // botaoZoom.id = "botaoZoom";
+  // botaoZoom.innerHTML = "zoom out ao rolar a página";
+  // botaoZoom.addEventListener('click', lidarZoom);
+  // botaoZoom.classList.add('hidden');
+  // botaoZoom.classList.add('config');
+  // overlayConfig.appendChild(botaoZoom);
+  //
+  // // criar botão para iniciar os áudios
+  // botaoPermitirAudio = document.createElement('button');
+  // botaoPermitirAudio.id = "botaoPermitirAudio";
+  // botaoPermitirAudio.innerHTML = "entrar na sala";
+  // botaoPermitirAudio.addEventListener('click', permitirAudio);
+  // botaoPermitirAudio.classList.add('hidden');
+  // overlayConfig.appendChild(botaoPermitirAudio);
 
-  // criar botão para testar tempo
-  mensagemConfig = document.createElement('p');
-  mensagemConfig.id = "mensagemConfig";
-  mensagemConfig.innerHTML = "Configurações:";
-  mensagemConfig.classList.add('hidden');
-  divBotao.appendChild(mensagemConfig);
-
-  // criar botão para testar tempo
-  botaoHora = document.createElement('button');
-  botaoHora.id = "botaoHora";
-  botaoHora.innerHTML = "começar vídeos a partir da hora local";
-  botaoHora.addEventListener('click', lidarHora);
-  botaoHora.classList.add('hidden');
-  botaoHora.classList.add('config');
-  divBotao.appendChild(botaoHora);
-
-  // criar botão para testar zoom
-  botaoZoom = document.createElement('button');
-  botaoZoom.id = "botaoZoom";
-  botaoZoom.innerHTML = "zoom out ao rolar a página";
-  botaoZoom.addEventListener('click', lidarZoom);
-  botaoZoom.classList.add('hidden');
-  botaoZoom.classList.add('config');
-  divBotao.appendChild(botaoZoom);
-
-  // criar botão para iniciar os áudios
-  botaoPermitirAudio = document.createElement('button');
-  botaoPermitirAudio.id = "botaoPermitirAudio";
-  botaoPermitirAudio.innerHTML = "entrar na sala";
-  botaoPermitirAudio.addEventListener('click', permitirAudio);
-  botaoPermitirAudio.classList.add('hidden');
-  divBotao.appendChild(botaoPermitirAudio);
-
-  // criar mensagem de "carregando..."
-  mensagemCarregando = document.createElement('p');
-  mensagemCarregando.innerHTML = "carregando...";
-  divBotao.appendChild(mensagemCarregando);
+  // // criar mensagem de "carregando..."
+  // mensagemCarregando = document.createElement('p');
+  // mensagemCarregando.innerHTML = "carregando...";
+  // overlayConfig.appendChild(mensagemCarregando);
 }
 
-function lidarZoom () {
-  comScroll = !comScroll;
-  let mensagem = comScroll ? 'zoom out ao rolar a página' : '<s>zoom out ao rolar a página</s>';
-  botaoZoom.innerHTML = mensagem;
-}
-
-function lidarHora () {
-  comHora = !comHora;
-  let mensagem = comHora ? 'começar vídeos a partir da hora local' : '<s>começar vídeos a partir da hora local</s>';
-  botaoHora.innerHTML = mensagem;
-}
+// function lidarZoom () {
+//   comScroll = !comScroll;
+//   let mensagem = comScroll ? 'zoom out ao rolar a página' : '<s>zoom out ao rolar a página</s>';
+//   botaoZoom.innerHTML = mensagem;
+// }
+//
+// function lidarHora () {
+//   comHora = !comHora;
+//   let mensagem = comHora ? 'começar vídeos a partir da hora local' : '<s>começar vídeos a partir da hora local</s>';
+//   botaoHora.innerHTML = mensagem;
+// }
 
 /*
 a função videoCarregou() é chamada a cada vez que um vídeo é carregado. quanto todos estiverem carregados, sinalizados pelo contador, os planos 3D são criados, e o volume ajustado para a posição inicial da tela.
@@ -120,7 +121,7 @@ function videoCarregou() {
     };
 
     videosCarregados = true;
-    mensagemCarregando.remove();
+    // mensagemCarregando.remove();
   }
 }
 
@@ -166,14 +167,15 @@ function setup() {
 }
 
 function draw() {
-  if (videosCarregados) {
-    botaoPermitirAudio.classList.remove('hidden');
+  // if (videosCarregados) {
+    // botaoPermitirAudio.classList.remove('hidden');
 
     // temporário para testes
-    mensagemConfig.classList.remove('hidden');
-    botaoHora.classList.remove('hidden');
-    botaoZoom.classList.remove('hidden');
-  }
+    // mensagemConfig.classList.remove('hidden');
+    // botaoHora.classList.remove('hidden');
+    // botaoZoom.classList.remove('hidden');
+  // }
+
   if (permitiuAudio) {
       mostrarSalas();
   }
@@ -192,7 +194,6 @@ function permitirAudio() {
     video.loop = true;
   });
   permitiuAudio = true;
-  botaoPermitirAudio.remove();
 
   for (let i in videoPlanes) {
     if (comHora) {
@@ -203,9 +204,11 @@ function permitirAudio() {
   }
 
   // temporário para testes
-  mensagemConfig.remove();
-  botaoHora.remove();
-  botaoZoom.remove();
+  // botaoPermitirAudio.remove();
+  // mensagemConfig.remove();
+  // botaoHora.remove();
+  // botaoZoom.remove();
+  // overlayConfig.remove();
 }
 
 function windowResized(){

@@ -20,7 +20,7 @@ body {
   left: 0;
   bottom: 0;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   font-family: 'Helvetica_AA', Helvetica, sans-serif;
 }
 
@@ -51,7 +51,7 @@ main {
   right: 0;
   height: 100%;
   color: var(--branco);
-  background: blue;
+  /* background: blue; */
   z-index: 0;
 }
 
@@ -132,4 +132,13 @@ img#cursor {
 
 .cinquenta {
   opacity: .5;
+}
+
+.tela-cheia {
+  position: fixed;
+  bottom:0;
+  height: auto;
+  width: 100%;
+  align-self: center;
+  text-align: center;
 }

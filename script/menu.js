@@ -7,7 +7,7 @@ function menu() {
   const menu = document.querySelector('#menu');
   if (menu.classList.contains('hidden')) {
     // caso tenha iniciado, pausar exibição
-    // permitiuAudio ? pausarExibicao() : '';
+    permitiuAudio ? pausarExibicao() : '';
 
     // remover todos os event listeners do botão do textosMenuEs
     let botaoMenu = document.querySelector('#botao-menu');
@@ -99,7 +99,7 @@ function mostrar(pagina) {
       document.querySelector(`#info`).classList.remove('hidden');
       break;
     case 'publicacoes':
-      document.querySelector(`#publicacoes`).classList.remove('hidden');
+      publicacoes();
       break;
     case 'exibicao':
       introExibicao();

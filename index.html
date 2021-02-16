@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="estilo/introExibicao.css">
     <link rel="stylesheet" type="text/css" href="estilo/sketch.css">
     <link rel="stylesheet" type="text/css" href="estilo/menu.css">
+    <link rel="stylesheet" type="text/css" href="estilo/publicacoes.css">
 
     <!--importar p5.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
@@ -28,6 +29,8 @@
     <script src="script/menu.js"></script>
     <script src="script/intro.js"></script>
     <script src="script/exibicao.js"></script>
+    <script src="script/tocador.js"></script>
+    <script src="script/publicacoes.js"></script>
     <script src="script/introExibicao.js"></script>
 
       <div id="intro" class="pagina"></div>
@@ -38,7 +41,11 @@
         <p id="etiqueta-seta"></p>
       </div>
 
-      <div id="publicacoes" class="pagina hidden">PUBLICAÇÕES</div>
+      <div id="publicacoes" class="pagina hidden">
+        <img src="img/publi/fundo.png" class="tela-cheia">
+        <p></p>
+        <p></p>
+      </div>
 
       <div id="apresentacao" class="pagina hidden">APRESENTAÇÃO</div>
 
@@ -51,6 +58,11 @@
       </div>
 
       <div id="menu" class="pagina hidden"></div>
+
+      <div id="tocador" class="pagina hidden">
+        VÍDEO
+        <video id="video-exibicao" src="videos/AAI_entrevista_01.mp4" autoplay></video>
+      </div>
 
       <div id="intro-exibicao" class="pagina hidden seta-direita-vrm">
 
@@ -82,8 +94,8 @@
       </svg>
 
 
-      <!-- <script src="sala3d/VideoPlane.js"></script> -->
-      <!-- <script src="sala3d/sketch.js"></script> -->
+      <script class="script-p5" src="sala3d/VideoPlane.js"></script>
+      <script class="script-p5" src="sala3d/sketch.js"></script>
 
   </body>
 </html>
