@@ -20,8 +20,17 @@ body {
   left: 0;
   bottom: 0;
   height: 100vh;
-  overflow: auto;
+  /* overflow: auto; */
   font-family: 'Helvetica_AA', Helvetica, sans-serif;
+}
+
+.sem-exibicao {
+  overflow: hidden;
+}
+
+.com-exibicao {
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
  p, button {
@@ -39,21 +48,19 @@ div.pagina {
   height: 100%;
   color: var(--branco);
   background: var(--preto);
+  overflow:hidden;
   z-index: 11;
   font-size: 100px;
 }
 
 main {
-  position: fixed;
-  top:0;
-  bottom:0;
-  left: 0;
-  right: 0;
+  position: absolute;
+  top: 0;
   height: 100%;
   color: var(--branco);
   /* background: blue; */
-  overflow-x: auto;
-  overflow-y: hidden;
+  /* overflow-x: auto; */
+  /* overflow-y: hidden; */
   z-index: 0;
 }
 

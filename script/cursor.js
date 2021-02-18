@@ -2,7 +2,7 @@ class Seta {
   constructor() {
     this.seta = document.querySelector('#seta');
     this.etiqueta = document.querySelector('#etiqueta-seta');
-    this.slides = document.querySelector('#slides');
+    // this.slides = document.querySelector('#slides');
     this.x = 0;
     this.y = 0;
     this.etiquetaX = 0;
@@ -57,9 +57,9 @@ class Seta {
     this.seta.style.left = mouse.y + this.y;
   }
 
-  mostrarSlides() {
-    this.slides.classList.remove('hidden');
-  }
+  // mostrarSlides() {
+  //   this.slides.classList.remove('hidden');
+  // }
 
   iniciar() {
     window.addEventListener('mousemove', (e) => {
@@ -74,8 +74,8 @@ class Seta {
       }
 
       // if (!this.slides.classList.contains('hidden')) {
-        this.slides.style.top = `${mouse.y+30}px`;
-        this.slides.style.left = `${mouse.x-this.slides.width}px`;
+        // this.slides.style.top = `${mouse.y+30}px`;
+        // this.slides.style.left = `${mouse.x-this.slides.width}px`;
       // }
 
       // if (!this.etiqueta.classList.contains('hidden')) {

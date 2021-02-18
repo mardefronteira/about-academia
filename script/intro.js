@@ -9,11 +9,12 @@ let timerIntro;
 
 function iniciar () {
   // document.querySelector('#slides').classList.remove('hidden');
-  timerIntro = setTimeout(animarTitulo, 5000);
+  // timerIntro = setTimeout(animarTitulo, 5000);
   window.addEventListener('click', mostrarIntro);
   seta = new Seta();
   seta.iniciar();
   seta.configurar('seta-branca-direita');
+  animarTitulo();
 }
 
 function mostrarIntro() {

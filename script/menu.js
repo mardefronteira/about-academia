@@ -175,6 +175,11 @@ function configurarCursor() {
         seta.configurarEtiqueta('menu', 'menú', 'vrm');
       });
       break;
+    case 'exibicao':
+      seta.configurar('normal-vrm');
+      seta.esconderEtiqueta();
+      permitirAudio();
+      break;
     default:
       seta.configurar('normal-vrm');
       seta.esconderEtiqueta();

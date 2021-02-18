@@ -99,5 +99,5 @@ function introAA(obra) {
     seta.configurar('seta-vrm-direita');
     seta.configurarEtiqueta('entrar','entrar','vrm');
   });
-  divDireita.addEventListener('click', exibicao);
+  divDireita.addEventListener('click', () => {exibicao(obra)});
 }

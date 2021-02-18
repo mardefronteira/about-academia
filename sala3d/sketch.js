@@ -52,9 +52,9 @@ function preload() {
   }
 
   // criar div para o botão de entrada e o parágrafo
-  // let overlayConfig = document.createElement('div');
-  // overlayConfig.id = "overlay";
-  // document.body.appendChild(overlayConfig);
+  let overlayConfig = document.createElement('div');
+  overlayConfig.id = "overlay";
+  document.body.appendChild(overlayConfig);
   //
   // // criar botão para testar tempo
   // mensagemConfig = document.createElement('p');
@@ -89,10 +89,10 @@ function preload() {
   // botaoPermitirAudio.classList.add('hidden');
   // overlayConfig.appendChild(botaoPermitirAudio);
 
-  // criar mensagem de "carregando..."
+  // // criar mensagem de "carregando..."
   mensagemCarregando = document.createElement('p');
   mensagemCarregando.innerHTML = "carregando...";
-  document.body.appendChild(mensagemCarregando);
+  overlayConfig.appendChild(mensagemCarregando);
 }
 
 // function lidarZoom () {
@@ -132,14 +132,17 @@ function setup() {
   escala = telaX / fracaoX;
   margem = telaX/20;
 
+  // document.body.style = "overflow-y:hidden;"
+
   createCanvas(window.innerWidth * 2, window.innerHeight, WEBGL);
   noStroke();
   background(0);
 
+
   window.addEventListener('wheel', scrollHorizontal);
 
   // ajuste de volume a cada vez que há rolagem de página
-  window.addEventListener("scroll", (event) => {
+  window.addEventListener("scroll", (e) => {
       let scroll = this.scrollX;
 
       for (let i in videoPlanes) {
@@ -151,9 +154,9 @@ function setup() {
   });
 
   // scroll horizontal
-  document.addEventListener('wheel', (e) => {
-    document.body.scrollLeft += e.deltaY;
-  });
+  // document.addEventListener('wheel', (e) => {
+  //   document.body.scrollLeft += e.deltaY;
+  // });
 
   // configuração de fonte
   tamanhoFonte = height/15;
@@ -164,7 +167,6 @@ function setup() {
 }
 
 function draw() {
-  // if (videosCarregados) {
     // botaoPermitirAudio.classList.remove('hidden');
 
     // temporário para testes
@@ -173,9 +175,9 @@ function draw() {
     // botaoZoom.classList.remove('hidden');
   // }
 
-  if (permitiuAudio) {
-    if (videosCarregados) {
-      mostrarSalas();
+  if (videosCarregados) {
+    if (permitiuAudio) {
+        mostrarSalas();
     }
   }
 }
@@ -185,6 +187,9 @@ function pausarExibicao() {
     video.pause();
   });
   permitiuAudio = false;
+  document.body.classList.add('sem-exibicao');
+  document.body.classList.remove('com-exibicao');
+  document.querySelector('#defaultCanvas0').classList.add('hidden');
 }
 
 function permitirAudio() {
@@ -200,6 +205,10 @@ function permitirAudio() {
       let hora = d.getHours() + d.getMinutes() / 60;
       videoPlanes[i].configurarInicio(hora);
     }
+
+    document.body.classList.add('com-exibicao');
+    document.body.classList.remove('sem-exibicao');
+    document.querySelector('#defaultCanvas0').classList.remove('hidden');
   }
 
   // temporário para testes
@@ -241,11 +250,11 @@ function mostrarSalas() {
   // vídeos do lado esquerdo (AA I)
   push();
     rotateY(angulo);
-    if (comScroll) {
+    // if (comScroll) {
       translate(-telaX/2+margem+scrollPosition/2, 0, -telaX/3-scrollPosition/2); // com scroll
-    } else {
-      translate(-telaX/2+margem, 0, -telaX/3); // sem scroll
-    }
+    // } else {
+    //   translate(-telaX/2+margem, 0, -telaX/3); // sem scroll
+    // }
 
     videoPlanes[0].mostrar();
 
@@ -259,11 +268,11 @@ function mostrarSalas() {
   // vídeos do lado direito (AA II)
   push();
     rotateY(-angulo);
-    if (comScroll) {
+    // if (comScroll) {
       translate(margem*2-scrollPosition/2, 0, -telaX/3-scrollPosition/2); // com scroll
-    } else {
-      translate(margem*2, 0, -telaX/3); // sem scroll
-    }
+    // } else {
+    //   translate(margem*2, 0, -telaX/3); // sem scroll
+    // }
     videoPlanes[3].mostrar();
 
     translate(escala, 0);
@@ -276,7 +285,6 @@ function mostrarSalas() {
 }
 
 function scrollHorizontal (e) {
-  console.log(e)
   let rolagem = e.deltaY;
   const body = document.body; // pro Safari
   body.scrollLeft += rolagem;
