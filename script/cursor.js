@@ -1,6 +1,6 @@
-class Cursor {
+class Seta {
   constructor() {
-    this.cursor = document.querySelector('#cursor');
+    this.seta = document.querySelector('#seta');
     this.etiqueta = document.querySelector('#etiqueta-seta');
     this.slides = document.querySelector('#slides');
     this.x = 0;
@@ -14,7 +14,7 @@ class Cursor {
       case 'seta-vrm-esquerda':
         this.x = 0;
         this.y = -15;
-        this.cursor.src = "img/cursor/setaVermelhaEsquerda.png";
+        this.seta.src = "img/cursor/setaVermelhaEsquerda.png";
         this.etiquetaX = 0;
         this.etiquetaY = -120;
         break;
@@ -23,38 +23,38 @@ class Cursor {
         this.y = -15;
         this.etiquetaX = 0;
         this.etiquetaY = -120;
-        this.cursor.src = "img/cursor/setaBrancaEsquerda.png"
+        this.seta.src = "img/cursor/setaBrancaEsquerda.png"
         break;
       case 'seta-vrm-direita':
         this.x = -128;
         this.y = -15;
         this.etiquetaX = -128;
         this.etiquetaY = -120;
-        this.cursor.src = "img/cursor/setaVermelhaDireita.png"
+        this.seta.src = "img/cursor/setaVermelhaDireita.png"
         break;
       case 'seta-branca-direita':
         this.x = -128;
         this.y = -15;
         this.etiquetaX = -128;
         this.etiquetaY = -120;
-        this.cursor.src = "img/cursor/setaBrancaDireita.png"
+        this.seta.src = "img/cursor/setaBrancaDireita.png"
         break;
       case 'normal-vrm':
         this.x = 0;
         this.y = 0;
-        this.cursor.src = "img/cursor/normalVermelho.png"
+        this.seta.src = "img/cursor/normalVermelho.png"
         break;
       case 'normal-branco':
         this.x = 0;
         this.y = 0;
-        this.cursor.src = "img/cursor/normalBranco.png"
+        this.seta.src = "img/cursor/normalBranco.png"
         break;
     }
   }
 
   posicionar() {
-    this.cursor.style.top = mouse.x + this.x;
-    this.cursor.style.left = mouse.y + this.y;
+    this.seta.style.top = mouse.x + this.x;
+    this.seta.style.left = mouse.y + this.y;
   }
 
   mostrarSlides() {
@@ -84,8 +84,8 @@ class Cursor {
       // }
 
       // if (!this.cursor.classList.contains('hidden')) {
-        this.cursor.style.left = `${mouse.x + this.x}px`;
-        this.cursor.style.top = `${mouse.y + this.y}px`;
+        this.seta.style.left = `${mouse.x + this.x}px`;
+        this.seta.style.top = `${mouse.y + this.y}px`;
       // }
     })
   }

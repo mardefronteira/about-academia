@@ -8,10 +8,10 @@ let cenaIntro = 0;
 let timerIntro;
 
 function iniciar () {
-  document.querySelector('#slides').classList.remove('hidden');
+  // document.querySelector('#slides').classList.remove('hidden');
   timerIntro = setTimeout(animarTitulo, 5000);
   window.addEventListener('click', mostrarIntro);
-  seta = new Cursor();
+  seta = new Seta();
   seta.iniciar();
   seta.configurar('seta-branca-direita');
 }
@@ -36,13 +36,13 @@ function intro() {
   pagIntro.innerHTML = '';
 
   // esconder slides do mouse
-  document.querySelector('#slides').classList.add('hidden');
+  // document.querySelector('#slides').classList.add('hidden');
 
   // animar textos de acordo com a cena atual
   switch (cenaIntro) {
     case 0:
       pagIntro.classList.remove('hidden');
-      document.querySelector('#slides').classList.remove('hidden');
+      // document.querySelector('#slides').classList.remove('hidden');
       animarTitulo();
       break;
 

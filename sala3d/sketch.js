@@ -89,10 +89,10 @@ function preload() {
   // botaoPermitirAudio.classList.add('hidden');
   // overlayConfig.appendChild(botaoPermitirAudio);
 
-  // // criar mensagem de "carregando..."
-  // mensagemCarregando = document.createElement('p');
-  // mensagemCarregando.innerHTML = "carregando...";
-  // overlayConfig.appendChild(mensagemCarregando);
+  // criar mensagem de "carregando..."
+  mensagemCarregando = document.createElement('p');
+  mensagemCarregando.innerHTML = "carregando...";
+  document.body.appendChild(mensagemCarregando);
 }
 
 // function lidarZoom () {
@@ -121,7 +121,7 @@ function videoCarregou() {
     };
 
     videosCarregados = true;
-    // mensagemCarregando.remove();
+    mensagemCarregando.remove();
   }
 }
 
@@ -132,12 +132,9 @@ function setup() {
   escala = telaX / fracaoX;
   margem = telaX/20;
 
-  document.body.style = "overflow-y:hidden;"
-
   createCanvas(window.innerWidth * 2, window.innerHeight, WEBGL);
   noStroke();
   background(0);
-
 
   window.addEventListener('wheel', scrollHorizontal);
 
@@ -177,7 +174,9 @@ function draw() {
   // }
 
   if (permitiuAudio) {
+    if (videosCarregados) {
       mostrarSalas();
+    }
   }
 }
 
@@ -277,6 +276,7 @@ function mostrarSalas() {
 }
 
 function scrollHorizontal (e) {
+  console.log(e)
   let rolagem = e.deltaY;
   const body = document.body; // pro Safari
   body.scrollLeft += rolagem;

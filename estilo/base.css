@@ -52,6 +52,8 @@ main {
   height: 100%;
   color: var(--branco);
   /* background: blue; */
+  overflow-x: auto;
+  overflow-y: hidden;
   z-index: 0;
 }
 
@@ -108,7 +110,7 @@ p#etiqueta-seta {
   pointer-events: none;
 }
 
-img#cursor {
+img#seta {
   position: absolute;
   z-index: 25;
   font-size: 3vw;
