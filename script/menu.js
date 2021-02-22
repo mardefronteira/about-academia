@@ -90,7 +90,7 @@ function mostrar(pagina) {
       intro();
       break;
     case 'mesas':
-      document.querySelector(`#mesas`).classList.remove('hidden');
+      mesas();
       break;
     case 'apresentacao':
       document.querySelector(`#apresentacao`).classList.remove('hidden');
