@@ -50,8 +50,9 @@ nav#nav-menu {
   color:var(--branco);
   position: fixed;
   font-size: 30px;
-  line-height: 0;
-  left: 5vw;
+  line-height: 1;
+  top: 4vh;
+  left: 8vw;
 }
 
 ul {
