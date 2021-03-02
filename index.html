@@ -20,9 +20,15 @@
     <!--importar p5.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
+
+    <!--importar PDF.js-->
+    <script
+      src="http://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js">
+    </script>
+
   </head>
 
-  <body onload="iniciar()">
+  <body onload="iniciar()" class="sem-exibicao">
     <script src="script/password_f1l3.js"></script>
     <script src="script/animacao.js"></script>
     <script src="script/cursor.js"></script>
@@ -69,6 +75,17 @@
             </div>
           </div>
 
+        </div>
+        <div id="overlay-previa">
+          <div id="previa-conteiner">
+              <canvas id="visualizador"></canvas>
+          </div>
+
+          <div id="previa-controle">
+              <button id="botao-voltar">←</button>
+              <input id="num-pagina" value="1" type="number"/>
+              <button id="botao-avancar">→</button>
+          </div>
         </div>
       </div>
 

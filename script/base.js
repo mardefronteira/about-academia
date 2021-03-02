@@ -18,6 +18,7 @@ function esconderTudo() {
   document.querySelector(`#mesas`).classList.add('hidden');
   document.querySelector(`#info`).classList.add('hidden');
   document.querySelector(`#publicacoes`).classList.add('hidden');
+  document.querySelector('#overlay-previa').classList.add('hidden');
   document.querySelector(`#apresentacao`).classList.add('hidden');
   document.querySelector(`#defaultCanvas0`).classList.add('hidden');
 }
