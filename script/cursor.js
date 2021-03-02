@@ -10,33 +10,36 @@ class Seta {
   }
 
   configurar(tipo) {
+    const largura = window.innerWidth;
+    const altura = window.innerHeight;
+
     switch (tipo) {
       case 'seta-vrm-esquerda':
         this.x = 0;
         this.y = -15;
         this.seta.src = "img/cursor/setaVermelhaEsquerda.png";
         this.etiquetaX = 0;
-        this.etiquetaY = -120;
+        this.etiquetaY = -altura*0.1;
         break;
       case 'seta-branca-esquerda':
         this.x = 0;
         this.y = -15;
         this.etiquetaX = 0;
-        this.etiquetaY = -120;
+        this.etiquetaY = -altura*0.1;
         this.seta.src = "img/cursor/setaBrancaEsquerda.png"
         break;
       case 'seta-vrm-direita':
         this.x = -128;
         this.y = -15;
         this.etiquetaX = -128;
-        this.etiquetaY = -120;
+        this.etiquetaY = -altura*0.1;
         this.seta.src = "img/cursor/setaVermelhaDireita.png"
         break;
       case 'seta-branca-direita':
         this.x = -128;
         this.y = -15;
         this.etiquetaX = -128;
-        this.etiquetaY = -120;
+        this.etiquetaY = -altura*0.1;
         this.seta.src = "img/cursor/setaBrancaDireita.png"
         break;
       case 'normal-vrm':

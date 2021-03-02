@@ -69,6 +69,11 @@ ul {
   opacity: 1;
 }
 
+#exibicao-menu {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
 #exibicao-menu:hover {
   color:var(--vermelho);
 }
@@ -81,7 +86,6 @@ ul {
   margin-top: -1.5vh;
   font-size: 4.7vw;
   padding: 0;
-  padding-bottom: 7vh;
 }
 
 #subtitulo-menu:hover {

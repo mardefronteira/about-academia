@@ -1,7 +1,6 @@
 const linksMenu = ['apresentacao', 'exibicao', 'publicacoes', 'mesas', 'info'];
 const textosMenuPt = ['Apresentação', 'Interpretação online', 'Publicações', 'Mesas Redondas', 'Info'];
 const textosMenuEs = ['Presentación', 'Interpretación online', 'Publicaciones', 'Conferencias', 'Info'];
-const imagensHover = ['videos/.mp4','videos/.mp4', 'videos/', 'videos/']
 
 function menu() {
   const menu = document.querySelector('#menu');
@@ -20,19 +19,13 @@ function menu() {
 
     // resetar menu
     menu.innerHTML = `
-    <video id="exibicao-fundo" class="fundo-menu video-fundo video-escondido" src="videos/AAII_entrevista_02.mp4" autoplay loop muted></video>
-    <video id="publicacoes-fundo" class="fundo-menu video-fundo video-escondido" src="videos/AAII_entrevista_03.mp4" autoplay loop muted></video>
-    <video id="apresentacao-fundo" class="fundo-menu video-fundo video-escondido" src="videos/AAII_entrevista_01.mp4" autoplay loop muted></video>
-    <video id="mesas-fundo" class="fundo-menu video-fundo video-escondido" src="videos/AAII_entrevista_04.mp4" autoplay loop muted></video>
-    <video id="info-fundo" class="fundo-menu video-fundo video-escondido" src="videos/AAI_entrevista_02.mp4" autoplay loop muted></video>
-    <video id="titulo-fundo" class="fundo-menu video-fundo" src="videos/AAI_entrevista_01.mp4" autoplay loop muted></video>
     <div id="conteiner-menu">
       <nav id="nav-menu">
         <ul>
           <li id="titulo-menu" class=""></li>
           <li id="subtitulo-menu" class=""></li>
-          <li id="apresentacao-menu" class="item-menu"></li>
           <li id="exibicao-menu" class="item-menu"></li>
+          <li id="apresentacao-menu" class="item-menu"></li>
           <li id="publicacoes-menu" class="item-menu"></li>
           <li id="mesas-menu" class="item-menu"></li>
           <li id="info-menu" class="item-menu"></li>
@@ -124,27 +117,6 @@ function animarMenu(idMae, idAlvo, textoBr, textoEs = textoBr, callback = false,
     // adicionar ação ao clicar
     callback ? alvo.addEventListener('click', callback) : '';
 
-    // checar se o item é um idioma, se não, mostrar vídeo
-    if (!classes.includes('idioma')) {
-
-      // mostrar vídeo correspondente ao fazer hover
-      alvo.addEventListener("mouseover", () => {
-
-        // listar todos os vídeos de fundo
-        let videosFundo = Array.from(document.querySelectorAll('.fundo-menu'));
-
-        // selecionar video a ser mostrado
-        let estaId = `${idMae.split('-')[0]}-fundo`;
-        if (estaId === 'subtitulo-fundo') estaId = 'titulo-fundo';
-
-        document.querySelector(`#${estaId}`).classList.remove('video-escondido');
-
-        // esconder todos os vídeos de fundo
-        for (let video of videosFundo) {
-          if (video.id !== estaId) video.classList.add('video-escondido');
-        }
-      });
-    }
     document.querySelector(`#${idMae}`).appendChild(alvo);
   } else {
     alvo = document.querySelector(`#${idAlvo}`);
