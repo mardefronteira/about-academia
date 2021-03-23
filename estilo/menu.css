@@ -10,7 +10,7 @@ svg#botao-menu {
 }
 
 svg#botao-menu:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 video.video-escondido {
@@ -23,8 +23,8 @@ div#menu {
   position: fixed;
   top: 0;
   left: 0;
-  right:0;
-  bottom:0;
+  right: 0;
+  bottom: 0;
   z-index: 19;
 }
 
@@ -35,7 +35,7 @@ div#intro-menu {
 
 video.video-fundo {
   position: fixed;
-  bottom:0;
+  bottom: 0;
   height: auto;
   width: 100%;
   align-self: center;
@@ -47,7 +47,7 @@ nav#nav-menu {
   -ms-flex: 1;
   flex: 1;
   flex-direction: column;
-  color:var(--branco);
+  color: var(--branco);
   position: fixed;
   font-size: 30px;
   line-height: 1;
@@ -62,20 +62,16 @@ ul {
 .item-menu {
   margin: 0;
   padding: 0;
-  opacity: .5;
+  opacity: 1;
 }
 
 .item-menu:hover {
-  opacity: 1;
+  color: var(--vermelho);
 }
 
 #exibicao-menu {
   margin-top: 10vh;
   margin-bottom: 10vh;
-}
-
-#exibicao-menu:hover {
-  color:var(--vermelho);
 }
 
 .texto-menu {
@@ -89,10 +85,10 @@ ul {
 }
 
 #subtitulo-menu:hover {
-  opacity: .9;
+  opacity: 0.9;
 }
 
-#titulo-menu-txt{
+#titulo-menu-txt {
   font-size: 6vw;
   color: var(--vermelho);
 }
@@ -108,6 +104,6 @@ ul {
   -ms-flex: 1;
   flex: 1;
   flex-direction: column;
-  color:var(--branco);
+  color: var(--branco);
   right: 10vw;
 }
