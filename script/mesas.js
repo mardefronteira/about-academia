@@ -1,44 +1,103 @@
 function mesas() {
   // Configurar mouse
-  seta.configurar('normal-vrm');
+  seta.configurar("normal-vrm");
 
   // Reconfigurar elementos HTML e mostrar página
-  let divMesas = document.querySelector('#mesas');
+  let divMesas = document.querySelector("#mesas");
   divMesas.innerHTML = `
   <h1 id="titulo-mesas" class="titulo-mesas vermelho"></h1>
   <nav>
     <ul id="nav-mesas" class="linha">
-      <li id="mesa1" class="link-mesa titulo-mesas">
-        <span id="mesa1-underline" class="underline-mesas">_</span><span id="mesa1-titulo"></span>
+      <li id="mesa1" class="link-mesa">
+        <!-- <span id="mesa1-underline" class="underline-mesas">_</span> -->
+        <span id="mesa1-num" class="texto-mesas"></span>
       </li>
-      <li id="mesa2" class="link-mesa titulo-mesas">
-        <span id="mesa2-underline" class="underline-mesas">_</span><span id="mesa2-titulo"></span>
+      <li id="mesa2" class="link-mesa">
+        <!-- <span id="mesa2-underline" class="underline-mesas">_</span> -->
+        <span id="mesa2-num" class="texto-mesas"></span>
       </li>
-      <li id="mesa3" class="link-mesa titulo-mesas">
-        <span id="mesa3-underline" class="underline-mesas">_</span><span id="mesa3-titulo"></span>
+      <li id="mesa3" class="link-mesa">
+        <!-- <span id="mesa3-underline" class="underline-mesas">_</span> -->
+        <span id="mesa3-num" class="texto-mesas"></span>
       </li>
     </ul>
   </nav>
-  <p id="desc-mesas"></p>
+  <div id="info-mesa">
+    <p id="titulo-mesa" class="texto-mesas"></p>
+    <p id="desc-mesa" class="texto-mesas"></p>
+  </div>
+  <p id="entrar-mesa" class="texto-mesas clicavel hidden">entrar</p>
   `;
-  divMesas.classList.remove('hidden');
+  divMesas.classList.remove("hidden");
 
-  animar('titulo-mesas','',idioma('Mesas Redondas','Conferencias'),false,['titulo-mesas','vermelho']);
+  animar(
+    "titulo-mesas",
+    "",
+    idioma("Mesas Redondas", "Mesas Redondas"),
+    false,
+    ["titulo-mesas", "vermelho"]
+  );
 
   // detalhes das mesas
   let mesas = [
     {
-      id: 'mesa1',
-      titulo: 'I',
-      desc: idioma('descrição da mesa 1 em brasileiro', 'descrição da mesa 1 em espanhol'),
-    },{
-      id: 'mesa2',
-      titulo: 'II',
-      desc: idioma('descrição da mesa 2 em brasileiro', 'descrição da mesa 2 em espanhol'),
-    },{
-      id: 'mesa3',
-      titulo: 'III',
-      desc: idioma('descrição da mesa 3 em brasileiro', 'descrição da mesa 3 em espanhol'),
+      id: "mesa1",
+      num: "I",
+      titulo: idioma(
+        "Que universidade queremos?",
+        "¿Qué universidad queremos?"
+      ),
+      desc: idioma(
+        `<br/>Néstor García Canclini (México)<br/>
+        Eliana Sousa Silva<br/>
+        Lilian Schwartz<br/>
+        Ailton Krenak / Jaider Esbel / Daiara Tukano<br/>
+        Muntadas (moderação)`,
+        `<br/>Néstor García Canclini (Mexico)<br/>
+        Eliana Sousa Silva<br/>
+        Lilian Schwartz<br/>
+        Ailton Krenak / Jaider Esbel / Daiara Tukano<br/>
+        Muntadas (moderación)`
+      ),
+    },
+    {
+      id: "mesa2",
+      num: "II",
+      titulo: idioma("Universidade e contexto", "Universidad y contexto"),
+      desc: idioma(
+        `<br/>Naomar de Almeida Filho<br/>
+        Helena Nader<br/>
+        Paulo Herkenhoff<br/>
+        Macaé Evaristo<br/>
+        Ramon Castillo Inostroza (Chile)<br/>
+        Renato Janine Ribeiro (moderação)
+        `,
+        `<br/>Naomar de Almeida Filho<br/>
+        Helena Nader<br/>
+        Paulo Herkenhoff<br/>
+        Macaé Evaristo<br/>
+        Ramon Castillo Inostroza (Chile)<br/>
+        Renato Janine Ribeiro (moderación)`
+      ),
+    },
+    {
+      id: "mesa3",
+      num: "III",
+      titulo: idioma("Intercontinental Academia", ""),
+      desc: idioma(
+        `<br/>Nikki Moore (EUA)<br/>
+        Érica Peçanha (IEA)<br/>
+        David Gange (UK)<br/>
+        Mariko Murata (Jap)<br/>
+        Julia Buenaventura (Col)<br/>
+        Martin Grossmann (moderação)`,
+        `<br/>Nikki Moore (EUA)<br/>
+        Érica Peçanha (IEA)<br/>
+        David Gange (UK)<br/>
+        Mariko Murata (Jap)<br/>
+        Julia Buenaventura (Col)<br/>
+        Martin Grossmann (moderación)`
+      ),
     },
   ];
 
@@ -46,22 +105,44 @@ function mesas() {
     let elemento = document.querySelector(`#${mesa.id}`);
 
     // atualizar descrição ao colocar o mouse sobre o título
-    elemento.addEventListener('mouseover', ()=>{atualizarDesc(mesa.desc)});
-
-     // configurar clique
-     elemento.addEventListener('click', ()=>{console.log(`abrir mesa ${mesa.id.slice(-1)}`)})
+    elemento.addEventListener("mouseover", () => {
+      atualizarInfo(mesa);
+    });
 
     // escrever título
-    animar(`${mesa.id}-titulo`, mesa.id, mesa.titulo, false, [])
+    animar(`${mesa.id}-num`, mesa.id, mesa.num, false, []);
   }
 
+  document.querySelector("#entrar-mesa").addEventListener("click", mostrarMesa);
 }
 
-function atualizarDesc(texto) {
-  let descMesas = document.querySelector('#desc-mesas');
+let mesaSelecionada = 0;
 
-  if (descMesas.innerHTML !== texto) {
-    descMesas.innerHTML = '';
-    animar('desc-mesas', '', texto, false, []);
+function atualizarInfo(infoMesa) {
+  // garantir que as animações não se sobreponham
+  for (let timer of timers) clearTimeout(timer);
+
+  mesaSelecionada = infoMesa.id.slice(-1);
+
+  // deixar número vermelho até que outra mesa seja selecionada
+  for (let i of [1, 2, 3]) {
+    const mesa = document.querySelector(`#mesa${i}`);
+    infoMesa.id === `mesa${i}`
+      ? mesa.classList.add("vermelho")
+      : mesa.classList.remove("vermelho");
   }
+
+  const tituloMesas = document.querySelector("#titulo-mesa");
+  const descMesas = document.querySelector("#desc-mesa");
+
+  if (tituloMesas.innerHTML !== infoMesa.titulo) {
+    tituloMesas.innerHTML = "";
+    animar("titulo-mesa", "", infoMesa.titulo, false, []);
+    descMesas.innerHTML = infoMesa.desc;
+    document.querySelector("#entrar-mesa").classList.remove("hidden");
+  }
+}
+
+function mostrarMesa() {
+  console.log("abriu a mesa " + mesaSelecionada);
 }

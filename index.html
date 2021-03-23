@@ -12,13 +12,13 @@
     />
 
     <!--importar folhas de estilo-->
+    <link rel="stylesheet" type="text/css" href="estilo/base.css" />
     <link rel="stylesheet" type="text/css" href="estilo/intro.css" />
     <link rel="stylesheet" type="text/css" href="estilo/introExibicao.css" />
     <link rel="stylesheet" type="text/css" href="estilo/sketch.css" />
     <link rel="stylesheet" type="text/css" href="estilo/menu.css" />
     <link rel="stylesheet" type="text/css" href="estilo/mesas.css" />
     <link rel="stylesheet" type="text/css" href="estilo/publicacoes.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/base.css" />
 
     <!--importar p5.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
@@ -41,7 +41,11 @@
     <script src="script/publicacoes.js"></script>
     <script src="script/introExibicao.js"></script>
 
-    <div id="intro" class="pagina"></div>
+    <div id="intro" class="pagina">
+      <div id="conteiner-logos" class="centralizar">
+        <img id="logos-intro" src="img/logos.png" alt="" />
+      </div>
+    </div>
 
     <div class="cursores">
       <!-- <img id="slides" class="hidden" src="img/cursor/slides.gif" alt="frames dos vídeos que compõe a obra"> -->
@@ -50,7 +54,7 @@
     </div>
 
     <div id="publicacoes" class="pagina hidden">
-      <img src="" class="tela-cheia" />
+      <img src="img/publi/fundo.png" class="tela-cheia" />
       <div id="fundo-publicacoes">
         <div id="aa1-publicacoes" class="conteiner-publicacoes linha">
           <section id="aa1-capa" class="capa-publicacoes">
@@ -95,17 +99,60 @@
         </div>
       </div>
       <div id="overlay-previa">
-        <div id="previa-conteiner">
+        <section id="previa-conteiner">
           <canvas id="visualizador"></canvas>
-        </div>
+          <div id="avancar-previa" class="div-direita"></div>
+          <div id="voltar-previa" class="div-esquerda"></div>
+        </section>
 
-        <div id="previa-controle">
-          <button id="botao-voltar">←</button>
-          <input id="num-pagina" value="1" type="number" />
-          <button id="botao-avancar">→</button>
-          <button id="zoom-out">-</button>
-          <button id="zoom-in">+</button>
-        </div>
+        <section id="previa-controle">
+          <div id="num-paginas" class="linha clicavel">
+            <input id="num-pagina" value="1" type="text" />
+            <span id="num-total-paginas">/00</span>
+          </div>
+          <div id="controle-rodape" class="coluna">
+            <div id="zoom-out" class="conteiner-icone">
+              <img
+                id="zoom-out-fundo"
+                class="icone-fundo"
+                src="img/icones/zoom-out-vermelha.png"
+                role="button"
+                tabindex="0"
+              />
+              <img
+                id="zoom-out-hover"
+                class="icone-hover"
+                src="img/icones/zoom-out-branca.png"
+                role="button"
+                tabindex="0"
+              />
+            </div>
+            <div id="zoom-in" class="conteiner-icone">
+              <img
+                id="zoom-in-fundo"
+                class="icone-fundo"
+                src="img/icones/zoom-in-vermelha.png"
+                role="button"
+                tabindex="0"
+              />
+              <img
+                id="zoom-in-hover"
+                class="icone-hover"
+                src="img/icones/zoom-in-branca.png"
+                role="button"
+                tabindex="0"
+              />
+            </div>
+            <button
+              id="voltar-publicacoes"
+              class="voltar clicavel"
+              type="button"
+              name="voltar"
+            >
+              voltar
+            </button>
+          </div>
+        </section>
       </div>
     </div>
 
@@ -122,12 +169,28 @@
     <div id="menu" class="pagina hidden"></div>
 
     <div id="tocador" class="pagina hidden">
-      VÍDEO
-      <video
-        id="video-exibicao"
-        src="videos/AAI_entrevista_01.mp4"
-        autoplay
-      ></video>
+      <div class="conteiner-video-fundo linha">
+        <video
+          id="video-tocador"
+          class="video-fundo"
+          src="videos/AAI_entrevista_01.mp4"
+        ></video>
+      </div>
+      <nav id="controles-tocador" class="linha">
+        <button
+          id="voltar-exibicao"
+          class="voltar clicavel invisivel-tocador"
+          type="button"
+          name="voltar"
+        >
+          voltar
+        </button>
+        <p id="legenda-tocador" class="centralizar">legenda legenda legenda</p>
+        <ul id="idiomas-tocador" class="invisivel-tocador">
+          <li id="br-tocador" class="clicavel">pt.</li>
+          <li id="es-tocador" class="clicavel">es.</li>
+        </ul>
+      </nav>
     </div>
 
     <!-- <div id="intro-exibicao" class="pagina hidden seta-direita-vrm">

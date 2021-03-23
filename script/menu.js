@@ -2,15 +2,15 @@ const linksMenu = ["apresentacao", "exibicao", "publicacoes", "mesas", "info"];
 const textosMenuPt = [
   "Apresentação",
   "Instalação online",
-  "Publicações",
-  "Mesas Redondas",
+  "Transcrições",
+  "Mesas redondas",
   "Info",
 ];
 const textosMenuEs = [
   "Presentación",
   "Instalación online",
-  "Publicaciones",
-  "Conferencias",
+  "Transcripciones",
+  "Mesas redondas",
   "Info",
 ];
 

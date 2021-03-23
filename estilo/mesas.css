@@ -1,12 +1,12 @@
-#mesas{
-    overflow: hidden;
+#mesas {
+  overflow: hidden;
 }
 
 #titulo-mesas {
-  padding: 8vh 10vw;
+  padding: 8vh 10vw 3vh 10vw;
 }
 
-.titulo-mesas{
+.titulo-mesas {
   font-size: 6vw;
 }
 
@@ -14,25 +14,40 @@
   margin-right: 5vw;
 }
 
+.texto-mesas {
+  font-size: 3vw;
+}
+
 #nav-mesas {
-  padding: 0 7vw;
+  padding: 0 10vw;
 }
 
 #nav-mesas > li:hover {
   color: var(--vermelho);
 }
 
-#desc-mesas {
-  font-size: 2.2vw;
+#titulo-mesa {
+  color: var(--vermelho);
+}
+
+#info-mesa {
   line-height: 1.1;
   position: relative;
-  padding: 5vh 10vw;
+  width: 100%;
+  padding: 0 10vw;
 }
 
-.underline-mesas {
+#entrar-mesa {
+  position: absolute;
+  right: 10vw;
+  bottom: 10vh;
+  z-index: 200;
+}
+
+/* .underline-mesas {
   opacity: 0;
-}
+} */
 
-li:hover > .underline-mesas {
+/* li:hover > .underline-mesas {
   opacity: 1;
-}
+} */

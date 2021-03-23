@@ -33,14 +33,24 @@ div#intro-menu {
   z-index: 18;
 }
 
-video.video-fundo {
-  position: fixed;
-  bottom: 0;
-  height: auto;
-  width: 100%;
-  align-self: center;
-  text-align: center;
+/* .conteiner-video-fundo {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
 }
+
+video.video-fundo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  min-height: 50%;
+  min-width: 50%;
+} */
 
 nav#nav-menu {
   display: flex;

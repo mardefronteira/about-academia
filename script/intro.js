@@ -19,6 +19,7 @@ function iniciar() {
 
 function mostrarIntro() {
   // clearTimeout(timerIntro);
+  mostrarLogos();
   animarTitulo();
   window.removeEventListener("click", mostrarIntro);
 }
@@ -36,14 +37,16 @@ function intro() {
   let pagIntro = document.querySelector("#intro");
   pagIntro.innerHTML = "";
 
-  // esconder slides do mouse
-  // document.querySelector('#slides').classList.add('hidden');
+  // cenaIntro === 0
+  //   ? document.querySelector("#logos-intro").classList.remove("hidden")
+  //   : document.querySelector("#logos-intro").classList.add("hidden");
 
   // animar textos de acordo com a cena atual
   switch (cenaIntro) {
     case 0:
       pagIntro.classList.remove("hidden");
       // document.querySelector('#slides').classList.remove('hidden');
+      mostrarLogos();
       animarTitulo();
       break;
 
@@ -126,6 +129,17 @@ function introMenu() {
   seta.configurar("normal-vrm");
 
   menu();
+}
+
+function mostrarLogos() {
+  const conteinerLogos = document.createElement("DIV");
+  conteinerLogos.id = "conteiner-logos";
+  conteinerLogos.classList.add("centralizar");
+  const logos = document.createElement("IMG");
+  logos.id = "logos-intro";
+  logos.src = "img/logos.png";
+  conteinerLogos.appendChild(logos);
+  document.querySelector("#intro").appendChild(conteinerLogos);
 }
 
 /* PÁGINA INICIAL */

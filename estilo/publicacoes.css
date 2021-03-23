@@ -52,7 +52,11 @@
   z-index: 17;
 }
 
-.capa-imagem-hover:hover {
+/* .capa-imagem-hover:hover {
+  opacity: 0;
+} */
+
+.invisivel {
   opacity: 0;
 }
 
@@ -65,22 +69,75 @@
   right: 0;
   top: 0;
   z-index: 18;
-}
-
-#previa-controle {
-  bottom: 0;
-  left: 0;
-  position: fixed;
+  font-size: 3.5vw;
 }
 
 #previa-conteiner {
   background: transparent;
   border: none;
   height: 95vh;
+  width: 75vw;
   margin: auto;
   margin-top: 2vh;
   overflow: hidden;
   position: relative;
-  text-align: center;
-  width: 80vw;
+}
+
+.conteiner-icone {
+  position: relative;
+  height: 7vh;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.icone-fundo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  z-index: 15;
+}
+
+.icone-hover {
+  position: relative;
+  height: 100%;
+  width: auto;
+  z-index: 17;
+}
+
+.icone-hover:hover {
+  opacity: 0;
+}
+
+#num-pagina {
+  background: transparent;
+  font: inherit;
+  font-size: inherit;
+  border: none;
+  color: inherit;
+  height: 7vh;
+  width: 4vw;
+  text-align: right;
+}
+
+.voltar {
+  border: none;
+  font-size: inherit;
+  cursor: none;
+}
+
+#num-paginas {
+  position: absolute;
+  top: 5vh;
+  right: 3vw;
+}
+
+#controle-rodape {
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 5vh;
+  right: 3vw;
 }

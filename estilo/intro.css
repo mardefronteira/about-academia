@@ -1,5 +1,5 @@
 .clicavel:hover {
-  opacity: 0.5;
+  color: var(--vermelho);
 }
 
 .intro-texto {
@@ -75,4 +75,26 @@ div#intro {
 img#slides {
   position: absolute;
   z-index: 25;
+}
+
+#conteiner-logos {
+  position: absolute;
+  bottom: 3vh;
+  left: 0;
+  right: 0;
+  width: 100vw;
+}
+
+#logos-intro {
+  position: relative;
+  width: 90%;
+  height: auto;
+  margin: auto;
+}
+
+.centralizar {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
 }

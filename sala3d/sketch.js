@@ -16,8 +16,8 @@ let videos = {
   arquitetura1: "arquitetura_1.mp4",
   arquitetura2: "arquitetura_2.mp4",
   texto2: "texto_2.mp4",
-  entrevistas2 : "entrevista_2.mp4",
-}
+  entrevistas2: "entrevista_2.mp4",
+};
 
 let videoPlanes = [];
 let numVideos = 6;
@@ -40,20 +40,22 @@ let scrollPosition = 0;
 
 function preload() {
   // carregar fonte
-  bebasNeue = loadFont('../fontes/BebasNeueBold.otf');
+  bebasNeue = loadFont("../fontes/BebasNeueBold.otf");
 
   // carregar e criar vídeos
-  let videoPath = "sala3d/videos"
+  let videoPath = "sala3d/videos";
   for (let video in videos) {
-    videos[video] = createVideo(`${videoPath}/${videos[video]}`, () => {videoCarregou()});
+    videos[video] = createVideo(`${videoPath}/${videos[video]}`, () => {
+      videoCarregou();
+    });
     videos[video].preload = "auto";
     videos[video].muted = true;
     videos[video].hide();
   }
 
   // criar div para o botão de entrada e o parágrafo
-  let overlayConfig = document.createElement('div');
-  overlayConfig.id = "overlay";
+  let overlayConfig = document.createElement("div");
+  overlayConfig.id = "overlay-exibicao";
   document.body.appendChild(overlayConfig);
   //
   // // criar botão para testar tempo
@@ -90,7 +92,7 @@ function preload() {
   // overlayConfig.appendChild(botaoPermitirAudio);
 
   // // criar mensagem de "carregando..."
-  mensagemCarregando = document.createElement('p');
+  mensagemCarregando = document.createElement("p");
   mensagemCarregando.innerHTML = "carregando...";
   overlayConfig.appendChild(mensagemCarregando);
 }
@@ -112,13 +114,13 @@ a função videoCarregou() é chamada a cada vez que um vídeo é carregado. qua
 */
 function videoCarregou() {
   contadorVideos++;
-  if ( contadorVideos === numVideos ){
+  if (contadorVideos === numVideos) {
     for (let video in videos) {
       videoPlanes.push(new VideoPlane(videos[video]));
     }
     for (let i in videoPlanes) {
-      videoPlanes[i].ajustarVolume(0,i);
-    };
+      videoPlanes[i].ajustarVolume(0, i);
+    }
 
     videosCarregados = true;
     mensagemCarregando.remove();
@@ -130,7 +132,7 @@ function setup() {
   telaX = window.innerWidth;
   telaY = window.innerHeight;
   escala = telaX / fracaoX;
-  margem = telaX/20;
+  margem = telaX / 20;
 
   // document.body.style = "overflow-y:hidden;"
 
@@ -138,19 +140,20 @@ function setup() {
   noStroke();
   background(0);
 
-
-  window.addEventListener('wheel', scrollHorizontal);
+  window.addEventListener("wheel", scrollHorizontal);
 
   // ajuste de volume a cada vez que há rolagem de página
   window.addEventListener("scroll", (e) => {
-      let scroll = this.scrollX;
+    let scroll = this.scrollX;
 
-      for (let i in videoPlanes) {
-        videoPlanes[i].ajustarVolume(scroll,i);
-      };
+    for (let i in videoPlanes) {
+      videoPlanes[i].ajustarVolume(scroll, i);
+    }
 
-      scrollPosition = scroll;
-      scroll > window.innerWidth/2 ? scrollPosition = window.innerWidth - scroll : scrollPosition = scroll;
+    scrollPosition = scroll;
+    scroll > window.innerWidth / 2
+      ? (scrollPosition = window.innerWidth - scroll)
+      : (scrollPosition = scroll);
   });
 
   // scroll horizontal
@@ -159,132 +162,147 @@ function setup() {
   // });
 
   // configuração de fonte
-  tamanhoFonte = height/15;
+  tamanhoFonte = height / 15;
   textFont(bebasNeue);
   textSize(tamanhoFonte);
-  titulosX = tamanhoFonte*2;
-  titulosY = -height/2 + tamanhoFonte*3;
+  titulosX = tamanhoFonte * 2;
+  titulosY = -height / 2 + tamanhoFonte * 3;
 }
 
 function draw() {
-    // botaoPermitirAudio.classList.remove('hidden');
+  // botaoPermitirAudio.classList.remove('hidden');
 
-    // temporário para testes
-    // mensagemConfig.classList.remove('hidden');
-    // botaoHora.classList.remove('hidden');
-    // botaoZoom.classList.remove('hidden');
+  // temporário para testes
+  // mensagemConfig.classList.remove('hidden');
+  // botaoHora.classList.remove('hidden');
+  // botaoZoom.classList.remove('hidden');
   // }
 
   if (videosCarregados) {
     if (permitiuAudio) {
-        mostrarSalas();
+      mostrarSalas();
     }
   }
 }
 
 function pausarExibicao() {
-  Array.from(document.getElementsByTagName('video')).map( video => {
+  Array.from(document.getElementsByTagName("video")).map((video) => {
     video.pause();
   });
   permitiuAudio = false;
-  document.body.classList.add('sem-exibicao');
-  document.body.classList.remove('com-exibicao');
-  document.querySelector('#defaultCanvas0').classList.add('hidden');
+  document.body.classList.add("sem-exibicao");
+  document.body.classList.remove("com-exibicao");
+  // document.querySelector("#defaultCanvas0").classList.add("hidden");
+  console.log("escondeu canvas");
 }
 
 function permitirAudio() {
-  Array.from(document.getElementsByTagName('video')).map( video => {
+  // document.querySelector("#tocador").classList.add("hidden");
+  Array.from(document.getElementsByTagName("video")).map((video) => {
     video.play();
     video.loop = true;
   });
-  permitiuAudio = true;
+  document.querySelector("#tocador").classList.add("hidden");
+  document.querySelector("#video-tocador").pause();
 
-  for (let i in videoPlanes) {
-    if (comHora) {
+  permitiuAudio = true;
+  if (primeiraExibicao) {
+    for (let i in videoPlanes) {
       const d = new Date();
       let hora = d.getHours() + d.getMinutes() / 60;
       videoPlanes[i].configurarInicio(hora);
     }
-
-    document.body.classList.add('com-exibicao');
-    document.body.classList.remove('sem-exibicao');
-    document.querySelector('#defaultCanvas0').classList.remove('hidden');
   }
 
-  // temporário para testes
-  // botaoPermitirAudio.remove();
-  // mensagemConfig.remove();
-  // botaoHora.remove();
-  // botaoZoom.remove();
-  // overlayConfig.remove();
+  document.body.classList.add("com-exibicao");
+  document.body.classList.remove("sem-exibicao");
+  document.querySelector("#defaultCanvas0").classList.remove("hidden");
+  console.log("mostrou canvas");
 }
 
-function windowResized(){
-  resizeCanvas(window.innerWidth * 2, window.innerHeight - window.innerHeight*0.05);
+// temporário para testes
+// botaoPermitirAudio.remove();
+// mensagemConfig.remove();
+// botaoHora.remove();
+// botaoZoom.remove();
+// overlayConfig.remove();
+// }
+
+function windowResized() {
+  resizeCanvas(
+    window.innerWidth * 2,
+    window.innerHeight - window.innerHeight * 0.05
+  );
   telaX = window.innerWidth;
   telaY = window.innerHeight;
   escala = telaX / fracaoX;
 }
 
 function mostrarSalas() {
-
   background(0);
   ambientLight(255);
   // ambientLight(100,100,100);
   // pointLight(255, 255, 255, mouseX- width / 2, mouseY- height / 2, -50);
 
   // títulos
-  fill(150);
-  noStroke();
-  push();
-    textAlign(RIGHT);
-    text('sobre', -titulosX, titulosY);
-    text('academia i', -titulosX, titulosY+tamanhoFonte);
-  pop();
-  push();
-    textAlign(LEFT);
-    text('sobre', titulosX, titulosY);
-    text('academia ii', titulosX, titulosY+tamanhoFonte);
-  pop();
+  // fill(150);
+  // noStroke();
+  // push();
+  // textAlign(RIGHT);
+  // text("sobre", -titulosX, titulosY);
+  // text("academia i", -titulosX, titulosY + tamanhoFonte);
+  // pop();
+  // push();
+  // textAlign(LEFT);
+  // text("sobre", titulosX, titulosY);
+  // text("academia ii", titulosX, titulosY + tamanhoFonte);
+  // pop();
 
   // vídeos do lado esquerdo (AA I)
   push();
-    rotateY(angulo);
-    // if (comScroll) {
-      translate(-telaX/2+margem+scrollPosition/2, 0, -telaX/3-scrollPosition/2); // com scroll
-    // } else {
-    //   translate(-telaX/2+margem, 0, -telaX/3); // sem scroll
-    // }
+  rotateY(angulo);
+  // if (comScroll) {
+  translate(
+    -telaX / 2 + margem + scrollPosition / 2,
+    0,
+    -telaX / 3 - scrollPosition / 2
+  ); // com scroll
+  // } else {
+  //   translate(-telaX/2+margem, 0, -telaX/3); // sem scroll
+  // }
 
-    videoPlanes[0].mostrar();
+  videoPlanes[0].mostrar();
 
-    translate(escala, 0);
-    videoPlanes[1].mostrar();
+  translate(escala, 0);
+  videoPlanes[1].mostrar();
 
-    translate(escala, 0);
-    videoPlanes[2].mostrar();
+  translate(escala, 0);
+  videoPlanes[2].mostrar();
   pop();
 
   // vídeos do lado direito (AA II)
   push();
-    rotateY(-angulo);
-    // if (comScroll) {
-      translate(margem*2-scrollPosition/2, 0, -telaX/3-scrollPosition/2); // com scroll
-    // } else {
-    //   translate(margem*2, 0, -telaX/3); // sem scroll
-    // }
-    videoPlanes[3].mostrar();
+  rotateY(-angulo);
+  // if (comScroll) {
+  translate(
+    margem * 2 - scrollPosition / 2,
+    0,
+    -telaX / 3 - scrollPosition / 2
+  ); // com scroll
+  // } else {
+  //   translate(margem*2, 0, -telaX/3); // sem scroll
+  // }
+  videoPlanes[3].mostrar();
 
-    translate(escala, 0);
-    videoPlanes[4].mostrar();
+  translate(escala, 0);
+  videoPlanes[4].mostrar();
 
-    translate(escala, 0);
-    videoPlanes[5].mostrar();
+  translate(escala, 0);
+  videoPlanes[5].mostrar();
   pop();
-
 }
 
-function scrollHorizontal (e) {
+function scrollHorizontal(e) {
   let rolagem = e.deltaY;
   const body = document.body; // pro Safari
   body.scrollLeft += rolagem;

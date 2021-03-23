@@ -38,9 +38,9 @@ function publicacoes() {
     ["texto-publicacoes"]
   );
   animar(
-    "sample1-publicacoes",
+    "previa1-publicacoes",
     "aa1-nav",
-    "Sample book",
+    idioma("Prévia", "Previa"),
     () => {
       configurarPdf(1);
     },
@@ -49,7 +49,7 @@ function publicacoes() {
   animar(
     "link1-publicacoes",
     "aa1-nav",
-    "Download",
+    "Comprar",
     () => {
       console.log("abriu link");
     },
@@ -71,9 +71,9 @@ function publicacoes() {
     ["texto-publicacoes"]
   );
   animar(
-    "sample2-publicacoes",
+    "previa2-publicacoes",
     "aa2-nav",
-    "Sample book",
+    idioma("Prévia", "Previa"),
     () => {
       configurarPdf(2);
     },
@@ -82,12 +82,75 @@ function publicacoes() {
   animar(
     "link2-publicacoes",
     "aa2-nav",
-    "Download",
+    "Comprar",
     () => {
       console.log("abriu link");
     },
     ["texto-publicacoes", "clicavel"]
   );
+
+  document
+    .querySelector("#previa1-publicacoes")
+    .addEventListener("mouseover", () => {
+      hoverPublicacoes("in", 1);
+    });
+  document
+    .querySelector("#previa2-publicacoes")
+    .addEventListener("mouseover", () => {
+      hoverPublicacoes("in", 2);
+    });
+  document
+    .querySelector("#previa1-publicacoes")
+    .addEventListener("mouseout", () => {
+      hoverPublicacoes("out", 1);
+    });
+  document
+    .querySelector("#previa2-publicacoes")
+    .addEventListener("mouseout", () => {
+      hoverPublicacoes("out", 2);
+    });
+  document
+    .querySelector("#aa1-capa-imagem")
+    .addEventListener("mouseover", () => {
+      hoverPublicacoes("in", 1);
+    });
+  document
+    .querySelector("#aa2-capa-imagem")
+    .addEventListener("mouseover", () => {
+      hoverPublicacoes("in", 2);
+    });
+  document
+    .querySelector("#aa1-capa-imagem")
+    .addEventListener("mouseout", () => {
+      hoverPublicacoes("out", 1);
+    });
+  document
+    .querySelector("#aa2-capa-imagem")
+    .addEventListener("mouseout", () => {
+      hoverPublicacoes("out", 2);
+    });
+  document.querySelector("#aa1-capa-imagem").addEventListener("click", () => {
+    configurarPdf(1);
+  });
+  document.querySelector("#aa2-capa-imagem").addEventListener("click", () => {
+    configurarPdf(2);
+  });
+}
+
+function hoverPublicacoes(mouse, obra) {
+  if (mouse === "in") {
+    document.querySelector(`#aa${obra}-capa-imagem`).classList.add("invisivel");
+    document
+      .querySelector(`#previa${obra}-publicacoes`)
+      .classList.add("vermelho");
+  } else {
+    document
+      .querySelector(`#aa${obra}-capa-imagem`)
+      .classList.remove("invisivel");
+    document
+      .querySelector(`#previa${obra}-publicacoes`)
+      .classList.remove("vermelho");
+  }
 }
 
 // variável para conter a situação atual da página
@@ -97,61 +160,87 @@ var estado = {
   zoom: 1.2,
 };
 
+let primeiraPrevia = true;
+
 function configurarPdf(numAA) {
   let arquivo = `textos/previa_aa${numAA}_${ptBr ? "pt" : "es"}.pdf`;
-  console.log(arquivo);
+  // console.log(arquivo);
 
   pdfjsLib.getDocument(arquivo).then((pdf) => {
     estado.pdf = pdf;
     mostrarPdf();
   });
 
+  document.querySelector("#voltar-publicacoes").innerHTML = idioma(
+    "voltar",
+    "volver"
+  );
+
   document.querySelector("#overlay-previa").classList.remove("hidden");
 
-  document.getElementById("botao-voltar").addEventListener("click", (e) => {
-    if (estado.pdf == null || estado.numPagina == 1) return;
-    estado.numPagina -= 1;
-    document.getElementById("num-pagina").value = estado.numPagina;
-    mostrarPdf();
-  });
+  if (primeiraPrevia) {
+    const botaoVoltar = document.getElementById("voltar-previa");
+    botaoVoltar.addEventListener("mouseover", () => {
+      seta.configurar("seta-vrm-esquerda");
+    });
+    botaoVoltar.addEventListener("click", (e) => {
+      if (estado.pdf == null || estado.numPagina == 1) return;
+      estado.numPagina -= 1;
+      document.getElementById("num-pagina").value = estado.numPagina;
+      mostrarPdf();
+    });
 
-  document.getElementById("botao-avancar").addEventListener("click", (e) => {
-    if (estado.pdf == null || estado.numPagina > estado.pdf._pdfInfo.numPages)
-      return;
-    estado.numPagina += 1;
-    document.getElementById("num-pagina").value = estado.numPagina;
-    mostrarPdf();
-  });
+    document
+      .querySelector("#voltar-publicacoes")
+      .addEventListener("click", (e) => {
+        document.querySelector("#overlay-previa").classList.add("hidden");
+        seta.configurar("normal-vrm");
+      });
 
-  document.getElementById("num-pagina").addEventListener("keypress", (e) => {
-    if (estado.pdf == null) return;
+    const botaoAvancar = document.getElementById("avancar-previa");
+    botaoAvancar.addEventListener("mouseover", () => {
+      seta.configurar("seta-vrm-direita");
+    });
+    botaoAvancar.addEventListener("click", (e) => {
+      if (estado.pdf == null || estado.numPagina > estado.pdf._pdfInfo.numPages)
+        return;
+      estado.numPagina += 1;
+      document.getElementById("num-pagina").value = estado.numPagina;
+      mostrarPdf();
+    });
 
-    // Get key code
-    var code = e.keyCode ? e.keyCode : e.which;
+    document.getElementById("num-pagina").addEventListener("keypress", (e) => {
+      if (estado.pdf == null) return;
 
-    // If key code matches that of the Enter key
-    if (code == 13) {
-      var desiredPage = document.getElementById("num-pagina").valueAsNumber;
+      // Get key code
+      var code = e.keyCode ? e.keyCode : e.which;
 
-      if (desiredPage >= 1 && desiredPage <= estado.pdf._pdfInfo.numPages) {
-        estado.numPagina = desiredPage;
-        document.getElementById("num-pagina").value = desiredPage;
-        mostrarPdf();
+      // If key code matches that of the Enter key
+      if (code == 13) {
+        console.log(code);
+        var desiredPage = document.getElementById("num-pagina").valueAsNumber;
+
+        if (desiredPage >= 1 && desiredPage <= estado.pdf._pdfInfo.numPages) {
+          estado.numPagina = desiredPage;
+          document.getElementById("num-pagina").value = desiredPage;
+          mostrarPdf();
+        }
       }
-    }
-  });
+    });
 
-  document.getElementById("zoom-in").addEventListener("click", (e) => {
-    if (estado.pdf == null) return;
-    estado.zoom += 0.5;
-    mostrarPdf();
-  });
+    document.getElementById("zoom-in").addEventListener("click", (e) => {
+      if (estado.pdf == null) return;
+      estado.zoom += 0.5;
+      mostrarPdf();
+    });
 
-  document.getElementById("zoom-out").addEventListener("click", (e) => {
-    if (estado.pdf == null) return;
-    estado.zoom -= 0.5;
-    mostrarPdf();
-  });
+    document.getElementById("zoom-out").addEventListener("click", (e) => {
+      if (estado.pdf == null) return;
+      estado.zoom -= 0.5;
+      mostrarPdf();
+    });
+    primeiraPrevia = false;
+  }
 }
 
 function mostrarPdf() {
