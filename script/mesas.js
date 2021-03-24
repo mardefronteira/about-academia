@@ -48,12 +48,14 @@ function mesas() {
         "¿Qué universidad queremos?"
       ),
       desc: idioma(
-        `<br/>Néstor García Canclini (México)<br/>
+        `Sexta-feira, dia 30 de abril das 14h às 18h<br/><br/>
+        Néstor García Canclini (México)<br/>
         Eliana Sousa Silva<br/>
         Lilian Schwartz<br/>
         Ailton Krenak / Jaider Esbel / Daiara Tukano<br/>
         Muntadas (moderação)`,
-        `<br/>Néstor García Canclini (Mexico)<br/>
+        `Viernes, 30 de abril de 14 a 18 horas<br/><br/>
+        Néstor García Canclini (Mexico)<br/>
         Eliana Sousa Silva<br/>
         Lilian Schwartz<br/>
         Ailton Krenak / Jaider Esbel / Daiara Tukano<br/>
@@ -65,14 +67,16 @@ function mesas() {
       num: "II",
       titulo: idioma("Universidade e contexto", "Universidad y contexto"),
       desc: idioma(
-        `<br/>Naomar de Almeida Filho<br/>
+        `Segunda-feira, dia 10 de maio das 8h às 12h<br/><br/>
+        Naomar de Almeida Filho<br/>
         Helena Nader<br/>
         Paulo Herkenhoff<br/>
         Macaé Evaristo<br/>
         Ramon Castillo Inostroza (Chile)<br/>
         Renato Janine Ribeiro (moderação)
         `,
-        `<br/>Naomar de Almeida Filho<br/>
+        `Lunes, 10 de mayo de 8 a 12 horas<br/><br/>
+        Naomar de Almeida Filho<br/>
         Helena Nader<br/>
         Paulo Herkenhoff<br/>
         Macaé Evaristo<br/>
@@ -85,13 +89,15 @@ function mesas() {
       num: "III",
       titulo: idioma("Intercontinental Academia", ""),
       desc: idioma(
-        `<br/>Nikki Moore (EUA)<br/>
+        `Terça-feira, dia 11 de maio das 14h às 18h<br/><br/>
+        Nikki Moore (EUA)<br/>
         Érica Peçanha (IEA)<br/>
         David Gange (UK)<br/>
         Mariko Murata (Jap)<br/>
         Julia Buenaventura (Col)<br/>
         Martin Grossmann (moderação)`,
-        `<br/>Nikki Moore (EUA)<br/>
+        `Martes 11 de mayo, de 14:00 a 18:00 horas<br/><br/>
+        Nikki Moore (EUA)<br/>
         Érica Peçanha (IEA)<br/>
         David Gange (UK)<br/>
         Mariko Murata (Jap)<br/>
