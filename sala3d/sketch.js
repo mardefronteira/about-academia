@@ -7,9 +7,6 @@ let telaY;
 let escala;
 let margem;
 
-let comScroll = true;
-let comHora = true;
-
 let videos = {
   entrevistas1: "entrevista_1.mp4",
   texto1: "texto_1.mp4",
@@ -25,22 +22,53 @@ let contadorVideos = 0;
 
 let videosCarregados = false;
 let permitiuAudio = false;
-let botaoPermitirAudio;
+// let botaoPermitirAudio;
 let mensagemCarregando;
 
-let mensagemConfig;
-let botaoHora, botaoZoom;
+// let mensagemConfig;
+// let botaoHora, botaoZoom;
 let overlayConfig;
 
-let bebasNeue;
+// let bebasNeue;
 let tamanhoFonte;
 let titulosX, titulosY;
 
-let scrollPosition = 0;
+// let scrollPosition = 0;
+let posCamera = {
+  rX: 0,
+  rZ: 1100,
+  rX: 0,
+  rZ: 0,
+};
+let tela = 0;
+let posTela = [
+  {
+    cX: 0,
+    cZ: 1100,
+    rX: 0,
+    rZ: 0,
+  },
+  {
+    cX: -500,
+    cZ: 300,
+    rX: -1300,
+    rZ: -1000,
+  },
+  {
+    cX: 500,
+    cZ: 300,
+    rX: 1300,
+    rZ: -1000,
+  },
+];
+// cX: 500,
+// cZ: 300,
+// rX: 1300,
+// rZ: -1000,
 
 function preload() {
   // carregar fonte
-  bebasNeue = loadFont("../fontes/BebasNeueBold.otf");
+  // bebasNeue = loadFont("../fontes/BebasNeueBold.otf");
 
   // carregar e criar vídeos
   let videoPath = "sala3d/videos";
@@ -57,57 +85,12 @@ function preload() {
   let overlayConfig = document.createElement("div");
   overlayConfig.id = "overlay-exibicao";
   document.body.appendChild(overlayConfig);
-  //
-  // // criar botão para testar tempo
-  // mensagemConfig = document.createElement('p');
-  // mensagemConfig.id = "mensagemConfig";
-  // mensagemConfig.innerHTML = "Configurações:";
-  // mensagemConfig.classList.add('hidden');
-  // overlayConfig.appendChild(mensagemConfig);
-  //
-  // // criar botão para testar tempo
-  // botaoHora = document.createElement('button');
-  // botaoHora.id = "botaoHora";
-  // botaoHora.innerHTML = "começar vídeos a partir da hora local";
-  // botaoHora.addEventListener('click', lidarHora);
-  // botaoHora.classList.add('hidden');
-  // botaoHora.classList.add('config');
-  // overlayConfig.appendChild(botaoHora);
-  //
-  // // criar botão para testar zoom
-  // botaoZoom = document.createElement('button');
-  // botaoZoom.id = "botaoZoom";
-  // botaoZoom.innerHTML = "zoom out ao rolar a página";
-  // botaoZoom.addEventListener('click', lidarZoom);
-  // botaoZoom.classList.add('hidden');
-  // botaoZoom.classList.add('config');
-  // overlayConfig.appendChild(botaoZoom);
-  //
-  // // criar botão para iniciar os áudios
-  // botaoPermitirAudio = document.createElement('button');
-  // botaoPermitirAudio.id = "botaoPermitirAudio";
-  // botaoPermitirAudio.innerHTML = "entrar na sala";
-  // botaoPermitirAudio.addEventListener('click', permitirAudio);
-  // botaoPermitirAudio.classList.add('hidden');
-  // overlayConfig.appendChild(botaoPermitirAudio);
 
   // // criar mensagem de "carregando..."
   mensagemCarregando = document.createElement("p");
   mensagemCarregando.innerHTML = "carregando...";
   overlayConfig.appendChild(mensagemCarregando);
 }
-
-// function lidarZoom () {
-//   comScroll = !comScroll;
-//   let mensagem = comScroll ? 'zoom out ao rolar a página' : '<s>zoom out ao rolar a página</s>';
-//   botaoZoom.innerHTML = mensagem;
-// }
-//
-// function lidarHora () {
-//   comHora = !comHora;
-//   let mensagem = comHora ? 'começar vídeos a partir da hora local' : '<s>começar vídeos a partir da hora local</s>';
-//   botaoHora.innerHTML = mensagem;
-// }
 
 /*
 a função videoCarregou() é chamada a cada vez que um vídeo é carregado. quanto todos estiverem carregados, sinalizados pelo contador, os planos 3D são criados, e o volume ajustado para a posição inicial da tela.
@@ -136,52 +119,37 @@ function setup() {
 
   // document.body.style = "overflow-y:hidden;"
 
-  createCanvas(window.innerWidth * 2, window.innerHeight, WEBGL);
+  createCanvas(window.innerWidth, window.innerHeight, WEBGL);
   noStroke();
   background(0);
 
-  window.addEventListener("wheel", scrollHorizontal);
-
-  // ajuste de volume a cada vez que há rolagem de página
-  window.addEventListener("scroll", (e) => {
-    let scroll = this.scrollX;
-
-    for (let i in videoPlanes) {
-      videoPlanes[i].ajustarVolume(scroll, i);
-    }
-
-    scrollPosition = scroll;
-    scroll > window.innerWidth / 2
-      ? (scrollPosition = window.innerWidth - scroll)
-      : (scrollPosition = scroll);
-  });
-
-  // scroll horizontal
-  // document.addEventListener('wheel', (e) => {
-  //   document.body.scrollLeft += e.deltaY;
+  // window.addEventListener("wheel", scrollHorizontal);
+  //
+  // // ajuste de volume a cada vez que há rolagem de página
+  // window.addEventListener("scroll", (e) => {
+  //   let scroll = this.scrollX;
+  //
+  //   for (let i in videoPlanes) {
+  //     videoPlanes[i].ajustarVolume(scroll, i);
+  //   }
+  //
+  //   scrollPosition = scroll;
+  //   scroll > window.innerWidth / 2
+  //     ? (scrollPosition = window.innerWidth - scroll)
+  //     : (scrollPosition = scroll);
   // });
 
   // configuração de fonte
   tamanhoFonte = height / 15;
-  textFont(bebasNeue);
+  // textFont(bebasNeue);
   textSize(tamanhoFonte);
   titulosX = tamanhoFonte * 2;
   titulosY = -height / 2 + tamanhoFonte * 3;
 }
 
 function draw() {
-  // botaoPermitirAudio.classList.remove('hidden');
-
-  // temporário para testes
-  // mensagemConfig.classList.remove('hidden');
-  // botaoHora.classList.remove('hidden');
-  // botaoZoom.classList.remove('hidden');
-  // }
-
-  if (videosCarregados) {
-    if (permitiuAudio) {
-      mostrarSalas();
-    }
+  if (videosCarregados && permitiuAudio) {
+    mostrarSalas();
   }
 }
 
@@ -241,8 +209,6 @@ function windowResized() {
 function mostrarSalas() {
   background(0);
   ambientLight(255);
-  // ambientLight(100,100,100);
-  // pointLight(255, 255, 255, mouseX- width / 2, mouseY- height / 2, -50);
 
   // títulos
   // fill(150);
@@ -261,15 +227,7 @@ function mostrarSalas() {
   // vídeos do lado esquerdo (AA I)
   push();
   rotateY(angulo);
-  // if (comScroll) {
-  translate(
-    -telaX / 2 + margem + scrollPosition / 2,
-    0,
-    -telaX / 3 - scrollPosition / 2
-  ); // com scroll
-  // } else {
-  //   translate(-telaX/2+margem, 0, -telaX/3); // sem scroll
-  // }
+  translate(-telaX / 2 + margem, 0, -telaX / 3);
 
   videoPlanes[0].mostrar();
 
@@ -283,15 +241,8 @@ function mostrarSalas() {
   // vídeos do lado direito (AA II)
   push();
   rotateY(-angulo);
-  // if (comScroll) {
-  translate(
-    margem * 2 - scrollPosition / 2,
-    0,
-    -telaX / 3 - scrollPosition / 2
-  ); // com scroll
-  // } else {
-  //   translate(margem*2, 0, -telaX/3); // sem scroll
-  // }
+
+  translate(margem * 2, 0, -telaX / 3);
   videoPlanes[3].mostrar();
 
   translate(escala, 0);
@@ -300,12 +251,20 @@ function mostrarSalas() {
   translate(escala, 0);
   videoPlanes[5].mostrar();
   pop();
+
+  posCamera.cX = posTela[tela].cX;
+  posCamera.cZ = posTela[tela].cZ;
+  posCamera.rX = posTela[tela].rX;
+  posCamera.rZ = posTela[tela].rZ;
+
+  camera(posCamera.cX, 0, posCamera.cZ, posCamera.rX, 0, posCamera.rZ, 0, 1, 0);
 }
 
-function scrollHorizontal(e) {
-  let rolagem = e.deltaY;
-  const body = document.body; // pro Safari
-  body.scrollLeft += rolagem;
-  const html = document.documentElement;
-  html.scrollLeft += rolagem;
-}
+//
+// function scrollHorizontal(e) {
+//   let rolagem = e.deltaY;
+//   const body = document.body; // pro Safari
+//   body.scrollLeft += rolagem;
+//   const html = document.documentElement;
+//   html.scrollLeft += rolagem;
+// }
