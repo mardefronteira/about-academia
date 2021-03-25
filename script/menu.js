@@ -147,6 +147,7 @@ function mostrar(pagina) {
       publicacoes();
       break;
     case "exibicao":
+      tela = 0;
       exibicao();
       break;
     default:

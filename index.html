@@ -5,20 +5,26 @@
     <meta charset="utf-8" />
 
     <!--importar fontes-->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
       rel="stylesheet"
+    /> -->
+    <link
+      href="//db.onlinewebfonts.com/c/52ffeb15f7ec5bb258d99836c944a2c8?family=ALS+Gorizont+Expanded"
+      rel="stylesheet"
+      type="text/css"
     />
 
     <!--importar folhas de estilo-->
     <link rel="stylesheet" type="text/css" href="estilo/base.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/exibicao.css" />
     <link rel="stylesheet" type="text/css" href="estilo/intro.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/introExibicao.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/sketch.css" />
     <link rel="stylesheet" type="text/css" href="estilo/menu.css" />
     <link rel="stylesheet" type="text/css" href="estilo/mesas.css" />
     <link rel="stylesheet" type="text/css" href="estilo/publicacoes.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/sketch.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/tocador.css" />
 
     <!--importar p5.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.0/p5.js"></script>
@@ -28,18 +34,18 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
   </head>
 
-  <body onload="iniciar()" class="sem-exibicao">
+  <body onload="iniciar()">
     <script src="script/password_f1l3.js"></script>
     <script src="script/animacao.js"></script>
-    <script src="script/cursor.js"></script>
     <script src="script/base.js"></script>
+    <script src="script/cursor.js"></script>
+    <script src="script/exibicao.js"></script>
+    <script src="script/intro.js"></script>
     <script src="script/menu.js"></script>
     <script src="script/mesas.js"></script>
-    <script src="script/intro.js"></script>
-    <script src="script/exibicao.js"></script>
-    <script src="script/tocador.js"></script>
+    <script src="script/navExibicao.js"></script>
     <script src="script/publicacoes.js"></script>
-    <script src="script/introExibicao.js"></script>
+    <script src="script/tocador.js"></script>
 
     <div id="intro" class="pagina">
       <div id="conteiner-logos" class="centralizar">
@@ -170,21 +176,29 @@
 
     <div id="overlay-exibicao">
       <nav id="nav-exibicao">
-        <div id="nav-esquerda-exibicao">esquerda</div>
-        <div id="nav-cima-exibicao">cima</div>
-        <div id="nav-direita-exibicao">direita</div>
-        <div id="nav-baixo-exibicao">baixo</div>
-        <div id="nav-centro-exibicao">centro</div>
+        <div id="nav-esquerda-exibicao"></div>
+        <div id="nav-cima-exibicao"></div>
+        <div id="nav-direita-exibicao"></div>
+        <div id="nav-baixo-exibicao"></div>
+        <div id="nav-centro-exibicao" class="linha centralizar">
+          <div id="nav-centro-0"></div>
+          <div id="nav-centro-1"></div>
+          <div id="nav-centro-2"></div>
+          <div id="nav-centro-3"></div>
+          <div id="nav-centro-4"></div>
+          <div id="nav-centro-5"></div>
+          <div id="nav-centro-6"></div>
+        </div>
       </nav>
     </div>
 
     <div id="tocador" class="pagina hidden">
-      <div class="conteiner-video-fundo linha">
-        <video
+      <div id="conteiner-video-tocador" class="conteiner-video-fundo linha">
+        <!-- <video
           id="video-tocador"
           class="video-fundo"
           src="videos/AAI_entrevista_01.mp4"
-        ></video>
+        ></video> -->
       </div>
       <nav id="controles-tocador" class="linha">
         <button

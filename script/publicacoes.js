@@ -51,7 +51,7 @@ function publicacoes() {
     "aa1-nav",
     "Comprar",
     () => {
-      console.log("abriu link");
+      console.log("abriu link do aa1");
     },
     ["texto-publicacoes", "clicavel"]
   );
@@ -84,7 +84,7 @@ function publicacoes() {
     "aa2-nav",
     "Comprar",
     () => {
-      console.log("abriu link");
+      console.log("abriu link do aa2");
     },
     ["texto-publicacoes", "clicavel"]
   );

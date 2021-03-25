@@ -74,15 +74,21 @@ function preload() {
     videos[video] = createVideo(`${videoPath}/${videos[video]}`, () => {
       videoCarregou();
     });
+    videos[video].addClass("hidden");
+    videos[video].addClass("video-tocador");
+    videos[video].addClass("video-fundo");
+    videos[video].id(`video-${video}`);
     videos[video].preload = "auto";
     videos[video].muted = true;
-    videos[video].hide();
+    document
+      .querySelector("#conteiner-video-tocador")
+      .appendChild(document.querySelector(`#video-${video}`));
   }
 
   // criar div para o botão de entrada e o parágrafo
   let overlayConfig = document.querySelector("#overlay-exibicao");
 
-  // // criar mensagem de "carregando..."
+  // criar mensagem de "carregando..."
   mensagemCarregando = document.createElement("p");
   mensagemCarregando.innerHTML = "carregando...";
   overlayConfig.appendChild(mensagemCarregando);
@@ -138,20 +144,16 @@ function pausarExibicao() {
     video.pause();
   });
   permitiuAudio = false;
-  document.body.classList.add("sem-exibicao");
-  document.body.classList.remove("com-exibicao");
-  // document.querySelector("#defaultCanvas0").classList.add("hidden");
-  console.log("escondeu canvas");
 }
 
 function permitirAudio() {
   // document.querySelector("#tocador").classList.add("hidden");
-  Array.from(document.getElementsByTagName("video")).map((video) => {
+  Array.from(document.querySelectorAll(".video-tocador")).map((video) => {
     video.play();
     video.loop = true;
   });
   document.querySelector("#tocador").classList.add("hidden");
-  document.querySelector("#video-tocador").pause();
+  // document.querySelectorAll(".video-tocador").pause();
 
   permitiuAudio = true;
   if (primeiraExibicao) {
@@ -162,10 +164,7 @@ function permitirAudio() {
     }
   }
 
-  document.body.classList.add("com-exibicao");
-  document.body.classList.remove("sem-exibicao");
   document.querySelector("#defaultCanvas0").classList.remove("hidden");
-  console.log("mostrou canvas");
 }
 
 function windowResized() {
@@ -179,7 +178,10 @@ function windowResized() {
 }
 
 function mostrarSalas() {
-  ultimaTela !== tela ? configurarNav() : "";
+  if (ultimaTela !== tela) {
+    configurarNav();
+    ultimaTela = tela;
+  }
 
   background(0);
   ambientLight(255);

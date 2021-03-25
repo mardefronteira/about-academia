@@ -1,6 +1,21 @@
 @font-face {
-  font-family: Helvetica_AA;
+  font-family: "Helvetica_AA";
   src: url("../fontes/Helvetica.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ALS_Gorizont";
+  src: url("//db.onlinewebfonts.com/t/52ffeb15f7ec5bb258d99836c944a2c8.eot");
+  src: url("//db.onlinewebfonts.com/t/52ffeb15f7ec5bb258d99836c944a2c8.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/52ffeb15f7ec5bb258d99836c944a2c8.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/52ffeb15f7ec5bb258d99836c944a2c8.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/52ffeb15f7ec5bb258d99836c944a2c8.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/52ffeb15f7ec5bb258d99836c944a2c8.svg#ALS Gorizont Expanded")
+      format("svg");
 }
 
 :root {
@@ -131,16 +146,16 @@ body {
   height: 100vh;
   line-height: 1;
   font-family: "Helvetica_AA", Helvetica, sans-serif;
+  overflow: hidden;
 }
 
-.sem-exibicao {
-  overflow: hidden;
+/* .sem-exibicao {
 }
 
 .com-exibicao {
   overflow-y: hidden;
-  overflow-x: auto;
-}
+  overflow-x: hidden;
+} */
 
 div.pagina {
   position: fixed;
@@ -161,14 +176,10 @@ main {
   top: 0;
   height: 100%;
   color: var(--branco);
-  /* background: blue; */
-  /* overflow-x: auto; */
-  /* overflow-y: hidden; */
   z-index: 0;
 }
 
 button:hover {
-  /* opacity: .5; */
 }
 
 .config {
@@ -251,5 +262,17 @@ img#seta {
   height: auto;
   width: 100%;
   align-self: center;
+  text-align: center;
+}
+
+.texto-esquerda {
+  text-align: left;
+}
+
+.texto-direita {
+  text-align: right;
+}
+
+.texto-centro {
   text-align: center;
 }

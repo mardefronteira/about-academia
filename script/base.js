@@ -9,6 +9,7 @@ function idioma(textoBr, textoEs) {
 }
 
 function esconderTudo() {
+  pausarExibicao();
   document.querySelector(`#apresentacao`).classList.add("hidden");
   document.querySelector(`#defaultCanvas0`).classList.add("hidden");
   document.querySelector(`#etiqueta-seta`).classList.add("hidden");

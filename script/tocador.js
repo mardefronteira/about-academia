@@ -1,4 +1,20 @@
-function abrirVideo(){
-  console.log('abrir video');
-  document.querySelector('#tocador').classList.remove('hidden');
+function mostrarVideo(idVideo) {
+  pausarExibicao();
+
+  Array.from(document.querySelectorAll(".video-tocador")).map((video) => {
+    video.classList.add("hidden");
+  });
+
+  const video = document.querySelector(`#video-${idVideo}`);
+  video.classList.remove("hidden");
+  video.play();
+
+  document.querySelector("#tocador").classList.remove("hidden");
+  if (ptBr) {
+    document.querySelector("#br-tocador").classList.add("cinquenta");
+    document.querySelector("#es-tocador").classList.remove("cinquenta");
+  } else {
+    document.querySelector("#es-tocador").classList.add("cinquenta");
+    document.querySelector("#br-tocador").classList.remove("cinquenta");
+  }
 }
