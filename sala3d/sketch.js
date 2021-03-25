@@ -8,12 +8,12 @@ let escala;
 let margem;
 
 let videos = {
-  entrevistas1: "entrevista_1.mp4",
-  texto1: "texto_1.mp4",
-  arquitetura1: "arquitetura_1.mp4",
-  arquitetura2: "arquitetura_2.mp4",
-  texto2: "texto_2.mp4",
-  entrevistas2: "entrevista_2.mp4",
+  entrevistas1: "entrevista_1.m4v",
+  texto1: "texto_1.m4v",
+  arquitetura1: "arquitetura_1.m4v",
+  arquitetura2: "arquitetura_2.m4v",
+  texto2: "texto_2.m4v",
+  entrevistas2: "entrevista_2.m4v",
 };
 
 let videoPlanes = [];
@@ -25,21 +25,19 @@ let permitiuAudio = false;
 // let botaoPermitirAudio;
 let mensagemCarregando;
 
-// let mensagemConfig;
-// let botaoHora, botaoZoom;
-let overlayConfig;
-
 // let bebasNeue;
-let tamanhoFonte;
-let titulosX, titulosY;
+// let tamanhoFonte;
+// let titulosX, titulosY;
 
 // let scrollPosition = 0;
+let ultimoRX = 0;
 let posCamera = {
-  rX: 0,
-  rZ: 1100,
+  cX: 0,
+  cZ: 1100,
   rX: 0,
   rZ: 0,
 };
+let ultimaTela = 0;
 let tela = 0;
 let posTela = [
   {
@@ -82,9 +80,7 @@ function preload() {
   }
 
   // criar div para o botão de entrada e o parágrafo
-  let overlayConfig = document.createElement("div");
-  overlayConfig.id = "overlay-exibicao";
-  document.body.appendChild(overlayConfig);
+  let overlayConfig = document.querySelector("#overlay-exibicao");
 
   // // criar mensagem de "carregando..."
   mensagemCarregando = document.createElement("p");
@@ -117,34 +113,18 @@ function setup() {
   escala = telaX / fracaoX;
   margem = telaX / 20;
 
-  // document.body.style = "overflow-y:hidden;"
-
   createCanvas(window.innerWidth, window.innerHeight, WEBGL);
   noStroke();
   background(0);
 
-  // window.addEventListener("wheel", scrollHorizontal);
-  //
-  // // ajuste de volume a cada vez que há rolagem de página
-  // window.addEventListener("scroll", (e) => {
-  //   let scroll = this.scrollX;
-  //
-  //   for (let i in videoPlanes) {
-  //     videoPlanes[i].ajustarVolume(scroll, i);
-  //   }
-  //
-  //   scrollPosition = scroll;
-  //   scroll > window.innerWidth / 2
-  //     ? (scrollPosition = window.innerWidth - scroll)
-  //     : (scrollPosition = scroll);
-  // });
-
   // configuração de fonte
-  tamanhoFonte = height / 15;
+  // tamanhoFonte = height / 15;
   // textFont(bebasNeue);
-  textSize(tamanhoFonte);
-  titulosX = tamanhoFonte * 2;
-  titulosY = -height / 2 + tamanhoFonte * 3;
+  // textSize(tamanhoFonte);
+  // titulosX = tamanhoFonte * 2;
+  // titulosY = -height / 2 + tamanhoFonte * 3;
+
+  configurarNav();
 }
 
 function draw() {
@@ -188,14 +168,6 @@ function permitirAudio() {
   console.log("mostrou canvas");
 }
 
-// temporário para testes
-// botaoPermitirAudio.remove();
-// mensagemConfig.remove();
-// botaoHora.remove();
-// botaoZoom.remove();
-// overlayConfig.remove();
-// }
-
 function windowResized() {
   resizeCanvas(
     window.innerWidth * 2,
@@ -207,6 +179,8 @@ function windowResized() {
 }
 
 function mostrarSalas() {
+  ultimaTela !== tela ? configurarNav() : "";
+
   background(0);
   ambientLight(255);
 
@@ -252,19 +226,33 @@ function mostrarSalas() {
   videoPlanes[5].mostrar();
   pop();
 
-  posCamera.cX = posTela[tela].cX;
-  posCamera.cZ = posTela[tela].cZ;
-  posCamera.rX = posTela[tela].rX;
-  posCamera.rZ = posTela[tela].rZ;
+  if (posCamera.cX > posTela[tela].cX) {
+    posCamera.cX -= 20;
+  } else if (posCamera.cX < posTela[tela].cX) {
+    posCamera.cX += 20;
+  }
+  if (posCamera.cZ > posTela[tela].cZ) {
+    posCamera.cZ -= 32;
+  } else if (posCamera.cZ < posTela[tela].cZ) {
+    posCamera.cZ += 32;
+  }
+  if (posCamera.rX > posTela[tela].rX) {
+    posCamera.rX -= 52;
+  } else if (posCamera.rX < posTela[tela].rX) {
+    posCamera.rX += 52;
+  }
+  if (posCamera.rZ > posTela[tela].rZ) {
+    posCamera.rZ -= 40;
+  } else if (posCamera.rZ < posTela[tela].rZ) {
+    posCamera.rZ += 40;
+  }
+
+  if (ultimoRX !== posCamera.rX) {
+    for (let i in videoPlanes) {
+      videoPlanes[i].ajustarVolume(i);
+    }
+    ultimoRX = posCamera.rX;
+  }
 
   camera(posCamera.cX, 0, posCamera.cZ, posCamera.rX, 0, posCamera.rZ, 0, 1, 0);
 }
-
-//
-// function scrollHorizontal(e) {
-//   let rolagem = e.deltaY;
-//   const body = document.body; // pro Safari
-//   body.scrollLeft += rolagem;
-//   const html = document.documentElement;
-//   html.scrollLeft += rolagem;
-// }

@@ -30,20 +30,14 @@ class VideoPlane {
     this.video.currentTime = map(hora, 0, 23.98, 0, duracao);
   }
 
-  ajustarVolume(scroll, i) {
-    let distanciaX;
+  ajustarVolume(i) {
+    let volume;
     if (i < 3) {
-      this.pontoRef = 0;
-      distanciaX = scroll;
+      volume = constrain(map(posCamera.rX, -1300, 1300, 1, 0), 0, 1);
     } else {
-      this.pontoRef = width;
-      distanciaX = window.innerWidth - scroll;
+      volume = constrain(map(posCamera.rX, -1300, 1300, 0, 1), 0, 1);
     }
-    let thisVolume = constrain(
-      map(distanciaX, 0, window.innerWidth, 1, 0),
-      0,
-      1
-    );
-    this.video.volume = thisVolume;
+
+    this.video.volume = volume;
   }
 }

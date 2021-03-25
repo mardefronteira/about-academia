@@ -4,18 +4,8 @@ function exibicao() {
   cenaAtual = "exibicao";
   esconderTudo();
   permitirAudio();
-  // let scroll = window.innerWidth / 2;
-
-  // scrollHorizontal({ deltaY: scroll });
-  // for (let i in videoPlanes) {
-  //   videoPlanes[i].ajustarVolume(scroll, i);
-  // }
 
   if (primeiraExibicao) {
-    document
-      .querySelector("#overlay-exibicao")
-      .addEventListener("click", mostrarVideo);
-
     document.querySelector("#voltar-exibicao").addEventListener("click", () => {
       permitirAudio();
       document.querySelector("#tocador").classList.add("hidden");
@@ -41,9 +31,9 @@ function mostrarVideo() {
   pausarExibicao();
 
   const video = document.querySelector("#video-tocador");
-  video.src = "sala3d/videos/entrevista_2.mp4";
+  video.src = "sala3d/videos/entrevista_2.m4v";
   video.load();
-  // video.play();
+  video.play();
 
   document.querySelector("#tocador").classList.remove("hidden");
   if (ptBr) {
