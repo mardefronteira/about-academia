@@ -139,11 +139,7 @@ function configurarNav() {
       // nav inferior para voltar
       baixo.addEventListener("mouseover", () => {
         seta.configurar("seta-vrm-baixo");
-        seta.configurarEtiqueta(
-          "About<br/>Academia I + II",
-          "About<br/>Academia I + II",
-          "vrm"
-        );
+        seta.configurarEtiqueta("Voltar", "Volver", "vrm");
       });
       baixo.addEventListener("mouseout", () => {
         seta.configurar("normal-vrm");
@@ -216,11 +212,7 @@ function configurarNav() {
       // nav inferior para voltar
       baixo.addEventListener("mouseover", () => {
         seta.configurar("seta-vrm-baixo");
-        seta.configurarEtiqueta(
-          "About<br/>Academia I + II",
-          "About<br/>Academia I + II",
-          "vrm"
-        );
+        seta.configurarEtiqueta("Voltar", "Volver", "vrm");
       });
       baixo.addEventListener("mouseout", () => {
         seta.configurar("normal-vrm");

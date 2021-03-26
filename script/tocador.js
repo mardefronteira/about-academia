@@ -1,5 +1,6 @@
 function mostrarVideo(idVideo) {
   pausarExibicao();
+  document.querySelector("#botao-menu").classList.add("hidden");
 
   Array.from(document.querySelectorAll(".video-tocador")).map((video) => {
     video.classList.add("hidden");

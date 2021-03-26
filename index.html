@@ -54,7 +54,6 @@
     </div>
 
     <div class="cursores">
-      <!-- <img id="slides" class="hidden" class="cursor hidden" src="img/cursor/slides.gif" alt="frames dos vídeos que compõe a obra"> -->
       <img
         id="seta-vrm-cima"
         class="cursor hidden"
@@ -106,13 +105,13 @@
             <img
               id="aa1-capa-imagem"
               class="capa-imagem capa-imagem-hover"
-              src=""
+              src="img/publi/capa_aa1_pt.png"
               alt="Capa do livro About Academia I"
             />
             <img
               id="aa1-capa-imagem-vrm"
               class="capa-imagem capa-imagem-fundo"
-              src=""
+              src="img/publi/hover_aa1_pt.png"
               alt="Capa do livro About Academia II"
             />
           </section>
@@ -123,31 +122,31 @@
         </div>
 
         <div id="aa2-publicacoes" class="conteiner-publicacoes linha">
+          <div class="coluna conteiner-textos-publicacoes">
+            <section id="aa2-titulos"></section>
+            <nav id="aa2-nav"></nav>
+          </div>
           <section id="aa2-capa" class="capa-publicacoes">
             <img
               id="aa2-capa-imagem"
               class="capa-imagem capa-imagem-hover"
-              src=""
+              src="img/publi/capa_aa2_pt.png"
               alt="Capa do livro About Academia I"
             />
             <img
               id="aa2-capa-imagem-vrm"
               class="capa-imagem capa-imagem-fundo"
-              src=""
+              src="img/publi/hover_aa2_pt.png"
               alt="Capa do livro About Academia II"
             />
           </section>
-          <div class="coluna conteiner-textos-publicacoes">
-            <section id="aa2-titulos"></section>
-            <nav id="aa2-nav"></nav>
-          </div>
         </div>
       </div>
-      <div id="overlay-previa">
+      <div id="overlay-previa" class="centralizar">
         <section id="previa-conteiner">
           <canvas id="visualizador"></canvas>
-          <div id="avancar-previa" class="div-direita"></div>
-          <div id="voltar-previa" class="div-esquerda"></div>
+          <div id="avancar-previa" class="div-previa"></div>
+          <div id="voltar-previa" class="div-previa"></div>
         </section>
 
         <section id="previa-controle">
@@ -188,15 +187,15 @@
                 tabindex="0"
               />
             </div>
-            <button
-              id="voltar-publicacoes"
-              class="voltar clicavel"
-              type="button"
-              name="voltar"
-            >
-              voltar
-            </button>
           </div>
+          <button
+            id="voltar-publicacoes"
+            class="voltar clicavel"
+            type="button"
+            name="voltar"
+          >
+            voltar
+          </button>
         </section>
       </div>
     </div>

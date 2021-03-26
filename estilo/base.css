@@ -134,7 +134,7 @@ ul {
 }
 
 body {
-  /* cursor: none; */
+  cursor: none;
   position: absolute;
   margin: 0;
   padding: 0;

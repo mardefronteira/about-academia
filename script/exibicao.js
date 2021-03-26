@@ -9,6 +9,7 @@ function exibicao() {
     document.querySelector("#voltar-exibicao").addEventListener("click", () => {
       permitirAudio();
       document.querySelector("#tocador").classList.add("hidden");
+      document.querySelector("#botao-menu").classList.remove("hidden");
     });
 
     document.querySelector("#br-tocador").addEventListener("click", () => {

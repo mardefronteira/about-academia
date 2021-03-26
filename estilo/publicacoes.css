@@ -1,7 +1,15 @@
 .texto-publicacoes {
   font-size: 4vw;
-  text-align: right;
+  /* text-align: right; */
   opacity: 1;
+}
+
+#aa1-publicacoes {
+  text-align: right;
+}
+
+#aa2-publicacoes {
+  text-align: left;
 }
 
 .conteiner-textos-publicacoes {
@@ -27,12 +35,14 @@
   overflow: hidden;
   padding: 6vh 10vw;
   align-content: space-between;
+  justify-content: space-between;
 }
 
 .capa-publicacoes {
   position: relative;
   height: 100%;
-  width: 60%;
+  width: auto;
+  text-align: left;
 }
 
 .capa-imagem-fundo {
@@ -76,11 +86,33 @@
   background: transparent;
   border: none;
   height: 95vh;
-  width: 75vw;
+  width: 70vw;
   margin: auto;
   margin-top: 2vh;
   overflow: hidden;
   position: relative;
+}
+
+#voltar-previa {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+}
+
+#avancar-previa {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
 }
 
 .conteiner-icone {
@@ -126,6 +158,12 @@
   border: none;
   font-size: inherit;
   cursor: none;
+}
+
+#voltar-publicacoes {
+  position: absolute;
+  bottom: 5vh;
+  left: 3vw;
 }
 
 #num-paginas {

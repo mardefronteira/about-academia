@@ -163,13 +163,20 @@ var estado = {
 let primeiraPrevia = true;
 
 function configurarPdf(numAA) {
-  let arquivo = `textos/previa_aa${numAA}_${ptBr ? "pt" : "es"}.pdf`;
-  // console.log(arquivo);
+  const arquivo = `textos/previa_aa${numAA}_${ptBr ? "pt" : "es"}.pdf`;
 
   pdfjsLib.getDocument(arquivo).then((pdf) => {
     estado.pdf = pdf;
     mostrarPdf();
   });
+
+  let totalPaginas;
+  if (numAA === 2) {
+    totalPaginas = ptBr ? 7 : 8;
+  } else {
+    totalPaginas = 13;
+  }
+  document.querySelector("#num-total-paginas").innerHTML = `/${totalPaginas}`;
 
   document.querySelector("#voltar-publicacoes").innerHTML = idioma(
     "voltar",
@@ -179,14 +186,14 @@ function configurarPdf(numAA) {
   document.querySelector("#overlay-previa").classList.remove("hidden");
 
   if (primeiraPrevia) {
-    const botaoVoltar = document.getElementById("voltar-previa");
+    const botaoVoltar = document.querySelector("#voltar-previa");
     botaoVoltar.addEventListener("mouseover", () => {
       seta.configurar("seta-vrm-esquerda");
     });
     botaoVoltar.addEventListener("click", (e) => {
-      if (estado.pdf == null || estado.numPagina == 1) return;
+      if (estado.pdf === null || estado.numPagina == 1) return;
       estado.numPagina -= 1;
-      document.getElementById("num-pagina").value = estado.numPagina;
+      document.querySelector("#num-pagina").value = estado.numPagina;
       mostrarPdf();
     });
 
@@ -197,7 +204,7 @@ function configurarPdf(numAA) {
         seta.configurar("normal-vrm");
       });
 
-    const botaoAvancar = document.getElementById("avancar-previa");
+    const botaoAvancar = document.querySelector("#avancar-previa");
     botaoAvancar.addEventListener("mouseover", () => {
       seta.configurar("seta-vrm-direita");
     });
@@ -205,47 +212,54 @@ function configurarPdf(numAA) {
       if (estado.pdf == null || estado.numPagina > estado.pdf._pdfInfo.numPages)
         return;
       estado.numPagina += 1;
-      document.getElementById("num-pagina").value = estado.numPagina;
+      document.querySelector("#num-pagina").value = estado.numPagina;
       mostrarPdf();
     });
 
-    document.getElementById("num-pagina").addEventListener("keypress", (e) => {
+    document.querySelector("#num-pagina").addEventListener("keypress", (e) => {
+      console.log("entrou");
       if (estado.pdf == null) return;
-
+      console.log("não retornou");
       // Get key code
       var code = e.keyCode ? e.keyCode : e.which;
-
+      console.log("pegou keyCode " + code);
       // If key code matches that of the Enter key
       if (code == 13) {
         console.log(code);
-        var desiredPage = document.getElementById("num-pagina").valueAsNumber;
+        var desiredPage = document.querySelector("#num-pagina").valueAsNumber;
 
         if (desiredPage >= 1 && desiredPage <= estado.pdf._pdfInfo.numPages) {
           estado.numPagina = desiredPage;
-          document.getElementById("num-pagina").value = desiredPage;
+          document.querySelector("#num-pagina").value = desiredPage;
           mostrarPdf();
         }
       }
     });
 
-    document.getElementById("zoom-in").addEventListener("click", (e) => {
+    document.querySelector("#zoom-in").addEventListener("click", (e) => {
       if (estado.pdf == null) return;
       estado.zoom += 0.5;
       mostrarPdf();
     });
 
-    document.getElementById("zoom-out").addEventListener("click", (e) => {
+    document.querySelector("#zoom-out").addEventListener("click", (e) => {
       if (estado.pdf == null) return;
       estado.zoom -= 0.5;
       mostrarPdf();
     });
+
+    document
+      .querySelector("#previa-conteiner")
+      .addEventListener("mouseout", () => {
+        seta.configurar("normal-vrm");
+      });
     primeiraPrevia = false;
   }
 }
 
 function mostrarPdf() {
   estado.pdf.getPage(estado.numPagina).then((pagina) => {
-    const canvas = document.getElementById("visualizador");
+    const canvas = document.querySelector("#visualizador");
     var ctx = canvas.getContext("2d");
 
     var viewport = pagina.getViewport(estado.zoom);

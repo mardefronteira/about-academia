@@ -51,13 +51,13 @@ function mesas() {
         `Sexta-feira, dia 30 de abril das 14h às 18h<br/><br/>
         Néstor García Canclini (México)<br/>
         Eliana Sousa Silva<br/>
-        Lilian Schwartz<br/>
+        Lilia Schwartz<br/>
         Ailton Krenak / Jaider Esbel / Daiara Tukano<br/>
         Muntadas (moderação)`,
         `Viernes, 30 de abril de 14 a 18 horas<br/><br/>
         Néstor García Canclini (Mexico)<br/>
         Eliana Sousa Silva<br/>
-        Lilian Schwartz<br/>
+        Lilia Schwartz<br/>
         Ailton Krenak / Jaider Esbel / Daiara Tukano<br/>
         Muntadas (moderación)`
       ),

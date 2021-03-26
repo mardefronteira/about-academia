@@ -177,6 +177,7 @@ function windowResized() {
   telaX = window.innerWidth;
   telaY = window.innerHeight;
   escala = telaX / fracaoX;
+  setup();
 }
 
 function mostrarSalas() {
