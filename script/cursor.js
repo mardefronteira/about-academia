@@ -1,6 +1,6 @@
 class Seta {
   constructor() {
-    this.seta = document.querySelector("#seta");
+    this.seta = document.querySelector(`#seta-branca-direita`);
     this.etiqueta = document.querySelector("#etiqueta-seta");
     // this.slides = document.querySelector('#slides');
     this.x = 0;
@@ -13,12 +13,19 @@ class Seta {
   configurar(tipo) {
     const largura = window.innerWidth;
     const altura = window.innerHeight;
+    this.seta = document.querySelector(`#${tipo}`);
+
+    Array.from(document.getElementsByClassName("cursor")).map((cursor) => {
+      cursor.id === tipo
+        ? cursor.classList.remove("hidden")
+        : cursor.classList.add("hidden");
+    });
 
     switch (tipo) {
       case "seta-vrm-esquerda":
         this.x = 0;
         this.y = -15;
-        this.seta.src = "img/cursor/setaVermelhaEsquerda.png";
+        // this.seta.src = "img/cursor/setaVermelhaEsquerda.png";
         this.etiquetaX = 0;
         this.etiquetaY = -altura * 0.2;
         this.classeEtiqueta = "texto-esquerda";
@@ -28,7 +35,7 @@ class Seta {
         this.y = -15;
         this.etiquetaX = 0;
         this.etiquetaY = -altura * 0.1;
-        this.seta.src = "img/cursor/setaBrancaEsquerda.png";
+        // this.seta.src = "img/cursor/setaBrancaEsquerda.png";
         this.classeEtiqueta = "texto-esquerda";
         break;
       case "seta-vrm-direita":
@@ -36,7 +43,7 @@ class Seta {
         this.y = -15;
         this.etiquetaX = -240;
         this.etiquetaY = -altura * 0.2;
-        this.seta.src = "img/cursor/setaVermelhaDireita.png";
+        // this.seta.src = "img/cursor/setaVermelhaDireita.png";
         this.classeEtiqueta = "texto-direita";
         break;
       case "seta-branca-direita":
@@ -44,34 +51,34 @@ class Seta {
         this.y = -15;
         this.etiquetaX = -128;
         this.etiquetaY = -altura * 0.1;
-        this.seta.src = "img/cursor/setaBrancaDireita.png";
+        // this.seta.src = "img/cursor/setaBrancaDireita.png";
         this.classeEtiqueta = "texto-direita";
         break;
       case "seta-vrm-cima":
-        this.x = 15;
+        this.x = -15;
         this.y = 0;
         this.etiquetaX = -80;
         this.etiquetaY = altura * 0.2;
-        this.seta.src = "img/cursor/setaVermelhaCima.png";
+        // this.seta.src = "img/cursor/setaVermelhaCima.png";
         this.classeEtiqueta = "texto-centro";
         break;
       case "seta-vrm-baixo":
-        this.x = 15;
+        this.x = -15;
         this.y = -128;
         this.etiquetaX = -100;
         this.etiquetaY = -altura * 0.3;
-        this.seta.src = "img/cursor/setaVermelhaBaixo.png";
+        // this.seta.src = "img/cursor/setaVermelhaBaixo.png";
         this.classeEtiqueta = "texto-centro";
         break;
       case "normal-vrm":
         this.x = 0;
         this.y = 0;
-        this.seta.src = "img/cursor/normalVermelho.png";
+        // this.seta.src = "img/cursor/normalVermelho.png";
         break;
       case "normal-branco":
         this.x = 0;
         this.y = 0;
-        this.seta.src = "img/cursor/normalBranco.png";
+        // this.seta.src = "img/cursor/normalBranco.png";
         break;
       default:
         console.log("O cursor que você tentou configurar ainda não existe.");

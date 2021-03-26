@@ -8,9 +8,9 @@ let escala;
 let margem;
 
 let videos = {
-  entrevistas1: "entrevista_1.m4v",
-  texto1: "texto_1.m4v",
-  arquitetura1: "arquitetura_1.m4v",
+  entrevistas1: "entrevista_1.mp4",
+  texto1: "texto_1.mp4",
+  arquitetura1: "arquitetura_1.mp4",
   arquitetura2: "arquitetura_2.m4v",
   texto2: "texto_2.m4v",
   entrevistas2: "entrevista_2.m4v",
@@ -80,6 +80,7 @@ function preload() {
     videos[video].id(`video-${video}`);
     videos[video].preload = "auto";
     videos[video].muted = true;
+
     document
       .querySelector("#conteiner-video-tocador")
       .appendChild(document.querySelector(`#video-${video}`));
@@ -100,11 +101,14 @@ a função videoCarregou() é chamada a cada vez que um vídeo é carregado. qua
 function videoCarregou() {
   contadorVideos++;
   if (contadorVideos === numVideos) {
-    for (let video in videos) {
-      videoPlanes.push(new VideoPlane(videos[video]));
+    for (let i in videos) {
+      videoPlanes.push(new VideoPlane(videos[i]));
     }
     for (let i in videoPlanes) {
       videoPlanes[i].ajustarVolume(0, i);
+      const d = new Date();
+      let hora = d.getHours() + d.getMinutes() / 60;
+      videoPlanes[i].configurarInicio(hora);
     }
 
     videosCarregados = true;
@@ -156,13 +160,11 @@ function permitirAudio() {
   // document.querySelectorAll(".video-tocador").pause();
 
   permitiuAudio = true;
-  if (primeiraExibicao) {
-    for (let i in videoPlanes) {
-      const d = new Date();
-      let hora = d.getHours() + d.getMinutes() / 60;
-      videoPlanes[i].configurarInicio(hora);
-    }
-  }
+  // if (primeiraExibicao) {
+  //   for (let i in videoPlanes) {
+  //     videoPlanes[i].configurarInicio();
+  //   }
+  // }
 
   document.querySelector("#defaultCanvas0").classList.remove("hidden");
 }

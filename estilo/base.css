@@ -134,7 +134,7 @@ ul {
 }
 
 body {
-  cursor: none;
+  /* cursor: none; */
   position: absolute;
   margin: 0;
   padding: 0;
@@ -193,6 +193,14 @@ button:hover {
 .hidden {
   display: none;
   visibility: hidden;
+  pointer-events: none;
+}
+
+.cursor {
+  position: absolute;
+  z-index: 25;
+  font-size: 3vw;
+  line-height: 1;
   pointer-events: none;
 }
 

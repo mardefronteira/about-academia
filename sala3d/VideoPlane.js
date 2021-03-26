@@ -4,6 +4,7 @@ class VideoPlane {
     this.video = videoToTexturize.elt;
     this.pontoRef = window.innerWidth / 2;
     this.vermelho = false;
+    this.tempoInicial = 0;
   }
 
   mostrar() {

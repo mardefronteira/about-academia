@@ -17,4 +17,9 @@ function mostrarVideo(idVideo) {
     document.querySelector("#es-tocador").classList.add("cinquenta");
     document.querySelector("#br-tocador").classList.remove("cinquenta");
   }
+
+  document.querySelector("#voltar-exibicao").innerHTML = idioma(
+    "voltar",
+    "volver"
+  );
 }
