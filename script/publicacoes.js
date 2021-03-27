@@ -163,6 +163,8 @@ var estado = {
 let primeiraPrevia = true;
 
 function configurarPdf(numAA) {
+  cenaAtual = `previa-${numAA}`;
+
   const arquivo = `textos/previa_aa${numAA}_${ptBr ? "pt" : "es"}.pdf`;
 
   pdfjsLib.getDocument(arquivo).then((pdf) => {
@@ -201,7 +203,8 @@ function configurarPdf(numAA) {
       .querySelector("#voltar-publicacoes")
       .addEventListener("click", (e) => {
         document.querySelector("#overlay-previa").classList.add("hidden");
-        seta.configurar("normal-vrm");
+        // seta.configurar("normal-vrm");
+        publicacoes();
       });
 
     const botaoAvancar = document.querySelector("#avancar-previa");

@@ -218,6 +218,12 @@ function configurarCursor() {
       seta.esconderEtiqueta();
       permitirAudio();
       break;
+    case "previa-1":
+      configurarPdf(1);
+      break;
+    case "previa-2":
+      configurarPdf(2);
+      break;
     default:
       seta.configurar("normal-vrm");
       seta.esconderEtiqueta();
