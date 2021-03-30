@@ -1,13 +1,16 @@
 function configurarNav() {
   document.querySelector("#nav-exibicao").innerHTML = `
   <div id="nav-esquerda-exibicao"></div>
-  <div id="nav-cima-exibicao"></div>
+  <div id="nav-cima-exibicao" class="linha">
+    <div id="nav-cima-esquerda" class="meio-parent"></div>
+    <div id="nav-cima-direita" class="meio-parent"></div>
+  </div>
   <div id="nav-direita-exibicao"></div>
-  <div id="nav-baixo-exibicao"></div>
-  <div
-    id="nav-centro-exibicao"
-    class="linha centralizar"
-  >
+  <div id="nav-baixo-exibicao" class="linha">
+    <div id="nav-baixo-esquerda" class="meio-parent"></div>
+    <div id="nav-baixo-direita" class="meio-parent"></div>
+  </div>
+  <div id="nav-centro-exibicao" class="linha centralizar">
     <div id="nav-centro-0"></div>
     <div id="nav-centro-1"></div>
     <div id="nav-centro-2"></div>
@@ -21,7 +24,11 @@ function configurarNav() {
   const esquerda = document.querySelector("#nav-esquerda-exibicao");
   const direita = document.querySelector("#nav-direita-exibicao");
   const cima = document.querySelector("#nav-cima-exibicao");
+  const cimaEsq = document.querySelector("#nav-cima-esquerda");
+  const cimaDir = document.querySelector("#nav-cima-direita");
   const baixo = document.querySelector("#nav-baixo-exibicao");
+  const baixoEsq = document.querySelector("#nav-baixo-esquerda");
+  const baixoDir = document.querySelector("#nav-baixo-direita");
   const centro = document.querySelector("#nav-centro-exibicao");
   const navVid0 = document.querySelector("#nav-centro-0");
   const navVid1 = document.querySelector("#nav-centro-1");
@@ -34,6 +41,8 @@ function configurarNav() {
   Array.from(document.querySelectorAll(".sem-uso")).map((div) => {
     div.classList.remove("sem-uso");
   });
+
+  let relacoes;
 
   switch (tela) {
     case 0:
@@ -48,65 +57,71 @@ function configurarNav() {
       navVid6.classList.add("video5-aa0");
 
       // navs inativas
-      cima.classList.add("sem-uso");
-      baixo.classList.add("sem-uso");
+      // cima.classList.add("sem-uso");
+      // baixo.classList.add("sem-uso");
 
-      // nav esquerda indicando AAI
-      esquerda.addEventListener("mouseover", () => {
-        seta.configurar("seta-vrm-esquerda");
-        seta.configurarEtiqueta(
-          "About<br/>Academia I",
-          "About<br/>Academia I",
-          "vrm"
-        );
-      });
-      esquerda.addEventListener("mouseout", () => {
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-      esquerda.addEventListener("click", () => {
-        tela = 1;
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
+      // navs esquerdas indicando AAI
+      for (let div of [esquerda, baixoEsq, cimaEsq]) {
+        console.log(div);
+        div.addEventListener("mouseover", () => {
+          seta.configurar("seta-vrm-esquerda");
+          seta.configurarEtiqueta(
+            "About<br/>Academia I",
+            "About<br/>Academia I",
+            "vrm"
+          );
+        });
+        div.addEventListener("mouseout", () => {
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+        div.addEventListener("click", () => {
+          tela = 1;
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+      }
 
-      // nav direita indicando AAII
-      direita.addEventListener("mouseover", () => {
-        seta.configurar("seta-vrm-direita");
-        seta.configurarEtiqueta(
-          "About<br/>Academia II",
-          "About<br/>Academia II",
-          "vrm"
-        );
-      });
-      direita.addEventListener("mouseout", () => {
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-      direita.addEventListener("click", () => {
-        tela = 2;
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
+      // navs direitas indicando AAII
+      for (let div of [direita, baixoDir, cimaDir]) {
+        div.addEventListener("mouseover", () => {
+          seta.configurar("seta-vrm-direita");
+          seta.configurarEtiqueta(
+            "About<br/>Academia II",
+            "About<br/>Academia II",
+            "vrm"
+          );
+        });
+        div.addEventListener("mouseout", () => {
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+        div.addEventListener("click", () => {
+          tela = 2;
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+      }
+      relacoes = [
+        { div: navVid0, video: "entrevistas1" },
+        { div: navVid1, video: "texto1" },
+        { div: navVid2, video: "arquitetura1" },
+        { div: navVid4, video: "arquitetura2" },
+        { div: navVid5, video: "texto2" },
+        { div: navVid6, video: "entrevistas2" },
+      ];
 
-      navVid0.addEventListener("click", () => {
-        mostrarVideo("entrevistas1");
-      });
-      navVid1.addEventListener("click", () => {
-        mostrarVideo("texto1");
-      });
-      navVid2.addEventListener("click", () => {
-        mostrarVideo("arquitetura1");
-      });
-      navVid4.addEventListener("click", () => {
-        mostrarVideo("arquitetura2");
-      });
-      navVid5.addEventListener("click", () => {
-        mostrarVideo("texto2");
-      });
-      navVid6.addEventListener("click", () => {
-        mostrarVideo("entrevistas2");
-      });
+      for (let elmt of relacoes) {
+        elmt.div.addEventListener("click", () => {
+          mostrarVideo(elmt.video);
+        });
+        elmt.div.addEventListener("mouseover", () => {
+          videoPlanes[relacoes.indexOf(elmt)].vermelho = true;
+        });
+        elmt.div.addEventListener("mouseout", () => {
+          videoPlanes[relacoes.indexOf(elmt)].vermelho = false;
+        });
+      }
       break;
     case 1:
       centro.classList.add("altura100");
@@ -170,15 +185,23 @@ function configurarNav() {
         seta.esconderEtiqueta();
       });
 
-      navVid0.addEventListener("click", () => {
-        mostrarVideo("entrevistas1");
-      });
-      navVid1.addEventListener("click", () => {
-        mostrarVideo("texto1");
-      });
-      navVid2.addEventListener("click", () => {
-        mostrarVideo("arquitetura1");
-      });
+      relacoes = [
+        { div: navVid0, video: "entrevistas1" },
+        { div: navVid1, video: "texto1" },
+        { div: navVid2, video: "arquitetura1" },
+      ];
+
+      for (let elmt of relacoes) {
+        elmt.div.addEventListener("click", () => {
+          mostrarVideo(elmt.video);
+        });
+        elmt.div.addEventListener("mouseover", () => {
+          videoPlanes[relacoes.indexOf(elmt)].vermelho = true;
+        });
+        elmt.div.addEventListener("mouseout", () => {
+          videoPlanes[relacoes.indexOf(elmt)].vermelho = false;
+        });
+      }
       break;
     case 2:
       centro.classList.add("altura100");
@@ -243,15 +266,23 @@ function configurarNav() {
         seta.esconderEtiqueta();
       });
 
-      navVid1.addEventListener("click", () => {
-        mostrarVideo("arquitetura2");
-      });
-      navVid2.addEventListener("click", () => {
-        mostrarVideo("texto2");
-      });
-      navVid3.addEventListener("click", () => {
-        mostrarVideo("entrevistas2");
-      });
+      relacoes = [
+        { div: navVid1, video: "arquitetura2" },
+        { div: navVid2, video: "texto2" },
+        { div: navVid3, video: "entrevistas2" },
+      ];
+
+      for (let elmt of relacoes) {
+        elmt.div.addEventListener("click", () => {
+          mostrarVideo(elmt.video);
+        });
+        elmt.div.addEventListener("mouseover", () => {
+          videoPlanes[relacoes.indexOf(elmt) + 3].vermelho = true;
+        });
+        elmt.div.addEventListener("mouseout", () => {
+          videoPlanes[relacoes.indexOf(elmt) + 3].vermelho = false;
+        });
+      }
       break;
     default:
   }

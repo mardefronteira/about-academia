@@ -11,12 +11,14 @@ class VideoPlane {
     if (this.vermelho) {
       tint(255, 0, 0);
     } else {
+      tint(255);
       // noTint();
     }
 
     // stroke(255);
     texture(this.textura);
     plane(escala, escala);
+
     push();
     rotateX(180);
     translate(0, -escala, 0);

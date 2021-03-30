@@ -6,12 +6,12 @@ let escala;
 let margem;
 
 let videos = {
-  entrevistas1: "entrevista_1.mp4",
-  texto1: "texto_1.mp4",
-  arquitetura1: "arquitetura_1.mp4",
+  entrevistas1: "entrevistas_1.m4v",
+  texto1: "texto_1.m4v",
+  arquitetura1: "arquitetura_1.m4v",
   arquitetura2: "arquitetura_2.m4v",
   texto2: "texto_2.m4v",
-  entrevistas2: "entrevista_2.m4v",
+  entrevistas2: "entrevistas_2.m4v",
 };
 
 let videoPlanes = [];
@@ -25,32 +25,13 @@ let mensagemCarregando;
 let ultimoRX = 0;
 let posCamera = {
   cX: 0,
-  cZ: 1100,
+  cZ: 0,
   rX: 0,
   rZ: 0,
 };
 let ultimaTela = 0;
 let tela = 0;
-let posTela = [
-  {
-    cX: 0,
-    cZ: 1100,
-    rX: 0,
-    rZ: 0,
-  },
-  {
-    cX: -500,
-    cZ: 300,
-    rX: -1300,
-    rZ: -1000,
-  },
-  {
-    cX: 500,
-    cZ: 300,
-    rX: 1300,
-    rZ: -1000,
-  },
-];
+let posTela = [];
 // cX: 500,
 // cZ: 300,
 // rX: 1300,
@@ -89,6 +70,7 @@ a função videoCarregou() é chamada a cada vez que um vídeo é carregado. qua
 */
 function videoCarregou() {
   contadorVideos++;
+  console.log("+1");
   if (contadorVideos === numVideos) {
     for (let i in videos) {
       videoPlanes.push(new VideoPlane(videos[i]));
@@ -115,6 +97,12 @@ function setup() {
   angulo = 45;
 
   atualizarPos();
+  posCamera = {
+    cX: 0,
+    cZ: width * 1.13,
+    rX: 0,
+    rZ: 0,
+  };
 
   noStroke();
   background(0);

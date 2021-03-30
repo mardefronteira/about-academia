@@ -49,6 +49,13 @@
   top: 0;
 }
 
+.meio-parent {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 50%;
+}
+
 /* #nav-centro-exibicao > div {
   border: 1px solid yellow;
 } */
