@@ -10,6 +10,17 @@ function mostrarVideo(idVideo) {
   video.classList.remove("hidden");
   video.play();
 
+  const legenda = document.querySelector("#legenda-tocador");
+  const selIdioma = document.querySelector("#idiomas-tocador");
+  if (["entrevistas1", "entrevistas2"].includes(idVideo)) {
+    console.log("entrou");
+    legenda.classList.remove("hidden");
+    selIdioma.classList.remove("hidden");
+  } else {
+    legenda.classList.add("hidden");
+    selIdioma.classList.add("hidden");
+  }
+
   document.querySelector("#tocador").classList.remove("hidden");
   if (ptBr) {
     document.querySelector("#br-tocador").classList.add("cinquenta");

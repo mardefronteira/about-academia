@@ -2,8 +2,6 @@ let angulo;
 let rot = 0;
 let fracaoY = 4;
 let fracaoX = 6;
-let telaX;
-let telaY;
 let escala;
 let margem;
 
@@ -22,14 +20,8 @@ let contadorVideos = 0;
 
 let videosCarregados = false;
 let permitiuAudio = false;
-// let botaoPermitirAudio;
 let mensagemCarregando;
 
-// let bebasNeue;
-// let tamanhoFonte;
-// let titulosX, titulosY;
-
-// let scrollPosition = 0;
 let ultimoRX = 0;
 let posCamera = {
   cX: 0,
@@ -65,9 +57,6 @@ let posTela = [
 // rZ: -1000,
 
 function preload() {
-  // carregar fonte
-  // bebasNeue = loadFont("../fontes/BebasNeueBold.otf");
-
   // carregar e criar vídeos
   let videoPath = "sala3d/videos";
   for (let video in videos) {
@@ -111,30 +100,24 @@ function videoCarregou() {
       videoPlanes[i].configurarInicio(hora);
     }
 
+    configurarNav();
+
     videosCarregados = true;
     mensagemCarregando.remove();
   }
 }
 
 function setup() {
-  angulo = radians(45);
-  telaX = window.innerWidth;
-  telaY = window.innerHeight;
-  escala = telaX / fracaoX;
-  margem = telaX / 20;
-
   createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+
+  angleMode(DEGREES);
+
+  angulo = 45;
+
+  atualizarPos();
+
   noStroke();
   background(0);
-
-  // configuração de fonte
-  // tamanhoFonte = height / 15;
-  // textFont(bebasNeue);
-  // textSize(tamanhoFonte);
-  // titulosX = tamanhoFonte * 2;
-  // titulosY = -height / 2 + tamanhoFonte * 3;
-
-  configurarNav();
 }
 
 function draw() {
@@ -151,33 +134,47 @@ function pausarExibicao() {
 }
 
 function permitirAudio() {
-  // document.querySelector("#tocador").classList.add("hidden");
   Array.from(document.querySelectorAll(".video-tocador")).map((video) => {
     video.play();
     video.loop = true;
   });
   document.querySelector("#tocador").classList.add("hidden");
-  // document.querySelectorAll(".video-tocador").pause();
 
   permitiuAudio = true;
-  // if (primeiraExibicao) {
-  //   for (let i in videoPlanes) {
-  //     videoPlanes[i].configurarInicio();
-  //   }
-  // }
 
   document.querySelector("#defaultCanvas0").classList.remove("hidden");
 }
 
 function windowResized() {
-  resizeCanvas(
-    window.innerWidth * 2,
-    window.innerHeight - window.innerHeight * 0.05
-  );
-  telaX = window.innerWidth;
-  telaY = window.innerHeight;
-  escala = telaX / fracaoX;
-  setup();
+  resizeCanvas(window.innerWidth, window.innerHeight);
+  atualizarPos();
+  camera(posCamera.cX, 0, posCamera.cZ, posCamera.rX, 0, posCamera.rZ, 0, 1, 0);
+}
+
+function atualizarPos() {
+  escala = width / fracaoX;
+  margem = width / 2.5;
+
+  posTela = [
+    {
+      cX: 0,
+      cZ: width * 1.13,
+      rX: 0,
+      rZ: 0,
+    },
+    {
+      cX: -width * 0.33,
+      cZ: width * 0.65,
+      rX: -width * 0.59,
+      rZ: width * 0.2,
+    },
+    {
+      cX: width * 0.33,
+      cZ: width * 0.65,
+      rX: width * 0.59,
+      rZ: width * 0.2,
+    },
+  ];
 }
 
 function mostrarSalas() {
@@ -189,67 +186,82 @@ function mostrarSalas() {
   background(0);
   ambientLight(255);
 
-  // títulos
-  // fill(150);
-  // noStroke();
+  //plano de referência do centro
   // push();
-  // textAlign(RIGHT);
-  // text("sobre", -titulosX, titulosY);
-  // text("academia i", -titulosX, titulosY + tamanhoFonte);
-  // pop();
-  // push();
-  // textAlign(LEFT);
-  // text("sobre", titulosX, titulosY);
-  // text("academia ii", titulosX, titulosY + tamanhoFonte);
+  // rotateY(90);
+  // noFill();
+  // stroke(255);
+  // plane(1000, 1000);
   // pop();
 
   // vídeos do lado esquerdo (AA I)
   push();
   rotateY(angulo);
-  translate(-telaX / 2 + margem, 0, -telaX / 3);
 
-  videoPlanes[0].mostrar();
+  translate(-margem, 0, 0);
+  videoPlanes[2].mostrar();
 
-  translate(escala, 0);
+  translate(-escala, 0, 0);
   videoPlanes[1].mostrar();
 
-  translate(escala, 0);
-  videoPlanes[2].mostrar();
+  translate(-escala, 0, 0);
+  videoPlanes[0].mostrar();
+
   pop();
 
   // vídeos do lado direito (AA II)
   push();
   rotateY(-angulo);
 
-  translate(margem * 2, 0, -telaX / 3);
+  translate(margem, 0, 0);
   videoPlanes[3].mostrar();
 
-  translate(escala, 0);
+  translate(escala, 0, 0);
   videoPlanes[4].mostrar();
 
-  translate(escala, 0);
+  translate(escala, 0, 0);
   videoPlanes[5].mostrar();
+
   pop();
 
   if (posCamera.cX > posTela[tela].cX) {
-    posCamera.cX -= 20;
+    posCamera.cX - posTela[tela].cX < 33 / 2
+      ? (posCamera.cX = posTela[tela].cX)
+      : (posCamera.cX -= 33 / 2);
   } else if (posCamera.cX < posTela[tela].cX) {
-    posCamera.cX += 20;
+    posTela[tela].cX - posCamera.cX < 33 / 2
+      ? (posCamera.cX = posTela[tela].cX)
+      : (posCamera.cX += 33 / 2);
   }
+
   if (posCamera.cZ > posTela[tela].cZ) {
-    posCamera.cZ -= 32;
+    posCamera.cZ - posTela[tela].cZ < 65 / 2
+      ? (posCamera.cZ = posTela[tela].cZ)
+      : (posCamera.cZ -= 65 / 2);
   } else if (posCamera.cZ < posTela[tela].cZ) {
-    posCamera.cZ += 32;
+    posTela[tela].cZ - posCamera.cZ < 65 / 2
+      ? (posCamera.cZ = posTela[tela].cZ)
+      : (posCamera.cZ += 65 / 2);
   }
+
   if (posCamera.rX > posTela[tela].rX) {
-    posCamera.rX -= 52;
+    posCamera.rX - posTela[tela].rX < 59 / 1.5
+      ? (posCamera.rX = posTela[tela].rX)
+      : (posCamera.rX -= 59 / 1.5);
   } else if (posCamera.rX < posTela[tela].rX) {
-    posCamera.rX += 52;
+    posTela[tela].rX - posCamera.rX < 59 / 1.5
+      ? (posCamera.rX = posTela[tela].rX)
+      : (posCamera.rX += 59 / 1.5);
   }
+
   if (posCamera.rZ > posTela[tela].rZ) {
-    posCamera.rZ -= 40;
+    posCamera.rZ - posTela[tela].rZ < 20 / 2
+      ? (posCamera.rZ = posTela[tela].rZ)
+      : (posCamera.rZ -= 20 / 2);
   } else if (posCamera.rZ < posTela[tela].rZ) {
-    posCamera.rZ += 40;
+    posTela[tela].rZ - posCamera.rZ < 20 / 2
+      ? (posCamera.rZ = posTela[tela].rZ)
+      : (posCamera.rZ += 20 / 2);
   }
 
   if (ultimoRX !== posCamera.rX) {

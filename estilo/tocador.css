@@ -15,13 +15,13 @@
 
 @media screen and (max-aspect-ratio: 1920/1080) {
   .conteiner-video-fundo > video {
-    height: 100%;
+    height: 100vh;
   }
 }
 
 @media screen and (min-aspect-ratio: 1920/1080) {
   .conteiner-video-fundo > video {
-    width: 100%;
+    width: 100vw;
   }
 }
 
