@@ -87,7 +87,7 @@ function intro() {
       );
       break;
     default:
-      console.log(`ih, na real a cenaIntro é ${cenaIntro}`);
+      console.log(`A cena que você tentou acessar (${cenaIntro}) não existe.`);
   }
 }
 

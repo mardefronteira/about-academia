@@ -228,11 +228,12 @@ function configurarPdf(numAA) {
       console.log("pegou keyCode " + code);
       // If key code matches that of the Enter key
       if (code == 13) {
-        console.log(code);
+        console.log(`entrou na condicional`);
         var desiredPage = document.querySelector("#num-pagina").valueAsNumber;
-
+        console.log(`desiredPage: ${desiredPage}`);
         if (desiredPage >= 1 && desiredPage <= estado.pdf._pdfInfo.numPages) {
           estado.numPagina = desiredPage;
+          console.log(`estado.numPagina: ${estado.numPagina}`);
           document.querySelector("#num-pagina").value = desiredPage;
           mostrarPdf();
         }

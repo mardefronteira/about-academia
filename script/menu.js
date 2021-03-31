@@ -184,7 +184,6 @@ function animarMenu(
 
   let ultimaLetra = alvo.innerHTML.length - 1;
   if (ultimaLetra !== texto.length) {
-    // console.log(texto);
     alvo.innerHTML = texto.slice(0, ultimaLetra + 1) + "_";
     timers.push(
       setTimeout(() => {

@@ -48,21 +48,13 @@ function preload() {
     videos[video].addClass("video-tocador");
     videos[video].addClass("video-fundo");
     videos[video].id(`video-${video}`);
-    videos[video].preload = "auto";
     videos[video].muted = true;
+    videos[video].autoplay = true;
 
     document
       .querySelector("#conteiner-video-tocador")
       .appendChild(document.querySelector(`#video-${video}`));
   }
-
-  // criar div para o botão de entrada e o parágrafo
-  let overlayConfig = document.querySelector("#overlay-exibicao");
-
-  // criar mensagem de "carregando..."
-  mensagemCarregando = document.createElement("p");
-  mensagemCarregando.innerHTML = "carregando...";
-  overlayConfig.appendChild(mensagemCarregando);
 }
 
 /*
@@ -70,7 +62,7 @@ a função videoCarregou() é chamada a cada vez que um vídeo é carregado. qua
 */
 function videoCarregou() {
   contadorVideos++;
-  console.log("+1");
+  console.log(contadorVideos + " videos carregados");
   if (contadorVideos === numVideos) {
     for (let i in videos) {
       videoPlanes.push(new VideoPlane(videos[i]));
@@ -90,19 +82,28 @@ function videoCarregou() {
 }
 
 function setup() {
+  console.log("começou setup");
+  // criar div para o botão de entrada e o parágrafo
+  let overlayConfig = document.querySelector("#overlay-exibicao");
+
+  // criar mensagem de "carregando..."
+  mensagemCarregando = document.createElement("p");
+  mensagemCarregando.innerHTML = "carregando...";
+  overlayConfig.appendChild(mensagemCarregando);
+
   createCanvas(window.innerWidth, window.innerHeight, WEBGL);
 
   angleMode(DEGREES);
 
   angulo = 45;
 
-  atualizarPos();
   posCamera = {
     cX: 0,
     cZ: width * 1.13,
     rX: 0,
     rZ: 0,
   };
+  atualizarPos();
 
   noStroke();
   background(0);

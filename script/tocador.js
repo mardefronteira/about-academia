@@ -13,7 +13,6 @@ function mostrarVideo(idVideo) {
   const legenda = document.querySelector("#legenda-tocador");
   const selIdioma = document.querySelector("#idiomas-tocador");
   if (["entrevistas1", "entrevistas2"].includes(idVideo)) {
-    console.log("entrou");
     legenda.classList.remove("hidden");
     selIdioma.classList.remove("hidden");
   } else {
