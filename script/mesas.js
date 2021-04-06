@@ -52,14 +52,12 @@ function mesas() {
         Néstor García Canclini (México)<br/>
         Eliana Sousa Silva<br/>
         Lilia Schwartz<br/>
-        Ailton Krenak / Jaider Esbel / Daiara Tukano<br/>
-        Muntadas (moderação)`,
+        Ailton Krenak / Jaider Esbel / Daiara Tukano<br/>`,
         `Viernes, 30 de abril de 14 a 18 horas<br/><br/>
         Néstor García Canclini (Mexico)<br/>
         Eliana Sousa Silva<br/>
         Lilia Schwartz<br/>
-        Ailton Krenak / Jaider Esbel / Daiara Tukano<br/>
-        Muntadas (moderación)`
+        Ailton Krenak / Jaider Esbel / Daiara Tukano<br/>`
       ),
     },
     {
@@ -87,7 +85,7 @@ function mesas() {
     {
       id: "mesa3",
       num: "III",
-      titulo: idioma("Intercontinental Academia", ""),
+      titulo: idioma("Intercontinental Academia", "Intercontinental Academia"),
       desc: idioma(
         `Terça-feira, dia 11 de maio das 14h às 18h<br/><br/>
         Nikki Moore (EUA)<br/>

@@ -50,6 +50,11 @@ function preload() {
     videos[video].id(`video-${video}`);
     videos[video].muted = true;
     videos[video].autoplay = true;
+    videos[video].loop = true;
+    console.log(videos[video]);
+    videos[video].elt.addEventListener("timeupdate", (e) => {
+      atualizarTempo(e.target.id);
+    });
 
     document
       .querySelector("#conteiner-video-tocador")
@@ -178,9 +183,9 @@ function mostrarSalas() {
   //plano de referência do centro
   // push();
   // rotateY(90);
-  // noFill();
-  // stroke(255);
-  // plane(1000, 1000);
+  // fill
+  // stroke(150);
+  // plane(1, 1000);
   // pop();
 
   // vídeos do lado esquerdo (AA I)

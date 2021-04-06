@@ -8,20 +8,17 @@ let cenaIntro = 0;
 let timerIntro;
 
 function iniciar() {
-  // document.querySelector('#slides').classList.remove('hidden');
-  // timerIntro = setTimeout(animarTitulo, 5000);
-  // window.addEventListener('click', mostrarIntro);
   seta = new Seta();
   seta.iniciar();
   seta.configurar("seta-branca-direita");
   animarTitulo();
+
+  document.querySelector("#intro").addEventListener("click", mudarDeCena);
 }
 
 function mostrarIntro() {
-  // clearTimeout(timerIntro);
   mostrarLogos();
   animarTitulo();
-  window.removeEventListener("click", mostrarIntro);
 }
 
 function intro() {
@@ -37,15 +34,10 @@ function intro() {
   let pagIntro = document.querySelector("#intro");
   pagIntro.innerHTML = "";
 
-  // cenaIntro === 0
-  //   ? document.querySelector("#logos-intro").classList.remove("hidden")
-  //   : document.querySelector("#logos-intro").classList.add("hidden");
-
   // animar textos de acordo com a cena atual
   switch (cenaIntro) {
     case 0:
       pagIntro.classList.remove("hidden");
-      // document.querySelector('#slides').classList.remove('hidden');
       mostrarLogos();
       animarTitulo();
       break;
@@ -58,8 +50,7 @@ function intro() {
         idioma(
           "Durante o último período de ensino de Antoni Muntadas no programa em Arte, Cultura e Tecnologia no Instituto de Tecnologia de Massachusetts (ACT MIT), a Universidade de Harvard lhe pediu para apresentar um novo projeto no Carpenter Center for the Visual Arts. Foi a ocasião para Muntadas avaliar os diferentes estados da educação e sua institucionalização. O projeto, iniciado em 2011, desde então esteve em importantes instituições culturais em cidades como Boston, Vancouver, Amsterdam, Sevilha, entre outras. Pela primeira vez ocorre sua exibição na América Latina, com todos os seus materiais traduzidos para o português, numa versão bilíngue, através de uma parceria entre o Fórum Permanente e o Instituto de Estudos Avançados da USP, com o apoio do Governo do Estado de São Paulo através do PROAC.",
           "Durante el último periodo de docencia de Antoni en el programa de Arte, Cultura y Tecnología (ACT) del Instituto Tecnológico de Massachusetts, la Universidad de Harvard le pidió que presentara un nuevo proyecto en el Carpenter Center for the Visual Arts. Fue la ocasión para que Muntadas evaluara los diferentes estados de la educación y su institucionalización. El proyecto, que comenzó en 2011, ha estado desde entonces en importantes instituciones culturales de ciudades como Boston, Vancouver, Ámsterdam o Sevilla, entre otras. Por primera vez se expone en América Latina, con todos sus materiales traducidos al portugués, en versión bilingüe, a través de una asociación entre el Fórum Permanente y el Instituto de Estudos Avançados da USP."
-        ),
-        mudarDeCena
+        )
       );
       break;
 
@@ -70,8 +61,7 @@ function intro() {
         idioma(
           "About Academia propõe uma reflexão através da arte sobre o sistema acadêmico e universitário estadunidense, mais especificamente sobre a dualidade público/privado, assim como as complexas relações que existem entre a produção do conhecimento e os interesses econômicos que influenciam a educação em suas diferentes formas de pedagogia. A instalação provocativa de Muntadas considera o possível conflito entre uma faculdade (e seus valores) e uma administração (e seu poder). Para fazer uma circulação proveitosa do projeto em universidades que não sejam norte-americanas Muntadas propõe mesas de debates que contextualizem os conflitos e dificuldades próprios do sistema universitário que o hospeda. ",
           "About Academia propone una reflexión a través del arte sobre el sistema académico y universitario estadounidense, más concretamente sobre la dualidad público/privado, así como las complejas relaciones que existen entre la producción de conocimiento y los intereses económicos que influyen en la educación en sus diferentes formas de pedagogía. La provocadora instalación de Muntadas considera el posible conflicto entre una facultad (y sus valores) y una administración (y su poder). Para hacer una circulación productiva del proyecto en las universidades no estadounidenses, Muntadas propuso que se celebraran debates para contextualizar los conflictos y dificultades que atraviesa el sistema universitario que lo acoge. "
-        ),
-        mudarDeCena
+        )
       );
       break;
 
@@ -82,8 +72,7 @@ function intro() {
         idioma(
           "Seu objetivo é facilitar um diálogo interdisciplinar sobre o ensino superior, - suas muitas limitações bem como novas possibilidades - originalmente através de duas instalações de vídeos que se complementam com duas publicações. Devido ao COVID-19, sua existência no Hemisfério Sul ocorre por esta ala virtual, uma interpretação online dos materiais que o constituem. Enquanto About Academia I (2011) aborda estas questões a partir da perspectiva de professores e acadêmicos afiliados ao corpo docente, About Academia II (2017) aprofunda seus temas exclusivamente do ponto de vista dos estudantes.",
           "Su objetivo es facilitar un diálogo interdisciplinario sobre la educación superior - sus muchas limitaciones así como sus nuevas posibilidades - originalmente a través de dos instalaciones de vídeo que se complementan con dos publicaciones. Debido a COVID-19, su existencia en el Hemisferio sur se produce a través de esta ala virtual, una interpretación online de los materiales que la constituyen. Mientras que About Academy I (2011) aborda estos temas desde la perspectiva del profesorado y los afiliados académicos, About Academy II (2017) profundiza en sus temas exclusivamente desde el punto de vista de los estudiantes."
-        ),
-        mudarDeCena
+        )
       );
       break;
     default:
@@ -105,7 +94,7 @@ function configurarSetas() {
     }
   });
 }
-
+let primeiraIntro = true;
 // muda de cena baseado na posição do mouse e em que cena está
 function mudarDeCena() {
   // verificar se o mouse está antes ou depois do meio da tela
@@ -169,7 +158,6 @@ function animarTitulo() {
     paragrafoBase.innerHTML = spanTitulo;
     document.querySelector("#intro").appendChild(paragrafoBase);
 
-    paragrafoBase.addEventListener("click", mudarDeCena);
     paragrafoBase.addEventListener("mousemove", () => {
       ptBr = mouse.y < window.innerHeight / 2 ? true : false;
 
@@ -232,8 +220,5 @@ function animarTitulo() {
         animarTitulo();
       }, 15)
     );
-  } else {
-    // caso o texto esteja completo, adicionar undeline piscante
-    // piscar('subtituloEs');
   }
 }

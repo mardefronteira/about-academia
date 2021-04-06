@@ -12,18 +12,6 @@ function exibicao() {
       document.querySelector("#botao-menu").classList.remove("hidden");
     });
 
-    document.querySelector("#br-tocador").addEventListener("click", () => {
-      document.querySelector("#br-tocador").classList.add("cinquenta");
-      document.querySelector("#es-tocador").classList.remove("cinquenta");
-      ptBr = true;
-    });
-
-    document.querySelector("#es-tocador").addEventListener("click", () => {
-      document.querySelector("#es-tocador").classList.add("cinquenta");
-      document.querySelector("#br-tocador").classList.remove("cinquenta");
-      ptBr = false;
-    });
-
     primeiraExibicao = false;
   }
 }

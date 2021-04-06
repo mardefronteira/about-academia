@@ -22,7 +22,7 @@ class VideoPlane {
     push();
     rotateX(180);
     translate(0, -escala, 0);
-    tint(30);
+    tint(65);
     plane(escala, escala);
     pop();
   }
