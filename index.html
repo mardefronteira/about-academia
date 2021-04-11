@@ -35,7 +35,6 @@
   </head>
 
   <body onload="iniciar()">
-    <script src="script/password_f1l3.js"></script>
     <script src="script/animacao.js"></script>
     <script src="script/base.js"></script>
     <script src="script/cursor.js"></script>
@@ -53,7 +52,7 @@
       </div>
     </div>
 
-    <div class="cursores">
+    <div id="cursores" class="cursores">
       <img
         id="seta-vrm-cima"
         class="cursor hidden"
@@ -231,17 +230,14 @@
     </div>
 
     <div id="tocador" class="pagina hidden">
-      <div id="conteiner-video-tocador" class="conteiner-video-fundo linha">
-        <!-- <video
-          id="video-tocador"
-          class="video-fundo"
-          src="videos/AAI_entrevista_01.mp4"
-        ></video> -->
-      </div>
+      <div
+        id="conteiner-video-tocador"
+        class="conteiner-video-fundo linha"
+      ></div>
       <nav id="controles-tocador" class="linha">
         <button
           id="voltar-exibicao"
-          class="voltar clicavel invisivel-tocador centralizar"
+          class="voltar clicavel controles-tocador centralizar"
           type="button"
           name="voltar"
         >
@@ -251,7 +247,7 @@
           academia seems like a more flattering term for all kinds of education
           that you can possibly have
         </p>
-        <p id="tempo-tocador" class="invisivel-tocador centralizar"></p>
+        <p id="tempo-tocador" class="controles-tocador centralizar"></p>
       </nav>
     </div>
 

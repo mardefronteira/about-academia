@@ -77,33 +77,58 @@ class Seta {
   }
 
   posicionar() {
-    this.seta.style.top = mouse.x + this.x;
-    this.seta.style.left = mouse.y + this.y;
+    this.seta.style.top = mouseX + this.x;
+    this.seta.style.left = mouseY + this.y;
   }
 
   iniciar() {
     window.addEventListener("mousemove", (e) => {
-      e = e || window.event;
+      // positionar etiqueta
+      this.etiqueta.style.top = `${mouseY + this.etiquetaY}px`;
+      this.etiqueta.style.left = `${mouseX + this.etiquetaX}px`;
 
-      mouse.x = e.pageX;
-      mouse.y = e.pageY;
+      // posicionar cursor
+      this.seta.style.top = `${mouseY + this.y}px`;
+      this.seta.style.left = `${mouseX + this.x}px`;
 
-      if (mouse.x === undefined) {
-        mouse.x =
-          e.clientX +
-          document.body.scrollLeft +
-          document.documentElement.scrollLeft;
-        mouse.y =
-          e.clientY +
-          document.body.scrollTop +
-          document.documentElement.scrollTop;
+      // se estiver na sala 3D ou no tocador, mostrar o cursor quando o mouse mexe
+      if (cenaAtual === "exibicao") {
+        // apagar timers
+        for (let timer of timers) clearTimeout(timer);
+
+        if (document.querySelector("#cursores").classList.contains("hidden")) {
+          document.querySelector("#cursores").classList.remove("hidden");
+        } else {
+          timers.push(
+            setTimeout(() => {
+              document.querySelector("#cursores").classList.add("hidden");
+            }, 5000)
+          );
+        }
       }
 
-      this.etiqueta.style.top = `${mouse.y + this.etiquetaY}px`;
-      this.etiqueta.style.left = `${mouse.x + this.etiquetaX}px`;
+      let controles = Array.from(
+        document.querySelectorAll(".controles-tocador")
+      );
+      // se o vídeo estiver aberto, abrir os controles
+      if (
+        !document.querySelector("#tocador").classList.contains("hidden") &&
+        controles[0].classList.contains("invisivel-tocador")
+      ) {
+        controles.map((controle) => {
+          controle.classList.remove("invisivel-tocador");
+        });
+      }
 
-      this.seta.style.left = `${mouse.x + this.x}px`;
-      this.seta.style.top = `${mouse.y + this.y}px`;
+      timers.push(
+        setTimeout(() => {
+          if (cenaAtual === "exibicao") {
+            controles.map((controle) => {
+              controle.classList.add("invisivel-tocador");
+            });
+          }
+        }, 5000)
+      );
     });
   }
 
@@ -122,5 +147,13 @@ class Seta {
   esconderEtiqueta() {
     const etiqueta = document.querySelector("#etiqueta-seta");
     etiqueta.classList.add("hidden");
+  }
+
+  esconderSeta() {
+    Array.from(document.getElementsByClassName("cursor")).map((cursor) => {
+      cursor.id === tipo
+        ? cursor.classList.remove("hidden")
+        : cursor.classList.add("hidden");
+    });
   }
 }

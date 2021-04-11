@@ -23,7 +23,12 @@ function animar(
 
   let ultimaLetra = alvo.innerHTML.length - 1;
   if (ultimaLetra !== texto.length) {
-    alvo.innerHTML = texto.slice(0, ultimaLetra + 1) + "_";
+    const proximaLetra = texto[ultimaLetra + 1];
+    if (proximaLetra === "<") {
+      alvo.innerHTML = texto.slice(0, ultimaLetra + 5) + "_";
+    } else {
+      alvo.innerHTML = texto.slice(0, ultimaLetra + 1) + "_";
+    }
     timers.push(
       setTimeout(() => {
         animar(idAlvo, idMae, texto, classes);
@@ -31,7 +36,10 @@ function animar(
     );
   } else {
     alvo.innerHTML = alvo.innerHTML.replace("_", "");
-    if (alvo.classList.contains("intro-texto")) {
+    if (
+      alvo.classList.contains("intro-texto") ||
+      alvo.classList.contains("intro-aviso")
+    ) {
       piscar(alvo.id);
     }
   }

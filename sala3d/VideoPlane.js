@@ -12,7 +12,6 @@ class VideoPlane {
       tint(255, 0, 0);
     } else {
       tint(255);
-      // noTint();
     }
 
     // stroke(255);
@@ -22,7 +21,13 @@ class VideoPlane {
     push();
     rotateX(180);
     translate(0, -escala, 0);
-    tint(65);
+
+    if (this.vermelho) {
+      tint(255, 0, 0, 65);
+    } else {
+      tint(65);
+    }
+
     plane(escala, escala);
     pop();
   }

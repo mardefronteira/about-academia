@@ -67,7 +67,7 @@ function menu() {
       `subtitulo-menu`,
       `subtitulo-menu-p`,
       "um projeto por Muntadas",
-      "un proyecto por Muntadas",
+      "un proyecto de Muntadas",
       () => {
         mostrar("intro");
       },

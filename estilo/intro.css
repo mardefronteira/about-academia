@@ -2,17 +2,29 @@
   color: var(--vermelho);
 }
 
-.intro-texto {
+.intro-texto,
+.intro-aviso {
   font-size: 1.9vw;
   line-height: 1.1;
-  position: relative;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-top: 3vh;
+  font-family: "HelveticaNeue", "Helvetica_AA", sans-serif;
+  margin-top: 18vh;
+  text-align: left;
   width: 70%;
-  z-index: 20;
-  top: 18vh;
 }
 
 .intro-texto:hover {
   opacity: 0.5;
+}
+
+.intro-num {
+  font-size: 1.9vw;
+  line-height: 1.1;
+  width: 70%;
+  margin-top: 2vh;
+  text-align: right;
 }
 
 .intro-titulo {

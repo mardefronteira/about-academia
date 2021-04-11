@@ -51,7 +51,6 @@ function preload() {
     videos[video].muted = true;
     videos[video].autoplay = true;
     videos[video].loop = true;
-    console.log(videos[video]);
     videos[video].elt.addEventListener("timeupdate", (e) => {
       atualizarTempo(e.target.id);
     });
@@ -113,10 +112,26 @@ function setup() {
   noStroke();
   background(0);
 }
-
+let ultimoMouse = [0, 0];
 function draw() {
   if (videosCarregados && permitiuAudio) {
     mostrarSalas();
+  }
+
+  if (ultimoMouse === [mouseX, mouseY]) {
+    console.log("comparou no draw e deu true " + ultimoMouse);
+    // let mouseAtual = ultimoMouse;
+    setTimeout(() => {
+      mouseParado(ultimoMouse);
+    }, 500);
+  } else {
+    ultimoMouse = [mouseX, mouseY];
+  }
+}
+
+function mouseParado(ultimoMouse) {
+  if (ultimoMouse === [mouseX, mouseY]) {
+    seta.esconderSeta();
   }
 }
 

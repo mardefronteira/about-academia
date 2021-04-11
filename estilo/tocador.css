@@ -9,6 +9,7 @@
 .conteiner-video-fundo > video {
   display: block;
   position: absolute;
+  min-height: 100vh;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -41,9 +42,9 @@
   opacity: 0;
 }
 
-#controles-tocador:hover > .invisivel-tocador {
+/* #controles-tocador:hover > .invisivel-tocador {
   opacity: 1;
-}
+} */
 
 #legenda-tocador {
   font-family: "ALS_Gorizont", sans-serif;
