@@ -95,9 +95,7 @@ function menu() {
       "pt.",
       () => {
         ptBr = true;
-        menu.classList.add("hidden");
-        menu.innerHTML = "";
-        entendiNada();
+        trocarIdioma();
       },
       ["item-menu", "idioma"]
     );
@@ -109,9 +107,7 @@ function menu() {
       "es.",
       () => {
         ptBr = false;
-        menu.classList.add("hidden");
-        menu.innerHTML = "";
-        entendiNada();
+        trocarIdioma();
       },
       ["item-menu", "idioma"]
     );
@@ -123,8 +119,16 @@ function menu() {
   }
 }
 
-function entendiNada() {
-  menu();
+function trocarIdioma() {
+  const menuElmt = document.querySelector("#menu");
+  if (!menuElmt.classList.contains("hidden")) {
+    menuElmt.classList.add("hidden");
+    menuElmt.innerHTML = "";
+    menu();
+  }
+
+  videoPlanes[1].configurarSrc(videos[`texto1${ptBr ? "pt" : "es"}`]);
+  videoPlanes[4].configurarSrc(videos[`texto2${ptBr ? "pt" : "es"}`]);
 }
 
 function mostrar(pagina) {

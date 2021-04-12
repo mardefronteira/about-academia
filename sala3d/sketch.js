@@ -7,15 +7,17 @@ let margem;
 
 let videos = {
   entrevistas1: "entrevistas_1.m4v",
-  texto1: "texto_1.m4v",
-  arquitetura1: "arquitetura_1.m4v",
+  texto1pt: "texto_1_pt.m4v",
+  arquitetura1: "arquitetura_1.mp4",
   arquitetura2: "arquitetura_2.m4v",
-  texto2: "texto_2.m4v",
+  texto2pt: "texto_2_pt.m4v",
   entrevistas2: "entrevistas_2.m4v",
+  texto1es: "texto_1_es.m4v",
+  texto2es: "texto_2_es.m4v",
 };
 
 let videoPlanes = [];
-let numVideos = 6;
+let numVideos = 8;
 let contadorVideos = 0;
 
 let videosCarregados = false;
@@ -69,7 +71,9 @@ function videoCarregou() {
   console.log(contadorVideos + " videos carregados");
   if (contadorVideos === numVideos) {
     for (let i in videos) {
-      videoPlanes.push(new VideoPlane(videos[i]));
+      if (videos[i].elt.id.slice(-2) !== "es") {
+        videoPlanes.push(new VideoPlane(videos[i]));
+      }
     }
     for (let i in videoPlanes) {
       videoPlanes[i].ajustarVolume(0, i);

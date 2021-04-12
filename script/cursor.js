@@ -7,6 +7,7 @@ class Seta {
     this.etiquetaX = 0;
     this.etiquetaY = 0;
     this.classeEtiqueta = "texto-centro";
+    this.timers = [];
   }
 
   configurar(tipo) {
@@ -94,12 +95,12 @@ class Seta {
       // se estiver na sala 3D ou no tocador, mostrar o cursor quando o mouse mexe
       if (cenaAtual === "exibicao") {
         // apagar timers
-        for (let timer of timers) clearTimeout(timer);
+        for (let timer of this.timers) clearTimeout(timer);
 
         if (document.querySelector("#cursores").classList.contains("hidden")) {
           document.querySelector("#cursores").classList.remove("hidden");
         } else {
-          timers.push(
+          this.timers.push(
             setTimeout(() => {
               document.querySelector("#cursores").classList.add("hidden");
             }, 5000)
@@ -120,7 +121,7 @@ class Seta {
         });
       }
 
-      timers.push(
+      this.timers.push(
         setTimeout(() => {
           if (cenaAtual === "exibicao") {
             controles.map((controle) => {

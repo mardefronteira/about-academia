@@ -32,6 +32,11 @@ class VideoPlane {
     pop();
   }
 
+  configurarSrc(videoToTexturize) {
+    this.textura = videoToTexturize;
+    this.video = videoToTexturize.elt;
+  }
+
   configurarInicio(hora) {
     const duracao = this.video.duration;
     this.video.currentTime = map(hora, 0, 23.98, 0, duracao);
