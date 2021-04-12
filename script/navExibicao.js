@@ -47,7 +47,8 @@ function configurarNav() {
   switch (tela) {
     case 0:
       centro.classList.add("altura50");
-      centro.classList.remove("altura100");
+      cima.classList.add("altura-expandida");
+      baixo.classList.add("altura-expandida");
       navVid0.classList.add("video0-aa0");
       navVid1.classList.add("video1-aa0");
       navVid2.classList.add("video2-aa0");
@@ -123,8 +124,11 @@ function configurarNav() {
       }
       break;
     case 1:
+      // configurar altura nav central
       centro.classList.add("altura100");
-      centro.classList.remove("altura50");
+      // configurar altura navs superior e inferior
+      cima.classList.add("altura-normal");
+      baixo.classList.add("altura-normal");
       // navs centro
       navVid0.classList.add("video0-aa1");
       navVid1.classList.add("video1-aa1");
@@ -203,9 +207,11 @@ function configurarNav() {
       }
       break;
     case 2:
+      // configurar altura nav central
       centro.classList.add("altura100");
-      centro.classList.remove("altura50");
-
+      // configurar altura navs superior e inferior
+      cima.classList.add("altura-normal");
+      baixo.classList.add("altura-normal");
       // navs centro
       navVid0.classList.add("espaco-aa2");
       navVid1.classList.add("video0-aa2");

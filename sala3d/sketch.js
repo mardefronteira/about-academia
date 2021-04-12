@@ -121,22 +121,6 @@ function draw() {
   if (videosCarregados && permitiuAudio) {
     mostrarSalas();
   }
-
-  if (ultimoMouse === [mouseX, mouseY]) {
-    console.log("comparou no draw e deu true " + ultimoMouse);
-    // let mouseAtual = ultimoMouse;
-    setTimeout(() => {
-      mouseParado(ultimoMouse);
-    }, 500);
-  } else {
-    ultimoMouse = [mouseX, mouseY];
-  }
-}
-
-function mouseParado(ultimoMouse) {
-  if (ultimoMouse === [mouseX, mouseY]) {
-    seta.esconderSeta();
-  }
 }
 
 function pausarExibicao() {

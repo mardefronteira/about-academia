@@ -2,9 +2,11 @@ class VideoPlane {
   constructor(videoToTexturize) {
     this.textura = videoToTexturize;
     this.video = videoToTexturize.elt;
+    this.obra = videoToTexturize.elt.id.includes("1") ? 1 : 2;
     this.pontoRef = window.innerWidth / 2;
     this.vermelho = false;
     this.tempoInicial = 0;
+    this.altura = this.obra === 1 ? 0.7326 : 0.6187;
   }
 
   mostrar() {
@@ -16,11 +18,11 @@ class VideoPlane {
 
     // stroke(255);
     texture(this.textura);
-    plane(escala, escala);
+    plane(escala, escala * this.altura);
 
     push();
     rotateX(180);
-    translate(0, -escala, 0);
+    translate(0, -escala * this.altura, 0);
 
     if (this.vermelho) {
       tint(255, 0, 0, 65);
@@ -28,7 +30,7 @@ class VideoPlane {
       tint(65);
     }
 
-    plane(escala, escala);
+    plane(escala, escala * this.altura);
     pop();
   }
 
