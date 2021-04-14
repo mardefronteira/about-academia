@@ -150,11 +150,11 @@ class Seta {
     etiqueta.classList.add("hidden");
   }
 
-  esconderSeta() {
-    Array.from(document.getElementsByClassName("cursor")).map((cursor) => {
-      cursor.id === tipo
-        ? cursor.classList.remove("hidden")
-        : cursor.classList.add("hidden");
-    });
-  }
+  // esconderSeta() {
+  //   Array.from(document.getElementsByClassName("cursor")).map((cursor) => {
+  //     cursor.id === tipo
+  //       ? cursor.classList.remove("hidden")
+  //       : cursor.classList.add("hidden");
+  //   });
+  // }
 }

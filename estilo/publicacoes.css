@@ -1,7 +1,10 @@
 .texto-publicacoes {
-  font-size: 4vw;
-  /* text-align: right; */
+  font-size: 3.6vw;
   opacity: 1;
+}
+
+.titulo-publicacoes {
+  margin-bottom: 1em;
 }
 
 #aa1-publicacoes {
@@ -19,7 +22,7 @@
 }
 
 #fundo-publicacoes {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;
@@ -29,11 +32,32 @@
   overflow: auto;
 }
 
+.tela-cheia {
+  display: block;
+  position: absolute;
+  min-height: 100vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-aspect-ratio: 1920/1080) {
+  .tela-cheia {
+    height: 100vh;
+  }
+}
+
+@media screen and (min-aspect-ratio: 1920/1080) {
+  .tela-cheia {
+    width: 100vw;
+  }
+}
+
 .conteiner-publicacoes {
   position: relative;
   height: 85vh;
   overflow: hidden;
-  padding: 6vh 10vw;
+  margin: 10vh 5vw 5vh 10vw;
   align-content: space-between;
   justify-content: space-between;
 }
@@ -43,6 +67,14 @@
   height: 100%;
   width: auto;
   text-align: left;
+}
+
+.conteiner-capa-publicacoes {
+  position: relative;
+  height: 100%;
+  width: 60%;
+  display: flex;
+  justify-content: center;
 }
 
 .capa-imagem-fundo {
@@ -62,10 +94,6 @@
   z-index: 17;
 }
 
-/* .capa-imagem-hover:hover {
-  opacity: 0;
-} */
-
 .invisivel {
   opacity: 0;
 }
@@ -80,6 +108,18 @@
   top: 0;
   z-index: 18;
   font-size: 3.5vw;
+}
+
+#conteiner-previa {
+  background: transparent;
+  border: none;
+  height: 90vh;
+  width: 80vw;
+  margin: auto;
+  margin-top: 5vh;
+  margin-right: 3vw;
+  overflow: hidden;
+  position: relative;
 }
 
 #previa-conteiner {

@@ -275,14 +275,14 @@ img#seta {
   opacity: 0.5;
 }
 
-.tela-cheia {
+/* .tela-cheia {
   position: fixed;
   bottom: 0;
   height: auto;
   width: 100%;
   align-self: center;
   text-align: center;
-}
+} */
 
 .texto-esquerda {
   text-align: left;

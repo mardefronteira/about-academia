@@ -31,7 +31,7 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.0/addons/p5.sound.min.js"></script> -->
 
     <!--importar PDF.js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script> -->
   </head>
 
   <body onload="iniciar()">
@@ -101,6 +101,7 @@
       <img src="img/publi/fundo.png" class="tela-cheia" />
       <div id="fundo-publicacoes">
         <div id="aa1-publicacoes" class="conteiner-publicacoes linha">
+          <div class="conteiner-capa-publicacoes">
           <section id="aa1-capa" class="capa-publicacoes">
             <img
               id="aa1-capa-imagem"
@@ -115,6 +116,7 @@
               alt="Capa do livro About Academia II"
             />
           </section>
+        </div>
           <div class="coluna conteiner-textos-publicacoes">
             <section id="aa1-titulos"></section>
             <nav id="aa1-nav"></nav>
@@ -126,27 +128,33 @@
             <section id="aa2-titulos"></section>
             <nav id="aa2-nav"></nav>
           </div>
-          <section id="aa2-capa" class="capa-publicacoes">
-            <img
+          <div class="conteiner-capa-publicacoes">
+            <section id="aa2-capa" class="capa-publicacoes">
+              <img
               id="aa2-capa-imagem"
               class="capa-imagem capa-imagem-hover"
               src="img/publi/capa_aa2_pt.png"
               alt="Capa do livro About Academia I"
-            />
-            <img
+              />
+              <img
               id="aa2-capa-imagem-vrm"
               class="capa-imagem capa-imagem-fundo"
               src="img/publi/hover_aa2_pt.png"
               alt="Capa do livro About Academia II"
-            />
-          </section>
+              />
+            </section>
+          </div>
         </div>
       </div>
       <div id="overlay-previa" class="centralizar">
-        <section id="previa-conteiner">
+        <section id="conteiner-previa">
+          <iframe id="iframe-previa" src="textos/previa_aa1_es.pdf" title="Prévia da transcrição em PDF" referrerpolicy="origin" 
+          width="100%" height="100%"></iframe>
+        </section>
+        <!-- <section id="previa-conteiner">
           <canvas id="visualizador"></canvas>
-          <div id="avancar-previa" class="div-previa"></div>
           <div id="voltar-previa" class="div-previa"></div>
+          <div id="avancar-previa" class="div-previa"></div>
         </section>
 
         <section id="previa-controle">
@@ -187,7 +195,7 @@
                 tabindex="0"
               />
             </div>
-          </div>
+          </div> -->
           <button
             id="voltar-publicacoes"
             class="voltar clicavel"

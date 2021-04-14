@@ -133,6 +133,7 @@ function trocarIdioma() {
   }
 
   cenaAtual === "exibicao" ? configurarNav() : "";
+  cenaAtual.includes("previa") ? configurarPdf(cenaAtual.slice(-1)) : "";
 }
 
 function mostrar(pagina) {
