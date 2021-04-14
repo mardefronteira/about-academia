@@ -52,3 +52,33 @@ function formatarTempo(segundos) {
 
   return `${tempo.h}:${tempo.m}:${tempo.s}`;
 }
+
+let frameAnterior = {
+  saida: 0,
+};
+
+function processarLegendas() {
+  legenda1Es = JSON.parse(legenda1Es);
+  legenda2Es = JSON.parse(legenda2Es);
+  legenda1Pt = JSON.parse(legenda1Pt);
+  legenda2Pt = JSON.parse(legenda2Pt);
+}
+
+function atualizarLegenda(video) {
+  const legenda = eval(
+    `legenda${video.id.includes("1") ? "1" : "2"}${ptBr ? "Pt" : "Es"}`
+  );
+  const tempoAtual = video.currentTime;
+  let esteFrame = legenda.find(
+    (frame) =>
+      parseFloat(frame.entrada) < tempoAtual &&
+      parseFloat(frame.saida) > tempoAtual
+  );
+  // console.log(esteFrame);
+  esteFrame === undefined
+    ? (esteFrame = { saida: tempoAtual, entrada: tempoAtual, texto: "" })
+    : "";
+
+  document.querySelector("#legenda-tocador").innerHTML = esteFrame.texto;
+  frameAnterior = esteFrame;
+}

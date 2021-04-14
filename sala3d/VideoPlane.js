@@ -6,7 +6,8 @@ class VideoPlane {
     this.pontoRef = window.innerWidth / 2;
     this.vermelho = false;
     this.tempoInicial = 0;
-    this.altura = (this.obra === 1 ? 0.666666 : 0.5625) * 1.2;
+    this.altura = 1;
+    // this.altura = (this.obra === 1 ? 0.666666 : 0.5625) * 1.3;
   }
 
   mostrar() {

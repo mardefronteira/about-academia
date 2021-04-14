@@ -53,9 +53,16 @@ function preload() {
     videos[video].muted = true;
     videos[video].autoplay = true;
     videos[video].loop = true;
-    videos[video].elt.addEventListener("timeupdate", (e) => {
-      atualizarTempo(e.target.id);
-    });
+    if (video.includes("entrevista")) {
+      videos[video].elt.addEventListener("timeupdate", (e) => {
+        atualizarTempo(e.target.id);
+        // atualizarLegenda(e.target.id);
+      });
+    } else {
+      videos[video].elt.addEventListener("timeupdate", (e) => {
+        atualizarTempo(e.target.id);
+      });
+    }
 
     document
       .querySelector("#conteiner-video-tocador")
@@ -86,6 +93,8 @@ function videoCarregou() {
 
     videosCarregados = true;
     mensagemCarregando.remove();
+
+    processarLegendas();
   }
 }
 
@@ -120,6 +129,15 @@ let ultimoMouse = [0, 0];
 function draw() {
   if (videosCarregados && permitiuAudio) {
     mostrarSalas();
+  }
+  for (let video in videos) {
+    if (
+      video.includes("entrevista") &&
+      !videos[video].elt.classList.contains("hidden") &&
+      !document.querySelector("#tocador").classList.contains("hidden")
+    ) {
+      atualizarLegenda(videos[video].elt);
+    }
   }
 }
 

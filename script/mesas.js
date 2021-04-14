@@ -124,29 +124,31 @@ function mesas() {
 let mesaSelecionada = 0;
 
 function atualizarInfo(infoMesa) {
-  // garantir que as animações não se sobreponham
-  for (let timer of timers) clearTimeout(timer);
+  if (mesaSelecionada !== infoMesa.id.slice(-1)) {
+    // garantir que as animações não se sobreponham
+    for (let timer of timers) clearTimeout(timer);
 
-  mesaSelecionada = infoMesa.id.slice(-1);
+    mesaSelecionada = infoMesa.id.slice(-1);
 
-  // deixar número vermelho até que outra mesa seja selecionada
-  for (let i of [1, 2, 3]) {
-    const mesa = document.querySelector(`#mesa${i}`);
-    infoMesa.id === `mesa${i}`
-      ? mesa.classList.add("vermelho")
-      : mesa.classList.remove("vermelho");
-  }
+    // deixar número vermelho até que outra mesa seja selecionada
+    for (let i of [1, 2, 3]) {
+      const mesa = document.querySelector(`#mesa${i}`);
+      infoMesa.id === `mesa${i}`
+        ? mesa.classList.add("vermelho")
+        : mesa.classList.remove("vermelho");
+    }
 
-  const tituloMesas = document.querySelector("#titulo-mesa");
-  const descMesas = document.querySelector("#desc-mesa");
+    const tituloMesas = document.querySelector("#titulo-mesa");
+    const descMesas = document.querySelector("#desc-mesa");
 
-  if (tituloMesas.innerHTML !== infoMesa.titulo) {
-    tituloMesas.innerHTML = "";
-    animar("titulo-mesa", "", infoMesa.titulo, false, []);
-    // descMesas.innerHTML = infoMesa.desc;
-    descMesas.innerHTML = "";
-    animar("desc-mesa", "", infoMesa.desc, false, []);
-    document.querySelector("#entrar-mesa").classList.remove("hidden");
+    if (tituloMesas.innerHTML !== infoMesa.titulo) {
+      tituloMesas.innerHTML = "";
+      animar("titulo-mesa", "", infoMesa.titulo, false, []);
+      // descMesas.innerHTML = infoMesa.desc;
+      descMesas.innerHTML = "";
+      animar("desc-mesa", "", infoMesa.desc, false, []);
+      document.querySelector("#entrar-mesa").classList.remove("hidden");
+    }
   }
 }
 
