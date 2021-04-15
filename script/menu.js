@@ -20,7 +20,7 @@ function menu() {
     // caso tenha iniciado, pausar exibição
     permitiuAudio ? pausarExibicao() : "";
 
-    // remover todos os event listeners do botão do textosMenuEs
+    // remover todos os event listeners do botão do menu
     let botaoMenu = document.querySelector("#botao-menu");
     let novoBotao = botaoMenu.cloneNode(true);
     botaoMenu.parentNode.replaceChild(novoBotao, botaoMenu);
@@ -33,24 +33,43 @@ function menu() {
     menu.innerHTML = `
     <div id="conteiner-menu">
       <nav id="nav-menu">
-        <ul>
-          <li id="titulo-menu" class=""></li>
-          <li id="subtitulo-menu" class=""></li>
-          <li id="exibicao-menu" class="item-menu"></li>
-          <li id="apresentacao-menu" class="item-menu"></li>
-          <li id="publicacoes-menu" class="item-menu"></li>
-          <li id="mesas-menu" class="item-menu"></li>
-          <li id="info-menu" class="item-menu"></li>
-        </ul>
+      <p id="titulo-menu" class=""><span class="underline-menu">_ </span></p>
+      <p id="subtitulo-menu" class=""><span class="underline-menu">_ </span></p>
+      <ul id="paginas-menu">
+        <li id="exibicao-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+        <li id="apresentacao-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+        <li id="publicacoes-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+        <li id="mesas-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+        <li id="info-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+      </ul>
       </nav>
       <ul id="idiomas-menu">
-      <li id="br-menu" class="${ptBr ? "cinquenta" : ""}"></li>
-      <li id="es-menu" class="${ptBr ? "" : "cinquenta"}"></li>
+      <li id="br-menu" class="idioma-menu ${
+        ptBr ? "cinquenta" : ""
+      }"><span class="underline-menu">_ </span></li>
+      <li id="es-menu" class="idioma-menu ${
+        ptBr ? "" : "cinquenta"
+      }"><span class="underline-menu">_ </span></li>
       </ul>
     </div>`;
 
     // mostrar menu
     menu.classList.remove("hidden");
+
+    // configurar animação underline
+    let itensMenu = [
+      document.querySelector("#paginas-menu"),
+      document.querySelector("#idiomas-menu"),
+    ];
+
+    for (let item of itensMenu) {
+      item.addEventListener("mouseover", () => {
+        document.querySelector("#botao-menu").classList.add("hidden");
+      });
+      item.addEventListener("mouseout", () => {
+        document.querySelector("#botao-menu").classList.remove("hidden");
+      });
+    }
 
     // escrever títulos do menu
     animarMenu(
@@ -97,7 +116,7 @@ function menu() {
         ptBr = true;
         trocarIdioma();
       },
-      ["item-menu", "idioma"]
+      ["idioma"]
     );
 
     animarMenu(
@@ -109,7 +128,7 @@ function menu() {
         ptBr = false;
         trocarIdioma();
       },
-      ["item-menu", "idioma"]
+      ["idioma"]
     );
   } else {
     menu.classList.add("hidden");
@@ -177,14 +196,16 @@ function animarMenu(
 
   let alvo;
   if (!document.querySelector(`#${idAlvo}`)) {
-    alvo = document.createElement("P");
+    alvo = document.createElement("SPAN");
     alvo.id = idAlvo;
     for (let classe of classes) {
       alvo.classList.add(classe);
     }
 
     // adicionar ação ao clicar
-    callback ? alvo.addEventListener("click", callback) : "";
+    callback
+      ? document.querySelector(`#${idMae}`).addEventListener("click", callback)
+      : "";
 
     document.querySelector(`#${idMae}`).appendChild(alvo);
   } else {

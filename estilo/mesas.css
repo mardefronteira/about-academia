@@ -2,22 +2,25 @@
   overflow: hidden;
 }
 
-#titulo-mesas {
-  padding: 4vh 0 0 8vw;
-}
-
 .titulo-mesas {
   font-size: 6vw;
-}
-
-.link-mesa {
-  margin-right: 5vw;
 }
 
 .texto-mesas {
   font-size: 2.3vw;
   font-family: "HelveticaNeue", "Helvetica_AA", sans-serif;
   line-height: 1.1;
+}
+
+#nav-mesas {
+  font-size: 3vw;
+  margin-top: 7vh;
+  width: 35vw;
+  display: flex;
+  -ms-flex: 1;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #nav-mesas > li:hover {
@@ -30,11 +33,11 @@
   line-height: 1.5;
 }
 
-#info-mesa {
+#info-mesas {
   line-height: 1;
   position: relative;
   width: 80vw;
-  padding: 0 8vw;
+  padding: 4vh 8.5vw;
 }
 
 #entrar-mesa {

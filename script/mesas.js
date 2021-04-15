@@ -5,21 +5,18 @@ function mesas() {
   // Reconfigurar elementos HTML e mostrar página
   let divMesas = document.querySelector("#mesas");
   divMesas.innerHTML = `
+  <div id="info-mesas">
   <h1 id="titulo-mesas" class="titulo-mesas vermelho"></h1>
-  <div id="info-mesa">
   <nav>
     <ul id="nav-mesas" class="linha">
       <li id="mesa1" class="link-mesa">
-        <!-- <span id="mesa1-underline" class="underline-mesas">_</span> -->
-        <span id="mesa1-num" class="texto-mesas"></span>
+        <span id="mesa1-num"></span>
       </li>
       <li id="mesa2" class="link-mesa">
-        <!-- <span id="mesa2-underline" class="underline-mesas">_</span> -->
-        <span id="mesa2-num" class="texto-mesas"></span>
+        <span id="mesa2-num"></span>
       </li>
       <li id="mesa3" class="link-mesa">
-        <!-- <span id="mesa3-underline" class="underline-mesas">_</span> -->
-        <span id="mesa3-num" class="texto-mesas"></span>
+        <span id="mesa3-num"></span>
       </li>
     </ul>
   </nav>

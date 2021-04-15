@@ -159,9 +159,11 @@ let primeiraPrevia = true;
 
 function configurarPdf(obra) {
   cenaAtual = `previa-${obra}`;
+
   const previa = document.querySelector("#iframe-previa");
+  const conteinerPrevia = document.querySelector("#conteiner-previa");
   previa.src = `textos/previa_aa${obra}_${ptBr ? "pt" : "es"}.pdf`;
-  previa.parentNode.replaceChild(previa.cloneNode(), previa);
+  conteinerPrevia.replaceChild(previa.cloneNode(), previa);
 
   document.querySelector("#voltar-publicacoes").innerHTML = idioma(
     "voltar",
@@ -176,11 +178,10 @@ function configurarPdf(obra) {
         publicacoes();
       });
 
-    const pdf = document.querySelector("#iframe-previa");
-    pdf.addEventListener("mouseover", (e) => {
+    conteinerPrevia.addEventListener("mouseover", (e) => {
       document.querySelector("#cursores").classList.add("hidden");
     });
-    pdf.addEventListener("mouseout", () => {
+    conteinerPrevia.addEventListener("mouseout", () => {
       document.querySelector("#cursores").classList.remove("hidden");
     });
     primeiraPrevia = false;
