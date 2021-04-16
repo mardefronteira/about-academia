@@ -1,4 +1,5 @@
-.conteiner-video-fundo {
+.conteiner-video-fundo,
+.conteiner-img-fundo {
   position: absolute;
   top: 0;
   left: 0;
@@ -6,7 +7,8 @@
   height: 100vh;
 }
 
-.conteiner-video-fundo > video {
+.conteiner-video-fundo > video,
+.conteiner-img-fundo > img {
   display: block;
   position: absolute;
   min-height: 100vh;
@@ -16,13 +18,15 @@
 }
 
 @media screen and (max-aspect-ratio: 1920/1080) {
-  .conteiner-video-fundo > video {
+  .conteiner-video-fundo > video,
+  .conteiner-img-fundo > img {
     height: 100vh;
   }
 }
 
 @media screen and (min-aspect-ratio: 1920/1080) {
-  .conteiner-video-fundo > video {
+  .conteiner-video-fundo > video,
+  .conteiner-img-fundo > img {
     width: 100vw;
   }
 }

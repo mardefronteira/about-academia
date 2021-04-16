@@ -102,8 +102,12 @@ function intro() {
       animar("introNum", "intro", "3/4", false, ["intro-num"]);
       break;
     case 4:
+      pagIntro.innerHTML = `<div class="conteiner-img-fundo"><img src="img/intro/expo_sketch.jpg"></div>`;
+      break;
+    case 5:
+      pagIntro.innerHTML = `<div class="conteiner-img-fundo"><img src="img/intro/expo_sketch.jpg" class="vinte"></div>`;
       animar(
-        "introP1",
+        "introP",
         "intro",
         idioma(
           `AVISO<br><br>
@@ -121,6 +125,19 @@ function intro() {
         ["intro-aviso"]
       );
       animar("introNum", "intro", "4/4", false, ["intro-num"]);
+      break;
+    case 6:
+      pagIntro.innerHTML = `<div class="conteiner-img-fundo"><img src="img/intro/expo_foto.jpg"></div>`;
+      animar(
+        "introLegenda",
+        "intro",
+        idioma(
+          "Imagem de instalação da exposição Activating Artifacts: About Academia, 2017. Baltimore Center for Art, Design and Visual Culture, Universidade de Maryland. Foto: Dan Meyers<br><br>Imagem anterior: Diagrama preparatório About Academia I-II",
+          "Imagen de la instalación en la exposición Activating Artifacts: About Academia, 2017. Baltimore Center for Art, Design and Visual Culture, University of Maryland. Fotografía: Dan Meyers<br><br>Imagen previa: Diagrama preparatorio About Academia I-II"
+        ),
+        false,
+        ["intro-texto", "intro-legenda"]
+      );
       break;
     default:
       console.log(`A cena que você tentou acessar (${cenaIntro}) não existe.`);
@@ -155,7 +172,7 @@ function mudarDeCena() {
   }
 
   // mostrar a próxima cena ou, se não houver, a intro do menu
-  cenaIntro !== 5 ? intro() : introMenu();
+  cenaIntro !== 7 ? intro() : introMenu();
 }
 
 function introMenu() {
