@@ -191,8 +191,8 @@ function animarTitulo() {
   <h2 id='subtituloBr' class='subtitulo'></h2>
   <h2 id='subtituloEs' class='subtitulo'></h2>
   <div id="idiomas">
-    <p id='iBr'><span id='idiomaBr'></span></p>
-    <p id='iEs'><span id='idiomaEs' class=''></span></p>
+    <p id='iBr' class="idioma-intro"><span id='idiomaBr'></span></p>
+    <p id='iEs' class="idioma-intro"><span id='idiomaEs' class=''></span></p>
   </div>
   `;
 

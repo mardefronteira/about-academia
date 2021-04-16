@@ -1,30 +1,27 @@
+let infoMesas;
+let mesaSelecionada = 0;
+
 function mesas() {
+  cenaAtual = "mesas";
+
   // Configurar mouse
   seta.configurar("normal-vrm");
 
   // Reconfigurar elementos HTML e mostrar página
-  let divMesas = document.querySelector("#mesas");
-  divMesas.innerHTML = `
-  <div id="info-mesas">
-  <h1 id="titulo-mesas" class="titulo-mesas vermelho"></h1>
-  <nav>
-    <ul id="nav-mesas" class="linha">
-      <li id="mesa1" class="link-mesa">
-        <span id="mesa1-num"></span>
-      </li>
-      <li id="mesa2" class="link-mesa">
-        <span id="mesa2-num"></span>
-      </li>
-      <li id="mesa3" class="link-mesa">
-        <span id="mesa3-num"></span>
-      </li>
-    </ul>
-  </nav>
-    <p id="titulo-mesa" class="texto-mesas"></p>
-    <p id="desc-mesa" class="texto-mesas"></p>
-  </div>
-  <p id="entrar-mesa" class="texto-mesas clicavel hidden">entrar</p>
-  `;
+  const divMesas = document.querySelector("#mesas");
+  const tituloMesas = document.querySelector("#titulo-mesas");
+  const tituloMesa = document.querySelector("#titulo-mesa");
+  const dataMesa = document.querySelector("#data-mesa");
+  const descMesa = document.querySelector("#desc-mesa");
+  const botaoMesa = document.querySelector("#entrar-mesa");
+
+  // zerar mesaSelecionada
+  mesaSelecionada = 0;
+
+  for (let elmt of [tituloMesas, tituloMesa, dataMesa, descMesa, botaoMesa]) {
+    elmt.innerHTML = "";
+  }
+
   divMesas.classList.remove("hidden");
 
   animar(
@@ -36,7 +33,7 @@ function mesas() {
   );
 
   // detalhes das mesas
-  let mesas = [
+  infoMesas = [
     {
       id: "mesa1",
       num: "I",
@@ -44,106 +41,223 @@ function mesas() {
         "Que universidade queremos?",
         "¿Qué universidad queremos?"
       ),
-      desc: idioma(
-        `Sexta-feira, dia 30 de abril das 14h às 18h<br><br>
-        Antoni Muntadas (artista. ES/US) (introdução)<br>
-        Néstor García Canclini (antropólogo cultural, pesquisador, catedrático IEA. AR/MX)<br>
-        Eliana Sousa Silva (ativista, educadora, fundadora da ONG Redes da Maré, catedrática IEA. BR)<br>
-        Lilia Schwartz (historiadora e antropóloga. BR)<br>
-        Ailton Krenak (líder indígena, ambientalista, filósofo e escritor. BR)`,
-        `Viernes, 30 de abril de 14:00 a 18:00 horas<br><br>
-        Antoni Muntadas (artista. ES/US) (introducción)<br>
-        Néstor García Canclini (antropólogo cultural, investigador, catedrático IEA. AR/MX)<br>
-        Eliana Sousa Silva (activista, educadora, fundadora de la ONG Redes da Maré, catedrática IEA. BR)<br>
-        Lilia Schwartz (historiadora y antropóloga. BR)<br>
-        Ailton Krenak (líder indígena, ecologista, filósofo y escritor. BR)`
+      data: idioma(
+        "Sexta-feira, dia 30 de abril das 14h às 18h",
+        "Viernes, 30 de abril de 14:00 a 18:00 horas"
       ),
+
+      desc: idioma(
+        `<a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Antoni Muntadas</span>
+          <span class="desc-pessoa-mesa">Artista. ES/US (introdução)</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Néstor García Canclini</span>
+          <span class="desc-pessoa-mesa">Antropólogo cultural, pesquisador, catedrático IEA. AR/MX </span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Eliana Sousa Silva</span>
+          <span class="desc-pessoa-mesa">Ativista, educadora, fundadora da ONG Redes da Maré, catedrática IEA. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Ailton Krenak</span>
+          <span class="desc-pessoa-mesa">Líder indígena, ambientalista, filósofo e escritor. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Lilia Schwartz</span>
+          <span class="desc-pessoa-mesa">Historiadora e antropóloga. BR</span>
+        </a>
+`,
+        `<a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Antoni Muntadas</span>
+          <span class="desc-pessoa-mesa">Artista. ES/US (introducción)</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Néstor García Canclini</span>
+          <span class="desc-pessoa-mesa">Antropólogo cultural, pesquisador, catedrático IEA. AR/MX </span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Eliana Sousa Silva</span>
+          <span class="desc-pessoa-mesa">Activista, educadora, fundadora de la ONG Redes da Maré, catedrática IEA. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Ailton Krenak</span>
+          <span class="desc-pessoa-mesa">Líder indígena, ecologista, filósofo y escritor. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Lilia Schwartz</span>
+          <span class="desc-pessoa-mesa">Historiadora y antropóloga. BR</span>
+        </a>`
+      ),
+      botao: "entrar",
     },
     {
       id: "mesa2",
       num: "II",
       titulo: idioma("Universidade e contexto", "Universidad y contexto"),
-      desc: idioma(
-        `Segunda-feira, dia 10 de maio das 9h às 13h<br><br>
-        Naomar de Almeida Filho (ex-reitor UFBA, médico epidemiologista, catedrático IEA. BR)<br>
-        Helena Nader (vice-presidente da ABC-BR, biomédica, catedrática IEA. BR)<br>
-        Paulo Herkenhoff (crítico, historiador, curador, catedrático IEA. BR)<br>
-        Macaé Evaristo (educadora, ex-Secretária de Educação de MG, vereadora. BR)<br>
-        Ramon Castillo Inostroza (diretor da Escola de Arte da Universidad Diego Portales.  CL)<br>
-        Renato Janine Ribeiro (ex-Ministro da Educação, filósofo. BR) (moderação)`,
-        `Lunes, 10 de mayo de 9:00 a 13:00 horas<br><br>
-        Naomar de Almeida Filho (ex decano UFBA, médico epidemiólogo, catedrático IEA. BR)<br>
-        Helena Nader (vicepresidenta de ABC-BR, biomédica, catedrática IEA. BR)<br>
-        Paulo Herkenhoff (crítico, historiador, comisario, catedrático IEA. BR)<br>
-        Macaé Evaristo (educadora, ex Secretaria de Educación del Estado de Minas Gerais-BR, concejal. BR)<br>
-        Ramón Castillo Inostroza (director de la Escuela de Arte, Universidad Diego Portales. CL)<br>
-        Renato Janine Ribeiro (ex Ministro de Educación, filósofo. BR) (moderación)`
+      data: idioma(
+        "Segunda-feira, dia 10 de maio das 9h às 13h",
+        "Lunes, 10 de mayo de 9:00 a 13:00 horas"
       ),
+      desc: idioma(
+        `<a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Naomar de Almeida Filho</span>
+          <span class="desc-pessoa-mesa">Ex-reitor UFBA, médico epidemiologista, catedrático IEA. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Helena Nader</span>
+          <span class="desc-pessoa-mesa">Vice-presidente da ABC-BR, biomédica, catedrática IEA. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Paulo Herkenhoff</span>
+          <span class="desc-pessoa-mesa">Crítico, historiador, curador, catedrático IEA. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Macaé Evaristo</span>
+          <span class="desc-pessoa-mesa">Educadora, ex-Secretária de Educação de MG, vereadora. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Ramon Castillo Inostroza</span>
+          <span class="desc-pessoa-mesa">Diretor da Escola de Arte da Universidad Diego Portales. CL</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Renato Janine Ribeiro</span>
+          <span class="desc-pessoa-mesa">Ex-Ministro da Educação, filósofo. BR (moderação)</span>
+        </a>`,
+        `<a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Naomar de Almeida Filho</span>
+          <span class="desc-pessoa-mesa">Ex decano UFBA, médico epidemiólogo, catedrático IEA. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Helena Nader</span>
+          <span class="desc-pessoa-mesa">Vicepresidenta de ABC-BR, biomédica, catedrática IEA. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Paulo Herkenhoff</span>
+          <span class="desc-pessoa-mesa">Crítico, historiador, comisario, catedrático IEA. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Macaé Evaristo</span>
+          <span class="desc-pessoa-mesa">Educadora, ex Secretaria de Educación del Estado de Minas Gerais-BR, concejal. BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Ramon Castillo Inostroza</span>
+          <span class="desc-pessoa-mesa">Director de la Escuela de Arte, Universidad Diego Portales. CL</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Renato Janine Ribeiro</span>
+          <span class="desc-pessoa-mesa">Ex Ministro de Educación, filósofo. BR (moderação)</span>
+        </a>`
+      ),
+      botao: "em breve",
     },
     {
       id: "mesa3",
       num: "III",
       titulo: "Intercontinental Academia",
-      desc: idioma(
-        `Segunda-feira, dia 10 de maio das 14h às 18h<br><br>
-        Nikki Moore (historiadora da arte, Wake Forest University, US)<br>
-        Érica Peçanha (antropóloga, critica literaria, BR)<br>
-        David Gange (historiador, University of Birmingham, UK)<br>
-        Mariko Murata (teórica da mídia e de museus, Kansai University, JP)<br>
-        Julia Buenaventura (historiadora de arte, Universidad de los Andes. CO)<br>
-        Martin Grossmann (culturador e coordenador Fórum Permanente. BR) (moderação)`,
-        `Lunes, 10 de mayo, de 14:00 a 18:00 horas<br><br>
-        Nikki Moore (historiadora del arte, Universidad de Wake Forest, US)<br>
-        Érica Peçanha (antropóloga, crítica literaria, BR)<br>
-        David Gange (historiador, Universidad de Birmingham, UK)<br>
-        Mariko Murata (teórica de los medios de comunicación y los museos, Universidad de Kansai, JP)<br>
-        Julia Buenaventura (historiadora del arte, Universidad de los Andes, CO)<br>
-        Martin Grossmann (culturador y coordinador Fórum Permanente. BR) (moderación)`
+      data: idioma(
+        "Segunda-feira, dia 10 de maio das 14h às 18h",
+        "Lunes, 10 de mayo, de 14:00 a 18:00 horas"
       ),
+      desc: idioma(
+        `<a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Nikki Moore</span>
+          <span class="desc-pessoa-mesa">Historiadora da arte, Wake Forest University, US</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Érica Peçanha</span>
+          <span class="desc-pessoa-mesa">Antropóloga, critica literaria, BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">David Gange</span>
+          <span class="desc-pessoa-mesa">Historiador, University of Birmingham, UK</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Mariko Murata</span>
+          <span class="desc-pessoa-mesa">Teórica da mídia e de museus, Kansai University, JP</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Julia Buenaventura</span>
+          <span class="desc-pessoa-mesa">Historiadora de arte, Universidad de los Andes. CO</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Martin Grossmann</span>
+          <span class="desc-pessoa-mesa">Culturador e coordenador Fórum Permanente. BR (moderação)</span>
+        </a>`,
+        `<a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Nikki Moore</span>
+          <span class="desc-pessoa-mesa">Historiadora del arte, Universidad de Wake Forest, US</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Érica Peçanha</span>
+          <span class="desc-pessoa-mesa">Antropóloga, crítica literaria, BR</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">David Gange</span>
+          <span class="desc-pessoa-mesa">Historiador, Universidad de Birmingham, UK</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Mariko Murata</span>
+          <span class="desc-pessoa-mesa">Teórica de los medios de comunicación y los museos, Universidad de Kansai, JP</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Julia Buenaventura</span>
+          <span class="desc-pessoa-mesa">Historiadora del arte, Universidad de los Andes, CO</span>
+        </a>
+        <a href="#" class="clicavel" target="_blank" rel="noreferrer" title="Mais informações">
+          <span class="nome-pessoa-mesa">Martin Grossmann</span>
+          <span class="desc-pessoa-mesa">Culturador y coordinador Fórum Permanente. BR (moderación)</span>
+        </a>`
+      ),
+      botao: "em breve",
     },
   ];
 
-  for (let mesa of mesas) {
+  for (let mesa of infoMesas) {
     let elemento = document.querySelector(`#${mesa.id}`);
 
     // atualizar descrição ao colocar o mouse sobre o título
     elemento.addEventListener("mouseover", () => {
-      atualizarInfo(mesa);
+      atualizarInfo(mesa.id);
     });
-
-    // escrever título
-    animar(`${mesa.id}-num`, mesa.id, mesa.num, false, []);
   }
 
   document.querySelector("#entrar-mesa").addEventListener("click", mostrarMesa);
 }
 
-let mesaSelecionada = 0;
-
-function atualizarInfo(infoMesa) {
-  if (mesaSelecionada !== infoMesa.id.slice(-1)) {
+function atualizarInfo(idMesa) {
+  if (mesaSelecionada !== idMesa.slice(-1)) {
     // garantir que as animações não se sobreponham
     for (let timer of timers) clearTimeout(timer);
 
-    mesaSelecionada = infoMesa.id.slice(-1);
+    mesaSelecionada = idMesa.slice(-1);
+    const infoMesa = infoMesas.find((mesa) => mesa.id === idMesa);
 
     // deixar número vermelho até que outra mesa seja selecionada
     for (let i of [1, 2, 3]) {
       const mesa = document.querySelector(`#mesa${i}`);
-      infoMesa.id === `mesa${i}`
+      idMesa === `mesa${i}`
         ? mesa.classList.add("vermelho")
         : mesa.classList.remove("vermelho");
     }
 
-    const tituloMesas = document.querySelector("#titulo-mesa");
-    const descMesas = document.querySelector("#desc-mesa");
+    // rolar scroll de volta ao topo
+    const conteinerDesc = document.querySelector("#conteiner-desc-mesa");
+    conteinerDesc.scrollTop = 0;
 
-    if (tituloMesas.innerHTML !== infoMesa.titulo) {
-      tituloMesas.innerHTML = "";
+    const tituloMesa = document.querySelector("#titulo-mesa");
+    const descMesa = document.querySelector("#desc-mesa");
+    const dataMesa = document.querySelector("#data-mesa");
+    const entrarMesa = document.querySelector("#entrar-mesa");
+
+    if (tituloMesa.innerHTML !== infoMesa.titulo) {
+      tituloMesa.innerHTML = "";
+      dataMesa.innerHTML = infoMesa.data;
+      entrarMesa.innerHTML = infoMesa.botao;
       animar("titulo-mesa", "", infoMesa.titulo, false, []);
-      // descMesas.innerHTML = infoMesa.desc;
-      descMesas.innerHTML = "";
-      animar("desc-mesa", "", infoMesa.desc, false, []);
+      descMesa.innerHTML = infoMesa.desc;
+      // descMesa.innerHTML = "";
+      // animar("desc-mesa", "", infoMesa.desc, false, []);
       document.querySelector("#entrar-mesa").classList.remove("hidden");
     }
   }

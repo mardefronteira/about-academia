@@ -146,13 +146,14 @@ function trocarIdioma() {
     menu();
   }
 
-  if (videoPlanes !== []) {
+  if (videoPlanes[4] !== undefined) {
     videoPlanes[1].configurarSrc(videos[`texto1${ptBr ? "pt" : "es"}`]);
     videoPlanes[4].configurarSrc(videos[`texto2${ptBr ? "pt" : "es"}`]);
   }
 
   cenaAtual === "exibicao" ? configurarNav() : "";
   cenaAtual.includes("previa") ? configurarPdf(cenaAtual.slice(-1)) : "";
+  cenaAtual === "mesas" ? mesas() : "";
 }
 
 function mostrar(pagina) {
