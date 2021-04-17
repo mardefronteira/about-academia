@@ -6,21 +6,19 @@
 .intro-aviso {
   font-size: 1.9vw;
   line-height: 1.1;
-  margin-left: 15vw;
-  margin-right: 15vw;
-  font-family: "HelveticaNeue", "Helvetica_AA", sans-serif;
+  margin: 0 14vw;
   margin-top: 15vh;
+  font-family: "HelveticaNeue", "Helvetica_AA", sans-serif;
   text-align: left;
-  width: 70%;
 }
 
-/* .intro-texto:hover {
-  opacity: 0.5;
-} */
+#introP {
+  z-index: 20;
+}
 
 .intro-num {
   position: absolute;
-  bottom: 12vh;
+  bottom: 15vh;
   font-size: 1.9vw;
   line-height: 1.1;
   width: 70%;
@@ -71,10 +69,6 @@
   margin: 0;
 }
 
-#introP {
-  z-index: 20;
-}
-
 .undeline-idioma {
   opacity: 1;
   color: var(--vermelho);
@@ -98,7 +92,8 @@ div#intro {
   color: var(--branco);
   position: relative;
   height: 100%;
-  padding: 0 2vw;
+  padding: 0;
+  margin: 0;
   z-index: 20;
   display: flex;
   -ms-flex: 1;
@@ -112,16 +107,20 @@ div#intro {
 }
 
 #conteiner-logos {
+  margin: 0;
+  padding: 0;
   position: absolute;
-  bottom: 3vh;
+  bottom: -4vh;
   left: 0;
   right: 0;
   width: 100vw;
 }
 
 #logos-intro {
+  margin: 0;
+  padding: 0;
   position: relative;
-  width: 90%;
+  width: 87%;
   height: auto;
   margin: auto;
 }

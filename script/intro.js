@@ -56,12 +56,10 @@ function intro() {
           `Durante la última etapa docente de Antoni Muntadas en el programa de  Art, Culture and Technology del Massachusetts Institute of Technology (ACT MIT), la Universidad de Harvard le pidió que presentara un nuevo proyecto en el Carpenter Center for the Visual Arts. Fue la ocasión para que Muntadas evaluara los diferentes estados de la educación superior, sus tradiciones y su institucionalidad.<br><br>
           El proyecto, iniciado en 2011, ha estado desde entonces en importantes instituciones culturales de ciudades como Boston, Vancouver, Ámsterdam o Sevilla, entre otras.<br><br>
           Por primera vez se presenta en América Latina, con todos sus materiales traducidos al portugués y español, en versión bilingüe, mediante una asociación entre el Fórum Permanente, el Instituto de Estudos Avançados de la Universidad de São Paulo y la Biblioteca Brasiliana Guita y José Mindlin, con el apoyo del Gobierno del Estado de São Paulo a través del programa PROAC.`
-        ),
-        false,
-        ["intro-texto", "primeiro-p-intro"]
+        )
       );
 
-      animar("introNum", "intro", "1/4", false, ["intro-num"]);
+      animar("introNum", "intro", "01/04", false, ["intro-num"]);
       break;
 
     case 2:
@@ -79,7 +77,7 @@ function intro() {
         `
         )
       );
-      animar("introNum", "intro", "2/4", false, ["intro-num"]);
+      animar("introNum", "intro", "02/04", false, ["intro-num"]);
       break;
 
     case 3:
@@ -99,7 +97,7 @@ function intro() {
           `
         )
       );
-      animar("introNum", "intro", "3/4", false, ["intro-num"]);
+      animar("introNum", "intro", "03/04", false, ["intro-num"]);
       break;
     case 4:
       pagIntro.innerHTML = `<div class="conteiner-img-fundo"><img src="img/intro/expo_sketch.jpg"></div>`;
@@ -124,7 +122,7 @@ function intro() {
         false,
         ["intro-aviso"]
       );
-      animar("introNum", "intro", "4/4", false, ["intro-num"]);
+      animar("introNum", "intro", "04/04", false, ["intro-num"]);
       break;
     case 6:
       pagIntro.innerHTML = `<div class="conteiner-img-fundo"><img src="img/intro/expo_foto.jpg"></div>`;
