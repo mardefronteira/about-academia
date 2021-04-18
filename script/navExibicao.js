@@ -67,8 +67,7 @@ function configurarNav() {
           seta.configurar("seta-vrm-esquerda");
           seta.configurarEtiqueta(
             "About<br/>Academia I",
-            "About<br/>Academia I",
-            "vrm"
+            "About<br/>Academia I"
           );
         });
         div.addEventListener("mouseout", () => {
@@ -88,8 +87,7 @@ function configurarNav() {
           seta.configurar("seta-vrm-direita");
           seta.configurarEtiqueta(
             "About<br/>Academia II",
-            "About<br/>Academia II",
-            "vrm"
+            "About<br/>Academia II"
           );
         });
         div.addEventListener("mouseout", () => {
@@ -144,7 +142,7 @@ function configurarNav() {
       // nav superior para transcrições
       cima.addEventListener("mouseover", () => {
         seta.configurar("seta-vrm-cima");
-        seta.configurarEtiqueta("Transcrições", "Transcripciones", "vrm");
+        seta.configurarEtiqueta("Transcrições", "Transcripciones");
       });
       cima.addEventListener("mouseout", () => {
         seta.configurar("normal-vrm");
@@ -157,7 +155,7 @@ function configurarNav() {
       // nav inferior para voltar
       baixo.addEventListener("mouseover", () => {
         seta.configurar("seta-vrm-baixo");
-        seta.configurarEtiqueta("Voltar", "Volver", "vrm");
+        seta.configurarEtiqueta("Voltar", "Volver");
       });
       baixo.addEventListener("mouseout", () => {
         seta.configurar("normal-vrm");
@@ -174,8 +172,7 @@ function configurarNav() {
         seta.configurar("seta-vrm-direita");
         seta.configurarEtiqueta(
           "About<br/>Academia II",
-          "About<br/>Academia II",
-          "vrm"
+          "About<br/>Academia II"
         );
       });
       direita.addEventListener("mouseout", () => {
@@ -227,7 +224,7 @@ function configurarNav() {
       // nav superior para transcrições
       cima.addEventListener("mouseover", () => {
         seta.configurar("seta-vrm-cima");
-        seta.configurarEtiqueta("Transcrições", "Transcripciones", "vrm");
+        seta.configurarEtiqueta("Transcrições", "Transcripciones");
       });
       cima.addEventListener("mouseout", () => {
         seta.configurar("normal-vrm");
@@ -240,7 +237,7 @@ function configurarNav() {
       // nav inferior para voltar
       baixo.addEventListener("mouseover", () => {
         seta.configurar("seta-vrm-baixo");
-        seta.configurarEtiqueta("Voltar", "Volver", "vrm");
+        seta.configurarEtiqueta("Voltar", "Volver");
       });
       baixo.addEventListener("mouseout", () => {
         seta.configurar("normal-vrm");
@@ -255,11 +252,7 @@ function configurarNav() {
       // nav esquerda indicando AAI
       esquerda.addEventListener("mouseover", () => {
         seta.configurar("seta-vrm-esquerda");
-        seta.configurarEtiqueta(
-          "About<br/>Academia I",
-          "About<br/>Academia I",
-          "vrm"
-        );
+        seta.configurarEtiqueta("About<br/>Academia I", "About<br/>Academia I");
       });
       esquerda.addEventListener("mouseout", () => {
         seta.configurar("normal-vrm");

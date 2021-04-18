@@ -19,6 +19,7 @@
 .intro-num {
   position: absolute;
   bottom: 15vh;
+  right: 15vw;
   font-size: 1.9vw;
   line-height: 1.1;
   width: 70%;
@@ -74,8 +75,8 @@
   color: var(--vermelho);
 }
 
-.vinte {
-  opacity: 0.2;
+.trinta {
+  opacity: 0.3;
 }
 
 .subtitulo {
@@ -110,17 +111,17 @@ div#intro {
   margin: 0;
   padding: 0;
   position: absolute;
-  bottom: -4vh;
+  bottom: 0;
   left: 0;
   right: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 #logos-intro {
   margin: 0;
   padding: 0;
   position: relative;
-  width: 87%;
+  width: 88%;
   height: auto;
   margin: auto;
 }
@@ -130,4 +131,16 @@ div#intro {
   align-items: center;
   align-content: center;
   text-align: center;
+}
+
+.conteiner-img-fundo > img {
+  z-index: 200;
+}
+
+#intro-texto {
+  background: transparent;
+}
+
+#diagrama-intro {
+  height: 100vh;
 }

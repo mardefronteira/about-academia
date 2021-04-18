@@ -29,13 +29,6 @@ class Seta {
         this.etiquetaY = -altura * 0.15;
         this.classeEtiqueta = "texto-esquerda";
         break;
-      case "seta-branca-esquerda":
-        this.x = 0;
-        this.y = -15;
-        this.etiquetaX = 0;
-        this.etiquetaY = -altura * 0.1;
-        this.classeEtiqueta = "texto-esquerda";
-        break;
       case "seta-vrm-direita":
         this.x = -128;
         this.y = -15;
@@ -65,10 +58,6 @@ class Seta {
         this.classeEtiqueta = "texto-centro";
         break;
       case "normal-vrm":
-        this.x = 0;
-        this.y = 0;
-        break;
-      case "normal-branco":
         this.x = 0;
         this.y = 0;
         break;
@@ -133,15 +122,29 @@ class Seta {
     });
   }
 
-  configurarEtiqueta(etiquetaBr, etiquetaEs, cor = "") {
+  configurarEtiqueta(etiquetaBr, etiquetaEs, posEtiqueta = "") {
     const etiqueta = document.querySelector("#etiqueta-seta");
-    etiqueta.innerHTML = ptBr ? etiquetaBr : etiquetaEs;
-    if (cor === "vrm") etiqueta.classList.add("vermelho");
+
+    // caso explicito, configurar posição da etiqueta
+    if (posEtiqueta !== "") {
+      this.etiquetaX = posEtiqueta.x;
+      this.etiquetaY = posEtiqueta.y;
+      // positionar etiqueta
+      this.etiqueta.style.top = `${mouseY + this.etiquetaY}px`;
+      this.etiqueta.style.left = `${mouseX + this.etiquetaX}px`;
+    }
+
+    // posicionar texto
     for (let classe of ["texto-esquerda", "texto-direita", "texto-centro"]) {
       classe === this.classeEtiqueta
         ? etiqueta.classList.add(classe)
         : etiqueta.classList.remove(classe);
     }
+
+    // configurar texto a partir do idioma ativo
+    etiqueta.innerHTML = idioma(etiquetaBr, etiquetaEs);
+
+    // mostrar etiqueta
     etiqueta.classList.remove("hidden");
   }
 

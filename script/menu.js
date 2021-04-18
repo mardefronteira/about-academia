@@ -235,12 +235,12 @@ function configurarCursor() {
       break;
     case "introExibicao":
       seta.configurar("seta-vrm-direita");
-      seta.configurarEtiqueta("introdução", "introducción", "vrm");
+      seta.configurarEtiqueta("introdução", "introducción");
       document
         .querySelector("#botao-menu")
         .addEventListener("mouseover", () => {
           seta.configurar("seta-vrm-esquerda");
-          seta.configurarEtiqueta("menu", "menú", "vrm");
+          seta.configurarEtiqueta("menu", "menú");
         });
       break;
     case "exibicao":
