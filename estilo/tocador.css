@@ -19,14 +19,14 @@
 
 @media screen and (max-aspect-ratio: 1920/1080) {
   .conteiner-video-fundo > video,
-  #foto-intro {
+  .conteiner-img-fundo > img:not(#diagrama-intro) {
     height: 100vh;
   }
 }
 
 @media screen and (min-aspect-ratio: 1920/1080) {
   .conteiner-video-fundo > video,
-  #foto-intro {
+  .conteiner-img-fundo > img:not(#diagrama-intro) {
     width: 100vw;
   }
 }

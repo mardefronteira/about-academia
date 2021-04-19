@@ -1,0 +1,39 @@
+#apresentacao {
+  overflow: auto;
+}
+
+#texto-apresentacao {
+  position: absolute;
+  width: 65vw;
+  left: 9vw;
+  top: 20vh;
+  padding-bottom: 5vh;
+}
+
+#nav-apresentacao {
+  position: fixed;
+  right: 3vw;
+  top: 8vh;
+  bottom: 5vh;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.titulo-apresentacao {
+  font: inherit;
+  font-size: 3.5vw;
+  margin: 0;
+  margin-bottom: 5vh;
+}
+
+.corpo-apresentacao {
+  font-family: "HelveticaNeue", "Helvetica_AA", Helvetica, sans-sans-serif;
+  font-size: 1.5vw;
+  line-height: 1.2;
+  margin-bottom: 3vh;
+}
+
+#imprimir-apresentacao > img {
+  width: 4vw;
+  height: auto;
+}

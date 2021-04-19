@@ -5,48 +5,81 @@
     <meta charset="utf-8" />
 
     <!--importar fontes-->
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    /> -->
     <!-- <link
       href="https://db.onlinewebfonts.com/c/52ffeb15f7ec5bb258d99836c944a2c8?family=ALS+Gorizont+Expanded"
       rel="stylesheet"
-      type="text/css"
+      media="print"
+      onload="this.media='all'"
     /> -->
 
     <!--importar folhas de estilo-->
     <link rel="stylesheet" type="text/css" href="estilo/base.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/exibicao.css" />
     <link rel="stylesheet" type="text/css" href="estilo/intro.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/menu.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/mesas.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/publicacoes.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/sketch.css" />
     <link rel="stylesheet" type="text/css" href="estilo/tocador.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="estilo/exibicao.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="estilo/menu.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="estilo/mesas.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="estilo/publicacoes.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="estilo/sketch.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="estilo/apresentacao.css"
+      media="print"
+      onload="this.media='all'"
+    />
 
     <!--importar p5.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.0/p5.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.0/addons/p5.sound.min.js"></script> -->
 
     <!--importar PDF.js-->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script> -->
-  </head>
 
-  <body onload="iniciar()">
+    <!--importar js-->
     <script src="script/animacao.js"></script>
     <script src="script/base.js"></script>
     <script src="script/cursor.js"></script>
-    <script src="script/exibicao.js"></script>
+    <script src="script/exibicao.js" async defer></script>
     <script src="script/intro.js"></script>
-    <script src="script/menu.js"></script>
-    <script src="script/mesas.js"></script>
-    <script src="script/navExibicao.js"></script>
-    <script src="script/publicacoes.js"></script>
-    <script src="script/tocador.js"></script>
-    <script src="script/legendas.js"></script>
+    <script src="script/menu.js" async defer></script>
+    <script src="script/mesas.js" async defer></script>
+    <script src="script/navExibicao.js" async defer></script>
+    <script src="script/publicacoes.js" async defer></script>
+    <script src="script/tocador.js" async defer></script>
+    <script src="script/legendas.js" async defer></script>
+  </head>
 
+  <body onload="iniciar()">
     <div id="intro" class="pagina">
       <div class="conteiner-img-fundo">
         <img id="diagrama-intro" class="hidden" src="img/intro/diagrama.png" />
@@ -220,7 +253,74 @@
       </div>
     </div>
 
-    <div id="apresentacao" class="pagina hidden">APRESENTAÇÃO</div>
+    <div id="apresentacao" class="pagina hidden">
+      <article id="texto-apresentacao">
+        <h2 class="titulo-apresentacao">Título apresentação</h2>
+        <p class="corpo-apresentacao">
+          Texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto
+        </p>
+        <p class="corpo-apresentacao">
+          Texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto
+        </p>
+        <p class="corpo-apresentacao">
+          Texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto
+        </p>
+        <p class="corpo-apresentacao">
+          Texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto
+        </p>
+        <p class="corpo-apresentacao">
+          Texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto
+        </p>
+        <p class="corpo-apresentacao">
+          Texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto
+        </p>
+        <p class="corpo-apresentacao">
+          Texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto
+        </p>
+        <p class="corpo-apresentacao">
+          Texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto texto texto
+          texto texto texto texto texto texto texto texto texto
+        </p>
+      </article>
+      <nav id="nav-apresentacao" class="coluna">
+        <header>
+          <h1 class="titulo-apresentacao vermelho">Apresentação</h1>
+          <h2 class="titulo-apresentacao">por Martin<br />Grossman</h2>
+        </header>
+        <a
+          id="imprimir-apresentacao"
+          class="clicavel"
+          href="#"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img src="img/icones/impressao.png" alt="imprimir texto" />
+        </a>
+      </nav>
+    </div>
 
     <div id="mesas" class="pagina hidden">
       <div id="info-mesas">
@@ -251,7 +351,11 @@
       ></p>
     </div>
 
-    <div id="info" class="pagina hidden">INFO</div>
+    <div id="info" class="pagina hidden">
+      <div class="conteiner-img-fundo">
+        <img src="img/fundo_info.png" alt="" />
+      </div>
+    </div>
 
     <div id="intro-menu" class="pagina hidden"></div>
 
