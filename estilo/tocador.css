@@ -50,6 +50,20 @@
   opacity: 1;
 } */
 
+#botao-legenda {
+  width: 5vw;
+  height: auto;
+}
+
+#botao-legenda:not(svg-vrm) {
+  fill: var(--branco);
+}
+
+#botao-legenda.svg-vrm,
+#botao-legenda:hover {
+  fill: var(--vermelho);
+}
+
 #legenda-tocador {
   font-family: "ALS_Gorizont", sans-serif;
   margin: 2vh 3vw;

@@ -1,3 +1,5 @@
+let legendaLigada = true;
+
 function mostrarVideo(idVideo) {
   pausarExibicao();
   document.querySelector("#botao-menu").classList.add("hidden");
@@ -11,10 +13,13 @@ function mostrarVideo(idVideo) {
   video.play();
 
   const legenda = document.querySelector("#legenda-tocador");
+  const botaoLegenda = document.querySelector("#botao-legenda");
   if (["entrevistas1", "entrevistas2"].includes(idVideo)) {
-    legenda.classList.remove("hidden");
+    botaoLegenda.classList.remove("hidden");
+    legendaLigada ? legenda.classList.remove("invisivel-tocador") : "";
   } else {
-    legenda.classList.add("hidden");
+    botaoLegenda.classList.add("hidden");
+    legenda.classList.add("invisivel-tocador");
   }
 
   document.querySelector("#tocador").classList.remove("hidden");

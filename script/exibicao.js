@@ -11,6 +11,22 @@ function exibicao() {
       document.querySelector("#tocador").classList.add("hidden");
       document.querySelector("#botao-menu").classList.remove("hidden");
     });
+
+    document.querySelector("#botao-legenda").addEventListener("click", () => {
+      const legenda = document.querySelector("#legenda-tocador");
+      const botaoLegenda = document.querySelector("#botao-legenda");
+
+      legendaLigada = !legendaLigada;
+
+      if (legendaLigada) {
+        legenda.classList.remove("invisivel-tocador");
+        botaoLegenda.classList.add("svg-vrm");
+      } else {
+        legenda.classList.add("invisivel-tocador");
+        botaoLegenda.classList.remove("svg-vrm");
+      }
+    });
+
     trocarIdioma();
 
     primeiraExibicao = false;

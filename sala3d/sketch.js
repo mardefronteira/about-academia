@@ -52,7 +52,7 @@ function preload() {
     videos[video].id(`video-${video}`);
     videos[video].muted = true;
     videos[video].autoplay = true;
-    videos[video].loop = true;
+    videos[video].elt.loop = true;
     if (video.includes("entrevista")) {
       videos[video].elt.addEventListener("timeupdate", (e) => {
         atualizarTempo(e.target.id);
