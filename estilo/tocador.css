@@ -46,6 +46,10 @@
   opacity: 0;
 }
 
+.controles-tocador {
+  transition: 0.3s;
+}
+
 /* #controles-tocador:hover > .invisivel-tocador {
   opacity: 1;
 } */

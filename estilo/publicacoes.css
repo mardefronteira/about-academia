@@ -107,7 +107,6 @@
   right: 0;
   top: 0;
   z-index: 18;
-  font-size: 3.5vw;
 }
 
 #conteiner-previa {
@@ -198,6 +197,7 @@
   border: none;
   font-size: inherit;
   cursor: none;
+  font-size: 3.5vw;
 }
 
 #voltar-publicacoes {

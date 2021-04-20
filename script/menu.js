@@ -158,6 +158,7 @@ function trocarIdioma() {
 
 function mostrar(pagina) {
   esconderTudo();
+  seta.configurar("normal-vrm");
   switch (pagina) {
     case "intro":
       cenaIntro = 0;

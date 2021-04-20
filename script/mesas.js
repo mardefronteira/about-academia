@@ -1,6 +1,8 @@
 let infoMesas;
 let mesaSelecionada = 0;
 
+let primeiraMesa = true;
+
 function mesas() {
   cenaAtual = "mesas";
 
@@ -264,5 +266,32 @@ function atualizarInfo(idMesa) {
 }
 
 function mostrarMesa() {
-  console.log("abriu a mesa " + mesaSelecionada);
+  if (primeiraMesa) {
+    document.querySelector("#voltar-mesas").addEventListener("click", () => {
+      tocadorMesas.classList.add("hidden");
+      document.querySelector("#iframe-mesas").src = "";
+    });
+  }
+
+  let iframeSrc;
+  switch (mesaSelecionada) {
+    case "1":
+      iframeSrc = "rGsuNSr5WGI";
+      break;
+    case "2":
+      iframeSrc = "vTD8UUuhZdM";
+      break;
+    case "3":
+      iframeSrc = "0xD0a9BBwrU";
+      break;
+    default:
+      iframeSrc = "rvVF5QWSYF4";
+  }
+
+  document.querySelector(
+    "#iframe-mesas"
+  ).src = `https://www.youtube.com/embed/${iframeSrc}`;
+
+  let tocadorMesas = document.querySelector("#tocador-mesas");
+  tocadorMesas.classList.remove("hidden");
 }
