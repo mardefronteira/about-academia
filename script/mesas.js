@@ -92,6 +92,7 @@ function mesas() {
         </a>`
       ),
       botao: "entrar",
+      link: "https://www.youtube.com/watch?v=rGsuNSr5WGI",
     },
     {
       id: "mesa2",
@@ -152,6 +153,7 @@ function mesas() {
         </a>`
       ),
       botao: "em breve",
+      link: "",
     },
     {
       id: "mesa3",
@@ -212,6 +214,7 @@ function mesas() {
         </a>`
       ),
       botao: "em breve",
+      link: "",
     },
   ];
 
@@ -224,7 +227,7 @@ function mesas() {
     });
   }
 
-  document.querySelector("#entrar-mesa").addEventListener("click", mostrarMesa);
+  // document.querySelector("#entrar-mesa").addEventListener("click", mostrarMesa);
 }
 
 function atualizarInfo(idMesa) {
@@ -258,40 +261,46 @@ function atualizarInfo(idMesa) {
       entrarMesa.innerHTML = infoMesa.botao;
       animar("titulo-mesa", "", infoMesa.titulo, false, []);
       descMesa.innerHTML = infoMesa.desc;
-      // descMesa.innerHTML = "";
-      // animar("desc-mesa", "", infoMesa.desc, false, []);
-      document.querySelector("#entrar-mesa").classList.remove("hidden");
+
+      const linkMesa = document.querySelector("#entrar-mesa");
+      if (infoMesa.link === "") {
+        linkMesa.classList.add("inativo");
+      } else {
+        linkMesa.href = infoMesa.link;
+        linkMesa.classList.remove("inativo");
+      }
+      linkMesa.classList.remove("hidden");
     }
   }
 }
 
-function mostrarMesa() {
-  if (primeiraMesa) {
-    document.querySelector("#voltar-mesas").addEventListener("click", () => {
-      tocadorMesas.classList.add("hidden");
-      document.querySelector("#iframe-mesas").src = "";
-    });
-  }
+// function mostrarMesa() {
+//   if (primeiraMesa) {
+//     document.querySelector("#voltar-mesas").addEventListener("click", () => {
+//       tocadorMesas.classList.add("hidden");
+//       document.querySelector("#iframe-mesas").src = "";
+//     });
+//   }
 
-  let iframeSrc;
-  switch (mesaSelecionada) {
-    case "1":
-      iframeSrc = "rGsuNSr5WGI";
-      break;
-    case "2":
-      iframeSrc = "vTD8UUuhZdM";
-      break;
-    case "3":
-      iframeSrc = "0xD0a9BBwrU";
-      break;
-    default:
-      iframeSrc = "rvVF5QWSYF4";
-  }
-
-  document.querySelector(
-    "#iframe-mesas"
-  ).src = `https://www.youtube.com/embed/${iframeSrc}`;
-
-  let tocadorMesas = document.querySelector("#tocador-mesas");
-  tocadorMesas.classList.remove("hidden");
-}
+//   let iframeSrc;
+//   switch (mesaSelecionada) {
+//     case "1":
+//       iframeSrc = "rGsuNSr5WGI";
+//       break;
+//     case "2":
+//       iframeSrc = "vTD8UUuhZdM";
+//       break;
+//     case "3":
+//       iframeSrc = "0xD0a9BBwrU";
+//       break;
+//     default:
+//       iframeSrc = "rvVF5QWSYF4";
+//   }
+//
+//   document.querySelector(
+//     "#iframe-mesas"
+//   ).src = `https://www.youtube.com/embed/${iframeSrc}`;
+//
+//   let tocadorMesas = document.querySelector("#tocador-mesas");
+//   tocadorMesas.classList.remove("hidden");
+// }

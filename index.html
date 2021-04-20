@@ -71,7 +71,7 @@
     <script src="script/cursor.js"></script>
     <script src="script/exibicao.js" async defer></script>
     <script src="script/intro.js"></script>
-    <script src="script/roteador.js" async defer></script>
+    <!-- <script src="script/roteador.js" async defer></script> -->
     <script src="script/menu.js" async defer></script>
     <script src="script/mesas.js" async defer></script>
     <script src="script/navExibicao.js" async defer></script>
@@ -142,7 +142,13 @@
       <div id="fundo-publicacoes">
         <div id="aa1-publicacoes" class="conteiner-publicacoes linha">
           <div class="conteiner-capa-publicacoes">
-            <section id="aa1-capa" class="capa-publicacoes">
+            <a
+              id="aa1-capa"
+              class="capa-publicacoes"
+              href=""
+              target="_blank"
+              rel="noreferrer"
+            >
               <img
                 id="aa1-capa-imagem"
                 class="capa-imagem capa-imagem-hover"
@@ -155,21 +161,57 @@
                 src="img/publi/hover_aa1_pt.png"
                 alt="Capa do livro About Academia II"
               />
-            </section>
+            </a>
           </div>
           <div class="coluna conteiner-textos-publicacoes">
             <section id="aa1-titulos"></section>
-            <nav id="aa1-nav"></nav>
+            <nav id="aa1-nav">
+              <a
+                id="previa1-publicacoes"
+                class="texto-publicacoes clicavel"
+                href=""
+                target="_blank"
+                rel="noreferrer"
+              ></a>
+              <a
+                id="link1-publicacoes"
+                class="texto-publicacoes clicavel"
+                href=""
+                target="_blank"
+                rel="noreferrer"
+              ></a>
+            </nav>
           </div>
         </div>
 
         <div id="aa2-publicacoes" class="conteiner-publicacoes linha">
           <div class="coluna conteiner-textos-publicacoes">
             <section id="aa2-titulos"></section>
-            <nav id="aa2-nav"></nav>
+            <nav id="aa2-nav">
+              <a
+                id="previa2-publicacoes"
+                class="texto-publicacoes clicavel"
+                href=""
+                target="_blank"
+                rel="noreferrer"
+              ></a>
+              <a
+                id="link2-publicacoes"
+                class="texto-publicacoes clicavel"
+                href=""
+                target="_blank"
+                rel="noreferrer"
+              ></a>
+            </nav>
           </div>
           <div class="conteiner-capa-publicacoes">
-            <section id="aa2-capa" class="capa-publicacoes">
+            <a
+              id="aa2-capa"
+              class="capa-publicacoes"
+              href=""
+              target="_blank"
+              rel="noreferrer"
+            >
               <img
                 id="aa2-capa-imagem"
                 class="capa-imagem capa-imagem-hover"
@@ -182,11 +224,11 @@
                 src="img/publi/hover_aa2_pt.png"
                 alt="Capa do livro About Academia II"
               />
-            </section>
+            </a>
           </div>
         </div>
       </div>
-      <div id="overlay-previa" class="centralizar">
+      <!-- <div id="overlay-previa" class="centralizar">
         <section id="conteiner-previa">
           <iframe
             id="iframe-previa"
@@ -196,8 +238,8 @@
             width="100%"
             height="100%"
           ></iframe>
-        </section>
-        <!-- <section id="previa-conteiner">
+        </section> -->
+      <!-- <section id="previa-conteiner">
           <canvas id="visualizador"></canvas>
           <div id="voltar-previa" class="div-previa"></div>
           <div id="avancar-previa" class="div-previa"></div>
@@ -242,16 +284,16 @@
               />
             </div>
           </div> -->
-        <button
+      <!-- <button
           id="voltar-publicacoes"
           class="voltar clicavel"
           type="button"
           name="voltar"
         >
           voltar
-        </button>
-        <!-- </section> -->
-      </div>
+        </button> -->
+      <!-- </section> -->
+      <!-- </div> -->
     </div>
 
     <div id="apresentacao" class="pagina hidden">
@@ -345,14 +387,17 @@
           <p id="desc-mesa"></p>
         </div>
       </div>
-      <p
+      <a
         id="entrar-mesa"
         class="titulos-mesas clicavel hidden"
+        href=""
+        target="_blank"
+        rel="noreferrer"
         tabindex="0"
-      ></p>
+      ></a>
     </div>
 
-    <div id="tocador-mesas" class="pagina hidden">
+    <!-- <div id="tocador-mesas" class="pagina hidden">
       <button
         id="voltar-mesas"
         class="voltar clicavel centralizar"
@@ -362,7 +407,7 @@
         voltar
       </button>
       <iframe id="iframe-mesas" src="" width="100%" height="100%"></iframe>
-    </div>
+    </div> -->
 
     <div id="info" class="pagina hidden">
       <div class="conteiner-img-fundo">

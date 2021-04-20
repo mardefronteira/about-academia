@@ -1,5 +1,7 @@
 function publicacoes() {
-  document.querySelector("#overlay-previa").classList.add("hidden");
+  cenaAtual = "publicacoes";
+
+  // document.querySelector("#overlay-previa").classList.add("hidden");
   document.querySelector(`#publicacoes`).classList.remove("hidden");
 
   seta.configurar("normal-vrm");
@@ -22,6 +24,12 @@ function publicacoes() {
     capa2vrm.src = "img/publi/hover_aa2_es.png";
   }
 
+  configurarLinkPdf();
+
+  // rolar scroll de volta ao topo
+  const pag = document.querySelector("#fundo-publicacoes");
+  pag.scrollTop = 0;
+
   //animar(idAlvo, idMae, texto, callback = false, classes = ['intro-texto'])
   animar("titulo1-publicacoes", "aa1-titulos", "About<br>Academia I", false, [
     "vermelho",
@@ -38,24 +46,14 @@ function publicacoes() {
     false,
     ["texto-publicacoes"]
   );
-  animar(
-    "previa1-publicacoes",
-    "aa1-nav",
-    idioma("Prévia", "Previa"),
-    () => {
-      configurarPdf(1);
-    },
-    ["texto-publicacoes", "clicavel"]
-  );
-  animar(
-    "link1-publicacoes",
-    "aa1-nav",
-    "Comprar",
-    () => {
-      console.log("abriu link do aa1");
-    },
-    ["texto-publicacoes", "clicavel"]
-  );
+  animar("previa1-publicacoes", "aa1-nav", idioma("Prévia", "Previa"), false, [
+    "texto-publicacoes",
+    "clicavel",
+  ]);
+  animar("link1-publicacoes", "aa1-nav", "Comprar", false, [
+    "texto-publicacoes",
+    "clicavel",
+  ]);
 
   animar("titulo2-publicacoes", "aa2-titulos", "About<br>Academia II", false, [
     "vermelho",
@@ -72,24 +70,14 @@ function publicacoes() {
     false,
     ["texto-publicacoes"]
   );
-  animar(
-    "previa2-publicacoes",
-    "aa2-nav",
-    idioma("Prévia", "Previa"),
-    () => {
-      configurarPdf(2);
-    },
-    ["texto-publicacoes", "clicavel"]
-  );
-  animar(
-    "link2-publicacoes",
-    "aa2-nav",
-    "Comprar",
-    () => {
-      console.log("abriu link do aa2");
-    },
-    ["texto-publicacoes", "clicavel"]
-  );
+  animar("previa2-publicacoes", "aa2-nav", idioma("Prévia", "Previa"), false, [
+    "texto-publicacoes",
+    "clicavel",
+  ]);
+  animar("link2-publicacoes", "aa2-nav", "Comprar", false, [
+    "texto-publicacoes",
+    "clicavel",
+  ]);
 
   document
     .querySelector("#previa1-publicacoes")
@@ -131,12 +119,12 @@ function publicacoes() {
     .addEventListener("mouseout", () => {
       hoverPublicacoes("out", 2);
     });
-  document.querySelector("#aa1-capa-imagem").addEventListener("click", () => {
-    configurarPdf(1);
-  });
-  document.querySelector("#aa2-capa-imagem").addEventListener("click", () => {
-    configurarPdf(2);
-  });
+  // document.querySelector("#aa1-capa-imagem").addEventListener("click", () => {
+  // configurarPdf(1);
+  // });
+  // document.querySelector("#aa2-capa-imagem").addEventListener("click", () => {
+  // configurarPdf(2);
+  // });
 }
 
 function hoverPublicacoes(mouse, obra) {
@@ -157,38 +145,53 @@ function hoverPublicacoes(mouse, obra) {
 
 let primeiraPrevia = true;
 
-function configurarPdf(obra) {
-  cenaAtual = `previa-${obra}`;
+function configurarLinkPdf() {
+  const imagem1 = document.querySelector("#aa1-capa");
+  const link1 = document.querySelector("#previa1-publicacoes");
+  const imagem2 = document.querySelector("#aa2-capa");
+  const link2 = document.querySelector("#previa2-publicacoes");
 
-  const previa = document.querySelector("#iframe-previa");
-  const conteinerPrevia = document.querySelector("#conteiner-previa");
-  previa.src = `textos/previa_aa${obra}_${ptBr ? "pt" : "es"}.pdf`;
-  conteinerPrevia.replaceChild(previa.cloneNode(), previa);
-
-  document.querySelector("#voltar-publicacoes").innerHTML = idioma(
-    "voltar",
-    "volver"
-  );
-
-  if (primeiraPrevia) {
-    document
-      .querySelector("#voltar-publicacoes")
-      .addEventListener("click", (e) => {
-        document.querySelector("#overlay-previa").classList.add("hidden");
-        publicacoes();
-      });
-
-    conteinerPrevia.addEventListener("mouseover", (e) => {
-      document.querySelector("#cursores").classList.add("hidden");
-    });
-    conteinerPrevia.addEventListener("mouseout", () => {
-      document.querySelector("#cursores").classList.remove("hidden");
-    });
-    primeiraPrevia = false;
+  for (let link of [imagem1, link1]) {
+    link.href = `textos/previa_aa1_${idioma("pt", "es")}.pdf`;
   }
 
-  document.querySelector("#overlay-previa").classList.remove("hidden");
+  for (let link of [imagem2, link2]) {
+    link.href = `textos/previa_aa2_${idioma("pt", "es")}.pdf`;
+  }
 }
+
+// function configurarPdf(obra) {
+//   cenaAtual = `previa-${obra}`;
+//
+//   const previa = document.querySelector("#iframe-previa");
+//   const conteinerPrevia = document.querySelector("#conteiner-previa");
+//   previa.src = `textos/previa_aa${obra}_${ptBr ? "pt" : "es"}.pdf`;
+//   conteinerPrevia.replaceChild(previa.cloneNode(), previa);
+//
+//   document.querySelector("#voltar-publicacoes").innerHTML = idioma(
+//     "voltar",
+//     "volver"
+//   );
+//
+//   if (primeiraPrevia) {
+//     document
+//       .querySelector("#voltar-publicacoes")
+//       .addEventListener("click", (e) => {
+//         document.querySelector("#overlay-previa").classList.add("hidden");
+//         publicacoes();
+//       });
+//
+//     conteinerPrevia.addEventListener("mouseover", (e) => {
+//       document.querySelector("#cursores").classList.add("hidden");
+//     });
+//     conteinerPrevia.addEventListener("mouseout", () => {
+//       document.querySelector("#cursores").classList.remove("hidden");
+//     });
+//     primeiraPrevia = false;
+//   }
+//
+//   document.querySelector("#overlay-previa").classList.remove("hidden");
+// }
 
 // variável para conter a situação atual da página
 // var estado = {

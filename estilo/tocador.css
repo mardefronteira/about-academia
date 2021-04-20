@@ -50,21 +50,18 @@
   transition: 0.3s;
 }
 
-/* #controles-tocador:hover > .invisivel-tocador {
-  opacity: 1;
-} */
-
 #botao-legenda {
   width: 5vw;
   height: auto;
 }
 
-#botao-legenda:not(svg-vrm) {
+#botao-legenda:not(svg-vrm),
+#botao-legenda.svg-vrm:hover {
   fill: var(--branco);
 }
 
-#botao-legenda.svg-vrm,
-#botao-legenda:hover {
+#botao-legenda:not(svg-vrm):hover,
+#botao-legenda.svg-vrm {
   fill: var(--vermelho);
 }
 

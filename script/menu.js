@@ -152,7 +152,7 @@ function trocarIdioma() {
   }
 
   cenaAtual === "exibicao" ? configurarNav() : "";
-  cenaAtual.includes("previa") ? configurarPdf(cenaAtual.slice(-1)) : "";
+  cenaAtual === "publicacoes" ? publicacoes() : "";
   cenaAtual === "mesas" ? mesas() : "";
 }
 
@@ -249,12 +249,12 @@ function configurarCursor() {
       seta.esconderEtiqueta();
       permitirAudio();
       break;
-    case "previa-1":
-      configurarPdf(1);
-      break;
-    case "previa-2":
-      configurarPdf(2);
-      break;
+    // case "previa-1":
+    // configurarPdf(1);
+    // break;
+    // case "previa-2":
+    // configurarPdf(2);
+    // break;
     default:
       seta.configurar("normal-vrm");
       seta.esconderEtiqueta();

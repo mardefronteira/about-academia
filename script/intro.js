@@ -68,7 +68,7 @@ function intro() {
         )
       );
 
-      animar("introNum", "intro-texto", "01/04", false, ["intro-num"]);
+      animar("introNum", "intro-texto", "01/03", false, ["intro-num"]);
       break;
 
     case 2:
@@ -84,7 +84,7 @@ function intro() {
           Para hacer circular el proyecto entre las universidades no estadounidenses, Muntadas propone mesas redondas que contextualicen los conflictos y dificultades del sistema universitario que lo acoge.`
         )
       );
-      animar("introNum", "intro-texto", "02/04", false, ["intro-num"]);
+      animar("introNum", "intro-texto", "02/03", false, ["intro-num"]);
       break;
 
     case 3:
@@ -102,7 +102,7 @@ function intro() {
           Además de las mesas redondas, también están disponibles dos publicaciones bilingües con las transcripciones de las intervenciones de los entrevistados, entre los que se encuentran Noam Chomsky, David Harvey, Carol Becker y Ute Meta Bauer, además de los estudiantes.`
         )
       );
-      animar("introNum", "intro-texto", "03/04", false, ["intro-num"]);
+      animar("introNum", "intro-texto", "03/03", false, ["intro-num"]);
       break;
     case 4:
       document.querySelector("#diagrama-intro").classList.remove("hidden");
@@ -127,7 +127,6 @@ function intro() {
         false,
         ["intro-aviso"]
       );
-      animar("introNum", "intro-texto", "04/04", false, ["intro-num"]);
       break;
     case 6:
       document.querySelector("#foto-intro").classList.remove("hidden");
