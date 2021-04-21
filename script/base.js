@@ -22,4 +22,6 @@ function esconderTudo() {
   // document.querySelector("#overlay-previa").classList.add("hidden");
   document.querySelector(`#publicacoes`).classList.add("hidden");
   document.querySelector("#tocador").classList.add("hidden");
+
+  document.querySelector("#cursores").classList.remove("hidden");
 }

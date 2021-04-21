@@ -134,7 +134,7 @@ div#intro {
 }
 
 .conteiner-img-fundo > img {
-  z-index: 200;
+  z-index: 50;
 }
 
 #intro-texto {

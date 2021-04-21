@@ -53,15 +53,11 @@
 #botao-legenda {
   width: 5vw;
   height: auto;
-}
-
-#botao-legenda:not(svg-vrm),
-#botao-legenda.svg-vrm:hover {
   fill: var(--branco);
+  transition: 0s;
 }
 
-#botao-legenda:not(svg-vrm):hover,
-#botao-legenda.svg-vrm {
+#botao-legenda:hover {
   fill: var(--vermelho);
 }
 

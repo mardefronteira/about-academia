@@ -26,6 +26,13 @@
     <link
       rel="stylesheet"
       type="text/css"
+      href="estilo/info.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
       href="estilo/menu.css"
       media="print"
       onload="this.media='all'"
@@ -67,17 +74,17 @@
 
     <!--importar js-->
     <script src="script/animacao.js"></script>
+    <script src="script/apresentacao.js" async defer></script>
     <script src="script/base.js"></script>
     <script src="script/cursor.js"></script>
     <script src="script/exibicao.js" async defer></script>
     <script src="script/intro.js"></script>
-    <!-- <script src="script/roteador.js" async defer></script> -->
+    <script src="script/legendas.js" async defer></script>
     <script src="script/menu.js" async defer></script>
     <script src="script/mesas.js" async defer></script>
     <script src="script/navExibicao.js" async defer></script>
     <script src="script/publicacoes.js" async defer></script>
     <script src="script/tocador.js" async defer></script>
-    <script src="script/legendas.js" async defer></script>
   </head>
 
   <body onload="iniciar()">
@@ -297,61 +304,14 @@
     </div>
 
     <div id="apresentacao" class="pagina hidden">
-      <article id="texto-apresentacao">
-        <h2 class="titulo-apresentacao">Título apresentação</h2>
-        <p class="corpo-apresentacao">
-          Texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto
-        </p>
-        <p class="corpo-apresentacao">
-          Texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto
-        </p>
-        <p class="corpo-apresentacao">
-          Texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto
-        </p>
-        <p class="corpo-apresentacao">
-          Texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto
-        </p>
-        <p class="corpo-apresentacao">
-          Texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto
-        </p>
-        <p class="corpo-apresentacao">
-          Texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto
-        </p>
-        <p class="corpo-apresentacao">
-          Texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto
-        </p>
-        <p class="corpo-apresentacao">
-          Texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto texto texto
-          texto texto texto texto texto texto texto texto texto
-        </p>
-      </article>
+      <article id="texto-apresentacao"></article>
       <nav id="nav-apresentacao" class="coluna">
         <header>
-          <h1 class="titulo-apresentacao vermelho">Apresentação</h1>
-          <h2 class="titulo-apresentacao">por Martin<br />Grossman</h2>
+          <h1
+            id="titulo-apresentacao"
+            class="titulo-apresentacao vermelho"
+          ></h1>
+          <h2 id="autor-apresentacao" class="titulo-apresentacao"></h2>
         </header>
         <a
           id="imprimir-apresentacao"
@@ -410,9 +370,10 @@
     </div> -->
 
     <div id="info" class="pagina hidden">
-      <div class="conteiner-img-fundo">
-        <img src="img/fundo_info.png" alt="" />
+      <div class="conteiner-img-fundo fixed">
+        <img id="fundo-info" src="img/fundo_info.png" alt="" />
       </div>
+      <img id="info-svg" src="img/info/info_pt.svg" />
     </div>
 
     <div id="intro-menu" class="pagina hidden"></div>
@@ -459,7 +420,7 @@
         <svg
           version="1.1"
           id="botao-legenda"
-          class="controles-tocador svg-vrm"
+          class="controles-tocador cinquenta"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           viewBox="0 0 350 250"

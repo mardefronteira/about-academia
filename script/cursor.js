@@ -91,7 +91,12 @@ class Seta {
         } else {
           this.timers.push(
             setTimeout(() => {
-              document.querySelector("#cursores").classList.add("hidden");
+              if (
+                cenaAtual === "exibicao" &&
+                document.querySelector("#menu").classList.contains("hidden")
+              ) {
+                document.querySelector("#cursores").classList.add("hidden");
+              }
             }, 5000)
           );
         }

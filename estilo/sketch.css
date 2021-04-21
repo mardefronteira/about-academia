@@ -17,7 +17,7 @@ div#overlay-exibicao {
   justify-content: center;
   align-items: center;
   overflow-y: hidden;
-  z-index: 10;
+  z-index: 1;
 }
 
 div#overlay-exibicao > p,

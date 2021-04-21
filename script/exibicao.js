@@ -20,10 +20,10 @@ function exibicao() {
 
       if (legendaLigada) {
         legenda.classList.remove("invisivel-tocador");
-        botaoLegenda.classList.add("svg-vrm");
+        botaoLegenda.classList.add("cinquenta");
       } else {
         legenda.classList.add("invisivel-tocador");
-        botaoLegenda.classList.remove("svg-vrm");
+        botaoLegenda.classList.remove("cinquenta");
       }
     });
 

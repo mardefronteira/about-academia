@@ -15,8 +15,8 @@ const textosMenuEs = [
 ];
 
 function menu() {
-  const menu = document.querySelector("#menu");
-  if (menu.classList.contains("hidden")) {
+  const menuElt = document.querySelector("#menu");
+  if (menuElt.classList.contains("hidden")) {
     // caso tenha iniciado, pausar exibição
     permitiuAudio ? pausarExibicao() : "";
 
@@ -30,7 +30,7 @@ function menu() {
     seta.esconderEtiqueta();
 
     // resetar menu
-    menu.innerHTML = `
+    menuElt.innerHTML = `
     <div id="conteiner-menu">
       <nav id="nav-menu">
       <p id="titulo-menu" class=""><span class="underline-menu">_ </span></p>
@@ -54,7 +54,7 @@ function menu() {
     </div>`;
 
     // mostrar menu
-    menu.classList.remove("hidden");
+    menuElt.classList.remove("hidden");
 
     // configurar animação underline
     let itensMenu = [
@@ -131,8 +131,8 @@ function menu() {
       ["idioma"]
     );
   } else {
-    menu.classList.add("hidden");
-    menu.innerHTML = "";
+    menuElt.classList.add("hidden");
+    menuElt.innerHTML = "";
 
     configurarCursor();
   }
@@ -151,6 +151,10 @@ function trocarIdioma() {
     videoPlanes[4].configurarSrc(videos[`texto2${ptBr ? "pt" : "es"}`]);
   }
 
+  const info = document.querySelector("#info-svg");
+  info.src = `img/info/info_${idioma("pt", "es")}.svg`;
+
+  cenaAtual === "apresentacao" ? apresentacao() : "";
   cenaAtual === "exibicao" ? configurarNav() : "";
   cenaAtual === "publicacoes" ? publicacoes() : "";
   cenaAtual === "mesas" ? mesas() : "";
@@ -168,10 +172,13 @@ function mostrar(pagina) {
       mesas();
       break;
     case "apresentacao":
-      document.querySelector(`#apresentacao`).classList.remove("hidden");
+      apresentacao();
       break;
     case "info":
-      document.querySelector(`#info`).classList.remove("hidden");
+      cenaAtual = "info";
+      const info = document.querySelector(`#info`);
+      info.classList.remove("hidden");
+      info.scrollTop = 0;
       break;
     case "publicacoes":
       publicacoes();
