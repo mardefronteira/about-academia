@@ -38,6 +38,12 @@ ul {
 
 button {
   border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: none;
 }
 
 body {

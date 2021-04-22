@@ -239,6 +239,7 @@ function mostrarSalas() {
 
   pop();
 
+  // cálculo de movimentação da câmera entre os diferentes enquadramentos
   if (posCamera.cX > posTela[tela].cX) {
     posCamera.cX - posTela[tela].cX < 33 / 2
       ? (posCamera.cX = posTela[tela].cX)

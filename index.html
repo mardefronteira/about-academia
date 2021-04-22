@@ -74,7 +74,7 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script> -->
 
     <!--importar js-->
-    <script src="script/aut.js"></script>
+    <!-- <script src="script/aut.js"></script> -->
     <script src="script/animacao.js"></script>
     <script src="script/apresentacao.js" async defer></script>
     <script src="script/base.js"></script>
@@ -151,13 +151,7 @@
       <div id="fundo-publicacoes">
         <div id="aa1-publicacoes" class="conteiner-publicacoes linha">
           <div class="conteiner-capa-publicacoes">
-            <a
-              id="aa1-capa"
-              class="capa-publicacoes"
-              href=""
-              target="_blank"
-              rel="noreferrer"
-            >
+            <div id="aa1-capa" class="capa-publicacoes" tabindex="0">
               <img
                 id="aa1-capa-imagem"
                 class="capa-imagem capa-imagem-hover"
@@ -170,18 +164,15 @@
                 src="img/publi/hover_aa1_pt.png"
                 alt="Capa do livro About Academia II"
               />
-            </a>
+            </div>
           </div>
           <div class="coluna conteiner-textos-publicacoes">
             <section id="aa1-titulos"></section>
             <nav id="aa1-nav">
-              <a
+              <p
                 id="previa1-publicacoes"
                 class="texto-publicacoes clicavel"
-                href=""
-                target="_blank"
-                rel="noreferrer"
-              ></a>
+              ></p>
               <a
                 id="link1-publicacoes"
                 class="texto-publicacoes clicavel"
@@ -197,13 +188,10 @@
           <div class="coluna conteiner-textos-publicacoes">
             <section id="aa2-titulos"></section>
             <nav id="aa2-nav">
-              <a
+              <p
                 id="previa2-publicacoes"
                 class="texto-publicacoes clicavel"
-                href=""
-                target="_blank"
-                rel="noreferrer"
-              ></a>
+              ></p>
               <a
                 id="link2-publicacoes"
                 class="texto-publicacoes clicavel"
@@ -214,13 +202,7 @@
             </nav>
           </div>
           <div class="conteiner-capa-publicacoes">
-            <a
-              id="aa2-capa"
-              class="capa-publicacoes"
-              href=""
-              target="_blank"
-              rel="noreferrer"
-            >
+            <div id="aa2-capa" class="capa-publicacoes">
               <img
                 id="aa2-capa-imagem"
                 class="capa-imagem capa-imagem-hover"
@@ -233,7 +215,7 @@
                 src="img/publi/hover_aa2_pt.png"
                 alt="Capa do livro About Academia II"
               />
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -248,6 +230,14 @@
             height="100%"
           ></iframe>
         </section>
+        <button
+          id="voltar-publicacoes"
+          class="voltar clicavel"
+          type="button"
+          name="voltar"
+        >
+          voltar
+        </button>
       </div>
       <!-- <section id="previa-conteiner">
           <canvas id="visualizador"></canvas>
@@ -351,10 +341,14 @@
         </div>
       </div>
       <nav>
-        <button id="voltar-menu" class="titulos-mesas clicavel">
+        <button type="button" id="voltar-menu" class="titulos-mesas clicavel">
           voltar
         </button>
-        <button id="entrar-mesa" class="titulos-mesas clicavel hidden"></button>
+        <button
+          type="button"
+          id="entrar-mesa"
+          class="titulos-mesas clicavel hidden"
+        ></button>
       </nav>
     </div>
 
@@ -371,9 +365,7 @@
     </div>
 
     <div id="info" class="pagina hidden">
-      <div class="conteiner-img-fundo fixed">
-        <img id="fundo-info" src="img/fundo_info.png" alt="" />
-      </div>
+      <img id="fundo-info" class="tela-cheia" src="img/fundo_info.png" alt="" />
       <img id="info-svg" src="img/info/info_pt.png" />
     </div>
 
