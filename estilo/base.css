@@ -36,6 +36,10 @@ ul {
   margin: 0;
 }
 
+button {
+  border: none;
+}
+
 body {
   cursor: none;
   position: absolute;

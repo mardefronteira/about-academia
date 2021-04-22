@@ -51,8 +51,8 @@
 }
 
 #botao-legenda {
-  width: 5vw;
-  height: auto;
+  height: 4vh;
+  width: auto;
   fill: var(--branco);
   transition: 0s;
 }

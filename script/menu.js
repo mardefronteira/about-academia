@@ -152,7 +152,7 @@ function trocarIdioma() {
   }
 
   const info = document.querySelector("#info-svg");
-  info.src = `img/info/info_${idioma("pt", "es")}.svg`;
+  info.src = `img/info/info_${idioma("pt", "es")}.png`;
 
   cenaAtual === "apresentacao" ? apresentacao() : "";
   cenaAtual === "exibicao" ? configurarNav() : "";

@@ -2,7 +2,7 @@ function apresentacao() {
   cenaAtual = "apresentacao";
 
   const tituloApresentacao = document.querySelector("#titulo-apresentacao");
-  animar("autor-apresentacao", "", "por Martin<br>Grossman");
+  animar("autor-apresentacao", "", "por Martin<br>Grossmann");
   animar("titulo-apresentacao", "", idioma("Apresentação", "Presentación"));
   const corpoApresentacao = document.querySelector("#texto-apresentacao");
   corpoApresentacao.innerHTML = idioma(apresentacaoPt, apresentacaoEs);

@@ -7,7 +7,17 @@ let seta;
 let cenaIntro = 0;
 let timerIntro;
 
+let dispMovel = false;
+
 function iniciar() {
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  ) {
+    dispMovel = true;
+  }
+
   seta = new Seta();
   seta.iniciar();
   seta.configurar("seta-branca-direita");

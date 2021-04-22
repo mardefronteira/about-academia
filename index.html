@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="estilo/base.css" />
     <link rel="stylesheet" type="text/css" href="estilo/intro.css" />
     <link rel="stylesheet" type="text/css" href="estilo/tocador.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/movel.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -73,6 +74,7 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script> -->
 
     <!--importar js-->
+    <script src="script/aut.js"></script>
     <script src="script/animacao.js"></script>
     <script src="script/apresentacao.js" async defer></script>
     <script src="script/base.js"></script>
@@ -235,7 +237,7 @@
           </div>
         </div>
       </div>
-      <!-- <div id="overlay-previa" class="centralizar">
+      <div id="overlay-previa" class="centralizar">
         <section id="conteiner-previa">
           <iframe
             id="iframe-previa"
@@ -245,7 +247,8 @@
             width="100%"
             height="100%"
           ></iframe>
-        </section> -->
+        </section>
+      </div>
       <!-- <section id="previa-conteiner">
           <canvas id="visualizador"></canvas>
           <div id="voltar-previa" class="div-previa"></div>
@@ -347,17 +350,15 @@
           <p id="desc-mesa"></p>
         </div>
       </div>
-      <a
-        id="entrar-mesa"
-        class="titulos-mesas clicavel hidden"
-        href=""
-        target="_blank"
-        rel="noreferrer"
-        tabindex="0"
-      ></a>
+      <nav>
+        <button id="voltar-menu" class="titulos-mesas clicavel">
+          voltar
+        </button>
+        <button id="entrar-mesa" class="titulos-mesas clicavel hidden"></button>
+      </nav>
     </div>
 
-    <!-- <div id="tocador-mesas" class="pagina hidden">
+    <div id="tocador-mesas" class="pagina hidden">
       <button
         id="voltar-mesas"
         class="voltar clicavel centralizar"
@@ -367,13 +368,13 @@
         voltar
       </button>
       <iframe id="iframe-mesas" src="" width="100%" height="100%"></iframe>
-    </div> -->
+    </div>
 
     <div id="info" class="pagina hidden">
       <div class="conteiner-img-fundo fixed">
         <img id="fundo-info" src="img/fundo_info.png" alt="" />
       </div>
-      <img id="info-svg" src="img/info/info_pt.svg" />
+      <img id="info-svg" src="img/info/info_pt.png" />
     </div>
 
     <div id="intro-menu" class="pagina hidden"></div>
