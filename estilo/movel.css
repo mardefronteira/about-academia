@@ -1,2 +1,39 @@
-.s {
+@media screen and (max-width: 1000px) {
+  /* INICIAL */
+  #titulo {
+    font-size: 12.5vw;
+  }
+
+  .subtitulo {
+    font-size: 11vw;
+    line-height: 1;
+    /* margin: 0; */
+  }
+
+  #idiomas {
+    font-size: 10vw;
+    width: 20vw;
+    top: 70vh;
+  }
+
+  #conteiner-logos {
+    bottom: 2vh;
+  }
+
+  /* INTRO */
+  .intro-texto {
+    font-size: 2.2vh;
+    margin: 6vh 10vw;
+  }
+
+  .intro-num {
+    bottom: 5vh;
+    right: 10vw;
+    font-size: 2vh;
+  }
+
+  #diagrama-intro {
+    width: 100vw;
+    height: auto;
+  }
 }
