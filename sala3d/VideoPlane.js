@@ -53,6 +53,7 @@ class VideoPlane {
     } else {
       volume = constrain(map(posCamera.rX, -baseRef, baseRef, 0, 1), 0, 1);
     }
+
     this.video.volume = volume;
   }
 }

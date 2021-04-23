@@ -1,9 +1,7 @@
-let primeiraPubli = true;
-
 function publicacoes() {
   cenaAtual = "publicacoes";
 
-  document.querySelector("#overlay-previa").classList.add("hidden");
+  // document.querySelector("#overlay-previa").classList.add("hidden");
   document.querySelector(`#publicacoes`).classList.remove("hidden");
 
   seta.configurar("normal-vrm");
@@ -81,65 +79,52 @@ function publicacoes() {
     "clicavel",
   ]);
 
-  if (primeiraPubli) {
-    document
-      .querySelector("#previa1-publicacoes")
-      .addEventListener("mouseover", () => {
-        hoverPublicacoes("in", 1);
-      });
-    document
-      .querySelector("#previa2-publicacoes")
-      .addEventListener("mouseover", () => {
-        hoverPublicacoes("in", 2);
-      });
-    document
-      .querySelector("#previa1-publicacoes")
-      .addEventListener("mouseout", () => {
-        hoverPublicacoes("out", 1);
-      });
-    document
-      .querySelector("#previa2-publicacoes")
-      .addEventListener("mouseout", () => {
-        hoverPublicacoes("out", 2);
-      });
-    document
-      .querySelector("#aa1-capa-imagem")
-      .addEventListener("mouseover", () => {
-        hoverPublicacoes("in", 1);
-      });
-    document
-      .querySelector("#aa2-capa-imagem")
-      .addEventListener("mouseover", () => {
-        hoverPublicacoes("in", 2);
-      });
-    document
-      .querySelector("#aa1-capa-imagem")
-      .addEventListener("mouseout", () => {
-        hoverPublicacoes("out", 1);
-      });
-    document
-      .querySelector("#aa2-capa-imagem")
-      .addEventListener("mouseout", () => {
-        hoverPublicacoes("out", 2);
-      });
-    document.querySelector("#aa1-capa-imagem").addEventListener("click", () => {
-      configurarPdf(1);
+  document
+    .querySelector("#previa1-publicacoes")
+    .addEventListener("mouseover", () => {
+      hoverPublicacoes("in", 1);
     });
-    document.querySelector("#aa2-capa-imagem").addEventListener("click", () => {
-      configurarPdf(2);
+  document
+    .querySelector("#previa2-publicacoes")
+    .addEventListener("mouseover", () => {
+      hoverPublicacoes("in", 2);
     });
-    document
-      .querySelector("#previa1-publicacoes")
-      .addEventListener("click", () => {
-        configurarPdf(1);
-      });
-    document
-      .querySelector("#previa2-publicacoes")
-      .addEventListener("click", () => {
-        configurarPdf(2);
-      });
-    primeiraPubli = false;
-  }
+  document
+    .querySelector("#previa1-publicacoes")
+    .addEventListener("mouseout", () => {
+      hoverPublicacoes("out", 1);
+    });
+  document
+    .querySelector("#previa2-publicacoes")
+    .addEventListener("mouseout", () => {
+      hoverPublicacoes("out", 2);
+    });
+  document
+    .querySelector("#aa1-capa-imagem")
+    .addEventListener("mouseover", () => {
+      hoverPublicacoes("in", 1);
+    });
+  document
+    .querySelector("#aa2-capa-imagem")
+    .addEventListener("mouseover", () => {
+      hoverPublicacoes("in", 2);
+    });
+  document
+    .querySelector("#aa1-capa-imagem")
+    .addEventListener("mouseout", () => {
+      hoverPublicacoes("out", 1);
+    });
+  document
+    .querySelector("#aa2-capa-imagem")
+    .addEventListener("mouseout", () => {
+      hoverPublicacoes("out", 2);
+    });
+  // document.querySelector("#aa1-capa-imagem").addEventListener("click", () => {
+  // configurarPdf(1);
+  // });
+  // document.querySelector("#aa2-capa-imagem").addEventListener("click", () => {
+  // configurarPdf(2);
+  // });
 }
 
 function hoverPublicacoes(mouse, obra) {
@@ -175,37 +160,38 @@ function configurarLinkPdf() {
   }
 }
 
-function configurarPdf(obra) {
-  cenaAtual = `previa-${obra}`;
-
-  const previa = document.querySelector("#iframe-previa");
-  const conteinerPrevia = document.querySelector("#conteiner-previa");
-  previa.src = `textos/previa_aa${obra}_${ptBr ? "pt" : "es"}.pdf`;
-  conteinerPrevia.replaceChild(previa.cloneNode(), previa);
-
-  document.querySelector("#voltar-publicacoes").innerHTML = idioma(
-    "voltar",
-    "volver"
-  );
-
-  if (primeiraPrevia) {
-    document
-      .querySelector("#voltar-publicacoes")
-      .addEventListener("click", (e) => {
-        document.querySelector("#overlay-previa").classList.add("hidden");
-      });
-
-    conteinerPrevia.addEventListener("mouseover", (e) => {
-      document.querySelector("#cursores").classList.add("hidden");
-    });
-    conteinerPrevia.addEventListener("mouseout", () => {
-      document.querySelector("#cursores").classList.remove("hidden");
-    });
-    primeiraPrevia = false;
-  }
-
-  document.querySelector("#overlay-previa").classList.remove("hidden");
-}
+// function configurarPdf(obra) {
+//   cenaAtual = `previa-${obra}`;
+//
+//   const previa = document.querySelector("#iframe-previa");
+//   const conteinerPrevia = document.querySelector("#conteiner-previa");
+//   previa.src = `textos/previa_aa${obra}_${ptBr ? "pt" : "es"}.pdf`;
+//   conteinerPrevia.replaceChild(previa.cloneNode(), previa);
+//
+//   document.querySelector("#voltar-publicacoes").innerHTML = idioma(
+//     "voltar",
+//     "volver"
+//   );
+//
+//   if (primeiraPrevia) {
+//     document
+//       .querySelector("#voltar-publicacoes")
+//       .addEventListener("click", (e) => {
+//         document.querySelector("#overlay-previa").classList.add("hidden");
+//         publicacoes();
+//       });
+//
+//     conteinerPrevia.addEventListener("mouseover", (e) => {
+//       document.querySelector("#cursores").classList.add("hidden");
+//     });
+//     conteinerPrevia.addEventListener("mouseout", () => {
+//       document.querySelector("#cursores").classList.remove("hidden");
+//     });
+//     primeiraPrevia = false;
+//   }
+//
+//   document.querySelector("#overlay-previa").classList.remove("hidden");
+// }
 
 // variável para conter a situação atual da página
 // var estado = {

@@ -11,60 +11,58 @@ class Seta {
   }
 
   configurar(tipo) {
-    if (!dispMovel) {
-      const largura = window.innerWidth;
-      const altura = window.innerHeight;
-      this.seta = document.querySelector(`#${tipo}`);
+    const largura = window.innerWidth;
+    const altura = window.innerHeight;
+    this.seta = document.querySelector(`#${tipo}`);
 
-      Array.from(document.getElementsByClassName("cursor")).map((cursor) => {
-        cursor.id === tipo
-          ? cursor.classList.remove("hidden")
-          : cursor.classList.add("hidden");
-      });
+    Array.from(document.getElementsByClassName("cursor")).map((cursor) => {
+      cursor.id === tipo
+        ? cursor.classList.remove("hidden")
+        : cursor.classList.add("hidden");
+    });
 
-      switch (tipo) {
-        case "seta-vrm-esquerda":
-          this.x = 0;
-          this.y = -15;
-          this.etiquetaX = 0;
-          this.etiquetaY = -altura * 0.15;
-          this.classeEtiqueta = "texto-esquerda";
-          break;
-        case "seta-vrm-direita":
-          this.x = -128;
-          this.y = -15;
-          this.etiquetaX = -largura * 0.15;
-          this.etiquetaY = -altura * 0.15;
-          this.classeEtiqueta = "texto-direita";
-          break;
-        case "seta-branca-direita":
-          this.x = -128;
-          this.y = -15;
-          this.etiquetaX = -128;
-          this.etiquetaY = -altura * 0.1;
-          this.classeEtiqueta = "texto-direita";
-          break;
-        case "seta-vrm-cima":
-          this.x = -15;
-          this.y = 0;
-          this.etiquetaX = -largura * 0.08;
-          this.etiquetaY = altura * 0.18;
-          this.classeEtiqueta = "texto-centro";
-          break;
-        case "seta-vrm-baixo":
-          this.x = -15;
-          this.y = -128;
-          this.etiquetaX = -largura * 0.04;
-          this.etiquetaY = -altura * 0.25;
-          this.classeEtiqueta = "texto-centro";
-          break;
-        case "normal-vrm":
-          this.x = 0;
-          this.y = 0;
-          break;
-        default:
-          console.log("O cursor que você tentou configurar ainda não existe.");
-      }
+    switch (tipo) {
+      case "seta-vrm-esquerda":
+        this.x = 0;
+        this.y = -15;
+        this.etiquetaX = 0;
+        this.etiquetaY = -altura * 0.15;
+        this.classeEtiqueta = "texto-esquerda";
+        break;
+      case "seta-vrm-direita":
+        this.x = -128;
+        this.y = -15;
+        this.etiquetaX = -largura * 0.15;
+        this.etiquetaY = -altura * 0.15;
+        this.classeEtiqueta = "texto-direita";
+        break;
+      case "seta-branca-direita":
+        this.x = -128;
+        this.y = -15;
+        this.etiquetaX = -128;
+        this.etiquetaY = -altura * 0.1;
+        this.classeEtiqueta = "texto-direita";
+        break;
+      case "seta-vrm-cima":
+        this.x = -15;
+        this.y = 0;
+        this.etiquetaX = -largura * 0.08;
+        this.etiquetaY = altura * 0.18;
+        this.classeEtiqueta = "texto-centro";
+        break;
+      case "seta-vrm-baixo":
+        this.x = -15;
+        this.y = -128;
+        this.etiquetaX = -largura * 0.04;
+        this.etiquetaY = -altura * 0.25;
+        this.classeEtiqueta = "texto-centro";
+        break;
+      case "normal-vrm":
+        this.x = 0;
+        this.y = 0;
+        break;
+      default:
+        console.log("O cursor que você tentou configurar ainda não existe.");
     }
   }
 
@@ -130,31 +128,29 @@ class Seta {
   }
 
   configurarEtiqueta(etiquetaBr, etiquetaEs, posEtiqueta = "") {
-    if (!dispMovel) {
-      const etiqueta = document.querySelector("#etiqueta-seta");
+    const etiqueta = document.querySelector("#etiqueta-seta");
 
-      // caso explicito, configurar posição da etiqueta
-      if (posEtiqueta !== "") {
-        this.etiquetaX = posEtiqueta.x;
-        this.etiquetaY = posEtiqueta.y;
-        // positionar etiqueta
-        this.etiqueta.style.top = `${mouseY + this.etiquetaY}px`;
-        this.etiqueta.style.left = `${mouseX + this.etiquetaX}px`;
-      }
-
-      // posicionar texto
-      for (let classe of ["texto-esquerda", "texto-direita", "texto-centro"]) {
-        classe === this.classeEtiqueta
-          ? etiqueta.classList.add(classe)
-          : etiqueta.classList.remove(classe);
-      }
-
-      // configurar texto a partir do idioma ativo
-      etiqueta.innerHTML = idioma(etiquetaBr, etiquetaEs);
-
-      // mostrar etiqueta
-      etiqueta.classList.remove("hidden");
+    // caso explicito, configurar posição da etiqueta
+    if (posEtiqueta !== "") {
+      this.etiquetaX = posEtiqueta.x;
+      this.etiquetaY = posEtiqueta.y;
+      // positionar etiqueta
+      this.etiqueta.style.top = `${mouseY + this.etiquetaY}px`;
+      this.etiqueta.style.left = `${mouseX + this.etiquetaX}px`;
     }
+
+    // posicionar texto
+    for (let classe of ["texto-esquerda", "texto-direita", "texto-centro"]) {
+      classe === this.classeEtiqueta
+        ? etiqueta.classList.add(classe)
+        : etiqueta.classList.remove(classe);
+    }
+
+    // configurar texto a partir do idioma ativo
+    etiqueta.innerHTML = idioma(etiquetaBr, etiquetaEs);
+
+    // mostrar etiqueta
+    etiqueta.classList.remove("hidden");
   }
 
   esconderEtiqueta() {
