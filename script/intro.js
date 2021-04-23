@@ -204,6 +204,9 @@ function introMenu() {
   document.querySelector("#intro-menu").classList.remove("hidden");
   seta.configurar("normal-vrm");
 
+  const info = document.querySelector("#info-svg");
+  info.src = `img/info/info_${idioma("pt", "es")}.png`;
+
   menu();
 }
 
