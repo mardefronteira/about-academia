@@ -1,11 +1,13 @@
 @font-face {
   font-family: "Helvetica_AA";
   src: url("../fontes/Helvetica.otf") format("opentype");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "HelveticaNeue";
   src: url("../fontes/HelveticaNeue.otf") format("opentype");
+  font-display: swap;
 }
 
 @font-face {
@@ -21,6 +23,7 @@
       format("truetype"),
     url("//db.onlinewebfonts.com/t/52ffeb15f7ec5bb258d99836c944a2c8.svg#ALS Gorizont Expanded")
       format("svg");
+  font-display: swap;
 }
 
 :root {
@@ -38,6 +41,12 @@ ul {
 
 button {
   border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: none;
 }
 
 body {

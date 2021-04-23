@@ -223,8 +223,8 @@ function mostrarLogos() {
 /* PÁGINA INICIAL */
 function animarTitulo() {
   let titulo = "About Academia";
-  let subtituloBr = "um projeto por Muntadas";
-  let subtituloEs = "un proyecto de Muntadas";
+  let subtituloBr = "um projeto por<br>Muntadas";
+  let subtituloEs = "un proyecto de<br>Muntadas";
   let idiomaBr = "pt.";
   let idiomaEs = "es.";
   let underline = '<span class="undeline-idioma">_</span>';
