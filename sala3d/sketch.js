@@ -130,13 +130,13 @@ function draw() {
   if (videosCarregados && permitiuAudio) {
     mostrarSalas();
   }
-  for (let video in videos) {
+  for (let i in videos) {
     if (
-      video.includes("entrevista") &&
-      !videos[video].elt.classList.contains("hidden") &&
-      !document.querySelector("#tocador").classList.contains("hidden")
+      !videos[i].elt.classList.contains("hidden") &&
+      !document.querySelector("#tocador").classList.contains("hidden") &&
+      legendaLigada
     ) {
-      atualizarLegenda(videos[video].elt);
+      atualizarLegenda(videos[i].elt);
     }
   }
 }
@@ -239,6 +239,7 @@ function mostrarSalas() {
 
   pop();
 
+  // cálculo de movimentação da câmera entre os diferentes enquadramentos
   if (posCamera.cX > posTela[tela].cX) {
     posCamera.cX - posTela[tela].cX < 33 / 2
       ? (posCamera.cX = posTela[tela].cX)
