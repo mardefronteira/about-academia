@@ -20,7 +20,8 @@ div#overlay-exibicao {
   z-index: 1;
 }
 
-div#overlay-exibicao > p {
+div#overlay-exibicao > p,
+button {
   color: var(--branco);
   background: transparent;
   margin: 20px 10px;
