@@ -5,19 +5,22 @@ let fracaoX = 6;
 let escala;
 let margem;
 
-let videos = {
+let videosImg = {
   entrevistas1: "entrevistas_1.m4v",
-  texto1pt: "texto_1_pt.m4v",
   arquitetura1: "arquitetura_1.mp4",
   arquitetura2: "arquitetura_2.m4v",
-  texto2pt: "texto_2_pt.m4v",
   entrevistas2: "entrevistas_2.m4v",
-  texto1es: "texto_1_es.m4v",
-  texto2es: "texto_2_es.m4v",
 };
 
+let videosTexto = {
+  texto1: ["texto_1_pt.m4v", "texto_1_es.m4v"],
+  texto2: ["texto_2_pt.m4v", "texto_2_es.m4v"],
+};
+
+let videos = {};
+
 let videoPlanes = [];
-let numVideos = 8;
+let numVideos = 6;
 let contadorVideos = 0;
 
 let videosCarregados = false;
@@ -42,24 +45,58 @@ let posTela = [];
 function preload() {
   // carregar e criar vídeos
   let videoPath = "sala3d/videos";
-  for (let video in videos) {
-    videos[video] = createVideo(`${videoPath}/${videos[video]}`, () => {
+  for (let video in videosImg) {
+    videosImg[video] = createVideo(`${videoPath}/${videosImg[video]}`, () => {
       videoCarregou();
     });
-    videos[video].addClass("hidden");
-    videos[video].addClass("video-tocador");
-    videos[video].addClass("video-fundo");
-    videos[video].id(`video-${video}`);
-    videos[video].muted = true;
-    videos[video].autoplay = true;
-    videos[video].elt.loop = true;
+    videosImg[video].addClass("hidden");
+    videosImg[video].addClass("video-tocador");
+    videosImg[video].addClass("video-fundo");
+    videosImg[video].id(`video-${video}`);
+    videosImg[video].muted = true;
+    videosImg[video].autoplay = true;
+    videosImg[video].elt.loop = true;
     if (video.includes("entrevista")) {
-      videos[video].elt.addEventListener("timeupdate", (e) => {
+      videosImg[video].elt.addEventListener("timeupdate", (e) => {
         atualizarTempo(e.target.id);
         // atualizarLegenda(e.target.id);
       });
     } else {
-      videos[video].elt.addEventListener("timeupdate", (e) => {
+      videosImg[video].elt.addEventListener("timeupdate", (e) => {
+        atualizarTempo(e.target.id);
+      });
+    }
+
+    document
+      .querySelector("#conteiner-video-tocador")
+      .appendChild(document.querySelector(`#video-${video}`));
+  }
+}
+
+function carregarTypes() {
+  // carregar e criar vídeos
+  let videoPath = "sala3d/videos";
+  for (let video in videosTexto) {
+    videosTexto[video] = createVideo(
+      `${videoPath}/${videosTexto[video][ptBr ? 0 : 1]}`,
+      () => {
+        videoCarregou();
+      }
+    );
+    videosTexto[video].addClass("hidden");
+    videosTexto[video].addClass("video-tocador");
+    videosTexto[video].addClass("video-fundo");
+    videosTexto[video].id(`video-${video}`);
+    videosTexto[video].muted = true;
+    videosTexto[video].autoplay = true;
+    videosTexto[video].elt.loop = true;
+    if (video.includes("entrevista")) {
+      videosTexto[video].elt.addEventListener("timeupdate", (e) => {
+        atualizarTempo(e.target.id);
+        // atualizarLegenda(e.target.id);
+      });
+    } else {
+      videosTexto[video].elt.addEventListener("timeupdate", (e) => {
         atualizarTempo(e.target.id);
       });
     }
@@ -77,6 +114,15 @@ function videoCarregou() {
   contadorVideos++;
   console.log(contadorVideos + " videos carregados");
   if (contadorVideos === numVideos) {
+    videos = {
+      entrevistas1: videosImg["entrevistas1"],
+      texto1: videosTexto["texto1"],
+      arquitetura1: videosImg["arquitetura1"],
+      arquitetura2: videosImg["arquitetura2"],
+      texto2: videosTexto["texto2"],
+      entrevistas2: videosImg["entrevistas2"],
+    };
+
     for (let i in videos) {
       if (videos[i].elt.id.slice(-2) !== "es") {
         videoPlanes.push(new VideoPlane(videos[i]));

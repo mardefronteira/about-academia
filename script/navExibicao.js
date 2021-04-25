@@ -102,10 +102,10 @@ function configurarNav() {
       }
       relacoes = [
         { div: navVid0, video: "entrevistas1" },
-        { div: navVid1, video: `texto1${ptBr ? "pt" : "es"}` },
+        { div: navVid1, video: `texto1` },
         { div: navVid2, video: "arquitetura1" },
         { div: navVid4, video: "arquitetura2" },
-        { div: navVid5, video: `texto2${ptBr ? "pt" : "es"}` },
+        { div: navVid5, video: `texto2` },
         { div: navVid6, video: "entrevistas2" },
       ];
 
@@ -187,7 +187,7 @@ function configurarNav() {
 
       relacoes = [
         { div: navVid0, video: "entrevistas1" },
-        { div: navVid1, video: `texto1${ptBr ? "pt" : "es"}` },
+        { div: navVid1, video: `texto1` },
         { div: navVid2, video: "arquitetura1" },
       ];
 
@@ -266,7 +266,7 @@ function configurarNav() {
 
       relacoes = [
         { div: navVid1, video: "arquitetura2" },
-        { div: navVid2, video: `texto2${ptBr ? "pt" : "es"}` },
+        { div: navVid2, video: `texto2` },
         { div: navVid3, video: "entrevistas2" },
       ];
 

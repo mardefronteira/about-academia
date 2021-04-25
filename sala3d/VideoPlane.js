@@ -35,10 +35,10 @@ class VideoPlane {
     pop();
   }
 
-  configurarSrc(videoToTexturize) {
-    this.textura = videoToTexturize;
-    this.video = videoToTexturize.elt;
-  }
+  // configurarSrc(videoToTexturize) {
+  //   this.textura = videoToTexturize;
+  //   this.video = videoToTexturize.elt;
+  // }
 
   configurarInicio(hora) {
     const duracao = this.video.duration;

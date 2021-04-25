@@ -27,8 +27,6 @@ function exibicao() {
       }
     });
 
-    trocarIdioma();
-
     primeiraExibicao = false;
   }
 }

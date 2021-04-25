@@ -43,14 +43,6 @@ function menu() {
         <li id="info-menu" class="item-menu"><span class="underline-menu">_ </span></li>
       </ul>
       </nav>
-      <ul id="idiomas-menu">
-      <li id="br-menu" class="idioma-menu ${
-        ptBr ? "cinquenta" : ""
-      }"><span class="underline-menu">_ </span></li>
-      <li id="es-menu" class="idioma-menu ${
-        ptBr ? "" : "cinquenta"
-      }"><span class="underline-menu">_ </span></li>
-      </ul>
     </div>`;
 
     // mostrar menu
@@ -59,7 +51,7 @@ function menu() {
     // configurar animação underline
     let itensMenu = [
       document.querySelector("#paginas-menu"),
-      document.querySelector("#idiomas-menu"),
+      // document.querySelector("#idiomas-menu"),
     ];
 
     for (let item of itensMenu) {
@@ -107,29 +99,29 @@ function menu() {
       );
     }
 
-    animarMenu(
-      "br-menu",
-      "br-item",
-      "pt.",
-      "pt.",
-      () => {
-        ptBr = true;
-        trocarIdioma();
-      },
-      ["idioma"]
-    );
-
-    animarMenu(
-      "es-menu",
-      "es-item",
-      "es.",
-      "es.",
-      () => {
-        ptBr = false;
-        trocarIdioma();
-      },
-      ["idioma"]
-    );
+    // animarMenu(
+    //   "br-menu",
+    //   "br-item",
+    //   "pt.",
+    //   "pt.",
+    //   () => {
+    //     ptBr = true;
+    //     trocarIdioma();
+    //   },
+    //   ["idioma"]
+    // );
+    //
+    // animarMenu(
+    //   "es-menu",
+    //   "es-item",
+    //   "es.",
+    //   "es.",
+    //   () => {
+    //     ptBr = false;
+    //     trocarIdioma();
+    //   },
+    //   ["idioma"]
+    // );
   } else {
     menuElt.classList.add("hidden");
     menuElt.innerHTML = "";
@@ -138,26 +130,56 @@ function menu() {
   }
 }
 
-function trocarIdioma() {
-  const menuElmt = document.querySelector("#menu");
-  if (!menuElmt.classList.contains("hidden")) {
-    menuElmt.classList.add("hidden");
-    menuElmt.innerHTML = "";
-    menu();
-  }
+let primeiroIdioma = true;
 
-  if (videoPlanes[4] !== undefined) {
-    videoPlanes[1].configurarSrc(videos[`texto1${ptBr ? "pt" : "es"}`]);
-    videoPlanes[4].configurarSrc(videos[`texto2${ptBr ? "pt" : "es"}`]);
+function trocarIdioma() {
+  // const menuElmt = document.querySelector("#menu");
+  // if (!menuElmt.classList.contains("hidden")) {
+  //   menuElmt.classList.add("hidden");
+  //   menuElmt.innerHTML = "";
+  //   menu();
+  // }
+
+  // if (videoPlanes[4] !== undefined) {
+  //   videoPlanes[1].configurarSrc(videos[`texto1${ptBr ? "pt" : "es"}`]);
+  //   videoPlanes[4].configurarSrc(videos[`texto2${ptBr ? "pt" : "es"}`]);
+  // }
+
+  if (primeiroIdioma) {
+    carregarTypes();
+    primeiroIdioma = false;
+  } else {
+    if (videosCarregados) {
+      const tempo = [
+        videos["texto1"].elt.currentTime,
+        videos["texto2"].elt.currentTime,
+      ];
+
+      videos["texto1"].elt.src = `sala3d/videos/texto_1_${
+        ptBr ? "pt" : "es"
+      }.m4v`;
+      videos["texto1"].elt.currentTime = tempo[0];
+      videos["texto2"].elt.src = `sala3d/videos/texto_2_${
+        ptBr ? "pt" : "es"
+      }.m4v`;
+      videos["texto2"].elt.currentTime = tempo[1];
+    } else {
+      videosTexto["texto1"].elt.src = `sala3d/videos/texto_1_${
+        ptBr ? "pt" : "es"
+      }.m4v`;
+      videosTexto["texto2"].elt.src = `sala3d/videos/texto_2_${
+        ptBr ? "pt" : "es"
+      }.m4v`;
+    }
   }
 
   const info = document.querySelector("#info-svg");
   info.src = `img/info/info_${idioma("pt", "es")}.png`;
 
-  cenaAtual === "apresentacao" ? apresentacao() : "";
-  cenaAtual === "exibicao" ? configurarNav() : "";
-  cenaAtual === "publicacoes" ? publicacoes() : "";
-  cenaAtual === "mesas" ? mesas() : "";
+  // cenaAtual === "apresentacao" ? apresentacao() : "";
+  // cenaAtual === "exibicao" ? configurarNav() : "";
+  // cenaAtual === "publicacoes" ? publicacoes() : "";
+  // cenaAtual === "mesas" ? mesas() : "";
 }
 
 function mostrar(pagina) {

@@ -1,5 +1,9 @@
 let seta;
 let cenaIntro = 0;
+let statusIdioma = {
+  alterar: true,
+  anterior: "",
+};
 let timerIntro;
 
 let dispMovel = false;
@@ -55,9 +59,15 @@ function intro() {
       document.querySelector("#intro").classList.remove("hidden");
       mostrarLogos();
       animarTitulo();
+      statusIdioma.alterar = true;
       break;
 
     case 1:
+      if (statusIdioma.alterar && statusIdioma.anterior !== ptBr) {
+        trocarIdioma();
+        statusIdioma.anterior = ptBr;
+        statusIdioma.alterar = false;
+      }
       // animar parágrafo
       animar(
         "introP",
