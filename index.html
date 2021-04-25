@@ -4,89 +4,21 @@
     <title>About Academia</title>
     <meta charset="utf-8" />
 
-    <!--importar fontes-->
-    <!-- <link
-      href="https://db.onlinewebfonts.com/c/52ffeb15f7ec5bb258d99836c944a2c8?family=ALS+Gorizont+Expanded"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    /> -->
-
     <!--importar folhas de estilo-->
     <link rel="stylesheet" type="text/css" href="estilo/base.css" />
     <link rel="stylesheet" type="text/css" href="estilo/intro.css" />
     <link rel="stylesheet" type="text/css" href="estilo/tocador.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/exibicao.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/info.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/menu.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/mesas.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/publicacoes.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/sketch.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/apresentacao.css" />
     <link rel="stylesheet" type="text/css" href="estilo/movel.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="estilo/exibicao.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="estilo/info.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="estilo/menu.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="estilo/mesas.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="estilo/publicacoes.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="estilo/sketch.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="estilo/apresentacao.css"
-      media="print"
-      onload="this.media='all'"
-    />
 
     <!--importar p5.js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.0/p5.js"></script>
-
-    <!--importar PDF.js-->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script> -->
-
-    <!--importar js-->
-    <script src="script/aut.js"></script>
-    <script src="script/animacao.js"></script>
-    <script src="script/apresentacao.js" async defer></script>
-    <script src="script/base.js"></script>
-    <script src="script/cursor.js"></script>
-    <script src="script/exibicao.js" async defer></script>
-    <script src="script/intro.js"></script>
-    <script src="script/legendas.js" async defer></script>
-    <script src="script/menu.js" async defer></script>
-    <script src="script/mesas.js" async defer></script>
-    <script src="script/navExibicao.js" async defer></script>
-    <script src="script/publicacoes.js" async defer></script>
-    <script src="script/tocador.js" async defer></script>
+    <script src="script/p5.min.js" async></script>
   </head>
 
   <body onload="iniciar()">
@@ -97,7 +29,13 @@
       </div>
       <div id="intro-texto" class="pagina">
         <div id="conteiner-logos" class="centralizar">
-          <img id="logos-intro" src="img/logos.png" alt="" />
+          <img
+            id="logos-intro"
+            src="img/logos.png"
+            width="2658px"
+            height="232px"
+            alt="Logotipos de realizadores e apoiadores."
+          />
         </div>
       </div>
     </div>
@@ -151,40 +89,31 @@
       <div id="fundo-publicacoes">
         <div id="aa1-publicacoes" class="conteiner-publicacoes linha">
           <div class="conteiner-capa-publicacoes">
-            <a
-              id="aa1-capa"
-              class="capa-publicacoes"
-              href=""
-              target="_blank"
-              rel="noreferrer"
-            >
+            <div id="aa1-capa" class="capa-publicacoes" tabindex="0">
               <img
                 id="aa1-capa-imagem"
                 class="capa-imagem capa-imagem-hover"
-                src="img/publi/capa_aa1_pt.png"
+                src="img/publi/capa_aa1_pt.jpg"
                 alt="Capa do livro About Academia I"
               />
               <img
                 id="aa1-capa-imagem-vrm"
                 class="capa-imagem capa-imagem-fundo"
-                src="img/publi/hover_aa1_pt.png"
+                src="img/publi/hover_aa1_pt.jpg"
                 alt="Capa do livro About Academia II"
               />
-            </a>
+            </div>
           </div>
           <div class="coluna conteiner-textos-publicacoes">
             <section id="aa1-titulos"></section>
             <nav id="aa1-nav">
-              <a
+              <p
                 id="previa1-publicacoes"
                 class="texto-publicacoes clicavel"
-                href=""
-                target="_blank"
-                rel="noreferrer"
-              ></a>
+              ></p>
               <a
                 id="link1-publicacoes"
-                class="texto-publicacoes clicavel"
+                class="texto-publicacoes clicavel inativo"
                 href=""
                 target="_blank"
                 rel="noreferrer"
@@ -197,16 +126,13 @@
           <div class="coluna conteiner-textos-publicacoes">
             <section id="aa2-titulos"></section>
             <nav id="aa2-nav">
-              <a
+              <p
                 id="previa2-publicacoes"
                 class="texto-publicacoes clicavel"
-                href=""
-                target="_blank"
-                rel="noreferrer"
-              ></a>
+              ></p>
               <a
                 id="link2-publicacoes"
-                class="texto-publicacoes clicavel"
+                class="texto-publicacoes clicavel inativo"
                 href=""
                 target="_blank"
                 rel="noreferrer"
@@ -214,40 +140,42 @@
             </nav>
           </div>
           <div class="conteiner-capa-publicacoes">
-            <a
-              id="aa2-capa"
-              class="capa-publicacoes"
-              href=""
-              target="_blank"
-              rel="noreferrer"
-            >
+            <div id="aa2-capa" class="capa-publicacoes">
               <img
                 id="aa2-capa-imagem"
                 class="capa-imagem capa-imagem-hover"
-                src="img/publi/capa_aa2_pt.png"
+                src="img/publi/capa_aa2_pt.jpg"
                 alt="Capa do livro About Academia I"
               />
               <img
                 id="aa2-capa-imagem-vrm"
                 class="capa-imagem capa-imagem-fundo"
-                src="img/publi/hover_aa2_pt.png"
+                src="img/publi/hover_aa2_pt.jpg"
                 alt="Capa do livro About Academia II"
               />
-            </a>
+            </div>
           </div>
         </div>
       </div>
       <div id="overlay-previa" class="centralizar">
         <section id="conteiner-previa">
-          <iframe
+          <embed
             id="iframe-previa"
             src=""
             title="Prévia da transcrição em PDF"
             referrerpolicy="origin"
             width="100%"
             height="100%"
-          ></iframe>
+          />
         </section>
+        <button
+          id="voltar-publicacoes"
+          class="voltar clicavel"
+          type="button"
+          name="voltar"
+        >
+          voltar
+        </button>
       </div>
       <!-- <section id="previa-conteiner">
           <canvas id="visualizador"></canvas>
@@ -351,10 +279,14 @@
         </div>
       </div>
       <nav>
-        <button id="voltar-menu" class="titulos-mesas clicavel">
+        <button type="button" id="voltar-menu" class="titulos-mesas clicavel">
           voltar
         </button>
-        <button id="entrar-mesa" class="titulos-mesas clicavel hidden"></button>
+        <button
+          type="button"
+          id="entrar-mesa"
+          class="titulos-mesas clicavel hidden"
+        ></button>
       </nav>
     </div>
 
@@ -371,10 +303,8 @@
     </div>
 
     <div id="info" class="pagina hidden">
-      <div class="conteiner-img-fundo fixed">
-        <img id="fundo-info" src="img/fundo_info.png" alt="" />
-      </div>
-      <img id="info-svg" src="img/info/info_pt.png" />
+      <img id="fundo-info" class="tela-cheia" src="img/info/fundo.jpg" alt="" />
+      <img id="info-svg" src="" />
     </div>
 
     <div id="intro-menu" class="pagina hidden"></div>
@@ -476,7 +406,23 @@
 
     <p id="botao-menu" onclick="menu()">_</p>
 
-    <script class="script-p5" src="sala3d/VideoPlane.js"></script>
-    <script class="script-p5" src="sala3d/sketch.js"></script>
+    <script class="script-p5" src="sala3d/VideoPlane.js" async></script>
+    <script class="script-p5" src="sala3d/sketch.js" async></script>
+
+    <!--importar js-->
+    <script src="script/base.js"></script>
+    <script src="script/animacao.js"></script>
+    <script src="script/intro.js"></script>
+    <script src="script/cursor.js"></script>
+    <script src="script/aut.js"></script>
+
+    <script src="script/legendas.js" defer></script>
+    <script src="script/apresentacao.js" defer></script>
+    <script src="script/exibicao.js" defer></script>
+    <script src="script/menu.js" async></script>
+    <script src="script/mesas.js" defer></script>
+    <script src="script/navExibicao.js" defer></script>
+    <script src="script/publicacoes.js" defer></script>
+    <script src="script/tocador.js" defer></script>
   </body>
 </html>

@@ -1,8 +1,3 @@
-// let mouse = {
-//   x: 0,
-//   y: 0,
-// };
-
 let seta;
 let cenaIntro = 0;
 let timerIntro;
@@ -133,9 +128,7 @@ function intro() {
           La creación de esta videoinstalación inmersiva, online e interactiva, da protagonismo a los dos conjuntos: About Academia I (2011) y About Academia II (2017). Por lo tanto, respeta la duración de los tiempos de los vídeos originalmente desarrollados por el artista para su existencia en un espacio físico real.<br><br>
           A pesar de la interactividad que permite navegar por cada pantalla individualmente, no es posible que el visitante controle la reproducción de los vídeos proyectados. La experiencia estética en la virtualidad se corresponde así con el tiempo real del espacio expositivo analógico.<br><br>
           Las mesas redondas serán retransmitidas por el Instituto de Estudios Avanzados de la USP, y luego estarán disponibles directamente a través de este sitio web y de los sitios de los realizadores. Las publicaciones son parcialmente accesibles, para tener acceso completo es necesario comprarlas por un precio simbólico.`
-        ),
-        false,
-        ["intro-aviso"]
+        )
       );
       break;
     case 6:
@@ -206,6 +199,9 @@ function introMenu() {
   document.querySelector("#intro-menu").classList.remove("hidden");
   seta.configurar("normal-vrm");
 
+  const info = document.querySelector("#info-svg");
+  info.src = `img/info/info_${idioma("pt", "es")}.png`;
+
   menu();
 }
 
@@ -247,32 +243,40 @@ function animarTitulo() {
     paragrafoBase.innerHTML = spanTitulo;
     document.querySelector("#intro-texto").appendChild(paragrafoBase);
 
-    paragrafoBase.addEventListener("mousemove", () => {
-      ptBr = mouseY < window.innerHeight / 2 ? true : false;
+    if (!dispMovel) {
+      paragrafoBase.addEventListener("mousemove", () => {
+        ptBr = mouseY < window.innerHeight / 2 ? true : false;
+        const iBr = document.querySelector(`#idiomaBr`);
+        const iEs = document.querySelector(`#idiomaEs`);
+        const pBr = document.querySelector(`#iBr`);
+        const pEs = document.querySelector(`#iEs`);
+        const sBr = document.querySelector(`#subtituloBr`);
+        const sEs = document.querySelector(`#subtituloEs`);
 
+        if (ptBr) {
+          pBr.innerHTML = underline + iBr.outerHTML;
+          pEs.innerHTML = iEs.outerHTML;
+          sBr.classList.add("cinquenta");
+          sEs.classList.remove("cinquenta");
+          document.querySelector(`#idiomaBr`).classList.add("cinquenta");
+          document.querySelector(`#idiomaEs`).classList.remove("cinquenta");
+        } else {
+          pBr.innerHTML = iBr.outerHTML;
+          pEs.innerHTML = underline + iEs.outerHTML;
+          sBr.classList.remove("cinquenta");
+          sEs.classList.add("cinquenta");
+          document.querySelector(`#idiomaBr`).classList.remove("cinquenta");
+          document.querySelector(`#idiomaEs`).classList.add("cinquenta");
+        }
+      });
+    } else {
       const iBr = document.querySelector(`#idiomaBr`);
-      const iEs = document.querySelector(`#idiomaEs`);
       const pBr = document.querySelector(`#iBr`);
-      const pEs = document.querySelector(`#iEs`);
       const sBr = document.querySelector(`#subtituloBr`);
-      const sEs = document.querySelector(`#subtituloEs`);
-
-      if (ptBr) {
-        pBr.innerHTML = underline + iBr.outerHTML;
-        pEs.innerHTML = iEs.outerHTML;
-        sBr.classList.add("cinquenta");
-        sEs.classList.remove("cinquenta");
-        document.querySelector(`#idiomaBr`).classList.add("cinquenta");
-        document.querySelector(`#idiomaEs`).classList.remove("cinquenta");
-      } else {
-        pBr.innerHTML = iBr.outerHTML;
-        pEs.innerHTML = underline + iEs.outerHTML;
-        sBr.classList.remove("cinquenta");
-        sEs.classList.add("cinquenta");
-        document.querySelector(`#idiomaBr`).classList.remove("cinquenta");
-        document.querySelector(`#idiomaEs`).classList.add("cinquenta");
-      }
-    });
+      pBr.innerHTML = underline + iBr.outerHTML;
+      sBr.classList.add("cinquenta");
+      document.querySelector(`#idiomaBr`).classList.add("cinquenta");
+    }
 
     // indicar o titulo como primeiro alvo
     alvo = document.querySelector(`#titulo`);

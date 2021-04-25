@@ -1,4 +1,4 @@
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
   /* INICIAL */
   #titulo {
     font-size: 12.5vw;
@@ -36,3 +36,4 @@
     width: 100vw;
     height: auto;
   }
+}

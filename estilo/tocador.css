@@ -11,7 +11,7 @@
 .conteiner-img-fundo > img {
   display: block;
   position: absolute;
-  min-height: 100vh;
+  //min-height: 100vh;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
