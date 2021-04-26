@@ -210,7 +210,7 @@ function introMenu() {
   seta.configurar("normal-vrm");
 
   const info = document.querySelector("#info-svg");
-  info.src = `img/info/info_${idioma("pt", "es")}.png`;
+  info.src = `img/info/info_${idioma("pt", "es")}.svg`;
 
   menu();
 }

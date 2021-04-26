@@ -4,8 +4,8 @@
 
 #texto-apresentacao {
   position: absolute;
-  width: 65vw;
-  left: 9vw;
+  width: 60vw;
+  left: 15vw;
   top: 20vh;
   padding-bottom: 5vh;
 }
@@ -36,4 +36,8 @@
 #imprimir-apresentacao > img {
   width: 3vw;
   height: auto;
+}
+
+#voltar-apresentacao {
+  position: fixed;
 }

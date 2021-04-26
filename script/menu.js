@@ -174,7 +174,7 @@ function trocarIdioma() {
   }
 
   const info = document.querySelector("#info-svg");
-  info.src = `img/info/info_${idioma("pt", "es")}.png`;
+  info.src = `img/info/info_${idioma("pt", "es")}.svg`;
 
   // cenaAtual === "apresentacao" ? apresentacao() : "";
   // cenaAtual === "exibicao" ? configurarNav() : "";

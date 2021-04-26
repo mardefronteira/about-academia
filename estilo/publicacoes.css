@@ -124,13 +124,10 @@
 
 .voltar {
   border: none;
-  font-size: inherit;
   cursor: none;
+  font: inherit;
   font-size: 3.5vw;
-}
-
-#voltar-publicacoes {
-  position: absolute;
+  left: 5vw;
   bottom: 5vh;
-  left: 3vw;
+  position: absolute;
 }

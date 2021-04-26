@@ -8,7 +8,7 @@ let margem;
 let videosImg = {
   entrevistas1: "entrevistas_1.m4v",
   arquitetura1: "arquitetura_1.mp4",
-  arquitetura2: "arquitetura_2.m4v",
+  arquitetura2: "arquitetura_2.mp4",
   entrevistas2: "entrevistas_2.m4v",
 };
 

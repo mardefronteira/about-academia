@@ -46,7 +46,7 @@
   bottom: 8vh;
 }
 
-#voltar-menu {
+#voltar-mesas {
   position: absolute;
   left: 8.5vw;
   bottom: 8vh;
@@ -78,12 +78,6 @@ a {
 
 .desc-pessoa-mesa {
   font-size: 2.3vw;
-}
-
-#voltar-mesas {
-  position: absolute;
-  bottom: 5vh;
-  left: 3vw;
 }
 
 #iframe-mesas {

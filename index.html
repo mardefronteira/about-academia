@@ -121,7 +121,13 @@
             </nav>
           </div>
         </div>
-
+        <button
+          id="voltar-publicacoes"
+          type="button"
+          name="voltar"
+          class="voltar clicavel"
+          onclick="menu()"
+        ></button>
         <div id="aa2-publicacoes" class="conteiner-publicacoes linha">
           <div class="coluna conteiner-textos-publicacoes">
             <section id="aa2-titulos"></section>
@@ -169,7 +175,7 @@
           />
         </section>
         <button
-          id="voltar-publicacoes"
+          id="voltar-previa"
           class="voltar clicavel"
           type="button"
           name="voltar"
@@ -223,7 +229,7 @@
             </div>
           </div> -->
       <!-- <button
-          id="voltar-publicacoes"
+          id="voltar-previa"
           class="voltar clicavel"
           type="button"
           name="voltar"
@@ -244,15 +250,13 @@
           ></h1>
           <h2 id="autor-apresentacao" class="titulo-apresentacao"></h2>
         </header>
-        <a
-          id="imprimir-apresentacao"
-          class="clicavel"
-          href="#"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img src="img/icones/impressao.png" alt="imprimir texto" />
-        </a>
+        <button
+          id="voltar-apresentacao"
+          type="button"
+          name="voltar"
+          class="voltar clicavel"
+          onclick="menu()"
+        ></button>
       </nav>
     </div>
 
@@ -279,7 +283,12 @@
         </div>
       </div>
       <nav>
-        <button type="button" id="voltar-menu" class="titulos-mesas clicavel">
+        <button
+          type="button"
+          id="voltar-mesas"
+          onclick="menu()"
+          class="titulos-mesas clicavel"
+        >
           voltar
         </button>
         <button
@@ -292,7 +301,7 @@
 
     <div id="tocador-mesas" class="pagina hidden">
       <button
-        id="voltar-mesas"
+        id="voltar-mesa"
         class="voltar clicavel centralizar"
         type="button"
         name="voltar"
@@ -337,7 +346,7 @@
       <nav id="controles-tocador" class="linha">
         <button
           id="voltar-exibicao"
-          class="voltar clicavel controles-tocador centralizar"
+          class="clicavel controles-tocador centralizar"
           type="button"
           name="voltar"
         >

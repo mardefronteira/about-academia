@@ -30,7 +30,7 @@ function mesas() {
     ["titulo-mesas", "vermelho"]
   );
 
-  animar("voltar-menu", "", idioma("voltar", "volver"), false, [
+  animar("voltar-mesas", "", idioma("Voltar", "Volver"), false, [
     "titulo-mesas",
   ]);
 
@@ -38,14 +38,13 @@ function mesas() {
   atualizarInfo(`mesa${mesaSelecionada}`, true);
 
   if (primeiraMesa) {
-    document.querySelector("#voltar-mesas").addEventListener("click", () => {
+    document.querySelector("#voltar-mesa").addEventListener("click", () => {
       tocadorMesas.classList.add("hidden");
       document.querySelector("#iframe-mesas").src = "";
     });
     document
       .querySelector("#entrar-mesa")
       .addEventListener("click", mostrarMesa);
-    document.querySelector("#voltar-menu").addEventListener("click", menu);
     for (let mesa of infoMesas) {
       let elemento = document.querySelector(`#${mesa.id}`);
 
@@ -177,7 +176,7 @@ function atualizarInfoMesas() {
             <span class="desc-pessoa-mesa">Culturador y coordinador de Fórum Permanente. BR (moderación)</span>
             </a>`
       ),
-      botao: "em breve",
+      botao: "Em breve",
       link: "",
     },
     {
@@ -238,7 +237,7 @@ function atualizarInfoMesas() {
             <span class="desc-pessoa-mesa">Culturador y coordinador Fórum Permanente. BR (moderación)</span>
           </a>`
       ),
-      botao: "em breve",
+      botao: "Em breve",
       link: "",
     },
     {
@@ -283,7 +282,7 @@ function atualizarInfoMesas() {
             <span class="desc-pessoa-mesa">Ex Ministro de Educación, filósofo. BR (moderação)</span>
           </a>`
       ),
-      botao: "em breve",
+      botao: "Em breve",
       link: "",
     },
   ];

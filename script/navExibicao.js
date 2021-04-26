@@ -149,6 +149,7 @@ function configurarNav() {
         seta.esconderEtiqueta();
       });
       cima.addEventListener("click", () => {
+        cenaPubli = 1;
         mostrar("publicacoes");
       });
 
@@ -231,6 +232,7 @@ function configurarNav() {
         seta.esconderEtiqueta();
       });
       cima.addEventListener("click", () => {
+        cenaPubli = 2;
         mostrar("publicacoes");
       });
 

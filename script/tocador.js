@@ -25,8 +25,8 @@ function mostrarVideo(idVideo) {
   document.querySelector("#tocador").classList.remove("hidden");
 
   document.querySelector("#voltar-exibicao").innerHTML = idioma(
-    "voltar",
-    "volver"
+    "Voltar",
+    "Volver"
   );
 }
 

@@ -1,4 +1,5 @@
 let primeiraPubli = true;
+let cenaPubli;
 
 function publicacoes() {
   cenaAtual = "publicacoes";
@@ -28,9 +29,11 @@ function publicacoes() {
 
   configurarLinkPdf();
 
-  // rolar scroll de volta ao topo
+  // rolar scroll de volta ao topo, ou até o fim
   const pag = document.querySelector("#fundo-publicacoes");
-  pag.scrollTop = 0;
+  console.log(cenaPubli);
+  cenaPubli === 2 ? (pag.scrollTop = window.innerHeight) : (pag.scrollTop = 0);
+  cenaPubli = 0;
 
   //animar(idAlvo, idMae, texto, callback = false, classes = ['intro-texto'])
   animar("titulo1-publicacoes", "aa1-titulos", "About<br>Academia I", false, [
@@ -56,6 +59,8 @@ function publicacoes() {
     "texto-publicacoes",
     "clicavel",
   ]);
+
+  animar("voltar-publicacoes", "", idioma("Voltar", "Volver"));
 
   animar("titulo2-publicacoes", "aa2-titulos", "About<br>Academia II", false, [
     "vermelho",
@@ -183,17 +188,15 @@ function configurarPdf(obra) {
   previa.src = `textos/previa_aa${obra}_${ptBr ? "pt" : "es"}.pdf`;
   conteinerPrevia.replaceChild(previa.cloneNode(), previa);
 
-  document.querySelector("#voltar-publicacoes").innerHTML = idioma(
-    "voltar",
-    "volver"
+  document.querySelector("#voltar-previa").innerHTML = idioma(
+    "Voltar",
+    "Volver"
   );
 
   if (primeiraPrevia) {
-    document
-      .querySelector("#voltar-publicacoes")
-      .addEventListener("click", (e) => {
-        document.querySelector("#overlay-previa").classList.add("hidden");
-      });
+    document.querySelector("#voltar-previa").addEventListener("click", (e) => {
+      document.querySelector("#overlay-previa").classList.add("hidden");
+    });
 
     conteinerPrevia.addEventListener("mouseover", (e) => {
       document.querySelector("#cursores").classList.add("hidden");
