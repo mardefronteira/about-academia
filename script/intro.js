@@ -5,6 +5,7 @@ let statusIdioma = {
   anterior: "",
 };
 let timerIntro;
+let entrou = false;
 
 let dispMovel = false;
 
@@ -19,14 +20,26 @@ function iniciar() {
 
   seta = new Seta();
   seta.iniciar();
-  seta.configurar("seta-branca-direita");
-  animarTitulo();
+  seta.configurar("normal-vrm");
+  // animarTitulo();
+}
 
+function fecharPopUp() {
   document.querySelector("#intro").addEventListener("click", mudarDeCena);
+
   // criar setas para navegar entre as páginas da intro
   document
     .querySelector("#intro")
     .addEventListener("mousemove", configurarSetas);
+
+  document.querySelector("#aviso").classList.add("hidden");
+
+  seta.configurar("seta-branca-direita");
+
+  animarTitulo();
+
+  entrou = true;
+  preload();
 }
 
 function mostrarIntro() {

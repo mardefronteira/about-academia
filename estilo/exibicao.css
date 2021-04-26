@@ -1,21 +1,30 @@
 #nav-esquerda-exibicao {
   position: absolute;
   margin: 0;
-  width: 5vw;
   height: 100vh;
   top: 0;
   left: 0;
   bottom: 0;
+
+  z-index: 5;
 }
 
 #nav-direita-exibicao {
   position: absolute;
   margin: 0;
-  width: 5vw;
   height: 100vh;
   top: 0;
   right: 0;
   bottom: 0;
+  z-index: 5;
+}
+
+.lateral {
+  width: 5vw;
+}
+
+.lateral-expandida {
+  width: 8vw;
 }
 
 #nav-cima-exibicao {
@@ -66,6 +75,10 @@
 
 /* #nav-centro-exibicao > div {
   border: 1px solid yellow;
+}
+
+#nav-exibicao > div {
+  border: 1px solid orange;
 } */
 
 .altura100 > div {

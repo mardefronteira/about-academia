@@ -1,15 +1,15 @@
 function configurarNav() {
   document.querySelector("#nav-exibicao").innerHTML = `
-  <div id="nav-esquerda-exibicao"></div>
   <div id="nav-cima-exibicao" class="linha">
     <div id="nav-cima-esquerda" class="meio-parent"></div>
     <div id="nav-cima-direita" class="meio-parent"></div>
   </div>
-  <div id="nav-direita-exibicao"></div>
   <div id="nav-baixo-exibicao" class="linha">
     <div id="nav-baixo-esquerda" class="meio-parent"></div>
     <div id="nav-baixo-direita" class="meio-parent"></div>
   </div>
+  <div id="nav-direita-exibicao"></div>
+  <div id="nav-esquerda-exibicao"></div>
   <div id="nav-centro-exibicao" class="linha centralizar">
     <div id="nav-centro-0"></div>
     <div id="nav-centro-1"></div>
@@ -49,6 +49,8 @@ function configurarNav() {
       centro.classList.add("altura50");
       cima.classList.add("altura-expandida");
       baixo.classList.add("altura-expandida");
+      direita.classList.add("lateral");
+      esquerda.classList.add("lateral");
       navVid0.classList.add("video0-aa0");
       navVid1.classList.add("video1-aa0");
       navVid2.classList.add("video2-aa0");
@@ -127,6 +129,8 @@ function configurarNav() {
       // configurar altura navs superior e inferior
       cima.classList.add("altura-normal");
       baixo.classList.add("altura-normal");
+      // configurar tamanho lateral
+      direita.classList.add("lateral-expandida");
       // navs centro
       navVid0.classList.add("video0-aa1");
       navVid1.classList.add("video1-aa1");
@@ -210,6 +214,8 @@ function configurarNav() {
       // configurar altura navs superior e inferior
       cima.classList.add("altura-normal");
       baixo.classList.add("altura-normal");
+      // configurar tamanho lateral
+      esquerda.classList.add("lateral-expandida");
       // navs centro
       navVid0.classList.add("espaco-aa2");
       navVid1.classList.add("video0-aa2");

@@ -43,33 +43,35 @@ let posTela = [];
 // rZ: -1000,
 
 function preload() {
-  // carregar e criar vídeos
-  let videoPath = "sala3d/videos";
-  for (let video in videosImg) {
-    videosImg[video] = createVideo(`${videoPath}/${videosImg[video]}`, () => {
-      videoCarregou();
-    });
-    videosImg[video].addClass("hidden");
-    videosImg[video].addClass("video-tocador");
-    videosImg[video].addClass("video-fundo");
-    videosImg[video].id(`video-${video}`);
-    videosImg[video].muted = true;
-    videosImg[video].autoplay = true;
-    videosImg[video].elt.loop = true;
-    if (video.includes("entrevista")) {
-      videosImg[video].elt.addEventListener("timeupdate", (e) => {
-        atualizarTempo(e.target.id);
-        // atualizarLegenda(e.target.id);
+  if (entrou) {
+    // carregar e criar vídeos
+    let videoPath = "sala3d/videos";
+    for (let video in videosImg) {
+      videosImg[video] = createVideo(`${videoPath}/${videosImg[video]}`, () => {
+        videoCarregou();
       });
-    } else {
-      videosImg[video].elt.addEventListener("timeupdate", (e) => {
-        atualizarTempo(e.target.id);
-      });
-    }
+      videosImg[video].addClass("hidden");
+      videosImg[video].addClass("video-tocador");
+      videosImg[video].addClass("video-fundo");
+      videosImg[video].id(`video-${video}`);
+      videosImg[video].muted = true;
+      videosImg[video].autoplay = true;
+      videosImg[video].elt.loop = true;
+      if (video.includes("entrevista")) {
+        videosImg[video].elt.addEventListener("timeupdate", (e) => {
+          atualizarTempo(e.target.id);
+          // atualizarLegenda(e.target.id);
+        });
+      } else {
+        videosImg[video].elt.addEventListener("timeupdate", (e) => {
+          atualizarTempo(e.target.id);
+        });
+      }
 
-    document
-      .querySelector("#conteiner-video-tocador")
-      .appendChild(document.querySelector(`#video-${video}`));
+      document
+        .querySelector("#conteiner-video-tocador")
+        .appendChild(document.querySelector(`#video-${video}`));
+    }
   }
 }
 

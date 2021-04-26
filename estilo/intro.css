@@ -143,3 +143,56 @@ div#intro {
 #diagrama-intro {
   height: 100vh;
 }
+
+#aviso {
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#popup-aviso {
+  border: 4px solid var(--cinza);
+  border-radius: 1vw;
+  box-shadow: -1vh 1vh var(--vermelho);
+  overflow: hidden;
+  width: auto;
+  background: #999;
+  max-width: 43vw;
+}
+
+.texto-aviso {
+  background: var(--cinza);
+  padding: 2vh 0;
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+
+#nav-aviso {
+  padding: 3vh 5vw;
+  justify-content: space-around;
+}
+
+.titulo-aviso {
+  font-family: "Helvetica_AA", "HelveticaNeue", Helvetica, sans-serif;
+  font-size: 2vw;
+  padding-bottom: 1vh;
+}
+
+.desc-aviso {
+  font-family: sans-serif;
+  font-size: 1vw;
+  line-height: 1.2;
+  padding: 1vh 2vw;
+}
+
+.es-aviso {
+  color: var(--preto);
+}
+.pt-aviso {
+  color: var(--branco);
+}
+
+.botao-aviso {
+  font-family: "Helvetica_AA", "HelveticaNeue", Helvetica, sans-serif;
+  font-size: 2vw;
+}
