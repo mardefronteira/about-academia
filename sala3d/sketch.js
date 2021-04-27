@@ -181,22 +181,11 @@ function draw() {
 
     // esperar um pouquinho para que aumente a chance de estar renderizado ao mostrar
     if (cortina) {
-<<<<<<< HEAD
       for (let i in videoPlanes) {
         videoPlanes[i].ajustarVolume(i);
       }
       mensagemCarregando.remove();
       cortina = false;
-=======
-      background(0);
-      setTimeout(() => {
-        mensagemCarregando.remove();
-        cortina = false;
-        for (let i in videoPlanes) {
-          videoPlanes[i].ajustarVolume(i);
-        }
-      }, 2000);
->>>>>>> c167add1d3febd9d4814b9072094fc3a495e4c99
     }
   }
 

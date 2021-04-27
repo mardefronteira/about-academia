@@ -54,11 +54,7 @@ class VideoPlane {
       if (i < 3) {
         volume = constrain(map(posCamera.rX, -baseRef, baseRef, 1, 0), 0, 1);
       } else {
-<<<<<<< HEAD
         volume = constrain(map(posCamera.rX, -baseRef, baseRef, 0, 0.9), 0, 1);
-=======
-        volume = constrain(map(posCamera.rX, -baseRef, baseRef, 0, 1), 0, 1);
->>>>>>> c167add1d3febd9d4814b9072094fc3a495e4c99
       }
     }
     this.video.volume = volume;
