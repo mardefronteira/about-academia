@@ -199,8 +199,9 @@ function mostrar(pagina) {
     case "info":
       cenaAtual = "info";
       const info = document.querySelector(`#info`);
-      info.classList.remove("hidden");
       info.scrollTop = 0;
+      info.classList.remove("hidden");
+      sugerirScroll();
       break;
     case "publicacoes":
       publicacoes();

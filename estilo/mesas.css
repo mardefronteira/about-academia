@@ -40,6 +40,10 @@
   line-height: 1.5;
 }
 
+.botao-mesas {
+  font-size: 3.5vw;
+}
+
 #entrar-mesa {
   position: absolute;
   right: 5vw;
@@ -57,7 +61,7 @@
 }
 
 #conteiner-desc-mesa {
-  height: 50vh;
+  height: 52vh;
   width: 100%;
   overflow: auto;
 }
@@ -92,8 +96,9 @@ a {
 #setas-scroll-mesas {
   position: fixed;
   right: 7vw;
-  bottom: 21vh;
+  bottom: 23vh;
   height: 15vh;
+  pointer-events: none;
 }
 
 .seta-scroll {

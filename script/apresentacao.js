@@ -17,6 +17,8 @@ function apresentacao() {
   corpo.innerHTML = idioma(apresentacaoPt, apresentacaoEs);
 
   document.querySelector(`#apresentacao`).classList.remove("hidden");
+
+  sugerirScroll();
 }
 
 const apresentacaoPt = `        <h2 class="titulo-apresentacao">Título apresentação em brasileiro</h2>

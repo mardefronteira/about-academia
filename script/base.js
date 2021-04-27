@@ -25,3 +25,11 @@ function esconderTudo() {
 
   document.querySelector("#cursores").classList.remove("hidden");
 }
+
+function sugerirScroll() {
+  const setaScroll = document.querySelector("#setas-scroll");
+  setaScroll.classList.remove("transparente");
+  setTimeout(() => {
+    setaScroll.classList.add("transparente");
+  }, 5000);
+}

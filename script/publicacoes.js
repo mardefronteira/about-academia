@@ -145,6 +145,8 @@ function publicacoes() {
       });
     primeiraPubli = false;
   }
+
+  sugerirScroll();
 }
 
 function hoverPublicacoes(mouse, obra) {

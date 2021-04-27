@@ -31,7 +31,7 @@ function mesas() {
   );
 
   animar("voltar-mesas", "", idioma("Voltar", "Volver"), false, [
-    "titulo-mesas",
+    "botoes-mesas",
   ]);
 
   atualizarInfoMesas();
@@ -88,6 +88,13 @@ function atualizarInfo(idMesa, forcar = false) {
       entrarMesa.innerHTML = infoMesa.botao;
       animar("titulo-mesa", "", infoMesa.titulo, false, []);
       descMesa.innerHTML = infoMesa.desc;
+
+      const setasScroll = document.querySelector("#setas-scroll-mesas");
+      if (infoMesa.id === "mesa3") {
+        setasScroll.classList.add("hidden");
+      } else {
+        setasScroll.classList.remove("hidden");
+      }
 
       const linkMesa = document.querySelector("#entrar-mesa");
       if (infoMesa.link === "") {

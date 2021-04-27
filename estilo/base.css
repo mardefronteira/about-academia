@@ -203,3 +203,17 @@ img#seta {
 .texto-centro {
   text-align: center;
 }
+
+#setas-scroll {
+  position: fixed;
+  right: 0.5vw;
+  bottom: 5vh;
+  height: 15vh;
+  pointer-events: none;
+  z-index: 15;
+  transition: 1s;
+}
+
+.transparente {
+  opacity: 0;
+}
