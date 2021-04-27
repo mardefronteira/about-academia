@@ -26,6 +26,7 @@ let contadorVideos = 0;
 let videosCarregados = false;
 let permitiuAudio = false;
 let mensagemCarregando;
+let cortina = true;
 
 let ultimoRX = 0;
 let posCamera = {
@@ -131,7 +132,7 @@ function videoCarregou() {
       }
     }
     for (let i in videoPlanes) {
-      videoPlanes[i].ajustarVolume(0, i);
+      videoPlanes[i].ajustarVolume(i, true);
       const d = new Date();
       let hora = d.getHours() + d.getMinutes() / 60;
       videoPlanes[i].configurarInicio(hora);
@@ -140,7 +141,6 @@ function videoCarregou() {
     configurarNav();
 
     videosCarregados = true;
-    mensagemCarregando.remove();
 
     processarLegendas();
   }
@@ -153,7 +153,7 @@ function setup() {
 
   // criar mensagem de "carregando..."
   mensagemCarregando = document.createElement("p");
-  mensagemCarregando.innerHTML = "carregando...";
+
   overlayConfig.appendChild(mensagemCarregando);
 
   createCanvas(window.innerWidth, window.innerHeight, WEBGL);
@@ -173,11 +173,26 @@ function setup() {
   noStroke();
   background(0);
 }
-let ultimoMouse = [0, 0];
+
 function draw() {
+  // se os vídeos estiverem carregados, e a pessoa entrar na sala, renderizar 3D
   if (videosCarregados && permitiuAudio) {
     mostrarSalas();
+
+    // esperar um pouquinho para que aumente a chance de estar renderizado ao mostrar
+    if (cortina) {
+      background(0);
+      setTimeout(() => {
+        mensagemCarregando.remove();
+        cortina = false;
+        for (let i in videoPlanes) {
+          videoPlanes[i].ajustarVolume(i);
+        }
+      }, 2000);
+    }
   }
+
+  // caso uma das entrevistas estiver visível e as legendas ligadas, atualizar legendas.
   for (let i in videos) {
     if (
       !videos[i].elt.classList.contains("hidden") &&
@@ -330,7 +345,7 @@ function mostrarSalas() {
 
   if (ultimoRX !== posCamera.rX) {
     for (let i in videoPlanes) {
-      videoPlanes[i].ajustarVolume(i);
+      // videoPlanes[i].ajustarVolume(i);
     }
     ultimoRX = posCamera.rX;
   }

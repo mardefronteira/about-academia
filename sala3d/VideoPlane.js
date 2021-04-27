@@ -45,13 +45,17 @@ class VideoPlane {
     this.video.currentTime = map(hora, 0, 23.98, 0, duracao);
   }
 
-  ajustarVolume(i) {
-    const baseRef = width * 0.59;
+  ajustarVolume(i, mute = false) {
     let volume;
-    if (i < 3) {
-      volume = constrain(map(posCamera.rX, -baseRef, baseRef, 1, 0), 0, 1);
+    if (mute) {
+      volume = 0;
     } else {
-      volume = constrain(map(posCamera.rX, -baseRef, baseRef, 0, 1), 0, 1);
+      const baseRef = width * 0.59;
+      if (i < 3) {
+        volume = constrain(map(posCamera.rX, -baseRef, baseRef, 1, 0), 0, 1);
+      } else {
+        volume = constrain(map(posCamera.rX, -baseRef, baseRef, 0, 1), 0, 1);
+      }
     }
     this.video.volume = volume;
   }
