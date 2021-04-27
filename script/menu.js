@@ -180,6 +180,17 @@ function trocarIdioma() {
     ? (mensagemCarregando.innerHTML = idioma("carregando...", "cargando..."))
     : "";
 
+  const comprar1 = document.querySelector("#link1-publicacoes");
+  const comprar2 = document.querySelector("#link2-publicacoes");
+  comprar1.href = idioma(
+    "https://www.amazon.com.br/-/pt/gp/product/B093LRPKMH?ref_=dbs_m_mng_rwt_calw_tkin_0&storeType=ebooks",
+    "https://www.amazon.com/-/pt/gp/product/B093LST3BN?ref_=dbs_m_mng_rwt_calw_tkin_2&storeType=ebooks"
+  );
+  comprar2.href = idioma(
+    "https://www.amazon.com.br/-/pt/gp/product/B093LTV47J?ref_=dbs_m_mng_rwt_calw_tkin_1&storeType=ebooks",
+    "https://www.amazon.com.br/-/pt/gp/product/B093LSPNKJ?ref_=dbs_m_mng_rwt_calw_tkin_3&storeType=ebooks"
+  );
+
   // cenaAtual === "apresentacao" ? apresentacao() : "";
   // cenaAtual === "exibicao" ? configurarNav() : "";
   // cenaAtual === "publicacoes" ? publicacoes() : "";

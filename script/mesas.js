@@ -39,7 +39,7 @@ function mesas() {
 
   if (primeiraMesa) {
     document.querySelector("#voltar-mesa").addEventListener("click", () => {
-      tocadorMesas.classList.add("hidden");
+      document.querySelector("#tocador-mesas").classList.add("hidden");
       document.querySelector("#iframe-mesas").src = "";
     });
     document
@@ -115,8 +115,13 @@ function mostrarMesa() {
     infoMesas[mesaSelecionada - 1].link
   }`;
 
-  let tocadorMesas = document.querySelector("#tocador-mesas");
+  const voltarMesa = document.querySelector("#voltar-mesa");
+  voltarMesa.innerHTML = "";
+
+  const tocadorMesas = document.querySelector("#tocador-mesas");
   tocadorMesas.classList.remove("hidden");
+
+  animar("voltar-mesa", "", idioma("Voltar", "Volver"));
 }
 
 function atualizarInfoMesas() {
@@ -183,8 +188,8 @@ function atualizarInfoMesas() {
             <span class="desc-pessoa-mesa">Culturador y coordinador de Fórum Permanente. BR (moderación)</span>
             </a>`
       ),
-      botao: "Em breve",
-      link: "",
+      botao: "Entrar",
+      link: "6TsnWzl1mR0",
     },
     {
       id: "mesa2",
