@@ -342,7 +342,7 @@ function mostrarSalas() {
 
   if (ultimoRX !== posCamera.rX) {
     for (let i in videoPlanes) {
-      // videoPlanes[i].ajustarVolume(i);
+      videoPlanes[i].ajustarVolume(i);
     }
     ultimoRX = posCamera.rX;
   }

@@ -19,3 +19,7 @@
   width: 90vw;
   height: auto;
 }
+
+#voltar-info {
+  position: fixed;
+}
