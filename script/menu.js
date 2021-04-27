@@ -176,6 +176,10 @@ function trocarIdioma() {
   const info = document.querySelector("#info-svg");
   info.src = `img/info/info_${idioma("pt", "es")}.svg`;
 
+  cortina
+    ? (mensagemCarregando.innerHTML = idioma("carregando...", "cargando..."))
+    : "";
+
   // cenaAtual === "apresentacao" ? apresentacao() : "";
   // cenaAtual === "exibicao" ? configurarNav() : "";
   // cenaAtual === "publicacoes" ? publicacoes() : "";
