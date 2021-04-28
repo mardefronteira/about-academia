@@ -57,8 +57,9 @@ function intro() {
   let pagIntro = document.querySelector("#intro-texto");
   pagIntro.innerHTML = "";
 
-  if (cenaAtual !== 6)
+  if (cenaAtual !== 6) {
     document.querySelector("#diagrama-intro").classList.add("hidden");
+  }
   if (![4, 5].includes(cenaAtual)) {
     document.querySelector("#foto-intro").classList.add("hidden");
     document.querySelector("#foto-intro").classList.remove("trinta");
@@ -70,12 +71,16 @@ function intro() {
   switch (cenaIntro) {
     case 0:
       document.querySelector("#intro").classList.remove("hidden");
+      document.querySelector("#setas-intro").classList.add("hidden");
       mostrarLogos();
       animarTitulo();
       statusIdioma.alterar = true;
       break;
 
     case 1:
+      dispMovel
+        ? document.querySelector("#setas-intro").classList.remove("hidden")
+        : "";
       if (statusIdioma.alterar && statusIdioma.anterior !== ptBr) {
         trocarIdioma();
         statusIdioma.anterior = ptBr;
@@ -241,13 +246,93 @@ function mostrarLogos() {
 
 /* PÁGINA INICIAL */
 function animarTitulo() {
-  let titulo = "About Academia";
-  let subtituloBr = "um projeto por<br>Muntadas";
-  let subtituloEs = "un proyecto de<br>Muntadas";
-  let idiomaBr = "pt.";
-  let idiomaEs = "es.";
-  let underline = '<span class="undeline-idioma">_</span>';
-  let spanTitulo = `
+  if (dispMovel) {
+    let titulo = "About Academia";
+    let subtituloBr = "um projeto por<br>Muntadas";
+    let subtituloEs = "un proyecto de<br>Muntadas";
+    let idiomaBr = "português";
+    let idiomaEs = "español";
+    let underline = '<span class="undeline-idioma">_</span>';
+    let spanTitulo = `
+<section id="titulosBr" class="area-titulo">
+    <h1 id='tituloBr' class='titulo vermelho'>_</h1>
+    <h2 id='subtituloBr' class='subtitulo'></h2>
+    <p id='iBr' class="idioma-intro"><span id='idiomaBr'></span></p>
+    </section><section id="titulosEs" class="area-titulo">
+    <h1 id='tituloEs' class='titulo vermelho'>_</h1>
+    <h2 id='subtituloEs' class='subtitulo'></h2>
+    <p id='iEs' class="idioma-intro"><span id='idiomaEs' class=''></span></p>
+    </section>
+    `;
+
+    let alvo;
+    if (!document.querySelector(`#titulos`)) {
+      // criar parágrafo para o título e o subtítulo
+      paragrafoBase = document.createElement("DIV");
+      paragrafoBase.id = "titulos";
+      paragrafoBase.classList.add("intro-titulo");
+      paragrafoBase.innerHTML = spanTitulo;
+      document.querySelector("#intro-texto").appendChild(paragrafoBase);
+
+      const iBr = document.querySelector(`#idiomaBr`);
+      const pBr = document.querySelector(`#iBr`);
+      const sBr = document.querySelector(`#subtituloBr`);
+      iBr.classList.add("cinquenta");
+      sBr.classList.add("cinquenta");
+      pBr.innerHTML = underline + iBr.outerHTML;
+
+      paragrafoBase.addEventListener("mousemove", () => {
+        ptBr = mouseY < window.innerHeight / 2 ? true : false;
+      });
+
+      // indicar o titulo como primeiro alvo
+      alvo = document.querySelector(`#tituloBr`);
+    } else {
+      // verificar em qual ponto do texto a animação está, e indicar o alvo correto a partir disso.
+      alvo = document.querySelector(`#tituloBr`);
+      if (alvo.id === "tituloBr" && alvo.innerHTML === titulo) {
+        alvo = document.querySelector(`#subtituloBr`);
+      }
+      if (alvo.innerHTML === subtituloBr) {
+        alvo = document.querySelector(`#idiomaBr`);
+      }
+      if (alvo.innerHTML === idiomaBr) {
+        alvo = document.querySelector(`#tituloEs`);
+      }
+      if (alvo.id === "tituloEs" && alvo.innerHTML === titulo) {
+        alvo = document.querySelector(`#subtituloEs`);
+      }
+      if (alvo.innerHTML === subtituloEs) {
+        alvo = document.querySelector(`#idiomaEs`);
+      }
+    }
+
+    let texto = eval(alvo.id.slice(0, 6) === "titulo" ? "titulo" : alvo.id);
+    let ultimaLetra = alvo.innerHTML.length - 1;
+
+    console.log(alvo.id, texto);
+    if (alvo.innerHTML !== texto) {
+      // adicionar próxima letra ao parágrafo alvo.
+      alvo.innerHTML = texto.slice(0, ultimaLetra + 1);
+
+      // caso não seja a última letra do texto, adicionar underline.
+      alvo.innerHTML.length === texto.length ? "" : (alvo.innerHTML += "_");
+
+      // chamar próxima animação
+      timers.push(
+        setTimeout(() => {
+          animarTitulo();
+        }, 15)
+      );
+    }
+  } else {
+    let titulo = "About Academia";
+    let subtituloBr = "um projeto por<br>Muntadas";
+    let subtituloEs = "un proyecto de<br>Muntadas";
+    let idiomaBr = "pt.";
+    let idiomaEs = "es.";
+    let underline = '<span class="undeline-idioma">_</span>';
+    let spanTitulo = `
   <h1 id='titulo' class='vermelho'>_</h1>
   <h2 id='subtituloBr' class='subtitulo'></h2>
   <h2 id='subtituloEs' class='subtitulo'></h2>
@@ -257,16 +342,15 @@ function animarTitulo() {
   </div>
   `;
 
-  let alvo;
-  if (!document.querySelector(`#titulos`)) {
-    // criar parágrafo para o título e o subtítulo
-    paragrafoBase = document.createElement("DIV");
-    paragrafoBase.id = "titulos";
-    paragrafoBase.classList.add("intro-titulo");
-    paragrafoBase.innerHTML = spanTitulo;
-    document.querySelector("#intro-texto").appendChild(paragrafoBase);
+    let alvo;
+    if (!document.querySelector(`#titulos`)) {
+      // criar parágrafo para o título e o subtítulo
+      paragrafoBase = document.createElement("DIV");
+      paragrafoBase.id = "titulos";
+      paragrafoBase.classList.add("intro-titulo");
+      paragrafoBase.innerHTML = spanTitulo;
+      document.querySelector("#intro-texto").appendChild(paragrafoBase);
 
-    if (!dispMovel) {
       paragrafoBase.addEventListener("mousemove", () => {
         ptBr = mouseY < window.innerHeight / 2 ? true : false;
         const iBr = document.querySelector(`#idiomaBr`);
@@ -292,49 +376,42 @@ function animarTitulo() {
           document.querySelector(`#idiomaEs`).classList.add("cinquenta");
         }
       });
+
+      // indicar o titulo como primeiro alvo
+      alvo = document.querySelector(`#titulo`);
     } else {
-      const iBr = document.querySelector(`#idiomaBr`);
-      const pBr = document.querySelector(`#iBr`);
-      const sBr = document.querySelector(`#subtituloBr`);
-      pBr.innerHTML = underline + iBr.outerHTML;
-      sBr.classList.add("cinquenta");
-      document.querySelector(`#idiomaBr`).classList.add("cinquenta");
+      // verificar em qual ponto do texto a animação está, e indicar o alvo correto a partir disso.
+      alvo = document.querySelector(`#titulo`);
+      if (alvo.innerHTML === titulo) {
+        alvo = document.querySelector(`#subtituloBr`);
+      }
+      if (alvo.innerHTML === subtituloBr) {
+        alvo = document.querySelector(`#subtituloEs`);
+      }
+      if (alvo.innerHTML === subtituloEs) {
+        alvo = document.querySelector(`#idiomaBr`);
+      }
+      if (alvo.innerHTML === idiomaBr) {
+        alvo = document.querySelector(`#idiomaEs`);
+      }
     }
 
-    // indicar o titulo como primeiro alvo
-    alvo = document.querySelector(`#titulo`);
-  } else {
-    // verificar em qual ponto do texto a animação está, e indicar o alvo correto a partir disso.
-    alvo = document.querySelector(`#titulo`);
-    if (alvo.innerHTML === titulo) {
-      alvo = document.querySelector(`#subtituloBr`);
-    }
-    if (alvo.innerHTML === subtituloBr) {
-      alvo = document.querySelector(`#subtituloEs`);
-    }
-    if (alvo.innerHTML === subtituloEs) {
-      alvo = document.querySelector(`#idiomaBr`);
-    }
-    if (alvo.innerHTML === idiomaBr) {
-      alvo = document.querySelector(`#idiomaEs`);
-    }
-  }
+    let texto = eval(alvo.id);
+    let ultimaLetra = alvo.innerHTML.length - 1;
 
-  let texto = eval(alvo.id);
-  let ultimaLetra = alvo.innerHTML.length - 1;
+    if (alvo.innerHTML !== texto) {
+      // adicionar próxima letra ao parágrafo alvo.
+      alvo.innerHTML = texto.slice(0, ultimaLetra + 1);
 
-  if (alvo.innerHTML !== texto) {
-    // adicionar próxima letra ao parágrafo alvo.
-    alvo.innerHTML = texto.slice(0, ultimaLetra + 1);
+      // caso não seja a última letra do texto, adicionar underline.
+      alvo.innerHTML.length === texto.length ? "" : (alvo.innerHTML += "_");
 
-    // caso não seja a última letra do texto, adicionar underline.
-    alvo.innerHTML.length === texto.length ? "" : (alvo.innerHTML += "_");
-
-    // chamar próxima animação
-    timers.push(
-      setTimeout(() => {
-        animarTitulo();
-      }, 15)
-    );
+      // chamar próxima animação
+      timers.push(
+        setTimeout(() => {
+          animarTitulo();
+        }, 15)
+      );
+    }
   }
 }
