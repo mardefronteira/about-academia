@@ -26,8 +26,21 @@
   margin-bottom: 5vh;
 }
 
+.autor-apresentacao {
+  font: inherit;
+  font-size: 2.8vw;
+  line-height: 1.1;
+}
+
 .corpo-apresentacao {
   font-family: "HelveticaNeue", "Helvetica_AA", Helvetica, sans-sans-serif;
+  font-size: 1.5vw;
+  line-height: 1.2;
+  margin-bottom: 3vh;
+}
+
+.ref-apresentacao {
+  font-family: Helvetica, sans-sans-serif;
   font-size: 1.5vw;
   line-height: 1.2;
   margin-bottom: 3vh;
