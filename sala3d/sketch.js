@@ -26,7 +26,10 @@ let contadorVideos = 0;
 let videosCarregados = false;
 let permitiuAudio = false;
 let mensagemCarregando;
+
 let cortina = true;
+let horizontal;
+let estavaHorizontal;
 
 let ultimoRX = 0;
 let posCamera = {
@@ -38,6 +41,7 @@ let posCamera = {
 let ultimaTela = 0;
 let tela = 0;
 let posTela = [];
+let imgRot;
 // cX: 500,
 // cZ: 300,
 // rX: 1300,
@@ -74,6 +78,15 @@ function preload() {
         .appendChild(document.querySelector(`#video-${video}`));
     }
   }
+  imgRot = createImg(
+    "img/icones/rotacao.gif",
+    "Por favor, mantenha seu dispositivo na posição horizontal."
+  );
+  imgRot.id = "rotacao-mobile";
+  imgRot.position(width / 2 - height / 6, height / 2 - height / 6);
+  imgRot.elt.width = height / 3;
+  imgRot.elt.height = height / 3;
+  imgRot.hide();
 }
 
 function carregarTypes() {
@@ -153,10 +166,12 @@ function setup() {
 
   // criar mensagem de "carregando..."
   mensagemCarregando = document.createElement("p");
-
   overlayConfig.appendChild(mensagemCarregando);
 
   createCanvas(window.innerWidth, window.innerHeight, WEBGL);
+
+  horizontal = width > height ? true : false;
+  estavaHorizontal = horizontal;
 
   angleMode(DEGREES);
 
@@ -176,11 +191,32 @@ function setup() {
 
 function draw() {
   // se os vídeos estiverem carregados, e a pessoa entrar na sala, renderizar 3D
+
+  /*
+   * em um dispositivo móvel, checar a orientação da tela.
+   * caso esteja vertical, mostrar animação de rotação e pausar exibição
+   */
+  if (dispMovel && !horizontal) {
+    let overlayConfig = document.querySelector("#overlay-exibicao");
+    overlayConfig.classList.add("hidden");
+    imgRot.show();
+    permitiuAudio ? pausarExibicao() : "";
+    estavaHorizontal = false;
+  } else {
+    if (estavaHorizontal !== horizontal) {
+      imgRot.hide();
+      estavaHorizontal = true;
+      permitirAudio();
+      let overlayConfig = document.querySelector("#overlay-exibicao");
+
+      videosCarregados ? "" : overlayConfig.classList.remove("hidden");
+    }
+  }
+
   if (videosCarregados && permitiuAudio) {
     mostrarSalas();
-
-    // esperar um pouquinho para que aumente a chance de estar renderizado ao mostrar
-    if (cortina) {
+    // tirar mensagem de carregamento
+    if (videosCarregados && cortina) {
       for (let i in videoPlanes) {
         videoPlanes[i].ajustarVolume(i);
       }
@@ -189,6 +225,29 @@ function draw() {
     }
   }
 
+  // if (dispMovel && !horizontal) {
+  //   imgRot.show();
+  //   permitiuAudio ? pausarExibicao() : "";
+  //   estavaHorizontal = false;
+  // } else {
+  //   if (estavaHorizontal !== horizontal) {
+  //     imgRot.hide();
+  //     estavaHorizontal = true;
+  //     permitirAudio();
+  //   }
+  //
+  //   if (videosCarregados && permitiuAudio) {
+  //     mostrarSalas();
+  //     // tirar mensagem de carregamento
+  //     if (videosCarregados && cortina) {
+  //       for (let i in videoPlanes) {
+  //         videoPlanes[i].ajustarVolume(i);
+  //       }
+  //       mensagemCarregando.remove();
+  //       cortina = false;
+  //     }
+  //   }
+  // }
   // caso uma das entrevistas estiver visível e as legendas ligadas, atualizar legendas.
   for (let i in videos) {
     if (
@@ -222,8 +281,14 @@ function permitirAudio() {
 
 function windowResized() {
   resizeCanvas(window.innerWidth, window.innerHeight);
+  horizontal = width > height ? true : false;
+
   atualizarPos();
   camera(posCamera.cX, 0, posCamera.cZ, posCamera.rX, 0, posCamera.rZ, 0, 1, 0);
+
+  imgRot.position(width / 2 - height / 6, height / 2 - height / 6);
+  imgRot.elt.width = height / 3;
+  imgRot.elt.height = height / 3;
 }
 
 function atualizarPos() {
