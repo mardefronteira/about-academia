@@ -257,10 +257,12 @@ function animarTitulo() {
     <h1 id='tituloBr' class='titulo vermelho'>_</h1>
     <h2 id='subtituloBr' class='subtitulo'></h2>
     <p id='iBr' class="idioma-intro"><span id='idiomaBr'></span></p>
+    <img id="seta-titulo-pt" src="img/cursor/setaVermelhaDireita.png" class="seta-titulo"/>
     </section><section id="titulosEs" class="area-titulo">
     <h1 id='tituloEs' class='titulo vermelho'>_</h1>
     <h2 id='subtituloEs' class='subtitulo'></h2>
     <p id='iEs' class="idioma-intro"><span id='idiomaEs' class=''></span></p>
+        <img id="seta-titulo-es" src="img/cursor/setaVermelhaDireita.png" class="seta-titulo"/>
     </section>
     `;
 

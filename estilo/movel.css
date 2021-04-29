@@ -39,6 +39,12 @@
     left: 50vw;
   }
 
+  .seta-titulo {
+    width: 25vw;
+    position: relative;
+    left: -50vw;
+  }
+
   #setas-intro > img {
     position: fixed;
     bottom: 5vh;
@@ -131,6 +137,7 @@
   }
 
   /* MESAS */
+
   #info-mesas {
     margin: 4vh 12vw;
     padding: 0;
@@ -149,7 +156,7 @@
   #nav-mesas {
     margin: 0;
     width: 60vw;
-    padding-bottom: 10vh;
+    padding-bottom: 5vh;
   }
 
   .nome-pessoa-mesa {
@@ -197,7 +204,7 @@
   }
 
   #setas-scroll-mesas {
-    bottom: 12vh;
+    bottom: 16vh;
     right: 10vw;
     height: 14vh;
   }
@@ -206,6 +213,9 @@
   .capa-publicacoes {
     height: 100%;
     text-align: center;
+
+    position: relative;
+    left: 6vw;
   }
 
   .capa-imagem-fundo {
@@ -234,11 +244,11 @@
 
   .conteiner-publicacoes {
     margin: 5vh 8vw 10vh 10vw;
-    height: 87vh;
+    height: auto;
   }
 
   .conteiner-capa-publicacoes {
-    height: 65%;
+    height: 50vh;
     width: auto;
   }
 
@@ -305,6 +315,10 @@
     width: 100vw;
   }
 
+  #voltar-info {
+    font-size: 3vw;
+  }
+
   #rotacao-info {
     position: fixed;
     display: block;
@@ -323,7 +337,7 @@
 
   .voltar {
     left: 5vw;
-    font-size: 5vw;
+    font-size: 6vw;
     bottom: 3vh;
   }
 }
