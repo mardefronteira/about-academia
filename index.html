@@ -82,7 +82,7 @@
       <div id="setas-intro" class="linha centralizar hidden">
         <img
           id="seta-intro-esquerda"
-          src="img/cursor/setaBrancaEsquerda.png"
+          src="img/cursor/setaVermelhaEsquerda.png"
           tabindex="0"
           height="30px"
           width="128px"
@@ -90,8 +90,8 @@
         />
         <img
           id="seta-intro-direita"
-          src="img/cursor/setaBrancaDireita.png"
-          height="30px"
+          src="img/cursor/setaVermelhaDireita.png"
+          height="32px"
           width="128px"
           tabindex="0"
           alt="Avançar"
@@ -214,7 +214,7 @@
           </div>
           <div class="coluna conteiner-textos-publicacoes">
             <section id="aa1-titulos"></section>
-            <nav id="aa1-nav">
+            <nav id="aa1-nav" class="linha-movel">
               <p
                 id="previa1-publicacoes"
                 class="texto-publicacoes clicavel"
@@ -239,7 +239,7 @@
         <div id="aa2-publicacoes" class="conteiner-publicacoes linha">
           <div class="coluna conteiner-textos-publicacoes">
             <section id="aa2-titulos"></section>
-            <nav id="aa2-nav">
+            <nav id="aa2-nav" class="linha-movel">
               <p
                 id="previa2-publicacoes"
                 class="texto-publicacoes clicavel"
@@ -432,6 +432,13 @@
     <div id="info" class="pagina hidden">
       <img id="fundo-info" class="tela-cheia" src="img/info/fundo.jpg" alt="" />
       <img id="info-svg" src="" />
+      <img
+        id="rotacao-info"
+        src="img/icones/rotacao.gif"
+        width="200px"
+        height="200px"
+        class="hidden"
+      />
       <button
         id="voltar-info"
         type="button"

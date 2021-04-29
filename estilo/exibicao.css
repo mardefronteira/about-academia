@@ -73,13 +73,13 @@
   width: 50%;
 }
 
-/* #nav-centro-exibicao > div {
+#nav-centro-exibicao > div {
   border: 1px solid yellow;
 }
 
 #nav-exibicao > div {
   border: 1px solid orange;
-} */
+}
 
 .altura100 > div {
   height: 60vh;

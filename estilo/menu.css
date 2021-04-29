@@ -69,8 +69,7 @@ ul {
   opacity: 1;
 }
 
-.item-menu:hover,
-.idioma-menu:hover {
+.item-menu:hover {
   color: var(--vermelho);
 }
 
@@ -86,25 +85,10 @@ ul {
 }
 
 #subtitulo-menu:hover {
-  opacity: 0.9;
+  opacity: 0.5;
 }
 
 #titulo-menu-txt {
   font-size: 6vw;
   color: var(--vermelho);
 }
-
-/* #idiomas-menu {
-  font-size: 3.5vw;
-  line-height: 1;
-  width: 10vw;
-  position: absolute;
-  bottom: 10vh;
-  text-align: left;
-  display: flex;
-  -ms-flex: 1;
-  flex: 1;
-  flex-direction: column;
-  color: var(--branco);
-  right: 4vw;
-} */

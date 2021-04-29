@@ -16,7 +16,7 @@
     font-size: 6vw;
     width: 20vw;
     top: 70vh;
-    padding-top: 8vh;
+    padding-top: 5vh;
   }
 
   #conteiner-logos {
@@ -27,6 +27,7 @@
   .intro-texto {
     font: inherit;
     font-size: 2.2vh;
+    line-height: 1.1;
     margin: 6vh 10vw;
   }
 
@@ -41,12 +42,12 @@
   #setas-intro > img {
     position: fixed;
     bottom: 5vh;
-    width: 20vw;
+    width: 25vw;
     height: auto;
   }
 
   .intro-num {
-    bottom: 5vh;
+    bottom: 10vh;
     right: 10vw;
     font-size: 2vh;
   }
@@ -57,7 +58,7 @@
   }
 
   .area-titulo {
-    height: 45vh;
+    height: 43vh;
     text-align: right;
     font: inherit;
   }
@@ -89,5 +90,240 @@
 
   .botao-aviso {
     font-size: 5vw;
+  }
+
+  /* MENU */
+  #botao-menu {
+    font-size: 11vw;
+    top: 3.5vh;
+    left: 6vw;
+    width: 4vw;
+  }
+
+  nav#nav-menu {
+    font-size: 10vw;
+    font-family: "Helvetica_AA", "HelveticaNeue", Helvetica, sans-serif;
+    left: 3vw;
+  }
+
+  .item-menu {
+    padding: 1vh;
+  }
+
+  #exibicao-menu {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    color: var(--vermelho);
+  }
+
+  .subtitulo-menu {
+    font-size: 10vw;
+  }
+
+  #titulo-menu,
+  #subtitulo-menu {
+    margin-left: 9.5vw;
+  }
+
+  #titulo-menu-txt {
+    font-family: "Helvetica_AA", Helvetica, sans-serif;
+    font-size: 11vw;
+  }
+
+  /* MESAS */
+  #info-mesas {
+    margin: 4vh 12vw;
+    padding: 0;
+  }
+
+  .titulos-mesas {
+    font-size: 11vw;
+    line-height: 1;
+  }
+
+  #titulo-mesa {
+    font-size: 7.5vw;
+    line-height: 1;
+  }
+
+  #nav-mesas {
+    margin: 0;
+    width: 60vw;
+    padding-bottom: 10vh;
+  }
+
+  .nome-pessoa-mesa {
+    padding-top: 2vh;
+    font-size: 6vw;
+  }
+
+  .desc-pessoa-mesa {
+    font-size: 4vw;
+    line-height: 1.2;
+  }
+
+  #data-mesa {
+    font-size: 4vw;
+  }
+
+  #conteiner-desc-mesa {
+    height: 50vh;
+    width: 73vw;
+  }
+
+  .botao-mesas {
+    font-size: 6vw;
+  }
+
+  #entrar-mesa {
+    bottom: 5vh;
+    right: 8.5vw;
+  }
+
+  #voltar-mesas {
+    bottom: 5vh;
+  }
+
+  #iframe-mesas {
+    top: 25vh;
+    left: 0;
+    width: 100vw;
+    height: 50vh;
+  }
+
+  .seta-scroll {
+    height: 2vh;
+    padding: 2vh 0;
+  }
+
+  #setas-scroll-mesas {
+    bottom: 12vh;
+    right: 10vw;
+    height: 14vh;
+  }
+
+  /* PUBLICAÇÕES */
+  .capa-publicacoes {
+    height: 100%;
+    text-align: center;
+  }
+
+  .capa-imagem-fundo {
+    display: none;
+  }
+
+  #aa1-publicacoes {
+    flex-direction: column-reverse;
+  }
+
+  #aa2-publicacoes {
+    flex-direction: column;
+  }
+
+  .linha-movel {
+    display: flex;
+    -ms-flex: 1;
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  #aa2-publicacoes {
+    text-align: right;
+  }
+
+  .conteiner-publicacoes {
+    margin: 5vh 8vw 10vh 10vw;
+    height: 87vh;
+  }
+
+  .conteiner-capa-publicacoes {
+    height: 65%;
+    width: auto;
+  }
+
+  .texto-publicacoes {
+    font-size: 7.5vw;
+    margin-bottom: 3vh;
+    margin-left: 3vw;
+  }
+
+  .conteiner-textos-publicacoes {
+    max-width: 100%;
+  }
+
+  /* APRESENTAÇÃO */
+
+  .titulo-apresentacao {
+    font-size: 5vw;
+    margin-bottom: 0;
+  }
+
+  .autor-apresentacao {
+    font-size: 4vw;
+    margin-top: 1vh;
+  }
+
+  .aviso-apresentacao {
+    font-size: 3.5vw;
+    margin-top: 1vh;
+  }
+
+  .corpo-apresentacao {
+    font-size: 3.5vw;
+  }
+
+  .notas-apresentacao {
+    font-size: 2.8vw;
+    margin-left: 18.5vw;
+  }
+
+  #texto-apresentacao {
+    left: 22vw;
+    width: 72vw;
+    top: 25vh;
+  }
+
+  #nav-apresentacao {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 7vh;
+    background: var(--preto);
+    padding: 3vh 5vw;
+  }
+
+  blockquote {
+    margin: 0;
+    margin-left: 18.5vw;
+  }
+
+  /* INFO */
+
+  #info-svg {
+    margin: 0;
+    width: 100vw;
+  }
+
+  #rotacao-info {
+    position: fixed;
+    display: block;
+    top: 0;
+    right: 0;
+    width: 15vh;
+    height: 15vh;
+  }
+
+  /* BASE */
+
+  #setas-scroll {
+    bottom: 1vh;
+    height: auto;
+  }
+
+  .voltar {
+    left: 5vw;
+    font-size: 5vw;
+    bottom: 3vh;
   }
 }

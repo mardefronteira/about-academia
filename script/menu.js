@@ -29,9 +29,35 @@ function menu() {
     seta.configurar("normal-vrm");
     seta.esconderEtiqueta();
 
+    /*  <div id="conteiner-menu">
+    <nav id="nav-menu">
+    <p id="titulo-menu" class=""></p>
+    <p id="subtitulo-menu" class=""></p>
+    <ul id="paginas-menu">
+      <li id="exibicao-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+      <li id="apresentacao-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+      <li id="publicacoes-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+      <li id="mesas-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+      <li id="info-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+    </ul>
+    </nav>
+    </div>*/
     // resetar menu
-    menuElt.innerHTML = `
-    <div id="conteiner-menu">
+    menuElt.innerHTML = dispMovel
+      ? `<div id="conteiner-menu">
+      <nav id="nav-menu">
+      <p id="titulo-menu" class=""></p>
+      <p id="subtitulo-menu" class=""></p>
+      <ul id="paginas-menu">
+        <li id="exibicao-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+        <li id="apresentacao-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+        <li id="publicacoes-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+        <li id="mesas-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+        <li id="info-menu" class="item-menu"><span class="underline-menu">_ </span></li>
+      </ul>
+      </nav>
+    </div>`
+      : `<div id="conteiner-menu">
       <nav id="nav-menu">
       <p id="titulo-menu" class=""><span class="underline-menu">_ </span></p>
       <p id="subtitulo-menu" class=""><span class="underline-menu">_ </span></p>

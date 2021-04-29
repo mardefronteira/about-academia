@@ -252,7 +252,6 @@ function animarTitulo() {
     let subtituloEs = "un proyecto de<br>Muntadas";
     let idiomaBr = "português";
     let idiomaEs = "español";
-    let underline = '<span class="undeline-idioma">_</span>';
     let spanTitulo = `
 <section id="titulosBr" class="area-titulo">
     <h1 id='tituloBr' class='titulo vermelho'>_</h1>
@@ -274,12 +273,12 @@ function animarTitulo() {
       paragrafoBase.innerHTML = spanTitulo;
       document.querySelector("#intro-texto").appendChild(paragrafoBase);
 
-      const iBr = document.querySelector(`#idiomaBr`);
-      const pBr = document.querySelector(`#iBr`);
-      const sBr = document.querySelector(`#subtituloBr`);
+      const iBr = document.querySelector(`#idiomaEs`);
+      const pBr = document.querySelector(`#iEs`);
+      const sBr = document.querySelector(`#subtituloEs`);
       iBr.classList.add("cinquenta");
       sBr.classList.add("cinquenta");
-      pBr.innerHTML = underline + iBr.outerHTML;
+      pBr.innerHTML = iBr.outerHTML;
 
       paragrafoBase.addEventListener("mousemove", () => {
         ptBr = mouseY < window.innerHeight / 2 ? true : false;
@@ -310,7 +309,6 @@ function animarTitulo() {
     let texto = eval(alvo.id.slice(0, 6) === "titulo" ? "titulo" : alvo.id);
     let ultimaLetra = alvo.innerHTML.length - 1;
 
-    console.log(alvo.id, texto);
     if (alvo.innerHTML !== texto) {
       // adicionar próxima letra ao parágrafo alvo.
       alvo.innerHTML = texto.slice(0, ultimaLetra + 1);

@@ -199,19 +199,28 @@ function draw() {
    * caso esteja vertical, mostrar animação de rotação e pausar exibição
    */
   if (dispMovel && !horizontal) {
-    let overlayConfig = document.querySelector("#overlay-exibicao");
-    overlayConfig.classList.add("hidden");
-    imgRot.show();
-    permitiuAudio ? pausarExibicao() : "";
-    estavaHorizontal = false;
+    if (cenaAtual === "exibicao") {
+      let overlayConfig = document.querySelector("#overlay-exibicao");
+      overlayConfig.classList.add("hidden");
+      imgRot.show();
+      permitiuAudio ? pausarExibicao() : "";
+      estavaHorizontal = false;
+    } else if (cenaAtual === "info") {
+      document.querySelector("#rotacao-info").classList.remove("hidden");
+
+      estavaHorizontal = false;
+    }
   } else {
-    if (estavaHorizontal !== horizontal) {
+    if (cenaAtual === "exibicao" && estavaHorizontal !== horizontal) {
       imgRot.hide();
       estavaHorizontal = true;
       permitirAudio();
       let overlayConfig = document.querySelector("#overlay-exibicao");
 
       videosCarregados ? "" : overlayConfig.classList.remove("hidden");
+    } else if (cenaAtual === "info") {
+      document.querySelector("#rotacao-info").classList.add("hidden");
+      estavaHorizontal = true;
     }
   }
 

@@ -31,7 +31,6 @@ function publicacoes() {
 
   // rolar scroll de volta ao topo, ou até o fim
   const pag = document.querySelector("#fundo-publicacoes");
-  console.log(cenaPubli);
   cenaPubli === 2 ? (pag.scrollTop = window.innerHeight) : (pag.scrollTop = 0);
   cenaPubli = 0;
 
@@ -44,10 +43,15 @@ function publicacoes() {
   animar(
     "subtitulo1-publicacoes",
     "aa1-titulos",
-    idioma(
-      "As transcrições:<br>um documento<br>interno",
-      "Las transcripciones:<br>un documento<br>interno"
-    ),
+    dispMovel
+      ? idioma(
+          "As transcrições:<br>um documento interno",
+          "Las transcripciones:<br>un documento interno"
+        )
+      : idioma(
+          "As transcrições:<br>um documento<br>interno",
+          "Las transcripciones:<br>un documento<br>interno"
+        ),
     false,
     ["texto-publicacoes"]
   );
