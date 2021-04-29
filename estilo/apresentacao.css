@@ -4,8 +4,8 @@
 
 #texto-apresentacao {
   position: absolute;
-  width: 60vw;
-  left: 15vw;
+  width: 55vw;
+  left: 18vw;
   top: 20vh;
   padding-bottom: 5vh;
 }
@@ -17,6 +17,7 @@
   bottom: 5vh;
   justify-content: space-between;
   text-align: right;
+  pointer-events: none;
 }
 
 .titulo-apresentacao {
@@ -28,29 +29,61 @@
 
 .autor-apresentacao {
   font: inherit;
-  font-size: 2.8vw;
+  font-size: 3.2vw;
   line-height: 1.1;
 }
 
+.aviso-apresentacao {
+  font: inherit;
+  font-size: 3vw;
+  line-height: 1.1;
+}
+
+blockquote {
+  margin-left: 18.5vw;
+}
+
 .corpo-apresentacao {
-  font-family: "HelveticaNeue", "Helvetica_AA", Helvetica, sans-sans-serif;
-  font-size: 1.5vw;
-  line-height: 1.2;
-  margin-bottom: 3vh;
-}
-
-.ref-apresentacao {
   font-family: Helvetica, sans-sans-serif;
-  font-size: 1.5vw;
+  font-size: 1.3vw;
+  line-height: 1.4;
+  margin-bottom: 3vh;
+}
+
+.notas-apresentacao {
+  margin-left: 18.5vw;
+  font-family: Helvetica, sans-sans-serif;
+  font-size: 1.1vw;
   line-height: 1.2;
   margin-bottom: 3vh;
 }
 
-#imprimir-apresentacao > img {
-  width: 3vw;
-  height: auto;
+.italico {
+  font-style: italic;
+}
+
+.negrito {
+  font-weight: bold;
 }
 
 #voltar-apresentacao {
   position: fixed;
+}
+
+#epigrafe {
+  margin: 7vh 0;
+}
+
+/* #assinatura {
+  padding: 10vh 0;
+} */
+
+#ultima-citacao {
+  margin-top: 7vh;
+  margin-bottom: 7vh;
+}
+
+hr {
+  margin: 7vh 0;
+  color: var(--vermelho);
 }

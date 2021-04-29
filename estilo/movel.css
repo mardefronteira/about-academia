@@ -1,7 +1,8 @@
 @media only screen and (max-width: 800px) {
   /* INICIAL */
   .titulo {
-    font-size: 12.5vw;
+    font: inherit;
+    font-size: 11vw;
     margin: 0;
     padding: 0;
   }
@@ -15,7 +16,7 @@
     font-size: 6vw;
     width: 20vw;
     top: 70vh;
-    padding-top: 10vh;
+    padding-top: 8vh;
   }
 
   #conteiner-logos {
@@ -63,5 +64,30 @@
 
   .titulo-movel {
     font-size: 5vh;
+  }
+
+  #popup-aviso {
+    border-width: 2px;
+    box-shadow: -1vw 1vw var(--vermelho);
+    width: auto;
+    max-width: 70vw;
+  }
+
+  #nav-aviso {
+    padding: 1.5vh 5vw;
+  }
+
+  .titulo-aviso {
+    font-size: 5vw;
+  }
+
+  .desc-aviso {
+    font-family: Helvetica, sans-serif;
+    font-size: 3vw;
+    padding: 1vh 3vw;
+  }
+
+  .botao-aviso {
+    font-size: 5vw;
   }
 }

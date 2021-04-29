@@ -139,57 +139,57 @@ function atualizarInfoMesas() {
       ),
 
       desc: idioma(
-        `<a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+        `<a href="http://www.forumpermanente.org/convidados/antonimuntadas" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Antoni Muntadas</span>
             <span class="desc-pessoa-mesa">Artista. ES/US (introdução)</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/nestor-garcia-canclini" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Néstor García Canclini</span>
             <span class="desc-pessoa-mesa">Antropólogo cultural, pesquisador, catedrático IEA. AR/MX </span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/eliana-souza-e-silva" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Eliana Sousa Silva</span>
             <span class="desc-pessoa-mesa">Educadora, ativista, fundadora da ONG Redes da Maré, catedrática IEA. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/ailton-krenak" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Ailton Krenak</span>
             <span class="desc-pessoa-mesa">Líder indígena, ecologista, filósofo y escritor. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/macae-evaristo" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Macaé Evaristo</span>
             <span class="desc-pessoa-mesa">Educadora, ex-Secretária de Educação de MG, vereadora. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/martin-grossmann-1" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Martin Grossmann</span>
             <span class="desc-pessoa-mesa">Culturador e coordenador Fórum Permanente. BR (moderação)</span>
           </a>`,
-        `<a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+        `<a href="http://www.forumpermanente.org/convidados/antonimuntadas" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Antoni Muntadas</span>
             <span class="desc-pessoa-mesa">Artista. ES/US (introducción)</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/nestor-garcia-canclini" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Néstor García Canclini</span>
             <span class="desc-pessoa-mesa">Antropólogo cultural, pesquisador, catedrático IEA. AR/MX </span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/eliana-souza-e-silva" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Eliana Sousa Silva</span>
             <span class="desc-pessoa-mesa">Activista, educadora, fundadora de la ONG Redes da Maré, catedrática IEA. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/ailton-krenak" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Ailton Krenak</span>
             <span class="desc-pessoa-mesa">Líder indígena, ecologista, filósofo y escritor. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/macae-evaristo" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Macaé Evaristo</span>
             <span class="desc-pessoa-mesa">Educadora, ex Secretaria de Educación de MG, consejera. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/martin-grossmann-1" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Martin Grossmann</span>
             <span class="desc-pessoa-mesa">Culturador y coordinador de Fórum Permanente. BR (moderación)</span>
             </a>`
       ),
       botao: "Entrar",
-      link: "6TsnWzl1mR0",
+      link: idioma("6TsnWzl1mR0", "F8V-nmn_Qxo"),
     },
     {
       id: "mesa2",
@@ -200,51 +200,51 @@ function atualizarInfoMesas() {
         "Lunes, 10 de mayo, de 09:00 a 12:00 horas"
       ),
       desc: idioma(
-        `<a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+        `<a href="http://www.forumpermanente.org/convidados/nikki-moore" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Nikki Moore</span>
             <span class="desc-pessoa-mesa">Historiadora da arte, Wake Forest University. US</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/erica-pecanha" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Érica Peçanha</span>
             <span class="desc-pessoa-mesa">Antropóloga cultural, pós-doutora IEA-USP. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/david-gange" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">David Gange</span>
             <span class="desc-pessoa-mesa">Historiador, University of Birmingham. UK</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/mariko-murata" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Mariko Murata</span>
             <span class="desc-pessoa-mesa">Teórica da mídia e de museus, Kansai University. JP</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/julia-buenaventura" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Julia Buenaventura</span>
             <span class="desc-pessoa-mesa">Historiadora de arte, Universidad de los Andes. CO</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/martin-grossmann-1" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Martin Grossmann</span>
             <span class="desc-pessoa-mesa">Culturador e coordenador Fórum Permanente. BR (moderação)</span>
             </a>`,
-        `<a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+        `<a href="http://www.forumpermanente.org/convidados/nikki-moore" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Nikki Moore</span>
             <span class="desc-pessoa-mesa">Historiadora del arte, Universidad de Wake Forest. US</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/erica-pecanha" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Érica Peçanha</span>
             <span class="desc-pessoa-mesa">Antropóloga cultural. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/david-gange" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">David Gange</span>
             <span class="desc-pessoa-mesa">Historiador, Universidad de Birmingham. UK</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/mariko-murata" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Mariko Murata</span>
             <span class="desc-pessoa-mesa">Teórica de los medios de comunicación y los museos, Universidad de Kansai. JP</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/julia-buenaventura" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Julia Buenaventura</span>
             <span class="desc-pessoa-mesa">Historiadora del arte, Universidad de los Andes. CO</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/martin-grossmann-1" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Martin Grossmann</span>
             <span class="desc-pessoa-mesa">Culturador y coordinador Fórum Permanente. BR (moderación)</span>
           </a>`
@@ -261,35 +261,35 @@ function atualizarInfoMesas() {
         "Lunes, 10 de mayo de 13:30 a 16:00 horas"
       ),
       desc: idioma(
-        `<a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+        `<a href="http://www.forumpermanente.org/convidados/naomar-de-almeida-filho" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Naomar de Almeida Filho</span>
             <span class="desc-pessoa-mesa">Médico epidemiologista, ex-reitor UFBA, catedrático IEA. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/helena-nader" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Helena Nader</span>
             <span class="desc-pessoa-mesa">Vice-presidente da ABC-BR, biomédica, catedrática IEA. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/guilhermewisnik" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Guilherme Wisnik</span>
             <span class="desc-pessoa-mesa">Arquiteto, professor da FAU-USP, crítico de arte. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/R_Ribeiro" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Renato Janine Ribeiro</span>
             <span class="desc-pessoa-mesa">Filósofo, ex-Ministro da Educação. BR (moderação)</span>
           </a>`,
-        `<a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+        `<a href="http://www.forumpermanente.org/convidados/naomar-de-almeida-filho" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Naomar de Almeida Filho</span>
             <span class="desc-pessoa-mesa">Ex decano UFBA, médico epidemiólogo, catedrático IEA. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/helena-nader" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Helena Nader</span>
             <span class="desc-pessoa-mesa">Vicepresidenta de ABC-BR, biomédica, catedrática IEA. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/guilhermewisnik" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Guilherme Wisnik</span>
             <span class="desc-pessoa-mesa">Arquitecto, profesor de la FAU-USP, crítico de arte. BR</span>
           </a>
-          <a href="#" class="clicavel inativo" target="_blank" rel="noreferrer" title="Mais informações">
+          <a href="http://www.forumpermanente.org/convidados/R_Ribeiro" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
             <span class="nome-pessoa-mesa">Renato Janine Ribeiro</span>
             <span class="desc-pessoa-mesa">Ex Ministro de Educación, filósofo. BR (moderação)</span>
           </a>`

@@ -31,5 +31,5 @@ function sugerirScroll() {
   setaScroll.classList.remove("transparente");
   setTimeout(() => {
     setaScroll.classList.add("transparente");
-  }, 5000);
+  }, 30000);
 }

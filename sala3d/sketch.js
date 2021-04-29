@@ -78,15 +78,17 @@ function preload() {
         .appendChild(document.querySelector(`#video-${video}`));
     }
   }
-  imgRot = createImg(
-    "img/icones/rotacao.gif",
-    "Por favor, mantenha seu dispositivo na posição horizontal."
-  );
-  imgRot.id = "rotacao-mobile";
-  imgRot.position(width / 2 - height / 6, height / 2 - height / 6);
-  imgRot.elt.width = height / 3;
-  imgRot.elt.height = height / 3;
-  imgRot.hide();
+  if (!imgRot) {
+    imgRot = createImg(
+      "img/icones/rotacao.gif",
+      "Por favor, mantenha seu dispositivo na posição horizontal."
+    );
+    imgRot.id = "rotacao-mobile";
+    imgRot.position(width / 2 - height / 6, height / 2 - height / 6);
+    imgRot.elt.width = height / 3;
+    imgRot.elt.height = height / 3;
+    imgRot.hide();
+  }
 }
 
 function carregarTypes() {

@@ -67,7 +67,7 @@
 }
 
 a {
-  font-family: "HelveticaNeue", "Helvetica_AA", Helvetica, sans-serif;
+  font-family: inherit;
   color: inherit;
   text-decoration: none;
   cursor: none;
