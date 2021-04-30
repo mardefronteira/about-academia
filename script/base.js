@@ -27,6 +27,7 @@ function esconderTudo() {
 }
 
 function sugerirScroll() {
+  console.log("disparou");
   const setaScroll = document.querySelector("#setas-scroll");
   setaScroll.classList.remove("transparente");
   setTimeout(() => {

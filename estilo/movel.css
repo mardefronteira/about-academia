@@ -328,6 +328,16 @@
     height: 15vh;
   }
 
+  /* INSTALAÇÃO */
+
+  #rotacao-mobile {
+    z-index: 50;
+  }
+
+  #overlay-exibicao {
+    z-index: 15;
+  }
+
   /* BASE */
 
   #setas-scroll {

@@ -27,8 +27,6 @@ function publicacoes() {
     capa2vrm.src = "img/publi/hover_aa2_es.jpg";
   }
 
-  configurarLinkPdf();
-
   // rolar scroll de volta ao topo, ou até o fim
   const pag = document.querySelector("#fundo-publicacoes");
   cenaPubli === 2 ? (pag.scrollTop = window.innerHeight) : (pag.scrollTop = 0);
@@ -91,61 +89,79 @@ function publicacoes() {
   ]);
 
   if (primeiraPubli) {
-    document
-      .querySelector("#previa1-publicacoes")
-      .addEventListener("mouseover", () => {
-        hoverPublicacoes("in", 1);
-      });
-    document
-      .querySelector("#previa2-publicacoes")
-      .addEventListener("mouseover", () => {
-        hoverPublicacoes("in", 2);
-      });
-    document
-      .querySelector("#previa1-publicacoes")
-      .addEventListener("mouseout", () => {
-        hoverPublicacoes("out", 1);
-      });
-    document
-      .querySelector("#previa2-publicacoes")
-      .addEventListener("mouseout", () => {
-        hoverPublicacoes("out", 2);
-      });
-    document
-      .querySelector("#aa1-capa-imagem")
-      .addEventListener("mouseover", () => {
-        hoverPublicacoes("in", 1);
-      });
-    document
-      .querySelector("#aa2-capa-imagem")
-      .addEventListener("mouseover", () => {
-        hoverPublicacoes("in", 2);
-      });
-    document
-      .querySelector("#aa1-capa-imagem")
-      .addEventListener("mouseout", () => {
-        hoverPublicacoes("out", 1);
-      });
-    document
-      .querySelector("#aa2-capa-imagem")
-      .addEventListener("mouseout", () => {
-        hoverPublicacoes("out", 2);
-      });
+    if (!dispMovel) {
+      document
+        .querySelector("#previa1-publicacoes")
+        .addEventListener("mouseover", () => {
+          hoverPublicacoes("in", 1);
+        });
+      document
+        .querySelector("#previa2-publicacoes")
+        .addEventListener("mouseover", () => {
+          hoverPublicacoes("in", 2);
+        });
+      document
+        .querySelector("#previa1-publicacoes")
+        .addEventListener("mouseout", () => {
+          hoverPublicacoes("out", 1);
+        });
+      document
+        .querySelector("#previa2-publicacoes")
+        .addEventListener("mouseout", () => {
+          hoverPublicacoes("out", 2);
+        });
+      document
+        .querySelector("#aa1-capa-imagem")
+        .addEventListener("mouseover", () => {
+          hoverPublicacoes("in", 1);
+        });
+      document
+        .querySelector("#aa2-capa-imagem")
+        .addEventListener("mouseover", () => {
+          hoverPublicacoes("in", 2);
+        });
+      document
+        .querySelector("#aa1-capa-imagem")
+        .addEventListener("mouseout", () => {
+          hoverPublicacoes("out", 1);
+        });
+      document
+        .querySelector("#aa2-capa-imagem")
+        .addEventListener("mouseout", () => {
+          hoverPublicacoes("out", 2);
+        });
+    }
     document.querySelector("#aa1-capa-imagem").addEventListener("click", () => {
-      configurarPdf(1);
+      if (dispMovel) {
+        window.open(`textos/movel_aa1_${idioma("pt", "es")}.pdf`);
+      } else {
+        configurarPdf(1);
+      }
     });
     document.querySelector("#aa2-capa-imagem").addEventListener("click", () => {
-      configurarPdf(2);
+      if (dispMovel) {
+        window.open(`textos/movel_aa2_${idioma("pt", "es")}.pdf`);
+      } else {
+        configurarPdf(2);
+      }
     });
     document
       .querySelector("#previa1-publicacoes")
       .addEventListener("click", () => {
-        configurarPdf(1);
+        if (dispMovel) {
+          window.open(`textos/movel_aa1_${idioma("pt", "es")}.pdf`);
+        } else {
+          configurarPdf(1);
+        }
       });
     document
       .querySelector("#previa2-publicacoes")
       .addEventListener("click", () => {
-        configurarPdf(2);
+        if (dispMovel) {
+          window.open(`textos/movel_aa2_${idioma("pt", "es")}.pdf`);
+        } else {
+          configurarPdf(2);
+        }
       });
     primeiraPubli = false;
   }
@@ -170,21 +186,6 @@ function hoverPublicacoes(mouse, obra) {
 }
 
 let primeiraPrevia = true;
-
-function configurarLinkPdf() {
-  const imagem1 = document.querySelector("#aa1-capa");
-  const link1 = document.querySelector("#previa1-publicacoes");
-  const imagem2 = document.querySelector("#aa2-capa");
-  const link2 = document.querySelector("#previa2-publicacoes");
-
-  for (let link of [imagem1, link1]) {
-    link.href = `textos/previa_aa1_${idioma("pt", "es")}.pdf`;
-  }
-
-  for (let link of [imagem2, link2]) {
-    link.href = `textos/previa_aa2_${idioma("pt", "es")}.pdf`;
-  }
-}
 
 function configurarPdf(obra) {
   cenaAtual = `previa-${obra}`;

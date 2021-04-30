@@ -83,10 +83,7 @@ function preload() {
       "img/icones/rotacao.gif",
       "Por favor, mantenha seu dispositivo na posição horizontal."
     );
-    imgRot.id = "rotacao-mobile";
-    imgRot.position(width / 2 - height / 6, height / 2 - height / 6);
-    imgRot.elt.width = height / 3;
-    imgRot.elt.height = height / 3;
+    imgRot.elt.id = "rotacao-mobile";
     imgRot.hide();
   }
 }
@@ -168,12 +165,17 @@ function setup() {
 
   // criar mensagem de "carregando..."
   mensagemCarregando = document.createElement("p");
+  mensagemCarregando.id = "mensagem-carregando";
   overlayConfig.appendChild(mensagemCarregando);
 
   createCanvas(window.innerWidth, window.innerHeight, WEBGL);
 
   horizontal = width > height ? true : false;
   estavaHorizontal = horizontal;
+
+  imgRot.position(width / 2 - height / 6, height / 2 - height / 6);
+  imgRot.elt.width = height / 3;
+  imgRot.elt.height = height / 3;
 
   angleMode(DEGREES);
 
@@ -200,24 +202,25 @@ function draw() {
    */
   if (dispMovel && !horizontal) {
     if (cenaAtual === "exibicao") {
-      let overlayConfig = document.querySelector("#overlay-exibicao");
-      overlayConfig.classList.add("hidden");
+      const msg = document.querySelector("#mensagem-carregando");
+      msg.classList.add("hidden");
       imgRot.show();
       permitiuAudio ? pausarExibicao() : "";
       estavaHorizontal = false;
     } else if (cenaAtual === "info") {
       document.querySelector("#rotacao-info").classList.remove("hidden");
-
       estavaHorizontal = false;
+    }
+    if (menuAberto) {
+      imgRot.hide();
     }
   } else {
     if (cenaAtual === "exibicao" && estavaHorizontal !== horizontal) {
       imgRot.hide();
       estavaHorizontal = true;
       permitirAudio();
-      let overlayConfig = document.querySelector("#overlay-exibicao");
-
-      videosCarregados ? "" : overlayConfig.classList.remove("hidden");
+      const msg = document.querySelector("#mensagem-carregando");
+      videosCarregados ? "" : msg.classList.remove("hidden");
     } else if (cenaAtual === "info") {
       document.querySelector("#rotacao-info").classList.add("hidden");
       estavaHorizontal = true;
@@ -231,7 +234,7 @@ function draw() {
       for (let i in videoPlanes) {
         videoPlanes[i].ajustarVolume(i);
       }
-      mensagemCarregando.remove();
+      document.querySelector("#mensagem-carregando").classList.add("hidden");
       cortina = false;
     }
   }

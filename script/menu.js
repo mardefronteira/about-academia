@@ -13,8 +13,9 @@ const textosMenuEs = [
   "Mesas redondas",
   "Info",
 ];
-
+let menuAberto = false;
 function menu() {
+  menuAberto = true;
   const menuElt = document.querySelector("#menu");
   if (menuElt.classList.contains("hidden")) {
     // caso tenha iniciado, pausar exibição
@@ -74,19 +75,21 @@ function menu() {
     // mostrar menu
     menuElt.classList.remove("hidden");
 
-    // configurar animação underline
-    let itensMenu = [
-      document.querySelector("#paginas-menu"),
-      // document.querySelector("#idiomas-menu"),
-    ];
+    if (!dispMovel) {
+      // configurar animação underline
+      let itensMenu = [
+        document.querySelector("#paginas-menu"),
+        // document.querySelector("#idiomas-menu"),
+      ];
 
-    for (let item of itensMenu) {
-      item.addEventListener("mouseover", () => {
-        document.querySelector("#botao-menu").classList.add("hidden");
-      });
-      item.addEventListener("mouseout", () => {
-        document.querySelector("#botao-menu").classList.remove("hidden");
-      });
+      for (let item of itensMenu) {
+        item.addEventListener("mouseover", () => {
+          document.querySelector("#botao-menu").classList.add("hidden");
+        });
+        item.addEventListener("mouseout", () => {
+          document.querySelector("#botao-menu").classList.remove("hidden");
+        });
+      }
     }
 
     // escrever títulos do menu
@@ -225,6 +228,7 @@ function trocarIdioma() {
 
 function mostrar(pagina) {
   esconderTudo();
+  menuAberto = false;
   seta.configurar("normal-vrm");
   switch (pagina) {
     case "intro":
