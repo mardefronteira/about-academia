@@ -46,6 +46,7 @@ function configurarNav() {
 
   switch (tela) {
     case 0:
+      // organizar layout navegação
       centro.classList.add("altura50");
       cima.classList.add("altura-expandida");
       baixo.classList.add("altura-expandida");
@@ -59,49 +60,7 @@ function configurarNav() {
       navVid5.classList.add("video4-aa0");
       navVid6.classList.add("video5-aa0");
 
-      // navs inativas
-      // cima.classList.add("sem-uso");
-      // baixo.classList.add("sem-uso");
-
-      // navs esquerdas indicando AAI
-      for (let div of [esquerda, baixoEsq, cimaEsq]) {
-        div.addEventListener("mouseover", () => {
-          seta.configurar("seta-vrm-esquerda");
-          seta.configurarEtiqueta(
-            "About<br/>Academia I",
-            "About<br/>Academia I"
-          );
-        });
-        div.addEventListener("mouseout", () => {
-          seta.configurar("normal-vrm");
-          seta.esconderEtiqueta();
-        });
-        div.addEventListener("click", () => {
-          tela = 1;
-          seta.configurar("normal-vrm");
-          seta.esconderEtiqueta();
-        });
-      }
-
-      // navs direitas indicando AAII
-      for (let div of [direita, baixoDir, cimaDir]) {
-        div.addEventListener("mouseover", () => {
-          seta.configurar("seta-vrm-direita");
-          seta.configurarEtiqueta(
-            "About<br/>Academia II",
-            "About<br/>Academia II"
-          );
-        });
-        div.addEventListener("mouseout", () => {
-          seta.configurar("normal-vrm");
-          seta.esconderEtiqueta();
-        });
-        div.addEventListener("click", () => {
-          tela = 2;
-          seta.configurar("normal-vrm");
-          seta.esconderEtiqueta();
-        });
-      }
+      // atribuir eventos navegação
       relacoes = [
         { div: navVid0, video: "entrevistas1" },
         { div: navVid1, video: `texto1` },
@@ -122,6 +81,90 @@ function configurarNav() {
           videoPlanes[relacoes.indexOf(elmt)].vermelho = false;
         });
       }
+
+      if (dispMovel) {
+        const setaEsquerda = document.querySelector("#seta-esquerda-exibicao");
+        const setaDireita = document.querySelector("#seta-direita-exibicao");
+        const etiquetaEsquerda = document.querySelector(
+          "#etiqueta-esquerda-exibicao"
+        );
+        const etiquetaDireita = document.querySelector(
+          "#etiqueta-direita-exibicao"
+        );
+
+        etiquetaEsquerda.innerHTML = "About<br>Academia I";
+        etiquetaDireita.innerHTML = "About<br>Academia II";
+
+        setaEsquerda.classList.remove("canto");
+        setaDireita.classList.remove("canto");
+        etiquetaEsquerda.classList.remove("canto");
+        etiquetaDireita.classList.remove("canto");
+
+        setaEsquerda.classList.add("centro");
+        setaDireita.classList.add("centro");
+        etiquetaEsquerda.classList.add("centro");
+        etiquetaDireita.classList.add("centro");
+
+        setaEsquerda.classList.remove("hidden");
+        setaDireita.classList.remove("hidden");
+        etiquetaEsquerda.classList.remove("hidden");
+        etiquetaDireita.classList.remove("hidden");
+
+        // navs esquerdas indicando AAI
+        for (let div of [esquerda, baixoEsq, cimaEsq]) {
+          div.addEventListener("click", () => {
+            tela = 1;
+          });
+        }
+
+        // navs direitas indicando AAII
+        for (let div of [direita, baixoDir, cimaDir]) {
+          div.addEventListener("click", () => {
+            tela = 2;
+          });
+        }
+      } else {
+        // navs esquerdas indicando AAI
+        for (let div of [esquerda, baixoEsq, cimaEsq]) {
+          div.addEventListener("mouseover", () => {
+            seta.configurar("seta-vrm-esquerda");
+            seta.configurarEtiqueta(
+              "About<br/>Academia I",
+              "About<br/>Academia I"
+            );
+          });
+          div.addEventListener("mouseout", () => {
+            seta.configurar("normal-vrm");
+            seta.esconderEtiqueta();
+          });
+          div.addEventListener("click", () => {
+            tela = 1;
+            seta.configurar("normal-vrm");
+            seta.esconderEtiqueta();
+          });
+        }
+
+        // navs direitas indicando AAII
+        for (let div of [direita, baixoDir, cimaDir]) {
+          div.addEventListener("mouseover", () => {
+            seta.configurar("seta-vrm-direita");
+            seta.configurarEtiqueta(
+              "About<br/>Academia II",
+              "About<br/>Academia II"
+            );
+          });
+          div.addEventListener("mouseout", () => {
+            seta.configurar("normal-vrm");
+            seta.esconderEtiqueta();
+          });
+          div.addEventListener("click", () => {
+            tela = 2;
+            seta.configurar("normal-vrm");
+            seta.esconderEtiqueta();
+          });
+        }
+      }
+
       break;
     case 1:
       // configurar altura nav central
@@ -143,53 +186,6 @@ function configurarNav() {
       // navs inativas
       esquerda.classList.add("sem-uso");
 
-      // nav superior para transcrições
-      cima.addEventListener("mouseover", () => {
-        seta.configurar("seta-vrm-cima");
-        seta.configurarEtiqueta("Transcrições", "Transcripciones");
-      });
-      cima.addEventListener("mouseout", () => {
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-      cima.addEventListener("click", () => {
-        cenaPubli = 1;
-        mostrar("publicacoes");
-      });
-
-      // nav inferior para voltar
-      baixo.addEventListener("mouseover", () => {
-        seta.configurar("seta-vrm-baixo");
-        seta.configurarEtiqueta("Voltar", "Volver");
-      });
-      baixo.addEventListener("mouseout", () => {
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-      baixo.addEventListener("click", () => {
-        tela = 0;
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-
-      // nav direita indicando AAII
-      direita.addEventListener("mouseover", () => {
-        seta.configurar("seta-vrm-direita");
-        seta.configurarEtiqueta(
-          "About<br/>Academia II",
-          "About<br/>Academia II"
-        );
-      });
-      direita.addEventListener("mouseout", () => {
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-      direita.addEventListener("click", () => {
-        tela = 2;
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-
       relacoes = [
         { div: navVid0, video: "entrevistas1" },
         { div: navVid1, video: `texto1` },
@@ -205,6 +201,88 @@ function configurarNav() {
         });
         elmt.div.addEventListener("mouseout", () => {
           videoPlanes[relacoes.indexOf(elmt)].vermelho = false;
+        });
+      }
+
+      if (dispMovel) {
+        const setaEsquerda = document.querySelector("#seta-esquerda-exibicao");
+        const setaDireita = document.querySelector("#seta-direita-exibicao");
+        const etiquetaEsquerda = document.querySelector(
+          "#etiqueta-esquerda-exibicao"
+        );
+        const etiquetaDireita = document.querySelector(
+          "#etiqueta-direita-exibicao"
+        );
+
+        etiquetaEsquerda.innerHTML = idioma(
+          "Selecione para<br/>abrir tela cheia",
+          "Seleccione para abrir<br/>la pantalla completa"
+        );
+        etiquetaDireita.innerHTML = "";
+
+        setaDireita.classList.remove("centro");
+        etiquetaEsquerda.classList.remove("centro");
+
+        setaDireita.classList.add("canto");
+        etiquetaEsquerda.classList.add("canto");
+
+        setaDireita.classList.remove("hidden");
+        etiquetaEsquerda.classList.remove("hidden");
+
+        // elementos inativos
+        setaEsquerda.classList.add("hidden");
+        etiquetaDireita.classList.add("hidden");
+
+        // navs esquerdas indicando AAI
+        baixo.addEventListener("click", () => {
+          tela = 0;
+        });
+      } else {
+        // nav superior para transcrições
+        cima.addEventListener("mouseover", () => {
+          seta.configurar("seta-vrm-cima");
+          seta.configurarEtiqueta("Transcrições", "Transcripciones");
+        });
+        cima.addEventListener("mouseout", () => {
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+        cima.addEventListener("click", () => {
+          cenaPubli = 1;
+          mostrar("publicacoes");
+        });
+
+        // nav inferior para voltar
+        baixo.addEventListener("mouseover", () => {
+          seta.configurar("seta-vrm-baixo");
+          seta.configurarEtiqueta("Voltar", "Volver");
+        });
+        baixo.addEventListener("mouseout", () => {
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+        baixo.addEventListener("click", () => {
+          tela = 0;
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+
+        // nav direita indicando AAII
+        direita.addEventListener("mouseover", () => {
+          seta.configurar("seta-vrm-direita");
+          seta.configurarEtiqueta(
+            "About<br/>Academia II",
+            "About<br/>Academia II"
+          );
+        });
+        direita.addEventListener("mouseout", () => {
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+        direita.addEventListener("click", () => {
+          tela = 2;
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
         });
       }
       break;
@@ -228,50 +306,6 @@ function configurarNav() {
       // navs inativas
       direita.classList.add("sem-uso");
 
-      // nav superior para transcrições
-      cima.addEventListener("mouseover", () => {
-        seta.configurar("seta-vrm-cima");
-        seta.configurarEtiqueta("Transcrições", "Transcripciones");
-      });
-      cima.addEventListener("mouseout", () => {
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-      cima.addEventListener("click", () => {
-        cenaPubli = 2;
-        mostrar("publicacoes");
-      });
-
-      // nav inferior para voltar
-      baixo.addEventListener("mouseover", () => {
-        seta.configurar("seta-vrm-baixo");
-        seta.configurarEtiqueta("Voltar", "Volver");
-      });
-      baixo.addEventListener("mouseout", () => {
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-      baixo.addEventListener("click", () => {
-        tela = 0;
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-
-      // nav esquerda indicando AAI
-      esquerda.addEventListener("mouseover", () => {
-        seta.configurar("seta-vrm-esquerda");
-        seta.configurarEtiqueta("About<br/>Academia I", "About<br/>Academia I");
-      });
-      esquerda.addEventListener("mouseout", () => {
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-      esquerda.addEventListener("click", () => {
-        tela = 1;
-        seta.configurar("normal-vrm");
-        seta.esconderEtiqueta();
-      });
-
       relacoes = [
         { div: navVid1, video: "arquitetura2" },
         { div: navVid2, video: `texto2` },
@@ -289,6 +323,88 @@ function configurarNav() {
           videoPlanes[relacoes.indexOf(elmt) + 3].vermelho = false;
         });
       }
+      if (dispMovel) {
+        const setaEsquerda = document.querySelector("#seta-esquerda-exibicao");
+        const setaDireita = document.querySelector("#seta-direita-exibicao");
+        const etiquetaEsquerda = document.querySelector(
+          "#etiqueta-esquerda-exibicao"
+        );
+        const etiquetaDireita = document.querySelector(
+          "#etiqueta-direita-exibicao"
+        );
+
+        etiquetaDireita.innerHTML = idioma(
+          "Selecione para<br/>abrir tela cheia",
+          "Seleccione para abrir<br/>la pantalla completa"
+        );
+        etiquetaEsquerda.innerHTML = "";
+
+        setaEsquerda.classList.remove("centro");
+        etiquetaDireita.classList.remove("centro");
+
+        setaEsquerda.classList.add("canto");
+        etiquetaDireita.classList.add("canto");
+
+        setaEsquerda.classList.remove("hidden");
+        etiquetaDireita.classList.remove("hidden");
+
+        // elementos inativos
+        setaDireita.classList.add("hidden");
+        etiquetaEsquerda.classList.add("hidden");
+
+        // navs esquerdas indicando AAI
+        baixo.addEventListener("click", () => {
+          tela = 0;
+        });
+      } else {
+        // nav superior para transcrições
+        cima.addEventListener("mouseover", () => {
+          seta.configurar("seta-vrm-cima");
+          seta.configurarEtiqueta("Transcrições", "Transcripciones");
+        });
+        cima.addEventListener("mouseout", () => {
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+        cima.addEventListener("click", () => {
+          cenaPubli = 2;
+          mostrar("publicacoes");
+        });
+
+        // nav inferior para voltar
+        baixo.addEventListener("mouseover", () => {
+          seta.configurar("seta-vrm-baixo");
+          seta.configurarEtiqueta("Voltar", "Volver");
+        });
+        baixo.addEventListener("mouseout", () => {
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+        baixo.addEventListener("click", () => {
+          tela = 0;
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+
+        // nav esquerda indicando AAI
+        esquerda.addEventListener("mouseover", () => {
+          seta.configurar("seta-vrm-esquerda");
+          seta.configurarEtiqueta(
+            "About<br/>Academia I",
+            "About<br/>Academia I"
+          );
+        });
+        esquerda.addEventListener("mouseout", () => {
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+        esquerda.addEventListener("click", () => {
+          tela = 1;
+          seta.configurar("normal-vrm");
+          seta.esconderEtiqueta();
+        });
+      }
+
       break;
     default:
   }

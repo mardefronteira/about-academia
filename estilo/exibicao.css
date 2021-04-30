@@ -73,6 +73,14 @@
   width: 50%;
 }
 
+.setas-exibicao {
+  display: none;
+}
+
+.etiquetas-exibicao {
+  display: none;
+}
+
 /* #nav-centro-exibicao > div {
   border: 1px solid yellow;
 }

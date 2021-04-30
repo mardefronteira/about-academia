@@ -1,4 +1,4 @@
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 850px) {
   /* INICIAL */
   .titulo {
     font: inherit;
@@ -169,8 +169,19 @@
     line-height: 1.2;
   }
 
-  #data-mesa {
+  .datas-mesas {
     font-size: 4vw;
+  }
+
+  #titulos-tocador-mesa {
+    position: absolute;
+    top: 6vh;
+    left: 12vw;
+  }
+
+  #titulo-tocador-mesa {
+    font-size: 7.5vw;
+    line-height: 1;
   }
 
   #conteiner-desc-mesa {
@@ -349,5 +360,62 @@
     left: 5vw;
     font-size: 6vw;
     bottom: 3vh;
+  }
+
+  /* EXIBIÇÃO */
+
+  .setas-exibicao {
+    display: block;
+    position: fixed;
+    bottom: 5vh;
+    width: 15vw;
+    pointer-events: none;
+  }
+
+  .etiquetas-exibicao {
+    display: block;
+    color: var(--vermelho);
+    position: fixed;
+    bottom: 12vh;
+    font-size: 3vw;
+    pointer-events: none;
+  }
+
+  #seta-esquerda-exibicao.canto {
+    left: 10vw;
+  }
+
+  #seta-direita-exibicao.canto {
+    right: 10vw;
+  }
+
+  #seta-esquerda-exibicao.centro {
+    left: 20vw;
+  }
+
+  #seta-direita-exibicao.centro {
+    right: 20vw;
+  }
+
+  #etiqueta-esquerda-exibicao.canto {
+    left: 15vw;
+    bottom: 5vh;
+    text-align: left;
+  }
+
+  #etiqueta-direita-exibicao.canto {
+    right: 15vw;
+    bottom: 5vh;
+    text-align: right;
+  }
+
+  #etiqueta-esquerda-exibicao.centro {
+    left: 25vw;
+    text-align: left;
+  }
+
+  #etiqueta-direita-exibicao.centro {
+    right: 25vw;
+    text-align: right;
   }
 }

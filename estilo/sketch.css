@@ -20,7 +20,7 @@ div#overlay-exibicao {
   z-index: 1;
 }
 
-div#overlay-exibicao > p {
+#mensagem-carregando {
   color: var(--branco);
   background: transparent;
   margin: 20px 10px;

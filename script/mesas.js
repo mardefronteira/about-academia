@@ -134,8 +134,8 @@ function atualizarInfoMesas() {
         "¿Qué universidad queremos?"
       ),
       data: idioma(
-        "Sexta-feira, dia 30 de abril das 14h às 17h",
-        "Viernes, 30 de abril de 14:00 a 17:00 horas"
+        "Sexta-feira, dia 30 de abril das 14h às 17h - BRT",
+        "Viernes, 30 de abril de 14:00 a 17:00 horas - BRT"
       ),
 
       desc: idioma(
@@ -196,8 +196,8 @@ function atualizarInfoMesas() {
       num: "II",
       titulo: "Intercontinental Academia",
       data: idioma(
-        "Segunda-feira, dia 10 de maio das 9h às 12h",
-        "Lunes, 10 de mayo, de 09:00 a 12:00 horas"
+        "Segunda-feira, dia 10 de maio das 9h às 12h - BRT",
+        "Lunes, 10 de mayo, de 09:00 a 12:00 horas - BRT"
       ),
       desc: idioma(
         `<a href="http://www.forumpermanente.org/convidados/nikki-moore" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
@@ -257,8 +257,8 @@ function atualizarInfoMesas() {
       num: "III",
       titulo: idioma("Universidade e contexto", "Universidad y contexto"),
       data: idioma(
-        "Segunda-feira, dia 10 de maio das 13h30 às 16h",
-        "Lunes, 10 de mayo de 13:30 a 16:00 horas"
+        "Segunda-feira, dia 10 de maio das 13h30 às 16h - BRT",
+        "Lunes, 10 de mayo de 13:30 a 16:00 horas - BRT"
       ),
       desc: idioma(
         `<a href="http://www.forumpermanente.org/convidados/naomar-de-almeida-filho" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">

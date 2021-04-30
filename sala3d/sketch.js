@@ -204,6 +204,8 @@ function draw() {
     if (cenaAtual === "exibicao") {
       const msg = document.querySelector("#mensagem-carregando");
       msg.classList.add("hidden");
+      const setas = document.querySelector("#setas-exibicao");
+      setas.classList.add("hidden");
       imgRot.show();
       permitiuAudio ? pausarExibicao() : "";
       estavaHorizontal = false;
@@ -219,6 +221,8 @@ function draw() {
       imgRot.hide();
       estavaHorizontal = true;
       permitirAudio();
+      const setas = document.querySelector("#setas-exibicao");
+      setas.classList.remove("hidden");
       const msg = document.querySelector("#mensagem-carregando");
       videosCarregados ? "" : msg.classList.remove("hidden");
     } else if (cenaAtual === "info") {
