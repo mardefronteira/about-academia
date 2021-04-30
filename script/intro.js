@@ -78,9 +78,9 @@ function intro() {
       break;
 
     case 1:
-      dispMovel
-        ? document.querySelector("#setas-intro").classList.remove("hidden")
-        : "";
+      if (dispMovel) {
+        document.querySelector("#setas-intro").classList.remove("hidden");
+      }
       if (statusIdioma.alterar && statusIdioma.anterior !== ptBr) {
         trocarIdioma();
         statusIdioma.anterior = ptBr;
@@ -257,12 +257,12 @@ function animarTitulo() {
     <h1 id='tituloBr' class='titulo vermelho'>_</h1>
     <h2 id='subtituloBr' class='subtitulo'></h2>
     <p id='iBr' class="idioma-intro"><span id='idiomaBr'></span></p>
-    <img id="seta-titulo-pt" src="img/cursor/setaVermelhaDireita.png" class="seta-titulo"/>
+    <img id="seta-titulo-pt" src="img/cursor/setaVermelhaDireita.png" class="seta-titulo transparente"/>
     </section><section id="titulosEs" class="area-titulo">
     <h1 id='tituloEs' class='titulo vermelho'>_</h1>
     <h2 id='subtituloEs' class='subtitulo'></h2>
     <p id='iEs' class="idioma-intro"><span id='idiomaEs' class=''></span></p>
-        <img id="seta-titulo-es" src="img/cursor/setaVermelhaDireita.png" class="seta-titulo"/>
+    <img id="seta-titulo-es" src="img/cursor/setaVermelhaDireita.png" class="seta-titulo transparente"/>
     </section>
     `;
 
@@ -288,6 +288,19 @@ function animarTitulo() {
 
       // indicar o titulo como primeiro alvo
       alvo = document.querySelector(`#tituloBr`);
+
+      if (dispMovel) {
+        timers.push(
+          setTimeout(() => {
+            document
+              .querySelector("#seta-titulo-pt")
+              .classList.remove("transparente");
+            document
+              .querySelector("#seta-titulo-es")
+              .classList.remove("transparente");
+          }, 2000)
+        );
+      }
     } else {
       // verificar em qual ponto do texto a animação está, e indicar o alvo correto a partir disso.
       alvo = document.querySelector(`#tituloBr`);
