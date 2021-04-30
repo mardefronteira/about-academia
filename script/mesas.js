@@ -109,19 +109,29 @@ function atualizarInfo(idMesa, forcar = false) {
 }
 
 function mostrarMesa() {
+  const mesaAtual = infoMesas[mesaSelecionada - 1];
   document.querySelector(
     "#iframe-mesas"
-  ).src = `https://www.youtube.com/embed/${
-    infoMesas[mesaSelecionada - 1].link
-  }`;
+  ).src = `https://www.youtube.com/embed/${mesaAtual.link}`;
 
   const voltarMesa = document.querySelector("#voltar-mesa");
+  const tituloMesa = document.querySelector("#titulo-tocador-mesa");
+  const dataMesa = document.querySelector("#data-tocador-mesa");
+
   voltarMesa.innerHTML = "";
+  tituloMesa.innerHTML = "";
+  dataMesa.innerHTML = "";
 
   const tocadorMesas = document.querySelector("#tocador-mesas");
   tocadorMesas.classList.remove("hidden");
 
   animar("voltar-mesa", "", idioma("Voltar", "Volver"));
+  animar("titulo-tocador-mesa", "", mesaAtual.titulo);
+  animar(
+    "data-tocador-mesa",
+    "",
+    `${idioma("AO VIVO EM ", "EN DIRECTO AL ")}${mesaAtual.data}`
+  );
 }
 
 function atualizarInfoMesas() {

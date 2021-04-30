@@ -30,6 +30,8 @@ function menu() {
     seta.configurar("normal-vrm");
     seta.esconderEtiqueta();
 
+    document.querySelector("#setas-scroll").classList.add("transparente");
+
     /*  <div id="conteiner-menu">
     <nav id="nav-menu">
     <p id="titulo-menu" class=""></p>

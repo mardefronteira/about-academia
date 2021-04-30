@@ -9,6 +9,9 @@ function idioma(textoBr, textoEs) {
 }
 
 function esconderTudo() {
+  clearTimeout(timerScroll);
+  document.querySelector("#setas-scroll").classList.add("transparente");
+
   pausarExibicao();
   document.querySelector(`#apresentacao`).classList.add("hidden");
   document.querySelector(`#defaultCanvas0`).classList.add("hidden");
@@ -26,11 +29,12 @@ function esconderTudo() {
   document.querySelector("#cursores").classList.remove("hidden");
 }
 
+let timerScroll;
 function sugerirScroll() {
   console.log("disparou");
   const setaScroll = document.querySelector("#setas-scroll");
   setaScroll.classList.remove("transparente");
-  setTimeout(() => {
+  timerScroll = setTimeout(() => {
     setaScroll.classList.add("transparente");
   }, 30000);
 }
