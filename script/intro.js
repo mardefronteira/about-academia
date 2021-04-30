@@ -20,7 +20,12 @@ function iniciar() {
 
   seta = new Seta();
   seta.iniciar();
-  seta.configurar("normal-vrm");
+
+  const setasExibicao = document.querySelector("#setas-exibicao");
+  if (!dispMovel) {
+    seta.configurar("normal-vrm");
+    setasExibicao.classList.add("hidden");
+  }
   // animarTitulo();
 }
 

@@ -39,8 +39,8 @@ function mesas() {
 
   if (primeiraMesa) {
     document.querySelector("#voltar-mesa").addEventListener("click", () => {
-      document.querySelector("#tocador-mesas").classList.add("hidden");
       document.querySelector("#iframe-mesas").src = "";
+      document.querySelector("#tocador-mesas").classList.add("hidden");
     });
     document
       .querySelector("#entrar-mesa")

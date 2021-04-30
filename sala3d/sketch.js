@@ -217,12 +217,14 @@ function draw() {
       imgRot.hide();
     }
   } else {
-    if (cenaAtual === "exibicao" && estavaHorizontal !== horizontal) {
+    if (
+      dispMovel &&
+      cenaAtual === "exibicao" &&
+      estavaHorizontal !== horizontal
+    ) {
       imgRot.hide();
       estavaHorizontal = true;
       permitirAudio();
-      const setas = document.querySelector("#setas-exibicao");
-      setas.classList.remove("hidden");
       const msg = document.querySelector("#mensagem-carregando");
       videosCarregados ? "" : msg.classList.remove("hidden");
     } else if (cenaAtual === "info") {
@@ -235,6 +237,9 @@ function draw() {
     mostrarSalas();
     // tirar mensagem de carregamento
     if (videosCarregados && cortina) {
+      const setas = document.querySelector("#setas-exibicao");
+      setas.classList.remove("hidden");
+
       for (let i in videoPlanes) {
         videoPlanes[i].ajustarVolume(i);
       }
