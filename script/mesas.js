@@ -199,7 +199,7 @@ function atualizarInfoMesas() {
             </a>`
       ),
       botao: "Entrar",
-      link: idioma("6TsnWzl1mR0", "F8V-nmn_Qxo"),
+      link: idioma("MpX-lHWryKg", "PuhwnqRbjzU"),
     },
     {
       id: "mesa2",
@@ -259,8 +259,8 @@ function atualizarInfoMesas() {
             <span class="desc-pessoa-mesa">Culturador y coordinador Fórum Permanente. BR (moderación)</span>
           </a>`
       ),
-      botao: "Em breve",
-      link: "",
+      botao: "Entrar",
+      link: idioma("gdMR2jKTMTE", "vixv-niYPu0"),
     },
     {
       id: "mesa3",
@@ -304,8 +304,8 @@ function atualizarInfoMesas() {
             <span class="desc-pessoa-mesa">Ex Ministro de Educación, filósofo. BR (moderação)</span>
           </a>`
       ),
-      botao: "Em breve",
-      link: "",
+      botao: "Entrar",
+      link: idioma("PFJCVMja9N4", "qelKKhh4GQM"),
     },
   ];
 }
