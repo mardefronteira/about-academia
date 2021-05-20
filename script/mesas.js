@@ -260,7 +260,7 @@ function atualizarInfoMesas() {
           </a>`
       ),
       botao: "Entrar",
-      link: idioma("gdMR2jKTMTE", "vixv-niYPu0"),
+      link: idioma("VKf97xfkWO8", "SlkbJJ-Bjeo"),
     },
     {
       id: "mesa3",
@@ -305,7 +305,7 @@ function atualizarInfoMesas() {
           </a>`
       ),
       botao: "Entrar",
-      link: idioma("PFJCVMja9N4", "qelKKhh4GQM"),
+      link: idioma("VKf97xfkWO8", "KJJQhTye_X0"),
     },
   ];
 }
