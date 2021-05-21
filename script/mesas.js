@@ -305,7 +305,7 @@ function atualizarInfoMesas() {
           </a>`
       ),
       botao: "Entrar",
-      link: idioma("VKf97xfkWO8", "KJJQhTye_X0"),
+      link: idioma("r7FKD0sTzSw", "KJJQhTye_X0"),
     },
   ];
 }
