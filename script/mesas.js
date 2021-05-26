@@ -38,13 +38,18 @@ function mesas() {
   atualizarInfo(`mesa${mesaSelecionada}`, true);
 
   if (primeiraMesa) {
+    // configurar botão 'voltar'
     document.querySelector("#voltar-mesa").addEventListener("click", () => {
       document.querySelector("#iframe-mesas").src = "";
       document.querySelector("#tocador-mesas").classList.add("hidden");
     });
+
+    // configurar botão 'entrar'
     document
       .querySelector("#entrar-mesa")
       .addEventListener("click", mostrarMesa);
+
+    // configurar seleção das mesas (hover nos números)
     for (let mesa of infoMesas) {
       let elemento = document.querySelector(`#${mesa.id}`);
 
@@ -53,6 +58,16 @@ function mesas() {
         atualizarInfo(mesa.id);
       });
     }
+
+    // fazer com que o mouse estilizado desapareça sobre o iframe
+    const iframeMesas = document.querySelector("#iframe-mesas");
+    iframeMesas.addEventListener("mouseover", (e) => {
+      document.querySelector("#cursores").classList.add("hidden");
+    });
+    iframeMesas.addEventListener("mouseout", () => {
+      document.querySelector("#cursores").classList.remove("hidden");
+    });
+
     primeiraMesa = false;
   }
 }
