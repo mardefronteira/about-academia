@@ -27,6 +27,8 @@ function esconderTudo() {
   document.querySelector("#tocador").classList.add("hidden");
 
   document.querySelector("#cursores").classList.remove("hidden");
+
+  document.querySelector("#iframe-mesas").src = "";
 }
 
 let timerScroll;
