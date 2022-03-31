@@ -5,7 +5,6 @@ function animar(
   idAlvo,
   idMae,
   texto,
-  callback = false,
   classes = ["intro-texto"]
 ) {
   let alvo;
@@ -15,7 +14,6 @@ function animar(
     for (let classe of classes) {
       alvo.classList.add(classe);
     }
-    callback ? alvo.addEventListener("click", callback) : "";
     document.querySelector(`#${idMae}`).appendChild(alvo);
   } else {
     alvo = document.querySelector(`#${idAlvo}`);

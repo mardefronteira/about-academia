@@ -33,7 +33,7 @@ function publicacoes() {
   cenaPubli = 0;
 
   //animar(idAlvo, idMae, texto, callback = false, classes = ['intro-texto'])
-  animar("titulo1-publicacoes", "aa1-titulos", "About<br>Academia I", false, [
+  animar("titulo1-publicacoes", "aa1-titulos", "About<br>Academia I", [
     "vermelho",
     "texto-publicacoes",
     "titulo-publicacoes",
@@ -53,18 +53,18 @@ function publicacoes() {
     false,
     ["texto-publicacoes"]
   );
-  animar("previa1-publicacoes", "aa1-nav", idioma("Prévia", "Previa"), false, [
+  animar("previa1-publicacoes", "aa1-nav", idioma("Prévia", "Previa"), [
     "texto-publicacoes",
     "clicavel",
   ]);
-  animar("link1-publicacoes", "aa1-nav", "Comprar", false, [
+  animar("link1-publicacoes", "aa1-nav", "Comprar", [
     "texto-publicacoes",
     "clicavel",
   ]);
 
   animar("voltar-publicacoes", "", idioma("Voltar", "Volver"));
 
-  animar("titulo2-publicacoes", "aa2-titulos", "About<br>Academia II", false, [
+  animar("titulo2-publicacoes", "aa2-titulos", "About<br>Academia II", [
     "vermelho",
     "texto-publicacoes",
     "titulo-publicacoes",
@@ -79,11 +79,11 @@ function publicacoes() {
     false,
     ["texto-publicacoes"]
   );
-  animar("previa2-publicacoes", "aa2-nav", idioma("Prévia", "Previa"), false, [
+  animar("previa2-publicacoes", "aa2-nav", idioma("Prévia", "Previa"), [
     "texto-publicacoes",
     "clicavel",
   ]);
-  animar("link2-publicacoes", "aa2-nav", "Comprar", false, [
+  animar("link2-publicacoes", "aa2-nav", "Comprar", [
     "texto-publicacoes",
     "clicavel",
   ]);

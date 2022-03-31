@@ -30,7 +30,7 @@ function mesas() {
     ["titulo-mesas", "vermelho"]
   );
 
-  animar("voltar-mesas", "", idioma("Voltar", "Volver"), false, [
+  animar("voltar-mesas", "", idioma("Voltar", "Volver"), [
     "botoes-mesas",
   ]);
 
@@ -74,8 +74,6 @@ function mesas() {
 
 function atualizarInfo(idMesa, forcar = false) {
   if (mesaSelecionada !== idMesa.slice(-1) || forcar) {
-    // garantir que as animações não se sobreponham
-    // for (let timer of timerMesas) clearTimeout(timer);
 
     mesaSelecionada = idMesa.slice(-1);
     const infoMesa = infoMesas.find((mesa) => mesa.id === idMesa);
@@ -101,11 +99,11 @@ function atualizarInfo(idMesa, forcar = false) {
       tituloMesa.innerHTML = "";
       dataMesa.innerHTML = infoMesa.data;
       entrarMesa.innerHTML = infoMesa.botao;
-      animar("titulo-mesa", "", infoMesa.titulo, false, []);
+      animar("titulo-mesa", "", infoMesa.titulo, []);
       descMesa.innerHTML = infoMesa.desc;
 
       const setasScroll = document.querySelector("#setas-scroll-mesas");
-      if (infoMesa.id === "mesa3") {
+      if (infoMesa.id === "mesa3" || infoMesa.id === "mesa4") {
         setasScroll.classList.add("hidden");
       } else {
         setasScroll.classList.remove("hidden");
@@ -321,6 +319,55 @@ function atualizarInfoMesas() {
       ),
       botao: "Entrar",
       link: idioma("r7FKD0sTzSw", "KJJQhTye_X0"),
+    },
+
+    {
+      id: "mesa4",
+      num: "IV",
+      titulo: idioma("Academia e o debate do STEM e STEAM", "El mundo académico y el debate sobre STEM y STEAM"),
+      data: idioma(
+        "Sexta-feira, dia 19 de novembro às 10h - BRT",
+        "Viernes 19 de noviembre a las 10:00 horas BRT - Disponible en portugués con subtítulos"
+      ),
+      desc: idioma(
+        `<a href="http://www.forumpermanente.org/convidados/soraya-soubhi-smaili" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
+            <span class="nome-pessoa-mesa">Soraya S. Smaili</span>
+            <span class="desc-pessoa-mesa">Titular Escola Paulista de Medicina e Ex-reitora - Unifesp</span>
+          </a>
+          <a href="http://www.forumpermanente.org/convidados/marcos-silveira-buckeridge" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
+            <span class="nome-pessoa-mesa">Marcos Buckeridge</span>
+            <span class="desc-pessoa-mesa">Biólogo e Diretor do Instituto de Biociências - USP</span>
+          </a>
+          <a href="http://www.forumpermanente.org/convidados/guilherme-ary-plonski" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
+            <span class="nome-pessoa-mesa">Guilherme Ary Plonski </span>
+            <span class="desc-pessoa-mesa">Diretor IEA-USP (moderação)</span>
+          </a>
+          <a href="http://www.forumpermanente.org/convidados/antonimuntadas" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
+            <span class="nome-pessoa-mesa">Antoni Muntadas</span>
+            <span class="desc-pessoa-mesa">Artista. ES </span>
+          </a>
+          `,
+        `<a href="http://www.forumpermanente.org/convidados/soraya-soubhi-smaili" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
+            <span class="nome-pessoa-mesa">Soraya S. Smaili</span>
+            <span class="desc-pessoa-mesa">Titular Escola Paulista de Medicina e Ex-reitora - Unifesp</span>
+          </a>
+          <a href="http://www.forumpermanente.org/convidados/marcos-silveira-buckeridge" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
+            <span class="nome-pessoa-mesa">Marcos Buckeridge</span>
+            <span class="desc-pessoa-mesa">Biólogo e Diretor do Instituto de Biociências - USP</span>
+          </a>
+          <a href="http://www.forumpermanente.org/convidados/guilherme-ary-plonski" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
+            <span class="nome-pessoa-mesa">Guilherme Ary Plonski </span>
+            <span class="desc-pessoa-mesa">Diretor IEA-USP (moderação)</span>
+          </a>
+          <a href="http://www.forumpermanente.org/convidados/antonimuntadas" class="clicavel " target="_blank" rel="noreferrer" title="Mais informações">
+            <span class="nome-pessoa-mesa">Antoni Muntadas</span>
+            <span class="desc-pessoa-mesa">Artista. ES </span>
+          </a>
+          `
+        
+      ),
+      botao: "Entrar",
+      link: "1ZGC-llzJkA",
     },
   ];
 }
